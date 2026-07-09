@@ -35,6 +35,19 @@ on:
         required: true
         default: '1'
         type: string
+      model_tier:
+        description: 'モデル品質'
+        required: true
+        default: 'pro'
+        type: choice
+        options:
+          - pro       # Nano Banana Pro（Gemini 3 Pro Image）
+          - standard  # Nano Banana（Gemini 2.5 Flash Image、安価・高速）
+      resolution:
+        description: '解像度（pro時のみ有効。空欄でsheet=2K/その他=1K）'
+        required: false
+        default: ''
+        type: string
       dry_run:
         description: '確認のみ（生成せず送信内容を表示）'
         required: false
@@ -72,6 +85,8 @@ jobs:
           VARIANT: ${{ inputs.variant }}
           REF_MODE: ${{ inputs.ref_mode }}
           NUM: ${{ inputs.num }}
+          MODEL_TIER: ${{ inputs.model_tier }}
+          RESOLUTION: ${{ inputs.resolution }}
           DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
         run: node scripts/generate-sheet.mjs
 

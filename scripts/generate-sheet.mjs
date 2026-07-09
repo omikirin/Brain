@@ -1,13 +1,16 @@
-/* CryptoNinja キャラシート生成スクリプト（fal.ai / Nano Banana）
+/* CryptoNinja キャラシート生成スクリプト（fal.ai / Nano Banana Pro）
  *
  * GitHub Actions（.github/workflows/generate-sheet.yml）から呼ばれる想定。
  * 環境変数:
- *   FAL_KEY   … fal.ai の APIキー（必須／リポジトリ Secrets に登録）
- *   CHAR      … キャラ番号か名前（例 "032" / "Seori"）。既定 "032"
- *   VARIANT   … "sheet"(モデルシート全体) か prompts のキー
- *               (chibi/normal/modern/scifi/fantasy/isekai)。既定 "sheet"
- *   REF_MODE  … "auto"(参照画像があれば使う)/"on"/"off"。既定 "auto"
- *   NUM       … 生成枚数(1-4)。既定 1
+ *   FAL_KEY    … fal.ai の APIキー（必須／リポジトリ Secrets に登録）
+ *   CHAR       … キャラ番号か名前（例 "032" / "Seori"）。既定 "032"
+ *   VARIANT    … "sheet"(モデルシート全体) か prompts のキー
+ *                (chibi/normal/modern/scifi/fantasy/isekai)。既定 "sheet"
+ *   REF_MODE   … "auto"(参照画像があれば使う)/"on"/"off"。既定 "auto"
+ *   NUM        … 生成枚数(1-4)。既定 1
+ *   MODEL_TIER … "pro"(既定, Nano Banana Pro / Gemini 3 Pro Image) か
+ *                "standard"(Nano Banana / Gemini 2.5 Flash Image)
+ *   RESOLUTION … "1K"/"2K"/"4K"。既定は sheet=2K、それ以外=1K
  *
  * 出力:
  *   VARIANT=sheet  → images/characters/<no>_<slug>/sheet.png
@@ -26,6 +29,7 @@ const CHAR = env('CHAR', '032');
 const VARIANT = env('VARIANT', 'sheet');
 const REF_MODE = env('REF_MODE', 'auto');
 const NUM = Math.min(4, Math.max(1, parseInt(env('NUM', '1'), 10) || 1));
+const MODEL_TIER = env('MODEL_TIER', 'pro') === 'standard' ? 'standard' : 'pro';
 
 if (!process.env.FAL_KEY) {
   console.error('❌ FAL_KEY が未設定です。リポジトリの Settings → Secrets and variables → Actions に FAL_KEY を登録してください。');
@@ -67,8 +71,11 @@ async function main() {
   if (REF_MODE !== 'off' && await exists(refPath)) useRef = true;
   if (REF_MODE === 'on' && !useRef) { console.error(`❌ REF_MODE=on ですが参照画像がありません: ${dir}/ref.png`); process.exit(1); }
 
-  const model = useRef ? 'fal-ai/nano-banana/edit' : 'fal-ai/nano-banana';
+  const base = MODEL_TIER === 'pro' ? 'fal-ai/nano-banana-pro' : 'fal-ai/nano-banana';
+  const model = useRef ? `${base}/edit` : base;
+  const resolution = env('RESOLUTION', VARIANT === 'sheet' ? '2K' : '1K');
   const input = { prompt, num_images: NUM, output_format: 'png', aspect_ratio: aspect };
+  if (MODEL_TIER === 'pro') input.resolution = resolution;
 
   if (env('DRY_RUN', '')) {
     console.log('🔎 DRY_RUN — 送信せずに内容を表示します');
@@ -85,7 +92,7 @@ async function main() {
     input.prompt = `Using the attached reference image as the exact character design (keep the face, hairstyle, colors and equipment identical), ${prompt}`;
   }
 
-  console.log(`🎨 生成開始  キャラ=${c.name}(#${c.no})  種別=${VARIANT}  モデル=${model}  枚数=${NUM}  比率=${aspect}`);
+  console.log(`🎨 生成開始  キャラ=${c.name}(#${c.no})  種別=${VARIANT}  モデル=${model}  枚数=${NUM}  比率=${aspect}${input.resolution ? `  解像度=${input.resolution}` : ''}`);
   const result = await fal.subscribe(model, {
     input,
     logs: true,

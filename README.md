@@ -47,6 +47,8 @@ GitHub Actions 上で fal.ai を呼び、モデルシート（三面図＋世界
    | `variant` | `sheet`（モデルシート全体）または画風（`chibi`/`normal`/`modern`/`scifi`/`fantasy`/`isekai`） |
    | `ref_mode` | 参照画像 `ref.png` の利用。`auto`（あれば使う）/`on`/`off` |
    | `num` | 生成枚数（1〜4） |
+   | `model_tier` | `pro`（既定・Nano Banana Pro／Gemini 3 Pro Image）/ `standard`（Nano Banana／Gemini 2.5 Flash Image、安価・高速） |
+   | `resolution` | `pro`時のみ有効。空欄なら `sheet`=2K、それ以外=1K（`1K`/`2K`/`4K`を指定可） |
    | `dry_run` | ✅ で生成せず送信内容だけ確認 |
 
 3. 生成物は自動で `images/characters/<番号>_<名前>/` に保存・コミットされます
