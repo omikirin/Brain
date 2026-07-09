@@ -1,0 +1,1869 @@
+{
+  "source": "https://www.ninja-dao.com/characters",
+  "characters": [
+    {
+      "no": "001",
+      "name": "Jin",
+      "clan": "Iga",
+      "ninjutsu": "Katon",
+      "weapon": "Shuriken",
+      "birthday": "September 20",
+      "setting": "The master ninja. Legendary and mysterious, thought to have lost his life in the battle against Fuma.",
+      "genre": "1. バトル・アクション",
+      "relationships": [
+        {
+          "name": "Rei",
+          "type": "好敵手",
+          "note": "里を守る強者同士。伝説の忍として互いを認め合う"
+        },
+        {
+          "name": "Atoza",
+          "type": "宿敵",
+          "note": "風魔との戦いで散ったとされる因縁の相手"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "male master ninja, full black/navy shinobi outfit, hood covering most of face, headband with three diamond motifs, sharp angular eyes, cloth mask, chainmail-mesh chest and wrists, grey vambraces, large shuriken, gold-hilted katana on back, fire (Katon) energy. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：漆黒の忍装束、三菱形の額あて、鋭い目、大手裏剣、金柄の刀、炎術。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "male master ninja, full black/navy shinobi outfit, hood covering most of face, headband with three diamond motifs, sharp angular eyes, cloth mask, chainmail-mesh chest and wrists, grey vambraces, large shuriken, gold-hilted katana on back, fire (Katon) energy. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：漆黒の忍装束、三菱形の額あて、鋭い目、大手裏剣、金柄の刀、炎術。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: male master ninja, full black/navy shinobi outfit, hood covering most of face, headband with three diamond motifs, sharp angular eyes, cloth mask, chainmail-mesh chest and wrists, grey vambraces, large shuriken, gold-hilted katana on back, fire (Katon) energy. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：漆黒の忍装束、三菱形の額あて、鋭い目、大手裏剣、金柄の刀、炎術を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: male master ninja, full black/navy shinobi outfit, hood covering most of face, headband with three diamond motifs, sharp angular eyes, cloth mask, chainmail-mesh chest and wrists, grey vambraces, large shuriken, gold-hilted katana on back, fire (Katon) energy. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：漆黒の忍装束、三菱形の額あて、鋭い目、大手裏剣、金柄の刀、炎術をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: male master ninja, full black/navy shinobi outfit, hood covering most of face, headband with three diamond motifs, sharp angular eyes, cloth mask, chainmail-mesh chest and wrists, grey vambraces, large shuriken, gold-hilted katana on back, fire (Katon) energy. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：漆黒の忍装束、三菱形の額あて、鋭い目、大手裏剣、金柄の刀、炎術を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: male master ninja, full black/navy shinobi outfit, hood covering most of face, headband with three diamond motifs, sharp angular eyes, cloth mask, chainmail-mesh chest and wrists, grey vambraces, large shuriken, gold-hilted katana on back, fire (Katon) energy. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：漆黒の忍装束、三菱形の額あて、鋭い目、大手裏剣、金柄の刀、炎術を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "002",
+      "name": "Sakuya",
+      "clan": "Koka",
+      "ninjutsu": "Kuchiyose",
+      "weapon": "Shuriken",
+      "birthday": "March 27",
+      "setting": "Ganzi's granddaughter. A serene ninja who loves to cook in her spare time.",
+      "genre": "10. 日常・ほのぼの",
+      "relationships": [
+        {
+          "name": "Kohaku",
+          "type": "双子の姉妹",
+          "note": "生き別れた双子（canon）"
+        },
+        {
+          "name": "Ganzi",
+          "type": "祖父",
+          "note": "幻次の孫（canon）"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "female ninja, long black high-ponytail tied with a small red ribbon, straight blunt bangs, pink/magenta headband tied at the back with trailing ends, large grey eyes, blushing cheeks, gentle smile, no face mask (face visible), pink kimono-style shinobi wrap top with olive-gold sash tied in a bow, dark grey vambraces, black thigh-high socks, holding a large shuriken, gold-hilted katana with diamond-pattern scabbard on back, summoning (Kuchiyose) aura. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：黒髪ハイポニー(赤リボン)、ぱっつん前髪、ピンクの額あて、大きな灰の瞳、頬に赤み、笑顔、マスクなし、ピンクの合わせ装束とオリーブ金の帯、濃灰の籠手、黒ニーハイ、大手裏剣、金柄の刀、口寄せ。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景（ティール）"
+        },
+        "normal": {
+          "en": "female ninja, long black high-ponytail tied with a small red ribbon, straight blunt bangs, pink/magenta headband tied at the back with trailing ends, large grey eyes, blushing cheeks, gentle smile, no face mask (face visible), pink kimono-style shinobi wrap top with olive-gold sash tied in a bow, dark grey vambraces, black thigh-high socks, holding a large shuriken, gold-hilted katana with diamond-pattern scabbard on back, summoning (Kuchiyose) aura. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：黒髪ハイポニー(赤リボン)、ぱっつん前髪、ピンクの額あて、大きな灰の瞳、頬に赤み、笑顔、マスクなし、ピンクの合わせ装束とオリーブ金の帯、濃灰の籠手、黒ニーハイ、大手裏剣、金柄の刀、口寄せ。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: female ninja, long black high-ponytail tied with a small red ribbon, straight blunt bangs, pink/magenta headband tied at the back with trailing ends, large grey eyes, blushing cheeks, gentle smile, no face mask (face visible), pink kimono-style shinobi wrap top with olive-gold sash tied in a bow, dark grey vambraces, black thigh-high socks, holding a large shuriken, gold-hilted katana with diamond-pattern scabbard on back, summoning (Kuchiyose) aura. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：黒髪ハイポニー(赤リボン)、ぱっつん前髪、ピンクの額あて、大きな灰の瞳、頬に赤み、笑顔、マスクなし、ピンクの合わせ装束とオリーブ金の帯、濃灰の籠手、黒ニーハイ、大手裏剣、金柄の刀、口寄せを現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: female ninja, long black high-ponytail tied with a small red ribbon, straight blunt bangs, pink/magenta headband tied at the back with trailing ends, large grey eyes, blushing cheeks, gentle smile, no face mask (face visible), pink kimono-style shinobi wrap top with olive-gold sash tied in a bow, dark grey vambraces, black thigh-high socks, holding a large shuriken, gold-hilted katana with diamond-pattern scabbard on back, summoning (Kuchiyose) aura. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：黒髪ハイポニー(赤リボン)、ぱっつん前髪、ピンクの額あて、大きな灰の瞳、頬に赤み、笑顔、マスクなし、ピンクの合わせ装束とオリーブ金の帯、濃灰の籠手、黒ニーハイ、大手裏剣、金柄の刀、口寄せをサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: female ninja, long black high-ponytail tied with a small red ribbon, straight blunt bangs, pink/magenta headband tied at the back with trailing ends, large grey eyes, blushing cheeks, gentle smile, no face mask (face visible), pink kimono-style shinobi wrap top with olive-gold sash tied in a bow, dark grey vambraces, black thigh-high socks, holding a large shuriken, gold-hilted katana with diamond-pattern scabbard on back, summoning (Kuchiyose) aura. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：黒髪ハイポニー(赤リボン)、ぱっつん前髪、ピンクの額あて、大きな灰の瞳、頬に赤み、笑顔、マスクなし、ピンクの合わせ装束とオリーブ金の帯、濃灰の籠手、黒ニーハイ、大手裏剣、金柄の刀、口寄せを中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: female ninja, long black high-ponytail tied with a small red ribbon, straight blunt bangs, pink/magenta headband tied at the back with trailing ends, large grey eyes, blushing cheeks, gentle smile, no face mask (face visible), pink kimono-style shinobi wrap top with olive-gold sash tied in a bow, dark grey vambraces, black thigh-high socks, holding a large shuriken, gold-hilted katana with diamond-pattern scabbard on back, summoning (Kuchiyose) aura. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：黒髪ハイポニー(赤リボン)、ぱっつん前髪、ピンクの額あて、大きな灰の瞳、頬に赤み、笑顔、マスクなし、ピンクの合わせ装束とオリーブ金の帯、濃灰の籠手、黒ニーハイ、大手裏剣、金柄の刀、口寄せを転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      },
+      "image_verified": true
+    },
+    {
+      "no": "003",
+      "name": "Kohaku",
+      "clan": "Fuma",
+      "ninjutsu": "Transformation (Kawarimi)",
+      "weapon": "Katana",
+      "birthday": "March 27",
+      "setting": "A mysterious ninja; Sakuya's long-lost twin sister.",
+      "genre": "13. サスペンス・スリラー",
+      "relationships": [
+        {
+          "name": "Sakuya",
+          "type": "双子の姉妹",
+          "note": "生き別れた双子（canon）"
+        },
+        {
+          "name": "Karma",
+          "type": "共犯者",
+          "note": "風魔の陰の任務で組む同志"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "female ninja, black high-ponytail tied with a green ribbon, wearing a white fox (kitsune) mask with red ears and red eye markings, turquoise-blue teardrop/streak patterns and red mouth on the mask, laughing curved eyes, purple headband tied at the back with trailing ends, purple kimono-style shinobi wrap top, blue-purple sash, dark grey vambraces, grey thigh-high socks, wielding a bare katana with gold guard and diamond-pattern hilt, transformation (Kawarimi) jutsu, dark Fuma-clan aesthetic. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：黒髪ハイポニー(緑リボン)、赤耳・水色の涙模様・赤口の白い狐面、笑った目、紫の額あて、紫の合わせ装束、青紫の帯、濃灰の籠手、灰ニーハイ、金鍔の抜き身の刀、変わり身、風魔のダーク配色。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景（濃青）"
+        },
+        "normal": {
+          "en": "female ninja, black high-ponytail tied with a green ribbon, wearing a white fox (kitsune) mask with red ears and red eye markings, turquoise-blue teardrop/streak patterns and red mouth on the mask, laughing curved eyes, purple headband tied at the back with trailing ends, purple kimono-style shinobi wrap top, blue-purple sash, dark grey vambraces, grey thigh-high socks, wielding a bare katana with gold guard and diamond-pattern hilt, transformation (Kawarimi) jutsu, dark Fuma-clan aesthetic. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：黒髪ハイポニー(緑リボン)、赤耳・水色の涙模様・赤口の白い狐面、笑った目、紫の額あて、紫の合わせ装束、青紫の帯、濃灰の籠手、灰ニーハイ、金鍔の抜き身の刀、変わり身、風魔のダーク配色。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: female ninja, black high-ponytail tied with a green ribbon, wearing a white fox (kitsune) mask with red ears and red eye markings, turquoise-blue teardrop/streak patterns and red mouth on the mask, laughing curved eyes, purple headband tied at the back with trailing ends, purple kimono-style shinobi wrap top, blue-purple sash, dark grey vambraces, grey thigh-high socks, wielding a bare katana with gold guard and diamond-pattern hilt, transformation (Kawarimi) jutsu, dark Fuma-clan aesthetic. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：黒髪ハイポニー(緑リボン)、赤耳・水色の涙模様・赤口の白い狐面、笑った目、紫の額あて、紫の合わせ装束、青紫の帯、濃灰の籠手、灰ニーハイ、金鍔の抜き身の刀、変わり身、風魔のダーク配色を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: female ninja, black high-ponytail tied with a green ribbon, wearing a white fox (kitsune) mask with red ears and red eye markings, turquoise-blue teardrop/streak patterns and red mouth on the mask, laughing curved eyes, purple headband tied at the back with trailing ends, purple kimono-style shinobi wrap top, blue-purple sash, dark grey vambraces, grey thigh-high socks, wielding a bare katana with gold guard and diamond-pattern hilt, transformation (Kawarimi) jutsu, dark Fuma-clan aesthetic. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：黒髪ハイポニー(緑リボン)、赤耳・水色の涙模様・赤口の白い狐面、笑った目、紫の額あて、紫の合わせ装束、青紫の帯、濃灰の籠手、灰ニーハイ、金鍔の抜き身の刀、変わり身、風魔のダーク配色をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: female ninja, black high-ponytail tied with a green ribbon, wearing a white fox (kitsune) mask with red ears and red eye markings, turquoise-blue teardrop/streak patterns and red mouth on the mask, laughing curved eyes, purple headband tied at the back with trailing ends, purple kimono-style shinobi wrap top, blue-purple sash, dark grey vambraces, grey thigh-high socks, wielding a bare katana with gold guard and diamond-pattern hilt, transformation (Kawarimi) jutsu, dark Fuma-clan aesthetic. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：黒髪ハイポニー(緑リボン)、赤耳・水色の涙模様・赤口の白い狐面、笑った目、紫の額あて、紫の合わせ装束、青紫の帯、濃灰の籠手、灰ニーハイ、金鍔の抜き身の刀、変わり身、風魔のダーク配色を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: female ninja, black high-ponytail tied with a green ribbon, wearing a white fox (kitsune) mask with red ears and red eye markings, turquoise-blue teardrop/streak patterns and red mouth on the mask, laughing curved eyes, purple headband tied at the back with trailing ends, purple kimono-style shinobi wrap top, blue-purple sash, dark grey vambraces, grey thigh-high socks, wielding a bare katana with gold guard and diamond-pattern hilt, transformation (Kawarimi) jutsu, dark Fuma-clan aesthetic. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：黒髪ハイポニー(緑リボン)、赤耳・水色の涙模様・赤口の白い狐面、笑った目、紫の額あて、紫の合わせ装束、青紫の帯、濃灰の籠手、灰ニーハイ、金鍔の抜き身の刀、変わり身、風魔のダーク配色を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      },
+      "image_verified": true
+    },
+    {
+      "no": "004",
+      "name": "Shiba",
+      "clan": "Saika",
+      "ninjutsu": "Suiton",
+      "weapon": "Karate",
+      "birthday": "November 1",
+      "setting": "Using the art of humanization, he turns into a Shinobi during battles.",
+      "genre": "17. 変身ヒーロー",
+      "relationships": [
+        {
+          "name": "Fuuta",
+          "type": "飲み仲間",
+          "note": "雑賀の同郷。酒を酌み交わす気の合う仲"
+        },
+        {
+          "name": "Nekomata",
+          "type": "ライバル",
+          "note": "humanization vs 猫又、変則能力者同士の張り合い"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "anthropomorphic shiba-inu dog ninja, brown fur with white muzzle, cheeks, eyebrows and paws, black nose, upright ears, lightning/heart-shaped white brow markings, green headband with grey metal plate bearing three diamond motifs, green kimono-style shinobi outfit, black belt, gold-hilted katana with diamond-pattern scabbard on back, white paw hands, water (Suiton) jutsu, karate martial-arts nature. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：柴犬の獣人忍者、茶色の毛と白いマズル・頬・眉・手、黒鼻、立ち耳、眉の稲妻状の白模様、緑の額あて(菱形3つの金属プレート)、緑の合わせ忍装束、黒帯、金柄の刀、白い肉球の手、水遁、空手。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景（黄土色）"
+        },
+        "normal": {
+          "en": "anthropomorphic shiba-inu dog ninja, brown fur with white muzzle, cheeks, eyebrows and paws, black nose, upright ears, lightning/heart-shaped white brow markings, green headband with grey metal plate bearing three diamond motifs, green kimono-style shinobi outfit, black belt, gold-hilted katana with diamond-pattern scabbard on back, white paw hands, water (Suiton) jutsu, karate martial-arts nature. Anime illustration, kemono full-body proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：柴犬の獣人忍者、茶色の毛と白いマズル・頬・眉・手、黒鼻、立ち耳、眉の稲妻状の白模様、緑の額あて(菱形3つの金属プレート)、緑の合わせ忍装束、黒帯、金柄の刀、白い肉球の手、水遁、空手。ケモノ全身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: anthropomorphic shiba-inu dog ninja, brown fur with white muzzle, cheeks, eyebrows and paws, black nose, upright ears, lightning/heart-shaped white brow markings, green headband with grey metal plate bearing three diamond motifs, green kimono-style shinobi outfit, black belt, gold-hilted katana with diamond-pattern scabbard on back, white paw hands, water (Suiton) jutsu, karate martial-arts nature. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：柴犬の獣人忍者、茶色の毛と白いマズル・頬・眉・手、黒鼻、立ち耳、眉の稲妻状の白模様、緑の額あて(菱形3つの金属プレート)、緑の合わせ忍装束、黒帯、金柄の刀、白い肉球の手、水遁、空手を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: anthropomorphic shiba-inu dog ninja, brown fur with white muzzle, cheeks, eyebrows and paws, black nose, upright ears, lightning/heart-shaped white brow markings, green headband with grey metal plate bearing three diamond motifs, green kimono-style shinobi outfit, black belt, gold-hilted katana with diamond-pattern scabbard on back, white paw hands, water (Suiton) jutsu, karate martial-arts nature. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：柴犬の獣人忍者、茶色の毛と白いマズル・頬・眉・手、黒鼻、立ち耳、眉の稲妻状の白模様、緑の額あて(菱形3つの金属プレート)、緑の合わせ忍装束、黒帯、金柄の刀、白い肉球の手、水遁、空手をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: anthropomorphic shiba-inu dog ninja, brown fur with white muzzle, cheeks, eyebrows and paws, black nose, upright ears, lightning/heart-shaped white brow markings, green headband with grey metal plate bearing three diamond motifs, green kimono-style shinobi outfit, black belt, gold-hilted katana with diamond-pattern scabbard on back, white paw hands, water (Suiton) jutsu, karate martial-arts nature. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：柴犬の獣人忍者、茶色の毛と白いマズル・頬・眉・手、黒鼻、立ち耳、眉の稲妻状の白模様、緑の額あて(菱形3つの金属プレート)、緑の合わせ忍装束、黒帯、金柄の刀、白い肉球の手、水遁、空手を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: anthropomorphic shiba-inu dog ninja, brown fur with white muzzle, cheeks, eyebrows and paws, black nose, upright ears, lightning/heart-shaped white brow markings, green headband with grey metal plate bearing three diamond motifs, green kimono-style shinobi outfit, black belt, gold-hilted katana with diamond-pattern scabbard on back, white paw hands, water (Suiton) jutsu, karate martial-arts nature. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：柴犬の獣人忍者、茶色の毛と白いマズル・頬・眉・手、黒鼻、立ち耳、眉の稲妻状の白模様、緑の額あて(菱形3つの金属プレート)、緑の合わせ忍装束、黒帯、金柄の刀、白い肉球の手、水遁、空手を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      },
+      "image_verified": true
+    },
+    {
+      "no": "005",
+      "name": "Kinki Kana-Oni",
+      "clan": "Iga",
+      "ninjutsu": "Kinton",
+      "weapon": "Chef's knife (Gyuto)",
+      "birthday": "November 8",
+      "setting": "A legendary blacksmith hiding deep in the mountain.",
+      "genre": "16. 職人・お仕事",
+      "relationships": [
+        {
+          "name": "Anne",
+          "type": "常連客",
+          "note": "包丁鍛冶と大食い娘、食を通じた縁"
+        },
+        {
+          "name": "Sekishusai",
+          "type": "刀の依頼主",
+          "note": "名工と剣豪、業物を介した信頼関係"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "legendary blacksmith ninja wearing a red oni demon mask with two golden horns, red eyes, fangs and an angry grimace, dark-brown hood with pointed ear-like flaps and a grey-plate headband, dark teal/green shinobi outfit with a fur-lined collar (mantle) and brown cord ties, dark grey vambraces, grey belt, holding a large chef's knife (deba/gyuto cleaver), gold (Kinton) blacksmith energy, rugged aged aura. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：赤い鬼面(金の角2本・赤目・牙・怒り顔)、焦げ茶の頭巾と耳状の突起・灰プレートの額あて、毛皮襟のティール色忍装束と茶の紐飾り、濃灰の籠手、灰帯、大型の包丁(出刃/牛刀)、金遁の鍛冶の気、荒々しい古豪の風格。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景（オレンジ/赤土色）"
+        },
+        "normal": {
+          "en": "legendary blacksmith ninja wearing a red oni demon mask with two golden horns, red eyes, fangs and an angry grimace, dark-brown hood with pointed ear-like flaps and a grey-plate headband, dark teal/green shinobi outfit with a fur-lined collar (mantle) and brown cord ties, dark grey vambraces, grey belt, holding a large chef's knife (deba/gyuto cleaver), gold (Kinton) blacksmith energy, rugged aged aura. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：赤い鬼面(金の角2本・赤目・牙・怒り顔)、焦げ茶の頭巾と耳状の突起・灰プレートの額あて、毛皮襟のティール色忍装束と茶の紐飾り、濃灰の籠手、灰帯、大型の包丁(出刃/牛刀)、金遁の鍛冶の気、荒々しい古豪の風格。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: legendary blacksmith ninja wearing a red oni demon mask with two golden horns, red eyes, fangs and an angry grimace, dark-brown hood with pointed ear-like flaps and a grey-plate headband, dark teal/green shinobi outfit with a fur-lined collar (mantle) and brown cord ties, dark grey vambraces, grey belt, holding a large chef's knife (deba/gyuto cleaver), gold (Kinton) blacksmith energy, rugged aged aura. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：赤い鬼面(金の角2本・赤目・牙・怒り顔)、焦げ茶の頭巾と耳状の突起・灰プレートの額あて、毛皮襟のティール色忍装束と茶の紐飾り、濃灰の籠手、灰帯、大型の包丁(出刃/牛刀)、金遁の鍛冶の気、荒々しい古豪の風格を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: legendary blacksmith ninja wearing a red oni demon mask with two golden horns, red eyes, fangs and an angry grimace, dark-brown hood with pointed ear-like flaps and a grey-plate headband, dark teal/green shinobi outfit with a fur-lined collar (mantle) and brown cord ties, dark grey vambraces, grey belt, holding a large chef's knife (deba/gyuto cleaver), gold (Kinton) blacksmith energy, rugged aged aura. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：赤い鬼面(金の角2本・赤目・牙・怒り顔)、焦げ茶の頭巾と耳状の突起・灰プレートの額あて、毛皮襟のティール色忍装束と茶の紐飾り、濃灰の籠手、灰帯、大型の包丁(出刃/牛刀)、金遁の鍛冶の気、荒々しい古豪の風格をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: legendary blacksmith ninja wearing a red oni demon mask with two golden horns, red eyes, fangs and an angry grimace, dark-brown hood with pointed ear-like flaps and a grey-plate headband, dark teal/green shinobi outfit with a fur-lined collar (mantle) and brown cord ties, dark grey vambraces, grey belt, holding a large chef's knife (deba/gyuto cleaver), gold (Kinton) blacksmith energy, rugged aged aura. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：赤い鬼面(金の角2本・赤目・牙・怒り顔)、焦げ茶の頭巾と耳状の突起・灰プレートの額あて、毛皮襟のティール色忍装束と茶の紐飾り、濃灰の籠手、灰帯、大型の包丁(出刃/牛刀)、金遁の鍛冶の気、荒々しい古豪の風格を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: legendary blacksmith ninja wearing a red oni demon mask with two golden horns, red eyes, fangs and an angry grimace, dark-brown hood with pointed ear-like flaps and a grey-plate headband, dark teal/green shinobi outfit with a fur-lined collar (mantle) and brown cord ties, dark grey vambraces, grey belt, holding a large chef's knife (deba/gyuto cleaver), gold (Kinton) blacksmith energy, rugged aged aura. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：赤い鬼面(金の角2本・赤目・牙・怒り顔)、焦げ茶の頭巾と耳状の突起・灰プレートの額あて、毛皮襟のティール色忍装束と茶の紐飾り、濃灰の籠手、灰帯、大型の包丁(出刃/牛刀)、金遁の鍛冶の気、荒々しい古豪の風格を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      },
+      "image_verified": true
+    },
+    {
+      "no": "006",
+      "name": "Oto",
+      "clan": "Koka",
+      "ninjutsu": "Kuchiyose",
+      "weapon": "Scroll",
+      "birthday": "March 3",
+      "setting": "Uka's rival. Summons a rabbit. She is a chatterbox.",
+      "genre": "3. ラブコメ",
+      "relationships": [
+        {
+          "name": "Uka",
+          "type": "ライバル",
+          "note": "口寄せ使い同士の宿命の好敵手（canon）"
+        },
+        {
+          "name": "Izuna",
+          "type": "因縁",
+          "note": "ウカの姉を巡る三角の緊張関係"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "cheerful female ninja with pink rabbit ears (white inner ears with black markings), short pink bob with blunt bangs, golden sparkle stars in her eyes, wide happy open-mouth smile, blushing cheeks, green headband tied at the back, pink kimono-style shinobi wrap top with a small rabbit emblem on the chest, magenta sash tied in a bow, fluffy rabbit tail, diamond-pattern-scabbard katana on back, holding a green sake bottle/flask with a label, black thigh-high socks, talkative lively personality, summoning (Kuchiyose) of rabbits. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：兎の獣耳(ピンク・内側白に黒模様)の明るい少女忍者、ピンクの短髪ボブとぱっつん前髪、目に金の星、開口の満面の笑み、頬に赤み、緑の額あて、胸に兎マークのピンク合わせ装束、濃ピンクの帯を蝶結び、兎のしっぽ、網目鞘の刀、緑の徳利/酒瓶を持つ、黒ニーハイ、おしゃべり、兎の口寄せ。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景（黄土色）"
+        },
+        "normal": {
+          "en": "cheerful female ninja with pink rabbit ears (white inner ears with black markings), short pink bob with blunt bangs, golden sparkle stars in her eyes, wide happy open-mouth smile, blushing cheeks, green headband tied at the back, pink kimono-style shinobi wrap top with a small rabbit emblem on the chest, magenta sash tied in a bow, fluffy rabbit tail, diamond-pattern-scabbard katana on back, holding a green sake bottle/flask with a label, black thigh-high socks, talkative lively personality, summoning (Kuchiyose) of rabbits. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：兎の獣耳(ピンク・内側白に黒模様)の明るい少女忍者、ピンクの短髪ボブとぱっつん前髪、目に金の星、開口の満面の笑み、頬に赤み、緑の額あて、胸に兎マークのピンク合わせ装束、濃ピンクの帯を蝶結び、兎のしっぽ、網目鞘の刀、緑の徳利/酒瓶を持つ、黒ニーハイ、おしゃべり、兎の口寄せ。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: cheerful female ninja with pink rabbit ears (white inner ears with black markings), short pink bob with blunt bangs, golden sparkle stars in her eyes, wide happy open-mouth smile, blushing cheeks, green headband tied at the back, pink kimono-style shinobi wrap top with a small rabbit emblem on the chest, magenta sash tied in a bow, fluffy rabbit tail, diamond-pattern-scabbard katana on back, holding a green sake bottle/flask with a label, black thigh-high socks, talkative lively personality, summoning (Kuchiyose) of rabbits. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：兎の獣耳(ピンク・内側白に黒模様)の明るい少女忍者、ピンクの短髪ボブとぱっつん前髪、目に金の星、開口の満面の笑み、頬に赤み、緑の額あて、胸に兎マークのピンク合わせ装束、濃ピンクの帯を蝶結び、兎のしっぽ、網目鞘の刀、緑の徳利/酒瓶を持つ、黒ニーハイ、おしゃべり、兎の口寄せを現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: cheerful female ninja with pink rabbit ears (white inner ears with black markings), short pink bob with blunt bangs, golden sparkle stars in her eyes, wide happy open-mouth smile, blushing cheeks, green headband tied at the back, pink kimono-style shinobi wrap top with a small rabbit emblem on the chest, magenta sash tied in a bow, fluffy rabbit tail, diamond-pattern-scabbard katana on back, holding a green sake bottle/flask with a label, black thigh-high socks, talkative lively personality, summoning (Kuchiyose) of rabbits. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：兎の獣耳(ピンク・内側白に黒模様)の明るい少女忍者、ピンクの短髪ボブとぱっつん前髪、目に金の星、開口の満面の笑み、頬に赤み、緑の額あて、胸に兎マークのピンク合わせ装束、濃ピンクの帯を蝶結び、兎のしっぽ、網目鞘の刀、緑の徳利/酒瓶を持つ、黒ニーハイ、おしゃべり、兎の口寄せをサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: cheerful female ninja with pink rabbit ears (white inner ears with black markings), short pink bob with blunt bangs, golden sparkle stars in her eyes, wide happy open-mouth smile, blushing cheeks, green headband tied at the back, pink kimono-style shinobi wrap top with a small rabbit emblem on the chest, magenta sash tied in a bow, fluffy rabbit tail, diamond-pattern-scabbard katana on back, holding a green sake bottle/flask with a label, black thigh-high socks, talkative lively personality, summoning (Kuchiyose) of rabbits. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：兎の獣耳(ピンク・内側白に黒模様)の明るい少女忍者、ピンクの短髪ボブとぱっつん前髪、目に金の星、開口の満面の笑み、頬に赤み、緑の額あて、胸に兎マークのピンク合わせ装束、濃ピンクの帯を蝶結び、兎のしっぽ、網目鞘の刀、緑の徳利/酒瓶を持つ、黒ニーハイ、おしゃべり、兎の口寄せを中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: cheerful female ninja with pink rabbit ears (white inner ears with black markings), short pink bob with blunt bangs, golden sparkle stars in her eyes, wide happy open-mouth smile, blushing cheeks, green headband tied at the back, pink kimono-style shinobi wrap top with a small rabbit emblem on the chest, magenta sash tied in a bow, fluffy rabbit tail, diamond-pattern-scabbard katana on back, holding a green sake bottle/flask with a label, black thigh-high socks, talkative lively personality, summoning (Kuchiyose) of rabbits. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：兎の獣耳(ピンク・内側白に黒模様)の明るい少女忍者、ピンクの短髪ボブとぱっつん前髪、目に金の星、開口の満面の笑み、頬に赤み、緑の額あて、胸に兎マークのピンク合わせ装束、濃ピンクの帯を蝶結び、兎のしっぽ、網目鞘の刀、緑の徳利/酒瓶を持つ、黒ニーハイ、おしゃべり、兎の口寄せを転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      },
+      "image_verified": true
+    },
+    {
+      "no": "007",
+      "name": "Rotten",
+      "clan": "Fuma",
+      "ninjutsu": "Poison Mist",
+      "weapon": "Poison Arrow",
+      "birthday": "October 10",
+      "setting": "A faithful servant to Atoza, willing to give up his life for the Fuma clan.",
+      "genre": "20. 復讐劇",
+      "relationships": [
+        {
+          "name": "Atoza",
+          "type": "忠誠を誓う主",
+          "note": "風魔のために命を捧げる忠臣（canon）"
+        },
+        {
+          "name": "Dan",
+          "type": "同志",
+          "note": "共に跡座に仕える風魔の同輩"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "loyal male ninja, poison mist, poison arrow, dark Fuma attire, solemn face. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：忠実な忍、毒霧、毒矢、風魔の暗色装束。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "loyal male ninja, poison mist, poison arrow, dark Fuma attire, solemn face. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：忠実な忍、毒霧、毒矢、風魔の暗色装束。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: loyal male ninja, poison mist, poison arrow, dark Fuma attire, solemn face. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：忠実な忍、毒霧、毒矢、風魔の暗色装束を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: loyal male ninja, poison mist, poison arrow, dark Fuma attire, solemn face. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：忠実な忍、毒霧、毒矢、風魔の暗色装束をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: loyal male ninja, poison mist, poison arrow, dark Fuma attire, solemn face. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：忠実な忍、毒霧、毒矢、風魔の暗色装束を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: loyal male ninja, poison mist, poison arrow, dark Fuma attire, solemn face. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：忠実な忍、毒霧、毒矢、風魔の暗色装束を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "008",
+      "name": "Nagisa",
+      "clan": "Saika",
+      "ninjutsu": "Shadow Alternate (Kagebunshin)",
+      "weapon": "Scroll",
+      "birthday": "July 20",
+      "setting": "A shy shinobi who likes to look after her clan.",
+      "genre": "11. ヒューマンドラマ",
+      "relationships": [
+        {
+          "name": "Fuuta",
+          "type": "同郷の仲間",
+          "note": "雑賀の里を共に見守る間柄"
+        },
+        {
+          "name": "Shiba",
+          "type": "世話を焼く相手",
+          "note": "照れ屋の彼女が気にかける同郷者"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "shy gentle female ninja, shadow-clone (Kagebunshin) illusions, scroll, caring demeanor. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：内気で優しい少女忍者、影分身、巻物。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "shy gentle female ninja, shadow-clone (Kagebunshin) illusions, scroll, caring demeanor. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：内気で優しい少女忍者、影分身、巻物。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: shy gentle female ninja, shadow-clone (Kagebunshin) illusions, scroll, caring demeanor. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：内気で優しい少女忍者、影分身、巻物を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: shy gentle female ninja, shadow-clone (Kagebunshin) illusions, scroll, caring demeanor. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：内気で優しい少女忍者、影分身、巻物をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: shy gentle female ninja, shadow-clone (Kagebunshin) illusions, scroll, caring demeanor. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：内気で優しい少女忍者、影分身、巻物を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: shy gentle female ninja, shadow-clone (Kagebunshin) illusions, scroll, caring demeanor. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：内気で優しい少女忍者、影分身、巻物を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "009",
+      "name": "Anne",
+      "clan": "Iga",
+      "ninjutsu": "Shadow stitching (Kagenui)",
+      "weapon": "Dumpling (Dango)",
+      "birthday": "March 16",
+      "setting": "Has a massive appetite and is always eating skewered dumplings.",
+      "genre": "5. グルメ",
+      "relationships": [
+        {
+          "name": "Shion",
+          "type": "親友",
+          "note": "シオンが唯一心を許す相手（canon）"
+        },
+        {
+          "name": "Kinki Kana-Oni",
+          "type": "食の師",
+          "note": "鍛冶の名工と大食い娘、串団子と包丁の縁"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "cheerful female ninja with huge appetite, eating skewered dango, shadow-stitching (Kagenui) jutsu. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：大食いの明るい少女忍者、串団子、影縫い。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "cheerful female ninja with huge appetite, eating skewered dango, shadow-stitching (Kagenui) jutsu. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：大食いの明るい少女忍者、串団子、影縫い。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: cheerful female ninja with huge appetite, eating skewered dango, shadow-stitching (Kagenui) jutsu. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：大食いの明るい少女忍者、串団子、影縫いを現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: cheerful female ninja with huge appetite, eating skewered dango, shadow-stitching (Kagenui) jutsu. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：大食いの明るい少女忍者、串団子、影縫いをサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: cheerful female ninja with huge appetite, eating skewered dango, shadow-stitching (Kagenui) jutsu. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：大食いの明るい少女忍者、串団子、影縫いを中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: cheerful female ninja with huge appetite, eating skewered dango, shadow-stitching (Kagenui) jutsu. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：大食いの明るい少女忍者、串団子、影縫いを転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "010",
+      "name": "Dan",
+      "clan": "Fuma",
+      "ninjutsu": "Flash Laser",
+      "weapon": "Laser Sword",
+      "birthday": "June 10",
+      "setting": "A powerful member of the Fuma clan and a faithful servant to Atoza.",
+      "genre": "9. SF",
+      "relationships": [
+        {
+          "name": "Atoza",
+          "type": "忠誠を誓う主",
+          "note": "跡座に仕える忠臣（canon）"
+        },
+        {
+          "name": "Rotten",
+          "type": "同志",
+          "note": "共に跡座を支える風魔の同輩"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "powerful ninja, glowing laser sword, flash-laser energy, sci-fi Fuma armor. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：強力な忍、光るレーザー刀、閃光レーザー、SF風装甲。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "powerful ninja, glowing laser sword, flash-laser energy, sci-fi Fuma armor. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：強力な忍、光るレーザー刀、閃光レーザー、SF風装甲。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: powerful ninja, glowing laser sword, flash-laser energy, sci-fi Fuma armor. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：強力な忍、光るレーザー刀、閃光レーザー、SF風装甲を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: powerful ninja, glowing laser sword, flash-laser energy, sci-fi Fuma armor. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：強力な忍、光るレーザー刀、閃光レーザー、SF風装甲をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: powerful ninja, glowing laser sword, flash-laser energy, sci-fi Fuma armor. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：強力な忍、光るレーザー刀、閃光レーザー、SF風装甲を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: powerful ninja, glowing laser sword, flash-laser energy, sci-fi Fuma armor. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：強力な忍、光るレーザー刀、閃光レーザー、SF風装甲を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "011",
+      "name": "Hinanojoh",
+      "clan": "Saika",
+      "ninjutsu": "Katon",
+      "weapon": "Horoku bomb",
+      "birthday": "February 8",
+      "setting": "A brave bombing expert, but reverts to chick form when he loses concentration.",
+      "genre": "1. バトル・アクション",
+      "relationships": [
+        {
+          "name": "Nagisa",
+          "type": "同郷の仲間",
+          "note": "雑賀の里の仲間、爆破と補佐で連携"
+        },
+        {
+          "name": "Fuuta",
+          "type": "同郷の兄貴分",
+          "note": "雑賀の豪快な先輩として面倒を見る"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "brave bombing-expert ninja, horoku bomb, fire (Katon) burst, turns into a small chick when distracted. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：爆破の名手、焙烙玉、火遁、油断するとヒヨコ化。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "brave bombing-expert ninja, horoku bomb, fire (Katon) burst, turns into a small chick when distracted. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：爆破の名手、焙烙玉、火遁、油断するとヒヨコ化。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: brave bombing-expert ninja, horoku bomb, fire (Katon) burst, turns into a small chick when distracted. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：爆破の名手、焙烙玉、火遁、油断するとヒヨコ化を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: brave bombing-expert ninja, horoku bomb, fire (Katon) burst, turns into a small chick when distracted. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：爆破の名手、焙烙玉、火遁、油断するとヒヨコ化をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: brave bombing-expert ninja, horoku bomb, fire (Katon) burst, turns into a small chick when distracted. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：爆破の名手、焙烙玉、火遁、油断するとヒヨコ化を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: brave bombing-expert ninja, horoku bomb, fire (Katon) burst, turns into a small chick when distracted. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：爆破の名手、焙烙玉、火遁、油断するとヒヨコ化を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "012",
+      "name": "Torika",
+      "clan": "Iga",
+      "ninjutsu": "Poison Shuriken",
+      "weapon": "Shuriken",
+      "birthday": "August 9",
+      "setting": "A nature-loving Shinobi who connects with wild plants.",
+      "genre": "8. ファンタジー",
+      "relationships": [
+        {
+          "name": "Karura",
+          "type": "里の守り手",
+          "note": "伊賀の自然を共に守る同郷"
+        },
+        {
+          "name": "Shion",
+          "type": "見守る相手",
+          "note": "自然を愛する者として孤独な彼女を気にかける"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "nature-loving female ninja, vines and wild plants, poison shuriken, earthy green tones. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：自然を愛す少女忍者、蔦と野草、毒手裏剣、緑基調。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "nature-loving female ninja, vines and wild plants, poison shuriken, earthy green tones. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：自然を愛す少女忍者、蔦と野草、毒手裏剣、緑基調。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: nature-loving female ninja, vines and wild plants, poison shuriken, earthy green tones. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：自然を愛す少女忍者、蔦と野草、毒手裏剣、緑基調を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: nature-loving female ninja, vines and wild plants, poison shuriken, earthy green tones. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：自然を愛す少女忍者、蔦と野草、毒手裏剣、緑基調をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: nature-loving female ninja, vines and wild plants, poison shuriken, earthy green tones. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：自然を愛す少女忍者、蔦と野草、毒手裏剣、緑基調を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: nature-loving female ninja, vines and wild plants, poison shuriken, earthy green tones. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：自然を愛す少女忍者、蔦と野草、毒手裏剣、緑基調を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "013",
+      "name": "Atoza",
+      "clan": "Fuma",
+      "ninjutsu": "Omagatoki (Time for Disasters)",
+      "weapon": "Club",
+      "birthday": "November 2",
+      "setting": "The head of the Fuma clan, with a heart of gold.",
+      "genre": "14. ダークファンタジー",
+      "relationships": [
+        {
+          "name": "Aum",
+          "type": "弟",
+          "note": "跡座の実弟（canon）"
+        },
+        {
+          "name": "Jin",
+          "type": "宿敵",
+          "note": "風魔と伊賀を巡る因縁の相手"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "noble head of Fuma clan, imposing yet kind, heavy club, Omagatoki disaster aura, regal dark look. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：風魔の頭領、堂々かつ温厚、棍棒、逢魔時の気。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "noble head of Fuma clan, imposing yet kind, heavy club, Omagatoki disaster aura, regal dark look. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：風魔の頭領、堂々かつ温厚、棍棒、逢魔時の気。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: noble head of Fuma clan, imposing yet kind, heavy club, Omagatoki disaster aura, regal dark look. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：風魔の頭領、堂々かつ温厚、棍棒、逢魔時の気を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: noble head of Fuma clan, imposing yet kind, heavy club, Omagatoki disaster aura, regal dark look. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：風魔の頭領、堂々かつ温厚、棍棒、逢魔時の気をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: noble head of Fuma clan, imposing yet kind, heavy club, Omagatoki disaster aura, regal dark look. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：風魔の頭領、堂々かつ温厚、棍棒、逢魔時の気を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: noble head of Fuma clan, imposing yet kind, heavy club, Omagatoki disaster aura, regal dark look. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：風魔の頭領、堂々かつ温厚、棍棒、逢魔時の気を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "014",
+      "name": "Hayate",
+      "clan": "Iga",
+      "ninjutsu": "Hawk Eye",
+      "weapon": "Hawk (Falcon)",
+      "birthday": "January 25",
+      "setting": "Has the eyes of a hawk that detect other clans' movement. Narukami is his faithful partner.",
+      "genre": "19. バディ",
+      "relationships": [
+        {
+          "name": "Yui",
+          "type": "連携相手",
+          "note": "鷹の目で索敵、遠距離忍術のユイと好相性"
+        },
+        {
+          "name": "Torika",
+          "type": "同郷の仲間",
+          "note": "自然と繋がる者同士、伊賀で協働"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "sharp-eyed male ninja with hawk-vision, falcon partner Narukami, keen focused look. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：鷹の目の忍、相棒の鷹ナルカミ、鋭い集中。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "sharp-eyed male ninja with hawk-vision, falcon partner Narukami, keen focused look. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：鷹の目の忍、相棒の鷹ナルカミ、鋭い集中。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: sharp-eyed male ninja with hawk-vision, falcon partner Narukami, keen focused look. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：鷹の目の忍、相棒の鷹ナルカミ、鋭い集中を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: sharp-eyed male ninja with hawk-vision, falcon partner Narukami, keen focused look. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：鷹の目の忍、相棒の鷹ナルカミ、鋭い集中をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: sharp-eyed male ninja with hawk-vision, falcon partner Narukami, keen focused look. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：鷹の目の忍、相棒の鷹ナルカミ、鋭い集中を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: sharp-eyed male ninja with hawk-vision, falcon partner Narukami, keen focused look. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：鷹の目の忍、相棒の鷹ナルカミ、鋭い集中を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "015",
+      "name": "Uka",
+      "clan": "Koka",
+      "ninjutsu": "Flame of Nine-Tailed Fox",
+      "weapon": "Amulet (Charm)",
+      "birthday": "February 11",
+      "setting": "Summons foxes. Her main rival is Oto.",
+      "genre": "18. 妖怪・あやかし",
+      "relationships": [
+        {
+          "name": "Oto",
+          "type": "ライバル",
+          "note": "口寄せ使い同士の好敵手（canon）"
+        },
+        {
+          "name": "Izuna",
+          "type": "姉",
+          "note": "ウカの姉（canon）"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "fox-summoning female ninja, nine-tailed fox flame aura, protective amulet, warm tones. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：狐を口寄せる少女忍者、九尾の炎、護符、暖色。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "fox-summoning female ninja, nine-tailed fox flame aura, protective amulet, warm tones. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：狐を口寄せる少女忍者、九尾の炎、護符、暖色。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: fox-summoning female ninja, nine-tailed fox flame aura, protective amulet, warm tones. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：狐を口寄せる少女忍者、九尾の炎、護符、暖色を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: fox-summoning female ninja, nine-tailed fox flame aura, protective amulet, warm tones. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：狐を口寄せる少女忍者、九尾の炎、護符、暖色をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: fox-summoning female ninja, nine-tailed fox flame aura, protective amulet, warm tones. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：狐を口寄せる少女忍者、九尾の炎、護符、暖色を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: fox-summoning female ninja, nine-tailed fox flame aura, protective amulet, warm tones. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：狐を口寄せる少女忍者、九尾の炎、護符、暖色を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "016",
+      "name": "Ganzi",
+      "clan": "Koka",
+      "ninjutsu": "Illusion of Darkness",
+      "weapon": "Japamala",
+      "birthday": "September 15",
+      "setting": "An advisory Shinobi. His family belongs to a different clan due to a past incident.",
+      "genre": "7. ミステリー・推理",
+      "relationships": [
+        {
+          "name": "Sakuya",
+          "type": "孫",
+          "note": "サクヤの祖父（canon）"
+        },
+        {
+          "name": "Oen",
+          "type": "里の後進",
+          "note": "雑賀出身で甲賀に来た者を導く立場"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "elderly advisory ninja, illusion-of-darkness jutsu, japamala prayer beads, wise look. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：軍師の老忍、闇の幻術、数珠、思慮深い。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "elderly advisory ninja, illusion-of-darkness jutsu, japamala prayer beads, wise look. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：軍師の老忍、闇の幻術、数珠、思慮深い。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: elderly advisory ninja, illusion-of-darkness jutsu, japamala prayer beads, wise look. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：軍師の老忍、闇の幻術、数珠、思慮深いを現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: elderly advisory ninja, illusion-of-darkness jutsu, japamala prayer beads, wise look. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：軍師の老忍、闇の幻術、数珠、思慮深いをサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: elderly advisory ninja, illusion-of-darkness jutsu, japamala prayer beads, wise look. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：軍師の老忍、闇の幻術、数珠、思慮深いを中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: elderly advisory ninja, illusion-of-darkness jutsu, japamala prayer beads, wise look. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：軍師の老忍、闇の幻術、数珠、思慮深いを転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "017",
+      "name": "Yui",
+      "clan": "Iga",
+      "ninjutsu": "Flurry of Cherry Blossoms",
+      "weapon": "Scroll",
+      "birthday": "October 15",
+      "setting": "A reliable Shinobi. Her Ninjutsu reaches far and wide.",
+      "genre": "8. ファンタジー",
+      "relationships": [
+        {
+          "name": "Rei",
+          "type": "母",
+          "note": "ユイの母（canon）"
+        },
+        {
+          "name": "Hayate",
+          "type": "連携相手",
+          "note": "遠距離忍術と索敵で好相性"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "reliable female ninja, cherry-blossom flurry jutsu, scroll, elegant pink petals. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：頼れる少女忍者、桜吹雪、巻物、桜の花びら。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "reliable female ninja, cherry-blossom flurry jutsu, scroll, elegant pink petals. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：頼れる少女忍者、桜吹雪、巻物、桜の花びら。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: reliable female ninja, cherry-blossom flurry jutsu, scroll, elegant pink petals. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：頼れる少女忍者、桜吹雪、巻物、桜の花びらを現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: reliable female ninja, cherry-blossom flurry jutsu, scroll, elegant pink petals. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：頼れる少女忍者、桜吹雪、巻物、桜の花びらをサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: reliable female ninja, cherry-blossom flurry jutsu, scroll, elegant pink petals. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：頼れる少女忍者、桜吹雪、巻物、桜の花びらを中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: reliable female ninja, cherry-blossom flurry jutsu, scroll, elegant pink petals. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：頼れる少女忍者、桜吹雪、巻物、桜の花びらを転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "018",
+      "name": "Fuuta",
+      "clan": "Saika",
+      "ninjutsu": "Fuuton",
+      "weapon": "Masamune Sword",
+      "birthday": "October 1",
+      "setting": "A cheeky and peace-loving Shinobi who likes to drink Sake.",
+      "genre": "12. 歴史・時代劇",
+      "relationships": [
+        {
+          "name": "Shiba",
+          "type": "飲み仲間",
+          "note": "雑賀の同郷、酒好き同士"
+        },
+        {
+          "name": "Nagisa",
+          "type": "同郷の仲間",
+          "note": "雑賀の里を共に見守る"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "cheeky peace-loving male ninja, sake bottle, wind (Fuuton) jutsu, Masamune sword, relaxed. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：生意気で平和好きな忍、酒瓶、風遁、正宗の刀。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "cheeky peace-loving male ninja, sake bottle, wind (Fuuton) jutsu, Masamune sword, relaxed. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：生意気で平和好きな忍、酒瓶、風遁、正宗の刀。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: cheeky peace-loving male ninja, sake bottle, wind (Fuuton) jutsu, Masamune sword, relaxed. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：生意気で平和好きな忍、酒瓶、風遁、正宗の刀を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: cheeky peace-loving male ninja, sake bottle, wind (Fuuton) jutsu, Masamune sword, relaxed. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：生意気で平和好きな忍、酒瓶、風遁、正宗の刀をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: cheeky peace-loving male ninja, sake bottle, wind (Fuuton) jutsu, Masamune sword, relaxed. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：生意気で平和好きな忍、酒瓶、風遁、正宗の刀を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: cheeky peace-loving male ninja, sake bottle, wind (Fuuton) jutsu, Masamune sword, relaxed. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：生意気で平和好きな忍、酒瓶、風遁、正宗の刀を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "019",
+      "name": "Rei",
+      "clan": "Iga",
+      "ninjutsu": "Human sacrifice (Sacrifice)",
+      "weapon": "Aikuchi (Dagger)",
+      "birthday": "April 22",
+      "setting": "The protector of Iga village and Yui's mother.",
+      "genre": "11. ヒューマンドラマ",
+      "relationships": [
+        {
+          "name": "Yui",
+          "type": "娘",
+          "note": "ユイの母（canon）"
+        },
+        {
+          "name": "Jin",
+          "type": "好敵手",
+          "note": "里を守る強者として互いを認める"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "protective maternal female ninja, self-sacrifice aura, aikuchi dagger, dignified guardian. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：母性的な守り手、犠牲の気、合口の短刀、伊賀の守護。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "protective maternal female ninja, self-sacrifice aura, aikuchi dagger, dignified guardian. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：母性的な守り手、犠牲の気、合口の短刀、伊賀の守護。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: protective maternal female ninja, self-sacrifice aura, aikuchi dagger, dignified guardian. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：母性的な守り手、犠牲の気、合口の短刀、伊賀の守護を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: protective maternal female ninja, self-sacrifice aura, aikuchi dagger, dignified guardian. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：母性的な守り手、犠牲の気、合口の短刀、伊賀の守護をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: protective maternal female ninja, self-sacrifice aura, aikuchi dagger, dignified guardian. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：母性的な守り手、犠牲の気、合口の短刀、伊賀の守護を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: protective maternal female ninja, self-sacrifice aura, aikuchi dagger, dignified guardian. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：母性的な守り手、犠牲の気、合口の短刀、伊賀の守護を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "020",
+      "name": "Sattva",
+      "clan": "Heavenly Realm",
+      "ninjutsu": "Nirvana",
+      "weapon": "Halo of Light",
+      "birthday": "unknown",
+      "setting": "",
+      "genre": "8. ファンタジー",
+      "relationships": [
+        {
+          "name": "Quon",
+          "type": "精神的縁者",
+          "note": "天界と超越者、悟りを巡る精神的な繋がり"
+        },
+        {
+          "name": "Sekishusai",
+          "type": "求道の縁",
+          "note": "無刀取りの境地と涅槃、精神的高みで通じる"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "divine being from Heavenly Realm, nirvana aura, glowing halo of light, ethereal celestial. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：天界の存在、涅槃、光の輪、天上的。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "divine being from Heavenly Realm, nirvana aura, glowing halo of light, ethereal celestial. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：天界の存在、涅槃、光の輪、天上的。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: divine being from Heavenly Realm, nirvana aura, glowing halo of light, ethereal celestial. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：天界の存在、涅槃、光の輪、天上的を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: divine being from Heavenly Realm, nirvana aura, glowing halo of light, ethereal celestial. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：天界の存在、涅槃、光の輪、天上的をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: divine being from Heavenly Realm, nirvana aura, glowing halo of light, ethereal celestial. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：天界の存在、涅槃、光の輪、天上的を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: divine being from Heavenly Realm, nirvana aura, glowing halo of light, ethereal celestial. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：天界の存在、涅槃、光の輪、天上的を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "021",
+      "name": "Nekomata",
+      "clan": "Saika",
+      "ninjutsu": "Kagebunshin",
+      "weapon": "Bewitched Muramasa Sword",
+      "birthday": "August 8",
+      "setting": "He loves fish!",
+      "genre": "18. 妖怪・あやかし",
+      "relationships": [
+        {
+          "name": "Quon",
+          "type": "同郷の先達",
+          "note": "同じ里出身で年長のクオン（canon）"
+        },
+        {
+          "name": "Shiba",
+          "type": "ライバル",
+          "note": "変則能力者同士の張り合い"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "cat-spirit (nekomata) ninja who loves fish, shadow clone, bewitched Muramasa sword, mischievous. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：魚好きの猫又忍、影分身、妖刀村正、いたずら好き。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "cat-spirit (nekomata) ninja who loves fish, shadow clone, bewitched Muramasa sword, mischievous. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：魚好きの猫又忍、影分身、妖刀村正、いたずら好き。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: cat-spirit (nekomata) ninja who loves fish, shadow clone, bewitched Muramasa sword, mischievous. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：魚好きの猫又忍、影分身、妖刀村正、いたずら好きを現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: cat-spirit (nekomata) ninja who loves fish, shadow clone, bewitched Muramasa sword, mischievous. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：魚好きの猫又忍、影分身、妖刀村正、いたずら好きをサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: cat-spirit (nekomata) ninja who loves fish, shadow clone, bewitched Muramasa sword, mischievous. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：魚好きの猫又忍、影分身、妖刀村正、いたずら好きを中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: cat-spirit (nekomata) ninja who loves fish, shadow clone, bewitched Muramasa sword, mischievous. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：魚好きの猫又忍、影分身、妖刀村正、いたずら好きを転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "022",
+      "name": "Janome (& Orochi)",
+      "clan": "Fuma",
+      "ninjutsu": "Kuchiyose",
+      "weapon": "Poison Shuriken",
+      "birthday": "July 16",
+      "setting": "Has a faithful partner called Orochi, who is there for her whenever she is in trouble.",
+      "genre": "19. バディ",
+      "relationships": [
+        {
+          "name": "Rotten",
+          "type": "同志",
+          "note": "風魔の同輩、毒使い同士の連携"
+        },
+        {
+          "name": "Karma",
+          "type": "共犯者",
+          "note": "風魔の陰の任務で組む"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "female ninja with serpent partner Orochi, summoning jutsu, poison shuriken, sleek dangerous. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：蛇の相棒オロチを連れる少女忍者、口寄せ、毒手裏剣。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "female ninja with serpent partner Orochi, summoning jutsu, poison shuriken, sleek dangerous. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：蛇の相棒オロチを連れる少女忍者、口寄せ、毒手裏剣。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: female ninja with serpent partner Orochi, summoning jutsu, poison shuriken, sleek dangerous. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：蛇の相棒オロチを連れる少女忍者、口寄せ、毒手裏剣を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: female ninja with serpent partner Orochi, summoning jutsu, poison shuriken, sleek dangerous. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：蛇の相棒オロチを連れる少女忍者、口寄せ、毒手裏剣をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: female ninja with serpent partner Orochi, summoning jutsu, poison shuriken, sleek dangerous. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：蛇の相棒オロチを連れる少女忍者、口寄せ、毒手裏剣を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: female ninja with serpent partner Orochi, summoning jutsu, poison shuriken, sleek dangerous. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：蛇の相棒オロチを連れる少女忍者、口寄せ、毒手裏剣を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "023",
+      "name": "Benten",
+      "clan": "Saika",
+      "ninjutsu": "Mantra",
+      "weapon": "Shamisen",
+      "birthday": "March 4",
+      "setting": "A Shamisen-playing Shinobi. Her special art of illusion occurs only when she sings.",
+      "genre": "15. 音楽",
+      "relationships": [
+        {
+          "name": "Magoichi",
+          "type": "里の主",
+          "note": "孫市に里の運営を託される（canon）"
+        },
+        {
+          "name": "Ichiya",
+          "type": "表現者仲間",
+          "note": "三味線と書、芸を通じた共鳴"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "shamisen-playing female ninja, mantra illusion that activates when singing, kimono-shinobi mix. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：三味線を弾く少女忍者、歌で発動する幻術、着物風装束。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "shamisen-playing female ninja, mantra illusion that activates when singing, kimono-shinobi mix. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：三味線を弾く少女忍者、歌で発動する幻術、着物風装束。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: shamisen-playing female ninja, mantra illusion that activates when singing, kimono-shinobi mix. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：三味線を弾く少女忍者、歌で発動する幻術、着物風装束を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: shamisen-playing female ninja, mantra illusion that activates when singing, kimono-shinobi mix. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：三味線を弾く少女忍者、歌で発動する幻術、着物風装束をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: shamisen-playing female ninja, mantra illusion that activates when singing, kimono-shinobi mix. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：三味線を弾く少女忍者、歌で発動する幻術、着物風装束を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: shamisen-playing female ninja, mantra illusion that activates when singing, kimono-shinobi mix. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：三味線を弾く少女忍者、歌で発動する幻術、着物風装束を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "024",
+      "name": "Karma",
+      "clan": "Fuma",
+      "ninjutsu": "Realm of Sin",
+      "weapon": "Chain Sickle",
+      "birthday": "January 3",
+      "setting": "His fascinating red eyes release people's deeply hidden desires.",
+      "genre": "6. ホラー・オカルト",
+      "relationships": [
+        {
+          "name": "Kohaku",
+          "type": "共犯者",
+          "note": "風魔の陰の任務で組む同志"
+        },
+        {
+          "name": "Rotten",
+          "type": "同志",
+          "note": "風魔の忠臣同士"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "captivating male ninja with red eyes releasing hidden desires, chain sickle, realm-of-sin aura. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：欲望を暴く赤い瞳の忍、鎖鎌、罪の領域。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "captivating male ninja with red eyes releasing hidden desires, chain sickle, realm-of-sin aura. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：欲望を暴く赤い瞳の忍、鎖鎌、罪の領域。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: captivating male ninja with red eyes releasing hidden desires, chain sickle, realm-of-sin aura. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：欲望を暴く赤い瞳の忍、鎖鎌、罪の領域を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: captivating male ninja with red eyes releasing hidden desires, chain sickle, realm-of-sin aura. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：欲望を暴く赤い瞳の忍、鎖鎌、罪の領域をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: captivating male ninja with red eyes releasing hidden desires, chain sickle, realm-of-sin aura. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：欲望を暴く赤い瞳の忍、鎖鎌、罪の領域を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: captivating male ninja with red eyes releasing hidden desires, chain sickle, realm-of-sin aura. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：欲望を暴く赤い瞳の忍、鎖鎌、罪の領域を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "025",
+      "name": "Ichiya",
+      "clan": "Saika",
+      "ninjutsu": "Cryptogram of Ninja",
+      "weapon": "Writing Brush",
+      "birthday": "November 2",
+      "setting": "Conveys special messages to the world with rainbow-colored calligraphy.",
+      "genre": "11. ヒューマンドラマ",
+      "relationships": [
+        {
+          "name": "NEMU",
+          "type": "姉",
+          "note": "NEMUの弟（canon）"
+        },
+        {
+          "name": "Benten",
+          "type": "表現者仲間",
+          "note": "書と三味線、芸を通じた共鳴"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "rainbow-calligraphy ninja, writing brush, cryptogram-of-ninja jutsu, colorful ink swirls. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：虹色書道の忍、筆、忍びの暗号、極彩色の墨。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "rainbow-calligraphy ninja, writing brush, cryptogram-of-ninja jutsu, colorful ink swirls. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：虹色書道の忍、筆、忍びの暗号、極彩色の墨。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: rainbow-calligraphy ninja, writing brush, cryptogram-of-ninja jutsu, colorful ink swirls. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：虹色書道の忍、筆、忍びの暗号、極彩色の墨を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: rainbow-calligraphy ninja, writing brush, cryptogram-of-ninja jutsu, colorful ink swirls. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：虹色書道の忍、筆、忍びの暗号、極彩色の墨をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: rainbow-calligraphy ninja, writing brush, cryptogram-of-ninja jutsu, colorful ink swirls. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：虹色書道の忍、筆、忍びの暗号、極彩色の墨を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: rainbow-calligraphy ninja, writing brush, cryptogram-of-ninja jutsu, colorful ink swirls. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：虹色書道の忍、筆、忍びの暗号、極彩色の墨を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "026",
+      "name": "NEMU",
+      "clan": "Koka",
+      "ninjutsu": "Colorful Realm of Living Beings",
+      "weapon": "Painting Brush",
+      "birthday": "February 3",
+      "setting": "A free-spirited Shinobi and the big sister of Ichiya. Paints while traveling around Koga village. Her trusted partners are Piyochi & Usabi.",
+      "genre": "2. 少年冒険",
+      "relationships": [
+        {
+          "name": "Ichiya",
+          "type": "弟",
+          "note": "イチヤの姉（canon）"
+        },
+        {
+          "name": "Xiaolan",
+          "type": "旅の相棒",
+          "note": "甲賀の自由人同士、相棒連れで旅路が交わる"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "free-spirited traveling female painter-ninja, painting brush, colorful realm jutsu, companions Piyochi and Usabi. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：旅する自由な絵描き忍者、絵筆、色彩の術、相棒ピヨチとウサビ。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "free-spirited traveling female painter-ninja, painting brush, colorful realm jutsu, companions Piyochi and Usabi. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：旅する自由な絵描き忍者、絵筆、色彩の術、相棒ピヨチとウサビ。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: free-spirited traveling female painter-ninja, painting brush, colorful realm jutsu, companions Piyochi and Usabi. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：旅する自由な絵描き忍者、絵筆、色彩の術、相棒ピヨチとウサビを現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: free-spirited traveling female painter-ninja, painting brush, colorful realm jutsu, companions Piyochi and Usabi. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：旅する自由な絵描き忍者、絵筆、色彩の術、相棒ピヨチとウサビをサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: free-spirited traveling female painter-ninja, painting brush, colorful realm jutsu, companions Piyochi and Usabi. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：旅する自由な絵描き忍者、絵筆、色彩の術、相棒ピヨチとウサビを中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: free-spirited traveling female painter-ninja, painting brush, colorful realm jutsu, companions Piyochi and Usabi. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：旅する自由な絵描き忍者、絵筆、色彩の術、相棒ピヨチとウサビを転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "027",
+      "name": "Karura",
+      "clan": "Iga",
+      "ninjutsu": "Raiton",
+      "weapon": "Wings",
+      "birthday": "September 6",
+      "setting": "Living deep in the Iga mountain, she quietly protects her clan.",
+      "genre": "8. ファンタジー",
+      "relationships": [
+        {
+          "name": "Torika",
+          "type": "里の守り手",
+          "note": "伊賀の山で自然と里を守る同郷"
+        },
+        {
+          "name": "Shion",
+          "type": "見守る相手",
+          "note": "孤独なシオンを静かに気にかける"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "quiet guardian female ninja with angelic wings, lightning (Raiton) jutsu, deep-mountain setting. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：翼を持つ静かな守り手、雷遁、山奥。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "quiet guardian female ninja with angelic wings, lightning (Raiton) jutsu, deep-mountain setting. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：翼を持つ静かな守り手、雷遁、山奥。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: quiet guardian female ninja with angelic wings, lightning (Raiton) jutsu, deep-mountain setting. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：翼を持つ静かな守り手、雷遁、山奥を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: quiet guardian female ninja with angelic wings, lightning (Raiton) jutsu, deep-mountain setting. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：翼を持つ静かな守り手、雷遁、山奥をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: quiet guardian female ninja with angelic wings, lightning (Raiton) jutsu, deep-mountain setting. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：翼を持つ静かな守り手、雷遁、山奥を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: quiet guardian female ninja with angelic wings, lightning (Raiton) jutsu, deep-mountain setting. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：翼を持つ静かな守り手、雷遁、山奥を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "028",
+      "name": "Xiaolan (& Lee Lee)",
+      "clan": "Koka",
+      "ninjutsu": "Kuchiyose",
+      "weapon": "Tai Chi",
+      "birthday": "October 28",
+      "setting": "Her specialty is to summon panda bears. Her faithful partner LeeLee can turn into a giant panda.",
+      "genre": "1. バトル・アクション",
+      "relationships": [
+        {
+          "name": "NEMU",
+          "type": "旅の相棒",
+          "note": "甲賀の自由人同士、パートナー連れで気が合う"
+        },
+        {
+          "name": "Konga",
+          "type": "武の同門",
+          "note": "甲賀の体術使い同士、修行仲間"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "female ninja doing tai chi, summoning pandas, partner LeeLee turning into giant panda. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：太極拳の少女忍者、パンダを口寄せ、相棒リーリー巨大パンダ化。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "female ninja doing tai chi, summoning pandas, partner LeeLee turning into giant panda. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：太極拳の少女忍者、パンダを口寄せ、相棒リーリー巨大パンダ化。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: female ninja doing tai chi, summoning pandas, partner LeeLee turning into giant panda. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：太極拳の少女忍者、パンダを口寄せ、相棒リーリー巨大パンダ化を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: female ninja doing tai chi, summoning pandas, partner LeeLee turning into giant panda. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：太極拳の少女忍者、パンダを口寄せ、相棒リーリー巨大パンダ化をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: female ninja doing tai chi, summoning pandas, partner LeeLee turning into giant panda. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：太極拳の少女忍者、パンダを口寄せ、相棒リーリー巨大パンダ化を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: female ninja doing tai chi, summoning pandas, partner LeeLee turning into giant panda. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：太極拳の少女忍者、パンダを口寄せ、相棒リーリー巨大パンダ化を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "029",
+      "name": "Aum",
+      "clan": "Fuma",
+      "ninjutsu": "A Titan's Blow",
+      "weapon": "Club",
+      "birthday": "May 9",
+      "setting": "A cheeky Shinobi and the baby brother of Atoza. He turns into a titan when he is angry.",
+      "genre": "17. 変身ヒーロー",
+      "relationships": [
+        {
+          "name": "Atoza",
+          "type": "兄",
+          "note": "跡座の弟（canon）"
+        },
+        {
+          "name": "Rotten",
+          "type": "目付け役",
+          "note": "生意気な弟分を見守る忠臣"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "cheeky young male ninja, transforms into raging titan when angry, heavy club. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：生意気な少年忍者、怒ると巨人化、棍棒。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "cheeky young male ninja, transforms into raging titan when angry, heavy club. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：生意気な少年忍者、怒ると巨人化、棍棒。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: cheeky young male ninja, transforms into raging titan when angry, heavy club. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：生意気な少年忍者、怒ると巨人化、棍棒を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: cheeky young male ninja, transforms into raging titan when angry, heavy club. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：生意気な少年忍者、怒ると巨人化、棍棒をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: cheeky young male ninja, transforms into raging titan when angry, heavy club. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：生意気な少年忍者、怒ると巨人化、棍棒を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: cheeky young male ninja, transforms into raging titan when angry, heavy club. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：生意気な少年忍者、怒ると巨人化、棍棒を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "030",
+      "name": "Konga",
+      "clan": "Koka",
+      "ninjutsu": "Kagebunshin",
+      "weapon": "Bare Knuckle",
+      "birthday": "September 24",
+      "setting": "The trainer for Iga's Kunoichi, the female Ninjas.",
+      "genre": "4. スポ根",
+      "relationships": [
+        {
+          "name": "Xiaolan",
+          "type": "武の同門",
+          "note": "甲賀の体術使い同士"
+        },
+        {
+          "name": "Oen",
+          "type": "教え子",
+          "note": "甲賀で修行する後進を鍛える師"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "strong female trainer ninja for kunoichi, bare-knuckle stance, shadow clone, athletic. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：くノ一の訓練役、素手の構え、影分身、鍛えた体。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "strong female trainer ninja for kunoichi, bare-knuckle stance, shadow clone, athletic. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：くノ一の訓練役、素手の構え、影分身、鍛えた体。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: strong female trainer ninja for kunoichi, bare-knuckle stance, shadow clone, athletic. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：くノ一の訓練役、素手の構え、影分身、鍛えた体を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: strong female trainer ninja for kunoichi, bare-knuckle stance, shadow clone, athletic. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：くノ一の訓練役、素手の構え、影分身、鍛えた体をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: strong female trainer ninja for kunoichi, bare-knuckle stance, shadow clone, athletic. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：くノ一の訓練役、素手の構え、影分身、鍛えた体を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: strong female trainer ninja for kunoichi, bare-knuckle stance, shadow clone, athletic. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：くノ一の訓練役、素手の構え、影分身、鍛えた体を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "031",
+      "name": "Shion",
+      "clan": "Iga",
+      "ninjutsu": "Wild Thistle",
+      "weapon": "Iron Claw",
+      "birthday": "",
+      "setting": "A lonely Shinobi who lost her parents to a devil's attack. Anne is the only Shinobi whom she trusts.",
+      "genre": "20. 復讐劇",
+      "relationships": [
+        {
+          "name": "Anne",
+          "type": "親友",
+          "note": "唯一心を許す相手（canon）"
+        },
+        {
+          "name": "Karura",
+          "type": "守り手",
+          "note": "伊賀で孤独な彼女を静かに見守る"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "lonely female ninja who lost her parents, iron claws, wild-thistle jutsu, guarded sorrowful look. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：両親を失った孤独な少女忍者、鉄爪、野薊の術、憂い。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "lonely female ninja who lost her parents, iron claws, wild-thistle jutsu, guarded sorrowful look. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：両親を失った孤独な少女忍者、鉄爪、野薊の術、憂い。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: lonely female ninja who lost her parents, iron claws, wild-thistle jutsu, guarded sorrowful look. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：両親を失った孤独な少女忍者、鉄爪、野薊の術、憂いを現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: lonely female ninja who lost her parents, iron claws, wild-thistle jutsu, guarded sorrowful look. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：両親を失った孤独な少女忍者、鉄爪、野薊の術、憂いをサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: lonely female ninja who lost her parents, iron claws, wild-thistle jutsu, guarded sorrowful look. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：両親を失った孤独な少女忍者、鉄爪、野薊の術、憂いを中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: lonely female ninja who lost her parents, iron claws, wild-thistle jutsu, guarded sorrowful look. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：両親を失った孤独な少女忍者、鉄爪、野薊の術、憂いを転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "032",
+      "name": "Seori (& Mitama)",
+      "clan": "Saika",
+      "ninjutsu": "",
+      "weapon": "Wooden Mallet",
+      "birthday": "",
+      "setting": "Named after Seoritsuhime. Her partner's name is Mitama.",
+      "genre": "18. 妖怪・あやかし",
+      "relationships": [
+        {
+          "name": "Benten",
+          "type": "里の仲間",
+          "note": "雑賀の同郷、和の芸道で通じる"
+        },
+        {
+          "name": "Nagisa",
+          "type": "同郷の仲間",
+          "note": "雑賀の里を共に守る"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "female ninja named after Seoritsuhime, wooden mallet, partner Mitama, mythic sacred air. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：瀬織津姫の名を持つ少女忍者、木槌、相棒ミタマ、神聖。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "female ninja named after Seoritsuhime, wooden mallet, partner Mitama, mythic sacred air. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：瀬織津姫の名を持つ少女忍者、木槌、相棒ミタマ、神聖。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: female ninja named after Seoritsuhime, wooden mallet, partner Mitama, mythic sacred air. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：瀬織津姫の名を持つ少女忍者、木槌、相棒ミタマ、神聖を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: female ninja named after Seoritsuhime, wooden mallet, partner Mitama, mythic sacred air. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：瀬織津姫の名を持つ少女忍者、木槌、相棒ミタマ、神聖をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: female ninja named after Seoritsuhime, wooden mallet, partner Mitama, mythic sacred air. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：瀬織津姫の名を持つ少女忍者、木槌、相棒ミタマ、神聖を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: female ninja named after Seoritsuhime, wooden mallet, partner Mitama, mythic sacred air. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：瀬織津姫の名を持つ少女忍者、木槌、相棒ミタマ、神聖を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "033",
+      "name": "Quon",
+      "clan": "Saika",
+      "ninjutsu": "A Cat's Eye Choice",
+      "weapon": "Onibi",
+      "birthday": "October 8",
+      "setting": "Able to choose the path to a blissful future. His age is unknown. From the same village as Nekomata and known to be older. Elusive and unpredictable; refers to himself as 'washi'.",
+      "genre": "7. ミステリー・推理",
+      "relationships": [
+        {
+          "name": "Nekomata",
+          "type": "同郷の後進",
+          "note": "同じ里の年下（canon）"
+        },
+        {
+          "name": "Sattva",
+          "type": "精神的縁者",
+          "note": "悟りと超越を巡る精神的な繋がり"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "ageless enigmatic male ninja calling himself 'washi', cat's-eye future-choosing power, floating onibi flames. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：己を『わし』と呼ぶ不老の忍、猫目の未来選択、浮遊する鬼火。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "ageless enigmatic male ninja calling himself 'washi', cat's-eye future-choosing power, floating onibi flames. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：己を『わし』と呼ぶ不老の忍、猫目の未来選択、浮遊する鬼火。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: ageless enigmatic male ninja calling himself 'washi', cat's-eye future-choosing power, floating onibi flames. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：己を『わし』と呼ぶ不老の忍、猫目の未来選択、浮遊する鬼火を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: ageless enigmatic male ninja calling himself 'washi', cat's-eye future-choosing power, floating onibi flames. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：己を『わし』と呼ぶ不老の忍、猫目の未来選択、浮遊する鬼火をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: ageless enigmatic male ninja calling himself 'washi', cat's-eye future-choosing power, floating onibi flames. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：己を『わし』と呼ぶ不老の忍、猫目の未来選択、浮遊する鬼火を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: ageless enigmatic male ninja calling himself 'washi', cat's-eye future-choosing power, floating onibi flames. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：己を『わし』と呼ぶ不老の忍、猫目の未来選択、浮遊する鬼火を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "034",
+      "name": "Magoichi",
+      "clan": "Saika",
+      "ninjutsu": "One-shot Sure-hit",
+      "weapon": "Pistols",
+      "birthday": "May 1",
+      "setting": "The leader of the Saika Clan. Rarely returns to the village, entrusting its affairs to Benten. Currently out at sea, operating like a pirate.",
+      "genre": "2. 少年冒険",
+      "relationships": [
+        {
+          "name": "Benten",
+          "type": "里を託す相手",
+          "note": "里の運営を弁天に任せる頭領（canon）"
+        },
+        {
+          "name": "Fuuta",
+          "type": "里の仲間",
+          "note": "雑賀の豪快な同郷、海と酒で通じる"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "pirate-like leader of Saika clan, dual pistols, one-shot sure-hit, sea and ship background, bold. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：海賊風の雑賀頭領、二丁拳銃、一発必中、海と船。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "pirate-like leader of Saika clan, dual pistols, one-shot sure-hit, sea and ship background, bold. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：海賊風の雑賀頭領、二丁拳銃、一発必中、海と船。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: pirate-like leader of Saika clan, dual pistols, one-shot sure-hit, sea and ship background, bold. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：海賊風の雑賀頭領、二丁拳銃、一発必中、海と船を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: pirate-like leader of Saika clan, dual pistols, one-shot sure-hit, sea and ship background, bold. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：海賊風の雑賀頭領、二丁拳銃、一発必中、海と船をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: pirate-like leader of Saika clan, dual pistols, one-shot sure-hit, sea and ship background, bold. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：海賊風の雑賀頭領、二丁拳銃、一発必中、海と船を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: pirate-like leader of Saika clan, dual pistols, one-shot sure-hit, sea and ship background, bold. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：海賊風の雑賀頭領、二丁拳銃、一発必中、海と船を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "035",
+      "name": "Ibuki (& Yama)",
+      "clan": "Fuma",
+      "ninjutsu": "Ritual of Taizan Fukun",
+      "weapon": "Talisman Paper",
+      "birthday": "December 31",
+      "setting": "Yama takes on a form that corresponds to Ibuki's abilities. Since Ibuki is immature, Yama manifests as a cute form.",
+      "genre": "6. ホラー・オカルト",
+      "relationships": [
+        {
+          "name": "Karma",
+          "type": "風魔の同輩",
+          "note": "式神と罪の眼、陰の任務で組む"
+        },
+        {
+          "name": "Janome",
+          "type": "相棒繋がり",
+          "note": "パートナー（山/オロチ）を連れる者同士"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "immature young ninja with cute shikigami Yama, Taizan-Fukun ritual, talisman paper. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：未熟な少年忍者、可愛い式神ヤマ、泰山府君の儀、呪符。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "immature young ninja with cute shikigami Yama, Taizan-Fukun ritual, talisman paper. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：未熟な少年忍者、可愛い式神ヤマ、泰山府君の儀、呪符。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: immature young ninja with cute shikigami Yama, Taizan-Fukun ritual, talisman paper. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：未熟な少年忍者、可愛い式神ヤマ、泰山府君の儀、呪符を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: immature young ninja with cute shikigami Yama, Taizan-Fukun ritual, talisman paper. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：未熟な少年忍者、可愛い式神ヤマ、泰山府君の儀、呪符をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: immature young ninja with cute shikigami Yama, Taizan-Fukun ritual, talisman paper. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：未熟な少年忍者、可愛い式神ヤマ、泰山府君の儀、呪符を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: immature young ninja with cute shikigami Yama, Taizan-Fukun ritual, talisman paper. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：未熟な少年忍者、可愛い式神ヤマ、泰山府君の儀、呪符を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "036",
+      "name": "Oen",
+      "clan": "Koka",
+      "ninjutsu": "Ito Myaku",
+      "weapon": "Japanese Portable Storage",
+      "birthday": "April 2",
+      "setting": "Her family is from the Saika clan. She left to come to the Koka Clan to train in ninjutsu.",
+      "genre": "4. スポ根",
+      "relationships": [
+        {
+          "name": "Ganzi",
+          "type": "導き手",
+          "note": "雑賀出身で甲賀に来た者を幻次が指南"
+        },
+        {
+          "name": "Konga",
+          "type": "師",
+          "note": "甲賀で修行する彼女を鍛える"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "female ninja from Saika training in Koka, thread-vein (Ito Myaku) jutsu, Japanese portable storage, earnest. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：甲賀で修行する雑賀出身の少女忍者、糸脈の術、矢立、真面目。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "female ninja from Saika training in Koka, thread-vein (Ito Myaku) jutsu, Japanese portable storage, earnest. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：甲賀で修行する雑賀出身の少女忍者、糸脈の術、矢立、真面目。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: female ninja from Saika training in Koka, thread-vein (Ito Myaku) jutsu, Japanese portable storage, earnest. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：甲賀で修行する雑賀出身の少女忍者、糸脈の術、矢立、真面目を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: female ninja from Saika training in Koka, thread-vein (Ito Myaku) jutsu, Japanese portable storage, earnest. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：甲賀で修行する雑賀出身の少女忍者、糸脈の術、矢立、真面目をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: female ninja from Saika training in Koka, thread-vein (Ito Myaku) jutsu, Japanese portable storage, earnest. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：甲賀で修行する雑賀出身の少女忍者、糸脈の術、矢立、真面目を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: female ninja from Saika training in Koka, thread-vein (Ito Myaku) jutsu, Japanese portable storage, earnest. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：甲賀で修行する雑賀出身の少女忍者、糸脈の術、矢立、真面目を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "037",
+      "name": "Izuna",
+      "clan": "Koka",
+      "ninjutsu": "Witchcraft of Izuna",
+      "weapon": "None",
+      "birthday": "July 21",
+      "setting": "Uka's older sister.",
+      "genre": "8. ファンタジー",
+      "relationships": [
+        {
+          "name": "Uka",
+          "type": "妹",
+          "note": "ウカの姉（canon）"
+        },
+        {
+          "name": "Ganzi",
+          "type": "里の同胞",
+          "note": "甲賀の術者同士、幻術で通じる"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "witch-like female ninja, Izuna witchcraft, no weapon relying on sorcery, older sister of Uka. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：魔女めいた少女忍者、飯綱の術、無手で妖術、ウカの姉。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "witch-like female ninja, Izuna witchcraft, no weapon relying on sorcery, older sister of Uka. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：魔女めいた少女忍者、飯綱の術、無手で妖術、ウカの姉。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: witch-like female ninja, Izuna witchcraft, no weapon relying on sorcery, older sister of Uka. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：魔女めいた少女忍者、飯綱の術、無手で妖術、ウカの姉を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: witch-like female ninja, Izuna witchcraft, no weapon relying on sorcery, older sister of Uka. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：魔女めいた少女忍者、飯綱の術、無手で妖術、ウカの姉をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: witch-like female ninja, Izuna witchcraft, no weapon relying on sorcery, older sister of Uka. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：魔女めいた少女忍者、飯綱の術、無手で妖術、ウカの姉を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: witch-like female ninja, Izuna witchcraft, no weapon relying on sorcery, older sister of Uka. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：魔女めいた少女忍者、飯綱の術、無手で妖術、ウカの姉を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    },
+    {
+      "no": "038",
+      "name": "Sekishusai",
+      "clan": "Iga",
+      "ninjutsu": "Muto Dori",
+      "weapon": "Oodenta",
+      "birthday": "April 19",
+      "setting": "",
+      "genre": "12. 歴史・時代劇",
+      "relationships": [
+        {
+          "name": "Kinki Kana-Oni",
+          "type": "刀の依頼主",
+          "note": "名工に業物を打たせる剣豪"
+        },
+        {
+          "name": "Jin",
+          "type": "好敵手",
+          "note": "伊賀最強格の剣豪同士、互いを認める"
+        }
+      ],
+      "prompts": {
+        "chibi": {
+          "en": "legendary swordmaster ninja, no-sword technique (Muto Dori), the blade Oodenta, dignified master. chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+          "jp": "chibi版：伝説の剣豪忍、無刀取り、大典太、風格ある達人。クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラット配色、単色背景"
+        },
+        "normal": {
+          "en": "legendary swordmaster ninja, no-sword technique (Muto Dori), the blade Oodenta, dignified master. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart",
+          "jp": "通常頭身版：伝説の剣豪忍、無刀取り、大典太、風格ある達人。7頭身のアニメイラスト、丁寧な陰影、ダイナミックなポーズ"
+        },
+        "modern": {
+          "en": "modern-day alternate universe reimagining: legendary swordmaster ninja, no-sword technique (Muto Dori), the blade Oodenta, dignified master. Setting swapped to contemporary city — streetwear/techwear version of the outfit, urban neon background, smartphone-era vibe",
+          "jp": "現代パロ：伝説の剣豪忍、無刀取り、大典太、風格ある達人を現代都市に翻案。テックウェア風装束、ネオン都市、スマホ時代の空気"
+        },
+        "scifi": {
+          "en": "sci-fi cyberpunk reimagining: legendary swordmaster ninja, no-sword technique (Muto Dori), the blade Oodenta, dignified master. Futuristic augmentations, neon-lit high-tech armor, holographic ninjutsu effects, dystopian megacity background",
+          "jp": "SF：伝説の剣豪忍、無刀取り、大典太、風格ある達人をサイバーパンク化。機械化改造、ハイテク装甲、ホログラム忍術、退廃的メガシティ"
+        },
+        "fantasy": {
+          "en": "high-fantasy reimagining: legendary swordmaster ninja, no-sword technique (Muto Dori), the blade Oodenta, dignified master. Medieval-fantasy world, enchanted armor and robes, magical glowing effects, castle or mystical forest background",
+          "jp": "ファンタジー：伝説の剣豪忍、無刀取り、大典太、風格ある達人を中世異世界化。魔法の鎧やローブ、発光する魔術、城や神秘の森"
+        },
+        "isekai": {
+          "en": "isekai (another-world) reimagining: legendary swordmaster ninja, no-sword technique (Muto Dori), the blade Oodenta, dignified master. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
+          "jp": "異世界：伝説の剣豪忍、無刀取り、大典太、風格ある達人を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
+        }
+      }
+    }
+  ],
+  "genre_list": [
+    "1. バトル・アクション",
+    "2. 少年冒険",
+    "3. ラブコメ",
+    "4. スポ根",
+    "5. グルメ",
+    "6. ホラー・オカルト",
+    "7. ミステリー・推理",
+    "8. ファンタジー",
+    "9. SF",
+    "10. 日常・ほのぼの",
+    "11. ヒューマンドラマ",
+    "12. 歴史・時代劇",
+    "13. サスペンス・スリラー",
+    "14. ダークファンタジー",
+    "15. 音楽",
+    "16. 職人・お仕事",
+    "17. 変身ヒーロー",
+    "18. 妖怪・あやかし",
+    "19. バディ",
+    "20. 復讐劇"
+  ],
+  "style_note": {
+    "base_style": "chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, solid single-color background, CryptoNinja NFT art style",
+    "jp": "chibiはクリプト忍者NFTの実画像（Jin参照）に基づく2頭身カートゥーン調。normalは同キャラを7頭身アニメ化した派生。modern/scifi/fantasy/isekaiは世界観翻案バリエ。",
+    "source_caveat": "元NFT画像はJinのみ実参照。他37体のcore特徴は設定テキストからの推定を含むため公式ビジュアルと差異の可能性あり。"
+  },
+  "verified_from_image": [
+    "001",
+    "002",
+    "003",
+    "004",
+    "005",
+    "006"
+  ]
+}
