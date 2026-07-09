@@ -9,7 +9,8 @@ CryptoNinja NFT キャラクターの二次創作（同人）制作を助ける�
 - **SVGモーションシステム** (`motion.html`) — SVGキャラをモーション付きで動かせるゲーム支援ツール。図鑑ヘッダーのリンクから開けます。
 - **キャラシート分割** (`sheet.html?no=001`) — キャラ1体ずつの独立シートページ。前後キャラ移動、1体分のJSONダウンロード付き。
 - **ゲーム組み込みガイド** (`embed.html`) — シートをゲーム等に取り込む4つの方法（iframe / `<cn-sheet>` Web Component / `js/cn-data.js` API / 生JSON）をライブデモ付きで解説。
-- **キャラシート自動生成** (`.github/workflows/generate-sheet.yml`) — GitHub Actions から fal.ai（Nano Banana / Gemini画像生成）を呼び、`output_prompt` を基にキャラのモデルシートを生成してリポジトリに保存します。
+- **キャラシート自動生成** (`.github/workflows/generate-sheet.yml`) — GitHub Actions から fal.ai（Nano Banana / Nano Banana Pro）を呼び、`output_prompt` を基にキャラのモデルシートを生成してリポジトリに保存します。
+- **モデルシート分割表示** (`scripts/split_sheet.py`) — 生成された1枚のモデルシート画像を三面図・世界観バリエ・表情・ドット絵ごとのパネル画像に切り出し、`sheet.html` の「モデルシート分割」欄に個別表示します。
 
 ## 使い方
 
@@ -63,6 +64,17 @@ GitHub Actions 上で fal.ai を呼び、モデルシート（三面図＋世界
 cd scripts && npm install
 FAL_KEY=xxx CHAR=032 VARIANT=sheet DRY_RUN=1 node generate-sheet.mjs  # 送信内容の確認
 FAL_KEY=xxx CHAR=032 VARIANT=sheet node generate-sheet.mjs            # 実生成
+```
+
+### モデルシートをパネルごとに分割表示する
+
+`sheet.png` が生成されたら、パネル座標を目視で決めて `scripts/split_sheet.py` に追記し、実行すると
+`images/characters/<番号>_<名前>/panels/<パネルID>.png` が作られ、`sheet.html` の「モデルシート分割」欄に
+パネルごとの画像として自動表示されます（座標は生成のたびに微妙にレイアウトが変わるため、新しいキャラでは
+都度確認・調整が必要です）。
+
+```bash
+python3 scripts/split_sheet.py 032
 ```
 
 ## 画像の置き方
