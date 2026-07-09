@@ -1,0 +1,9 @@
+{
+  "name": "cn-sheet-generator",
+  "private": true,
+  "type": "module",
+  "description": "Generate CryptoNinja character sheets via fal.ai",
+  "dependencies": {
+    "@fal-ai/client": "^1.6.0"
+  }
+}

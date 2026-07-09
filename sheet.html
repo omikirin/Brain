@@ -188,6 +188,9 @@ function renderModelSheet(c, dir) {
 
   let html = '<section><h2>モデルシート分割（ゲーム素材用）</h2>';
 
+  // 生成済みシート画像（fal.aiで生成された sheet.png があれば表示）
+  html += `<img id="genSheet" src="${dir}sheet.png" alt="生成モデルシート" style="display:none;width:100%;border:1px solid var(--line);border-radius:10px;margin-bottom:12px">`;
+
   // シート全体プロンプト
   if (c.output_prompt) {
     const op = c.output_prompt;
@@ -254,6 +257,10 @@ function renderModelSheet(c, dir) {
     });
     showOp(op.en ? 'en' : 'jp');
   }
+
+  // 生成済みシート画像（存在すれば表示）
+  const gs = document.getElementById('genSheet');
+  if (gs) { const probe = new Image(); probe.onload = () => gs.style.display = 'block'; probe.src = gs.src; }
 
   // 分割画像の遅延読み込み（存在するものだけ表示）
   box.querySelectorAll('.panel img[data-src]').forEach(img => {

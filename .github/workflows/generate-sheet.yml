@@ -1,0 +1,88 @@
+name: Generate Character Sheet (fal.ai)
+
+on:
+  workflow_dispatch:
+    inputs:
+      character:
+        description: 'キャラ番号または名前（例: 032 / Seori）'
+        required: true
+        default: '032'
+        type: string
+      variant:
+        description: '生成種別'
+        required: true
+        default: 'sheet'
+        type: choice
+        options:
+          - sheet     # モデルシート全体（三面図＋世界観＋表情＋ドット絵）
+          - chibi
+          - normal
+          - modern
+          - scifi
+          - fantasy
+          - isekai
+      ref_mode:
+        description: '参照画像 ref.png の利用'
+        required: true
+        default: 'auto'
+        type: choice
+        options:
+          - auto      # あれば使う
+          - 'on'      # 必須（なければ失敗）
+          - 'off'     # 使わない（テキストのみ）
+      num:
+        description: '生成枚数（1-4）'
+        required: true
+        default: '1'
+        type: string
+      dry_run:
+        description: '確認のみ（生成せず送信内容を表示）'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generate-sheet
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        working-directory: scripts
+        run: npm install --no-audit --no-fund
+
+      - name: Generate
+        id: gen
+        env:
+          FAL_KEY: ${{ secrets.FAL_KEY }}
+          CHAR: ${{ inputs.character }}
+          VARIANT: ${{ inputs.variant }}
+          REF_MODE: ${{ inputs.ref_mode }}
+          NUM: ${{ inputs.num }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node scripts/generate-sheet.mjs
+
+      - name: Commit generated image
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/
+          if git diff --cached --quiet; then
+            echo "変更なし（生成物が既存と同一）"
+          else
+            git commit -m "Generate ${{ inputs.variant }} for ${{ inputs.character }} via fal.ai"
+            git push
+          fi

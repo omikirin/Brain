@@ -9,6 +9,7 @@ CryptoNinja NFT キャラクターの二次創作（同人）制作を助ける�
 - **SVGモーションシステム** (`motion.html`) — SVGキャラをモーション付きで動かせるゲーム支援ツール。図鑑ヘッダーのリンクから開けます。
 - **キャラシート分割** (`sheet.html?no=001`) — キャラ1体ずつの独立シートページ。前後キャラ移動、1体分のJSONダウンロード付き。
 - **ゲーム組み込みガイド** (`embed.html`) — シートをゲーム等に取り込む4つの方法（iframe / `<cn-sheet>` Web Component / `js/cn-data.js` API / 生JSON）をライブデモ付きで解説。
+- **キャラシート自動生成** (`.github/workflows/generate-sheet.yml`) — GitHub Actions から fal.ai（Nano Banana / Gemini画像生成）を呼び、`output_prompt` を基にキャラのモデルシートを生成してリポジトリに保存します。
 
 ## 使い方
 
@@ -19,7 +20,48 @@ python3 -m http.server 8000
 # → http://localhost:8000
 ```
 
-GitHub Pages を有効にすればそのまま公開できます。
+### 公開（GitHub Pages）
+
+`.github/workflows/pages.yml` により、既定ブランチへの push で自動デプロイされます。**初回のみ** リポジトリの **Settings → Pages → Build and deployment → Source** を **「GitHub Actions」** に設定してください。公開URL: `https://<ユーザー名>.github.io/<リポジトリ名>/`
+
+## キャラシートを fal.ai で生成する
+
+GitHub Actions 上で fal.ai を呼び、モデルシート（三面図＋世界観バリエ＋表情グリッド＋ドット絵）や各画風バリエを生成します。
+
+**セットアップ（初回のみ）**
+
+1. [fal.ai](https://fal.ai/) で API キーを取得
+2. リポジトリの **Settings → Secrets and variables → Actions → New repository secret** で
+   - Name: `FAL_KEY`
+   - Secret: 取得したキー
+   を登録
+
+**実行**
+
+1. **Actions** タブ →「**Generate Character Sheet (fal.ai)**」→ **Run workflow**
+2. 入力項目:
+
+   | 入力 | 説明 |
+   |---|---|
+   | `character` | キャラ番号か名前（例 `032` / `Seori`） |
+   | `variant` | `sheet`（モデルシート全体）または画風（`chibi`/`normal`/`modern`/`scifi`/`fantasy`/`isekai`） |
+   | `ref_mode` | 参照画像 `ref.png` の利用。`auto`（あれば使う）/`on`/`off` |
+   | `num` | 生成枚数（1〜4） |
+   | `dry_run` | ✅ で生成せず送信内容だけ確認 |
+
+3. 生成物は自動で `images/characters/<番号>_<名前>/` に保存・コミットされます
+   - `variant=sheet` → `sheet.png`（シートページのモデルシート欄に自動表示）
+   - それ以外 → `gen-<variant>.png`
+
+**同一性を高めたい場合**: `images/characters/<番号>_<名前>/ref.png` に元NFT画像を置くと、`ref_mode=auto`/`on` で image-to-image（`nano-banana/edit`）が使われ、顔・配色・装備を寄せて生成します。
+
+**ローカルで試す**（任意）:
+
+```bash
+cd scripts && npm install
+FAL_KEY=xxx CHAR=032 VARIANT=sheet DRY_RUN=1 node generate-sheet.mjs  # 送信内容の確認
+FAL_KEY=xxx CHAR=032 VARIANT=sheet node generate-sheet.mjs            # 実生成
+```
 
 ## 画像の置き方
 
