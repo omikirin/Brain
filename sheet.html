@@ -45,13 +45,28 @@
   .imgnote{color:var(--sub); font-size:.75rem; margin-top:6px}
   code{background:var(--panel2); padding:1px 6px; border-radius:4px; font-size:.78rem}
   .err{padding:40px; text-align:center; color:var(--sub)}
+  /* モデルシート分割 */
+  .opnote{color:var(--sub); font-size:.78rem; margin:4px 0 8px}
+  .panels{display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:8px; margin-bottom:12px}
+  .panel{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:10px; font-size:.78rem}
+  .panel .pid{color:var(--accent); font-weight:700; font-family:monospace}
+  .panel .pos{color:var(--sub); display:block; font-size:.7rem}
+  .panel img{width:100%; aspect-ratio:1; object-fit:contain; background:var(--panel2); border-radius:6px; margin:6px 0; display:none}
+  .panel .pbtns{display:flex; gap:4px; margin-top:6px}
+  .panel .pbtns button{flex:1; background:var(--panel2); border:1px solid var(--line); color:var(--sub); border-radius:6px; padding:3px 4px; font-size:.68rem; cursor:pointer}
+  .panel .pbtns button:hover{color:var(--text); border-color:var(--accent)}
+  .psec{margin:14px 0 6px; font-size:.88rem; font-weight:700}
+  .exgrid{display:grid; gap:4px; overflow-x:auto; margin-bottom:12px}
+  .exgrid .cell{background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:4px 2px; font-size:.66rem; text-align:center; cursor:pointer; color:var(--sub); min-width:56px}
+  .exgrid .cell:hover{color:var(--text); border-color:var(--accent)}
+  .exgrid .hd{background:none; border:none; color:var(--sub); font-size:.68rem; cursor:default}
 </style>
 </head>
 <body>
 <div class="wrap" id="app"><div class="err">読み込み中…</div></div>
 
 <script type="module">
-import { loadCharacters, getCharacter, imageDir, CLAN_JP, CLAN_COLOR, VARIANTS } from './js/cn-data.js';
+import { loadCharacters, getCharacter, imageDir, slug, CLAN_JP, CLAN_COLOR, VARIANTS } from './js/cn-data.js';
 
 const params = new URLSearchParams(location.search);
 const key = params.get('no') || params.get('name') || '001';
@@ -97,6 +112,7 @@ if (!c) {
       <div class="gallery" id="gal"></div>
       <p class="imgnote">📁 <code>images/characters/${c.no}_…/</code> に <code>main.png</code> / <code>01.png</code>〜<code>12.png</code> を置くと表示されます。</p>
     </section>
+    <div id="modelsheet"></div>
     ${c.relationships?.length ? `<section><h2>相関</h2><div class="rel">${
       c.relationships.map(r => {
         const t = data.characters.find(x => x.name === r.name);
@@ -138,6 +154,9 @@ if (!c) {
   });
   show(Object.keys(c.prompts)[0]);
 
+  // モデルシート分割（output_prompt / panel_index を持つキャラのみ）
+  renderModelSheet(c, dir);
+
   // 1キャラ分のJSONを書き出し（ゲーム取り込み用）
   document.getElementById('dl').onclick = () => {
     const blob = new Blob([JSON.stringify(c, null, 2)], { type: 'application/json' });
@@ -147,6 +166,111 @@ if (!c) {
     a.click();
     URL.revokeObjectURL(a.href);
   };
+}
+
+// ===== モデルシート分割ビュー =====
+function renderModelSheet(c, dir) {
+  const box = document.getElementById('modelsheet');
+  if (!box || (!c.output_prompt && !c.panel_index)) return;
+  const pdir = dir + 'panels/';
+  const relDir = `images/characters/${c.no}_${slug(c.name)}/panels/`;
+  const esc = s => String(s).replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+
+  // 各パネルを「そのIDだけ描画」する単体生成プロンプトを組み立て
+  const sheetPrompt = lang => (c.output_prompt && c.output_prompt[lang]) || '';
+  function panelPrompt(id, name) {
+    const en = sheetPrompt('en');
+    const head = en
+      ? `Render ONLY the "${id}" panel (${name}) as a single standalone image, using the character design and art-style rules below. Ignore the multi-row sheet layout; output just this one panel on a clean background.\n\n`
+      : '';
+    return head + en;
+  }
+
+  let html = '<section><h2>モデルシート分割（ゲーム素材用）</h2>';
+
+  // シート全体プロンプト
+  if (c.output_prompt) {
+    const op = c.output_prompt;
+    html += `<p class="opnote">🎨 生成先: <code>${esc(op.target || '-')}</code> ／ 比率: <code>${esc(op.aspect_ratio || '-')}</code><br>1枚のモデルシート（三面図＋世界観バリエ＋表情＋ドット絵）を作るプロンプトです。</p>`;
+    html += '<div class="tabs" id="opTabs">' +
+      ['en', 'jp'].filter(l => op[l]).map((l, j) => `<button data-l="${l}" class="${j ? '' : 'on'}">${l === 'en' ? 'English' : '日本語'}</button>`).join('') +
+      '</div><div class="prompt" id="opBox" style="max-height:220px;overflow-y:auto"></div>';
+  }
+
+  // パネル一覧（panels 型と rows/cols 型の両対応）
+  if (c.panel_index) {
+    for (const key of Object.keys(c.panel_index)) {
+      const sec = c.panel_index[key];
+      html += `<div class="psec">${esc(key)}. ${esc(sec.section || '')}</div>`;
+      if (sec.panels) {
+        html += '<div class="panels">';
+        for (const pid of Object.keys(sec.panels)) {
+          const p = sec.panels[pid];
+          html += `<div class="panel" data-pid="${esc(pid)}">
+            <span class="pid">${esc(pid)}</span> ${esc(p.name || '')}
+            <span class="pos">${esc(p.pos || '')}</span>
+            <img data-src="${pdir}${encodeURIComponent(pid)}.png" alt="${esc(p.name)}">
+            <div class="pbtns">
+              <button class="pcopy" data-pid="${esc(pid)}" data-name="${esc(p.name || '')}">プロンプト</button>
+            </div></div>`;
+        }
+        html += '</div>';
+      }
+      if (sec.rows && sec.cols) {
+        // 表情グリッド: 行=世界観, 列=表情
+        html += '<div class="exgrid" style="grid-template-columns:80px repeat(' + Object.keys(sec.cols).length + ',1fr)">';
+        html += '<div class="hd"></div>' + Object.keys(sec.cols).map(cn => `<div class="hd">${esc(sec.cols[cn])}</div>`).join('');
+        for (const rk of Object.keys(sec.rows)) {
+          html += `<div class="hd">${esc(sec.rows[rk])}</div>`;
+          for (const ck of Object.keys(sec.cols)) {
+            const pid = `${key}-${rk.split('-')[1]}-${ck}`;
+            html += `<div class="cell pcopy" data-pid="${esc(pid)}" data-name="${esc(sec.rows[rk])}/${esc(sec.cols[ck])}" title="${esc(pid)}">${esc(sec.cols[ck])}</div>`;
+          }
+        }
+        html += '</div>';
+      }
+    }
+    if (c.panel_index_note) html += `<p class="opnote">${esc(c.panel_index_note)}</p>`;
+    html += `<p class="opnote">💡 分割画像は <code>${esc(relDir)}&lt;パネルID&gt;.png</code>（例 <code>1-1.png</code>）に置くと各枠に表示されます。</p>`;
+  }
+  html += '</section>';
+  box.innerHTML = html;
+
+  // シート全体プロンプトのタブ＆コピー
+  if (c.output_prompt) {
+    const op = c.output_prompt;
+    const opBox = document.getElementById('opBox');
+    const showOp = l => {
+      opBox.innerHTML = `<span class="lang">${l === 'en' ? 'English' : '日本語'}</span>${esc(op[l])}<button class="copy">コピー</button>`;
+      opBox.querySelector('.copy').onclick = e => {
+        navigator.clipboard.writeText(op[l]).then(() => {
+          e.target.textContent = '✓ コピー済'; setTimeout(() => e.target.textContent = 'コピー', 1500);
+        });
+      };
+    };
+    box.querySelectorAll('#opTabs button').forEach(b => b.onclick = () => {
+      box.querySelectorAll('#opTabs button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on'); showOp(b.dataset.l);
+    });
+    showOp(op.en ? 'en' : 'jp');
+  }
+
+  // 分割画像の遅延読み込み（存在するものだけ表示）
+  box.querySelectorAll('.panel img[data-src]').forEach(img => {
+    const probe = new Image();
+    probe.onload = () => { img.src = probe.src; img.style.display = 'block'; };
+    probe.src = img.dataset.src;
+  });
+
+  // 各パネルの「そのIDだけ描画」プロンプトをコピー
+  box.querySelectorAll('.pcopy').forEach(el => el.onclick = () => {
+    const txt = panelPrompt(el.dataset.pid, el.dataset.name);
+    if (!txt) return;
+    navigator.clipboard.writeText(txt).then(() => {
+      const old = el.textContent; el.textContent = '✓ コピー済';
+      setTimeout(() => el.textContent = old, 1200);
+    });
+  });
 }
 </script>
 </body>

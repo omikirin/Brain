@@ -1498,10 +1498,10 @@
       "no": "032",
       "name": "Seori (& Mitama)",
       "clan": "Saika",
-      "ninjutsu": "",
+      "ninjutsu": "丑の刻参り (Ushi-no-koku-mairi)",
       "weapon": "Wooden Mallet",
       "birthday": "",
-      "setting": "Named after Seoritsuhime. Her partner's name is Mitama.",
+      "setting": "Named after the goddess Seoritsuhime. Her partner is a snake-spirit named Mitama.",
       "genre": "18. 妖怪・あやかし",
       "relationships": [
         {
@@ -1540,7 +1540,134 @@
           "en": "isekai (another-world) reimagining: female ninja named after Seoritsuhime, wooden mallet, partner Mitama, mythic sacred air. Reincarnated adventurer in a fantasy RPG world, status-window/skill aura, party-member look, other-world landscape background",
           "jp": "異世界：瀬織津姫の名を持つ少女忍者、木槌、相棒ミタマ、神聖を転生冒険者に。RPG的ステータス表示、スキルオーラ、パーティー風、異世界の風景"
         }
-      }
+      },
+      "output_prompt": {
+        "target": "Nano Banana (Gemini image generation)",
+        "type": "all-in-one character model sheet (turnaround + alt-worlds + expression grid + pixel art)",
+        "en": "Create a single high-resolution character model sheet for the CryptoNinja character \"Seori\", laid out as clearly separated, labeled sections on a clean light-grey background. Keep the exact same character identity, face, colors and equipment perfectly consistent across every panel.\n\nBase-row art style: chibi-style, 2-head-tall super-deformed proportions, thick bold black outlines, flat slightly muted coloring, hand-drawn cartoon aesthetic, CryptoNinja NFT art style.\n\nCharacter: a female ninja themed on the goddess Seoritsuhime, pale blue-grey hair, red eyes, blushing cheeks, an open cheerful smile, an iron trivet crown (gotoku) with three lit white candles on her head (ushi-no-koku-mairi motif), a white kimono with a pink cherry-blossom hem pattern and a purple sash, holding a wooden mallet. Her companion Mitama — a small blue snake / floating soul-flame spirit with a white triangle forehead mark — appears beside her where noted. Saika clan.\n\nROW 1 — 'CHIBI TURNAROUND': chibi 2-head-tall style, 3-view turnaround (front, side, back), full body, neutral A-pose, Mitama floating beside the front view.\n\nROW 2 — 'FULL-BODY TURNAROUND': the SAME character redrawn in normal ~7-head-tall anime proportions, 3-view turnaround (front, side, back), full body, clean anime lineart with detailed shading.\n\nROW 3 — 'ALT-WORLD VARIANTS': three side-by-side full-body redesigns, each shown once chibi and once normal — (a) FANTASY: a medieval enchanted miko-priestess in flowing sacred robes, glowing candle magic, ornate gotoku crown; (b) SCI-FI: a cyberpunk shrine-maiden in neon high-tech armor, holographic candle-flames, a glowing digital snake-AI as Mitama; (c) MODERN: contemporary streetwear/techwear, a candle-crown reimagined as LED headphones, Mitama as a phone charm or hologram pet. Label each variant.\n\nROW 4 — 'EXPRESSION ICONS x WORLDS': a grid of chibi face/bust expression icons in small circular frames. Provide FOUR labeled rows of expressions — one row each for BASE, FANTASY, SCI-FI and MODERN versions of Seori — each row showing at least 8 expressions: neutral, happy smile, angry, sad, surprised, embarrassed/blushing, determined, laughing. Keep the face identity consistent, only the outfit/effects change per world.\n\nROW 5 — 'PIXEL ART / DOT-E': retro pixel-art (dot-e) sprites of the character on a transparent-look checkerboard, including: a small full-body idle sprite in front/side/back views, a 4-frame walking animation strip, and 4 tiny pixel expression face-icons. Do this in TWO resolutions side by side — a chunky 32x32 style and a more detailed 48x48 style — keeping her candle-crown, pale blue-grey hair, red eyes and purple sash readable even at low resolution.\n\nRequirements: bold line weight and flat coloring like the reference NFT art for the chibi/normal rows; keep the three lit candles, gotoku crown, red eyes, pale blue-grey hair, cherry-blossom kimono and purple sash consistent everywhere; small clean captions per section; even lighting; no watermark. The whole sheet must read as ONE cohesive character reference usable for anime, manga, and game production (including a pixel/2D game).\n\nSHEET LAYOUT: portrait 4:5 aspect ratio, high resolution (2K–4K). Stack the sections top-to-bottom in this exact order with a small labeled header tab on the left of each band: (header) → Row1 chibi turnaround → Row2 full-body turnaround → Row3 alt-world variants (fantasy/sci-fi/modern, each chibi+normal) → Row4 expression grid (4 labeled rows x 8 icons) → Row5 pixel art (32x32 and 48x48 side by side). Even margins, consistent gutters, everything on one cohesive sheet.",
+        "jp": "CryptoNinjaのキャラ「Seori（瀬織）」のキャラクターモデルシートを高解像度で1枚に生成。薄いグレー地に区画を分け、ラベル付きで配置する。全パネルで顔・配色・装備・アイデンティティを完全に統一すること。\n\nベース行の画風：クリプト忍者NFT調の2頭身ちびキャラ、太い黒線、フラットでややくすんだ配色、手描きカートゥーン調。\n\nキャラ特徴：瀬織津姫がモチーフの少女忍者。淡い青灰の髪、赤い瞳、頬に赤み、明るい笑み。頭に三本の灯った白い蝋燭を立てた五徳の冠（丑の刻参りモチーフ）。桜の裾模様の白い着物と紫の帯。木槌を持つ。相棒ミタマ（白い三角の額印を持つ小さな青い蛇／鬼火の精霊）は指定箇所で傍らに描く。雑賀クラン。\n\n1行目『ちび三面図』…2頭身ちびの正面・側面・背面ターンアラウンド、全身、Aポーズ。正面の傍らにミタマを浮かべる。\n\n2行目『通常三面図』…同キャラを7頭身のアニメ体型で描き直した正面・側面・背面、全身、丁寧な陰影のクリーンなアニメ線画。\n\n3行目『世界観バリエ』…全身の描き直しを3種、各々ちび版と通常版の両方で並べる。(a)ファンタジー：中世の神聖な巫女装束、蝋燭の魔法の発光、装飾的な五徳冠。(b)SF：ネオンのハイテク装甲のサイバーパンク巫女、ホログラムの蝋燭火、デジタルの蛇AIとしてのミタマ。(c)現代パロ：ストリート／テックウェア、蝋燭冠をLEDヘッドフォンに翻案、ミタマはスマホのチャームまたはホログラムのペット。各ラベル付き。\n\n4行目『表情アイコン×世界観』…ちびの顔／バストアップ表情アイコンを円形フレームでグリッド配置。ラベル付きで4行——ベース／ファンタジー／SF／現代パロの各バージョンで1行ずつ——各行に最低8表情（通常・笑・怒・哀・驚・照れ・決意・大笑い）。顔のアイデンティティは統一し、世界観ごとに衣装／エフェクトのみ変える。\n\n5行目『ドット絵（ピクセルアート）』…透過風のチェッカー地にレトロなドット絵スプライト。全身の待機スプライト（正面・側面・背面）、4フレームの歩行アニメ帯、小さなピクセル表情アイコン4種を含む。解像度は2種を並べる——ゴツめの32x32スタイルと、より細密な48x48スタイル。低解像度でも蝋燭冠・淡い青灰の髪・赤い瞳・紫帯が判別できるようにする。\n\n要件：ちび／通常行はNFT調の太線・フラット塗り。三本の灯った蝋燭・五徳の冠・赤い瞳・淡い青灰の髪・桜の着物・紫帯を全所で統一。各区画に小さなラベル、均一な光、透かしなし。アニメ・漫画・ゲーム（ピクセル／2Dゲームを含む）制作に使える統一キャラ設定資料1枚として成立させること。\n\nシート配置：縦4:5、高解像度(2K–4K)。各帯の左に小さなラベルタブを付け、上から順に（ヘッダー）→1.ちび三面図→2.通常三面図→3.世界観バリエ(ファンタジー/SF/現代パロ、各ちび+通常)→4.表情グリッド(ラベル付き4行×8アイコン)→5.ドット絵(32×32と48×48を横並び)。余白・間隔を均一に、全体を1枚の統一シートに。",
+        "aspect_ratio": "4:5 portrait (2K–4K)"
+      },
+      "image_verified": true,
+      "panel_index": {
+        "1": {
+          "section": "ちび三面図",
+          "panels": {
+            "1-1": {
+              "name": "正面",
+              "pos": "1行目 左"
+            },
+            "1-2": {
+              "name": "側面",
+              "pos": "1行目 中"
+            },
+            "1-3": {
+              "name": "背面",
+              "pos": "1行目 右"
+            },
+            "1-M": {
+              "name": "ミタマ(相棒)",
+              "pos": "1行目 右端タグ"
+            }
+          }
+        },
+        "2": {
+          "section": "通常三面図(7頭身)",
+          "panels": {
+            "2-1": {
+              "name": "正面",
+              "pos": "2行目 左"
+            },
+            "2-2": {
+              "name": "側面",
+              "pos": "2行目 中"
+            },
+            "2-3": {
+              "name": "背面",
+              "pos": "2行目 右"
+            }
+          }
+        },
+        "3": {
+          "section": "世界観バリエ",
+          "panels": {
+            "3-F-c": {
+              "name": "ファンタジー ちび",
+              "pos": "3行目 左列 上"
+            },
+            "3-F-n": {
+              "name": "ファンタジー 通常",
+              "pos": "3行目 左列 下"
+            },
+            "3-S-c": {
+              "name": "SF ちび",
+              "pos": "3行目 中列 上"
+            },
+            "3-S-n": {
+              "name": "SF 通常",
+              "pos": "3行目 中列 下"
+            },
+            "3-M-c": {
+              "name": "現代パロ ちび",
+              "pos": "3行目 右列 上"
+            },
+            "3-M-n": {
+              "name": "現代パロ 通常",
+              "pos": "3行目 右列 下"
+            }
+          }
+        },
+        "4": {
+          "section": "表情アイコン×世界観",
+          "rows": {
+            "4-1": "Base(通常)",
+            "4-2": "Fantasy",
+            "4-3": "Sci-Fi",
+            "4-4": "Modern"
+          },
+          "cols": {
+            "1": "通常",
+            "2": "笑",
+            "3": "怒",
+            "4": "哀",
+            "5": "驚",
+            "6": "照れ",
+            "7": "決意",
+            "8": "大笑"
+          },
+          "id_format": "4-{行}-{列}  例) 4-2-3 = Fantasyの怒"
+        },
+        "5": {
+          "section": "ドット絵",
+          "panels": {
+            "5-32-idle": {
+              "name": "32×32 待機3面(正/側/背)",
+              "pos": "5行目 左 上"
+            },
+            "5-32-walk": {
+              "name": "32×32 歩行4コマ",
+              "pos": "5行目 左 中"
+            },
+            "5-32-face": {
+              "name": "32×32 表情4種",
+              "pos": "5行目 左 下"
+            },
+            "5-48-idle": {
+              "name": "48×48 待機3面(正/側/背)",
+              "pos": "5行目 右 上"
+            },
+            "5-48-walk": {
+              "name": "48×48 歩行4コマ",
+              "pos": "5行目 右 中"
+            },
+            "5-48-face": {
+              "name": "48×48 表情4種",
+              "pos": "5行目 右 下"
+            }
+          }
+        }
+      },
+      "panel_index_note": "各IDはシート内パネルの参照用。単体生成時はoutput_promptのシート共通指示を使い『このIDの区画だけ描画』と指定する。表情は 4-行-列（例 4-3-5 = SFの驚）。"
     },
     {
       "no": "033",
