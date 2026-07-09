@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ゲーム組み込みガイド — CryptoNinja 図鑑</title>
+<style>
+  :root{--bg:#12121a; --panel:#1c1c28; --panel2:#242436; --line:#33334a; --text:#e8e8f0; --sub:#9a9ab0; --accent:#e0483e}
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{background:var(--bg); color:var(--text); font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif; line-height:1.7}
+  .wrap{max-width:860px; margin:0 auto; padding:24px 16px 80px}
+  a{color:var(--accent)}
+  h1{font-size:1.5rem; margin-bottom:4px}
+  .lead{color:var(--sub); font-size:.9rem; margin-bottom:20px}
+  h2{font-size:1.1rem; color:var(--accent); margin:34px 0 10px; border-bottom:1px solid var(--line); padding-bottom:6px}
+  p{font-size:.9rem; margin:8px 0}
+  pre{background:#0d0d14; border:1px solid var(--line); border-radius:8px; padding:14px; font-size:.78rem; overflow-x:auto; position:relative; margin:10px 0}
+  pre button{position:absolute; top:8px; right:8px; background:var(--panel2); border:1px solid var(--line); color:var(--sub); border-radius:6px; padding:3px 10px; font-size:.72rem; cursor:pointer}
+  .demo{border:1px dashed var(--line); border-radius:10px; padding:14px; margin:10px 0}
+  .demo .label{font-size:.7rem; color:var(--sub); margin-bottom:8px}
+  .grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px}
+  code{background:var(--panel2); padding:1px 6px; border-radius:4px; font-size:.82em}
+  iframe{border:1px solid var(--line); border-radius:10px; width:100%; height:420px; background:var(--bg)}
+  .topnav{margin-bottom:18px; font-size:.85rem}
+  .topnav a{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:5px 12px; text-decoration:none; color:var(--sub); margin-right:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="topnav"><a href="index.html">← 図鑑</a><a href="motion.html">SVGモーション</a></nav>
+<h1>ゲーム組み込みガイド</h1>
+<p class="lead">キャラシートは1体ずつ分割して呼び出せます。自作ゲーム・ノベルツール・Botなどへの取り込み方法は次の4通り。</p>
+
+<h2>1. キャラシート単体ページ（リンク / iframe）</h2>
+<p>各キャラは <code>sheet.html?no=番号</code>（または <code>?name=名前</code>）で独立ページとして開けます。iframeでそのまま埋め込み可能。</p>
+<pre><code>&lt;iframe src="sheet.html?no=019" width="100%" height="420"&gt;&lt;/iframe&gt;</code><button>コピー</button></pre>
+<div class="demo"><div class="label">▼ 実際の表示（Rei のシート）</div>
+  <iframe src="sheet.html?no=019" loading="lazy"></iframe>
+</div>
+
+<h2>2. Web Component（&lt;cn-sheet&gt;）</h2>
+<p>HTMLタグ1つでシートを部品として差し込めます。<code>compact</code> 属性で小型版になります。</p>
+<pre><code>&lt;script type="module" src="js/cn-sheet.js"&gt;&lt;/script&gt;
+&lt;cn-sheet no="001"&gt;&lt;/cn-sheet&gt;
+&lt;cn-sheet no="002" compact&gt;&lt;/cn-sheet&gt;</code><button>コピー</button></pre>
+<div class="demo"><div class="label">▼ 実際の表示（通常 / compact）</div>
+  <div class="grid2">
+    <cn-sheet no="001"></cn-sheet>
+    <cn-sheet no="002" compact></cn-sheet>
+  </div>
+</div>
+
+<h2>3. JavaScript API（js/cn-data.js）</h2>
+<p>ゲームロジックからデータだけ使う場合。ESモジュールとして読み込みます。</p>
+<pre><code>import { loadCharacters, getCharacter, listCharacters, imageDir }
+  from './js/cn-data.js';
+
+const jin  = await getCharacter('001');     // 番号・名前・スラッグで検索
+const fuma = await listCharacters({ clan: 'Fuma' });  // クランで絞り込み
+const img  = imageDir(jin) + 'main.png';    // 画像パス
+
+// 例: ランダムに敵キャラを選ぶ
+const all = (await loadCharacters()).characters;
+const enemy = all[Math.floor(Math.random() * all.length)];</code><button>コピー</button></pre>
+<div class="demo"><div class="label">▼ 動作デモ：クリックでランダムに1体引く</div>
+  <button id="gacha" style="background:var(--accent);border:none;color:#fff;border-radius:8px;padding:8px 18px;cursor:pointer">忍者ガチャ 🎲</button>
+  <div id="gachaOut" style="margin-top:10px"></div>
+</div>
+
+<h2>4. 生データ（JSON）</h2>
+<p>言語を問わず使えます。<code>data/characters.json</code> を直接読むか、各キャラシートの「JSONダウンロード」で1体分だけ取り出せます。</p>
+<pre><code>fetch('data/characters.json')
+  .then(r =&gt; r.json())
+  .then(d =&gt; console.log(d.characters.length)); // 38</code><button>コピー</button></pre>
+<p>1キャラのフィールド: <code>no</code> / <code>name</code> / <code>clan</code> / <code>ninjutsu</code> / <code>weapon</code> / <code>birthday</code> / <code>setting</code> / <code>genre</code> / <code>relationships[]</code> / <code>prompts{chibi…isekai}</code></p>
+
+<h2>画像の解決ルール</h2>
+<p>キャラ画像は <code>images/characters/&lt;番号&gt;_&lt;スラッグ&gt;/</code> に置きます。<code>main.png</code> がシートの顔画像、<code>01.png</code>〜<code>12.png</code> がギャラリーに使われます。<code>imageDir(c)</code> がこのフォルダのURLを返すので、ゲーム側でスプライトとして読むこともできます。</p>
+</div>
+
+<script type="module">
+import './js/cn-sheet.js';
+import { loadCharacters, imageDir, CLAN_JP } from './js/cn-data.js';
+
+// コードのコピー
+document.querySelectorAll('pre button').forEach(b => b.onclick = () => {
+  navigator.clipboard.writeText(b.parentElement.querySelector('code').textContent)
+    .then(() => { b.textContent = '✓'; setTimeout(() => b.textContent = 'コピー', 1500); });
+});
+
+// ガチャデモ
+const d = await loadCharacters();
+document.getElementById('gacha').onclick = () => {
+  const c = d.characters[Math.floor(Math.random() * d.characters.length)];
+  document.getElementById('gachaOut').innerHTML =
+    `<cn-sheet no="${c.no}" compact></cn-sheet>
+     <p style="font-size:.78rem;color:var(--sub);margin-top:6px">→ <a href="sheet.html?no=${c.no}">フルシートを開く</a></p>`;
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>キャラシート — CryptoNinja 図鑑</title>
+<style>
+  :root{
+    --bg:#12121a; --panel:#1c1c28; --panel2:#242436; --line:#33334a;
+    --text:#e8e8f0; --sub:#9a9ab0; --accent:#e0483e;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{background:var(--bg); color:var(--text); font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif; line-height:1.6}
+  .wrap{max-width:820px; margin:0 auto; padding:20px 16px 60px}
+  .topnav{display:flex; align-items:center; gap:10px; margin-bottom:14px; font-size:.85rem}
+  .topnav a,.topnav button{color:var(--sub); text-decoration:none; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:5px 12px; cursor:pointer; font-size:.85rem}
+  .topnav a:hover,.topnav button:hover{color:var(--text); border-color:var(--accent)}
+  .topnav .spacer{margin-left:auto}
+  .head{display:flex; gap:18px; align-items:center; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px}
+  .face{width:120px; height:120px; border-radius:14px; background:var(--panel2); flex:0 0 auto; display:flex; align-items:center; justify-content:center; font-size:3rem; font-weight:700; color:var(--sub); overflow:hidden}
+  .face img{width:100%; height:100%; object-fit:cover}
+  h1{font-size:1.6rem}
+  h1 small{color:var(--sub); font-size:.55em; margin-left:10px; font-weight:400}
+  .badges{display:flex; flex-wrap:wrap; gap:5px; margin-top:8px}
+  .badge{font-size:.72rem; padding:2px 10px; border-radius:10px; border:1px solid var(--line); color:var(--sub)}
+  .badge.clan{color:#111; font-weight:700; border:none}
+  .meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; margin:14px 0; font-size:.86rem}
+  .meta div{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:8px 12px}
+  .meta b{display:block; color:var(--sub); font-size:.7rem; font-weight:400}
+  .setting{background:var(--panel); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; font-size:.92rem}
+  section h2{font-size:1rem; margin:22px 0 8px; color:var(--accent)}
+  .rel{display:flex; flex-wrap:wrap; gap:8px}
+  .rel a{background:var(--panel); border:1px solid var(--line); color:var(--text); border-radius:8px; padding:8px 12px; text-decoration:none; font-size:.82rem}
+  .rel a:hover{border-color:var(--accent)}
+  .rel .t{color:var(--accent); font-weight:700}
+  .rel .n{color:var(--sub); display:block}
+  .tabs{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px}
+  .tabs button{background:var(--panel2); border:1px solid var(--line); color:var(--sub); border-radius:8px; padding:5px 12px; cursor:pointer; font-size:.8rem}
+  .tabs button.on{color:var(--text); border-color:var(--accent)}
+  .prompt{background:#0d0d14; border:1px solid var(--line); border-radius:8px; padding:12px; font-size:.8rem; position:relative; margin-bottom:8px; white-space:pre-wrap}
+  .prompt .lang{color:var(--sub); font-size:.68rem; display:block; margin-bottom:4px}
+  .copy{position:absolute; top:8px; right:8px; background:var(--panel2); border:1px solid var(--line); color:var(--sub); border-radius:6px; padding:3px 10px; font-size:.72rem; cursor:pointer}
+  .gallery{display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:8px}
+  .gallery img{width:100%; aspect-ratio:1; object-fit:cover; border-radius:8px; border:1px solid var(--line)}
+  .imgnote{color:var(--sub); font-size:.75rem; margin-top:6px}
+  code{background:var(--panel2); padding:1px 6px; border-radius:4px; font-size:.78rem}
+  .err{padding:40px; text-align:center; color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"><div class="err">読み込み中…</div></div>
+
+<script type="module">
+import { loadCharacters, getCharacter, imageDir, CLAN_JP, CLAN_COLOR, VARIANTS } from './js/cn-data.js';
+
+const params = new URLSearchParams(location.search);
+const key = params.get('no') || params.get('name') || '001';
+const app = document.getElementById('app');
+const data = await loadCharacters();
+const c = await getCharacter(key);
+
+if (!c) {
+  app.innerHTML = `<div class="err">キャラが見つかりません: ${key}<br><a href="index.html" style="color:var(--accent)">図鑑へ戻る</a></div>`;
+} else {
+  document.title = `${c.name} — キャラシート`;
+  const i = data.characters.indexOf(c);
+  const prev = data.characters[(i + data.characters.length - 1) % data.characters.length];
+  const next = data.characters[(i + 1) % data.characters.length];
+  const dir = imageDir(c);
+
+  app.innerHTML = `
+    <nav class="topnav">
+      <a href="index.html">← 図鑑</a>
+      <a href="sheet.html?no=${prev.no}">◀ ${prev.name}</a>
+      <a href="sheet.html?no=${next.no}">${next.name} ▶</a>
+      <span class="spacer"></span>
+      <button id="dl">JSONダウンロード</button>
+    </nav>
+    <div class="head">
+      <div class="face" id="face"><span>${c.name[0]}</span></div>
+      <div>
+        <h1>${c.name}<small>#${c.no}</small></h1>
+        <div class="badges">
+          <span class="badge clan" style="background:${CLAN_COLOR[c.clan] || '#888'}">${CLAN_JP[c.clan] || c.clan}</span>
+          <span class="badge">忍術: ${c.ninjutsu}</span>
+          <span class="badge">武器: ${c.weapon}</span>
+        </div>
+      </div>
+    </div>
+    <div class="meta">
+      <div><b>誕生日</b>${c.birthday}</div>
+      <div><b>得意ジャンル</b>${c.genre}</div>
+      <div><b>クラン</b>${c.clan}（${CLAN_JP[c.clan] || '-'}）</div>
+    </div>
+    <div class="setting">${c.setting}</div>
+    <section><h2>画像</h2>
+      <div class="gallery" id="gal"></div>
+      <p class="imgnote">📁 <code>images/characters/${c.no}_…/</code> に <code>main.png</code> / <code>01.png</code>〜<code>12.png</code> を置くと表示されます。</p>
+    </section>
+    ${c.relationships?.length ? `<section><h2>相関</h2><div class="rel">${
+      c.relationships.map(r => {
+        const t = data.characters.find(x => x.name === r.name);
+        return `<a href="${t ? `sheet.html?no=${t.no}` : '#'}">
+          <span class="t">${r.type}</span> ${r.name}<span class="n">${r.note || ''}</span></a>`;
+      }).join('')}</div></section>` : ''}
+    <section><h2>作画プロンプト</h2>
+      <div class="tabs" id="tabs">${Object.keys(c.prompts).map((k, j) =>
+        `<button data-k="${k}" class="${j ? '' : 'on'}">${VARIANTS[k] || k}</button>`).join('')}</div>
+      <div id="pbox"></div>
+    </section>`;
+
+  // サムネイル・ギャラリー
+  const face = document.getElementById('face');
+  const main = new Image();
+  main.src = dir + 'main.png'; main.alt = c.name;
+  main.onload = () => { face.textContent = ''; face.appendChild(main); };
+  const gal = document.getElementById('gal');
+  ['main.png', ...Array.from({length: 12}, (_, n) => String(n + 1).padStart(2, '0') + '.png')].forEach(f => {
+    const img = new Image();
+    img.src = dir + f; img.loading = 'lazy'; img.alt = `${c.name} ${f}`;
+    img.onload = () => gal.appendChild(img);
+  });
+
+  // プロンプト表示・コピー
+  const pbox = document.getElementById('pbox');
+  function show(k) {
+    const p = c.prompts[k];
+    pbox.innerHTML = ['en', 'jp'].filter(l => p[l]).map(l => `
+      <div class="prompt"><span class="lang">${l === 'en' ? 'English' : '日本語'}</span>${p[l]}<button class="copy">コピー</button></div>`).join('');
+    pbox.querySelectorAll('.copy').forEach(b => b.onclick = () => {
+      navigator.clipboard.writeText(b.parentElement.childNodes[1].textContent.trim())
+        .then(() => { b.textContent = '✓ コピー済'; setTimeout(() => b.textContent = 'コピー', 1500); });
+    });
+  }
+  document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => {
+    document.querySelectorAll('#tabs button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on'); show(b.dataset.k);
+  });
+  show(Object.keys(c.prompts)[0]);
+
+  // 1キャラ分のJSONを書き出し（ゲーム取り込み用）
+  document.getElementById('dl').onclick = () => {
+    const blob = new Blob([JSON.stringify(c, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `${c.no}_${c.name}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+}
+</script>
+</body>
+</html>
