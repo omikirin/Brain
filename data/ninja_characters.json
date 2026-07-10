@@ -152,6 +152,10 @@
     "sekishusai": {
       "name": "Sekishusai",
       "anchor_prompt": "legendary swordmaster ninja, no-sword technique (Muto Dori), the blade Oodenta, dignified master"
+    },
+    "yama": {
+      "name": "Yama",
+      "anchor_prompt": "small round white mochi-like cute shikigami spirit, simple dot eyes, bouncy blob body"
     }
   }
 }

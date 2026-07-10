@@ -1,0 +1,702 @@
+{
+  "title": "風魔の里の祭のひ",
+  "format": {
+    "unit": "sheet",
+    "pages_per_sheet": 16,
+    "grid": {
+      "cols": 4,
+      "rows": 4
+    },
+    "page_order_on_sheet": "rtl_row_major(1p=シート右上、右→左、行送り)",
+    "panels_per_page": 3
+  },
+  "sheets": [
+    {
+      "sheet": 1,
+      "pages": [
+        {
+          "page": 1,
+          "scene": "祭り前日の風魔の里。呪符を失くしたIbukiと、入り口で狐火を暴発させるUka",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Wide establishing shot, slightly high angle. Fuma ninja village decorated for festival: rows of red lanterns, wooden yagura tower under construction, villagers bustling. Warm afternoon light.",
+              "dialogue": [
+                {
+                  "speaker": "ナレーション",
+                  "text": "風魔の里、祭りの前日。"
+                }
+              ],
+              "sfx": "ワイワイ"
+            },
+            {
+              "no": 2,
+              "prompt": "Medium shot, low angle. Immature young ninja {ibuki} dashing frantically through the crowd, arms flailing, panicked face. Round mochi-like cute shikigami {yama} bouncing on his head.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "ないないない! 僕の呪符がないーっ!!"
+                }
+              ],
+              "sfx": "ドタドタドタ!"
+            },
+            {
+              "no": 3,
+              "prompt": "Close-up on {yama}, round and cute, tilting with a deadpan expression. {ibuki}'s teary face in corner of frame, comic sweat marks.",
+              "dialogue": [
+                {
+                  "speaker": "Yama",
+                  "text": "ぴゅい(何回目?)"
+                },
+                {
+                  "speaker": "Ibuki",
+                  "text": "三回目だけど今回はご先祖さま直伝の本物なの!"
+                }
+              ],
+              "sfx": null
+            }
+          ]
+        },
+        {
+          "page": 2,
+          "scene": "祭り前日の風魔の里。呪符を失くしたIbukiと、入り口で狐火を暴発させるUka",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Medium shot at village gate. Fox-summoning female ninja {uka} with protective amulet, standing stiffly, rehearsing a greeting, eyes swirling with nervousness. Nine-tailed fox flame aura flickering faintly behind her.",
+              "dialogue": [
+                {
+                  "speaker": "Uka",
+                  "text": "『甲賀より祭りの祝いに…』ああ緊張してきた…"
+                }
+              ],
+              "sfx": null
+            },
+            {
+              "no": 2,
+              "prompt": "Dynamic wide shot. Fox flames burst explosively from {uka}'s back, igniting a straw bundle beside the gate. {uka} flailing in panic, flames multiplying. Comic exaggerated fire.",
+              "dialogue": [
+                {
+                  "speaker": "Uka",
+                  "text": "わーっ!? ごめんなさいごめんなさい!"
+                }
+              ],
+              "sfx": "ボボボッ!!"
+            },
+            {
+              "no": 3,
+              "prompt": "Medium two-shot. {yama} inflated like a balloon spraying water on the fire. {ibuki} pointing at {uka} with full-power tsukkomi face, {uka} bowing apologetically, singed straw smoking behind.",
+              "dialogue": [
+                {
+                  "speaker": "Uka",
+                  "text": "祝いに来ました。燃やしに来たんじゃないです"
+                },
+                {
+                  "speaker": "Ibuki",
+                  "text": "説得力ゼロだよ!!"
+                }
+              ],
+              "sfx": "ジュウウウ"
+            }
+          ]
+        },
+        {
+          "page": 3,
+          "scene": "詫びとして屋台を手伝うことに。狐火点火成功、しかしダジャレ忍法が発覚",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Wide shot of takoyaki stall being set up. {ibuki} gesturing at the iron griddle, {uka} standing nervously beside it. Festival lanterns in background.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "詫びに屋台手伝ってね。たこ焼き屋! 火をおこして…あ"
+                },
+                {
+                  "speaker": "Uka",
+                  "text": "あ"
+                }
+              ],
+              "sfx": null
+            },
+            {
+              "no": 2,
+              "prompt": "Close-up on {uka}'s face, eyes closed, deep breath, concentrating. A single beautiful small fox flame lit under the griddle below.",
+              "dialogue": [
+                {
+                  "speaker": "Uka",
+                  "text": "すー、はー……よし、点火!"
+                }
+              ],
+              "sfx": "ポッ"
+            },
+            {
+              "no": 3,
+              "prompt": "Medium shot, {uka} smug with hand on chest, proud smile. {ibuki} impressed. Bright cheerful mood lines.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "できるじゃん!"
+                },
+                {
+                  "speaker": "Uka",
+                  "text": "この調子で、たこがトンでもなく売れちゃう…あっ"
+                }
+              ],
+              "sfx": null
+            }
+          ]
+        },
+        {
+          "page": 4,
+          "scene": "詫びとして屋台を手伝うことに。狐火点火成功、しかしダジャレ忍法が発覚",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Gag wide shot, low angle looking up. An octopus flying into the sky flapping its legs like wings. {uka} and {ibuki} below, jaws dropped, white eyes. {yama} tilting confused.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "な、なにいまの!?"
+                }
+              ],
+              "sfx": "ヒュンッ!!"
+            },
+            {
+              "no": 2,
+              "prompt": "Medium two-shot. {uka} confessing sheepishly with finger poking, {ibuki} full tsukkomi with veins popping.",
+              "dialogue": [
+                {
+                  "speaker": "Uka",
+                  "text": "ダジャレを言うと本当に起きちゃう体質で…"
+                },
+                {
+                  "speaker": "Ibuki",
+                  "text": "そんな迷惑な体質ある!?"
+                }
+              ],
+              "sfx": null
+            },
+            {
+              "no": 3,
+              "prompt": "Gag panel. {ibuki} fallen head-first into the ground, legs sticking up (zukkoke). Beside stall, a small summoned fox cub with troubled face appears in a puff of smoke. {uka} covering mouth.",
+              "dialogue": [
+                {
+                  "speaker": "Uka",
+                  "text": "お客さんが狐(こ)まらないように…"
+                },
+                {
+                  "speaker": "Ibuki",
+                  "text": "早速言ってるー!!"
+                }
+              ],
+              "sfx": "ポンッ!"
+            }
+          ]
+        },
+        {
+          "page": 5,
+          "scene": "Ibuki呪符探しで里中を駆け回る。戻ると屋台は大繁盛、呪符はYamaのおでこに",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Wide comic montage-style shot. {ibuki} searching frantically: under the yagura tower, behind a taiko drum, inside a mochi mortar while an old man scolds him. Speed lines, sweat drops.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "呪符~! 僕の呪符~!"
+                }
+              ],
+              "sfx": "ドタバタ"
+            },
+            {
+              "no": 2,
+              "prompt": "Wide shot from {ibuki}'s POV. Huge queue at the takoyaki stall. Fox cubs wearing headbands flipping takoyaki, village children crowding and cheering.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "え!? なんで大行列!?"
+                },
+                {
+                  "speaker": "Uka",
+                  "text": "子狐たちが看板娘で大繁盛です!"
+                }
+              ],
+              "sfx": "ワーッ"
+            },
+            {
+              "no": 3,
+              "prompt": "Medium shot. {uka} holding out an old talisman paper to {ibuki}, gentle smile. {ibuki}'s eyes sparkling huge with tears of joy.",
+              "dialogue": [
+                {
+                  "speaker": "Uka",
+                  "text": "これ、お客さんが落し物だって"
+                },
+                {
+                  "speaker": "Ibuki",
+                  "text": "僕の『大切な呪符』ーー!!"
+                }
+              ],
+              "sfx": null
+            }
+          ]
+        },
+        {
+          "page": 6,
+          "scene": "Ibuki呪符探しで里中を駆け回る。戻ると屋台は大繁盛、呪符はYamaのおでこに",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Gag close-up. {yama} with the talisman peeled off its forehead, winking cutely with a star mark. {ibuki} grabbing his own head in disbelief.",
+              "dialogue": [
+                {
+                  "speaker": "Uka",
+                  "text": "Yamaちゃんのおでこに貼りついてました"
+                },
+                {
+                  "speaker": "Ibuki",
+                  "text": "一番近くにいたやつ!! 僕の三日間返して!?"
+                }
+              ],
+              "sfx": "ぴゅい☆"
+            },
+            {
+              "no": 2,
+              "prompt": "Sudden serious wide shot. Huge explosion and black smoke rising at the edge of the village. Everyone frozen mid-zukkoke, turning toward the blast. Tone shift to dark.",
+              "dialogue": [],
+              "sfx": "ドゴオオオオン!!!"
+            },
+            {
+              "no": 3,
+              "prompt": "Medium shot. A Fuma ninja shouting and pointing, villagers panicking. {ibuki} and {uka}'s faces turning serious, wind blowing.",
+              "dialogue": [
+                {
+                  "speaker": "風魔忍",
+                  "text": "敵襲! 抜け忍だ! 供物を狙ってるぞ!!"
+                }
+              ],
+              "sfx": null
+            }
+          ]
+        },
+        {
+          "page": 7,
+          "scene": "供物殿前。仲間を庇い呪符で防戦一方のIbuki、駆けつけたUkaは緊張で狐火が暴発",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Wide dramatic shot in front of the offering hall. Fallen Fuma ninjas on the ground. Small {ibuki} standing with arms spread wide, protecting them. Shadowy rogue ninjas approaching. Dusk lighting.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "ここから先は、通さない…!"
+                },
+                {
+                  "speaker": "抜け忍",
+                  "text": "がきんちょに何ができる"
+                }
+              ],
+              "sfx": null
+            },
+            {
+              "no": 2,
+              "prompt": "Dynamic action shot. Shuriken raining down. Glowing barrier of talisman papers deflecting them, sparks flying. {ibuki} gritting teeth, talismans burning away one by one.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "泰山府君の儀・結界符ッ!"
+                }
+              ],
+              "sfx": "バヂヂヂッ!"
+            },
+            {
+              "no": 3,
+              "prompt": "Medium shot from behind {uka} arriving, seeing {ibuki}'s small battered back holding the crumbling barrier. Her eyes wide.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "来ちゃだめ! …っていうか来て! 加勢して!"
+                },
+                {
+                  "speaker": "Uka",
+                  "text": "どっち!?"
+                }
+              ],
+              "sfx": null
+            }
+          ]
+        },
+        {
+          "page": 8,
+          "scene": "供物殿前。仲間を庇い呪符で防戦一方のIbuki、駆けつけたUkaは緊張で狐火が暴発",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Close-up on {uka}'s trembling hands trying to form a seal. Inner monologue box. Her face pale with fear, sweat.",
+              "dialogue": [
+                {
+                  "speaker": "Ukaモノローグ",
+                  "text": "(失敗したら…仲間ごと燃やしたら…)"
+                }
+              ],
+              "sfx": "ブルブル"
+            },
+            {
+              "no": 2,
+              "prompt": "Gag-tinged panel amid tension. Fox flames misfire sideways, burning only the stall lanterns in the distance. {ibuki} tsukkomi face while still defending.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "うわ関係ないとこ燃えた!?"
+                },
+                {
+                  "speaker": "Uka",
+                  "text": "ご、ごめん、緊張すると…!"
+                }
+              ],
+              "sfx": "ボボッ"
+            },
+            {
+              "no": 3,
+              "prompt": "Dramatic low-angle close-up. The rogue leader grinning wickedly with a giant iron fan. Behind him, the last barrier talisman shattering, {ibuki} falling to his knees.",
+              "dialogue": [
+                {
+                  "speaker": "頭目",
+                  "text": "風魔の結界も限界のようだなァ"
+                }
+              ],
+              "sfx": "バリィン!"
+            }
+          ]
+        },
+        {
+          "page": 9,
+          "scene": "絶体絶命でUkaが初めて本音を叫び、完全制御の九尾狐火が覚醒する",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Emotional close-up on {uka} shouting with tears at the corners of her eyes, fists clenched. Background abstract, emotional flash lines.",
+              "dialogue": [
+                {
+                  "speaker": "Uka",
+                  "text": "私ね! 本当はずっと怖かったの! Otoに負けてばっかりで…!"
+                }
+              ],
+              "sfx": null
+            },
+            {
+              "no": 2,
+              "prompt": "Medium shot. {uka} gripping her amulet, gaze now steady and fierce, staring straight at the leader. Wind lifting her hair.",
+              "dialogue": [
+                {
+                  "speaker": "Uka",
+                  "text": "友達がやられそうなの! もう震えてる場合じゃないのよ!!"
+                }
+              ],
+              "sfx": null
+            },
+            {
+              "no": 3,
+              "prompt": "Full dramatic wide shot. Nine perfect fox flames blooming behind {uka}'s back like a fan, illuminating the night. Awe on {ibuki}'s face.",
+              "dialogue": [
+                {
+                  "speaker": "Uka",
+                  "text": "忍法・九尾狐火の陣!!"
+                }
+              ],
+              "sfx": "ゴオオオオッ!!!"
+            }
+          ]
+        },
+        {
+          "page": 10,
+          "scene": "絶体絶命でUkaが初めて本音を叫び、完全制御の九尾狐火が覚醒する",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Dynamic action wide shot. Nine flame foxes charging at rogue ninjas, enemies tumbling comically with scorched bottoms.",
+              "dialogue": [
+                {
+                  "speaker": "抜け忍たち",
+                  "text": "ぎゃあ! あちちち!"
+                }
+              ],
+              "sfx": "ドドドッ"
+            },
+            {
+              "no": 2,
+              "prompt": "Tense medium shot. The leader deflecting flames with his giant iron fan, lunging toward kneeling {ibuki}.",
+              "dialogue": [
+                {
+                  "speaker": "頭目",
+                  "text": "ならば小僧から先だ!"
+                }
+              ],
+              "sfx": "ブォン!"
+            },
+            {
+              "no": 3,
+              "prompt": "Quiet dramatic close-up. {ibuki}'s face calm and resolute, no more tears. {yama} beside him, the ancestral talisman glowing faintly gold in his hand.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "…Yama。『大切な呪符』が戻ってきたんだ。できるよね"
+                },
+                {
+                  "speaker": "Yama",
+                  "text": "ぴゅい"
+                }
+              ],
+              "sfx": null
+            }
+          ]
+        },
+        {
+          "page": 11,
+          "scene": "Yamaの変身が微妙で緊張と緩和、しかし一瞬の反撃で頭目撃破",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Build-up panel. {yama} glowing, about to transform, dramatic light burst. Expectation lines everywhere.",
+              "dialogue": [
+                {
+                  "speaker": "ナレーション",
+                  "text": "Yamaが巨大な閻魔の姿に――"
+                }
+              ],
+              "sfx": "ぼんっ!"
+            },
+            {
+              "no": 2,
+              "prompt": "Gag anticlimax close-up. {yama} still round and cute, only with tiny dignified eyebrows added. {ibuki}'s face frozen mid-shock.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "そこは変身するとこでしょ!?"
+                }
+              ],
+              "sfx": "シーン"
+            },
+            {
+              "no": 3,
+              "prompt": "Dynamic action shot. {ibuki} throwing the golden glowing ancestral talisman, a single decisive counterattack. Speed lines, sharp determined eyes.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "まあいいや! 泰山府君の儀・一点返しッ!!"
+                }
+              ],
+              "sfx": "キラッ"
+            }
+          ]
+        },
+        {
+          "page": 12,
+          "scene": "Yamaの変身が微妙で緊張と緩和、しかし一瞬の反撃で頭目撃破",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Impact panel. Talisman sticking to the leader's iron fan, massive golden explosion engulfing him.",
+              "dialogue": [],
+              "sfx": "ドッゴオオオオン!!!"
+            },
+            {
+              "no": 2,
+              "prompt": "Gag wide shot of night sky. The leader flying off as a twinkling star in the distance. Classic kirakira star effect.",
+              "dialogue": [
+                {
+                  "speaker": "頭目",
+                  "text": "おのれぇぇ…"
+                }
+              ],
+              "sfx": "キラーン"
+            },
+            {
+              "no": 3,
+              "prompt": "Relieved medium two-shot. {uka} and {ibuki} looking at each other, panting, then smiling. {yama} bouncing triumphantly between them.",
+              "dialogue": [
+                {
+                  "speaker": "UkaとIbuki",
+                  "text": "……勝った?"
+                },
+                {
+                  "speaker": "Yama",
+                  "text": "ぴゅい!(勝った!)"
+                }
+              ],
+              "sfx": null
+            }
+          ]
+        },
+        {
+          "page": 13,
+          "scene": "祭り当日。Ukaは子供たちに狐火の稽古、Ibukiはバレバレの九尾変装",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Bright festive wide shot, daytime. Festival in full swing. {uka} surrounded by village children, teaching fox flame practice, children's eyes sparkling.",
+              "dialogue": [
+                {
+                  "speaker": "子供たち",
+                  "text": "Ukaねえちゃん! 狐火みせて!"
+                },
+                {
+                  "speaker": "Uka",
+                  "text": "コツはね、心をこう(ここ)ろがすの"
+                }
+              ],
+              "sfx": null
+            },
+            {
+              "no": 2,
+              "prompt": "Gag panel. A fox flame rolling on the ground like a ball, children chasing it delightedly. {uka} covering mouth in oops-face.",
+              "dialogue": [
+                {
+                  "speaker": "子供たち",
+                  "text": "わー! 転がったー!"
+                }
+              ],
+              "sfx": "コロコロ"
+            },
+            {
+              "no": 3,
+              "prompt": "Medium shot at stall. {ibuki} flipping takoyaki while doing a tsukkomi over his shoulder — but wearing a fox mask on the side of his head and nine fluffy handmade tails at his waist, one tail dangling half-off.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "またダジャレ発動してるよ!?"
+                }
+              ],
+              "sfx": null
+            }
+          ]
+        },
+        {
+          "page": 14,
+          "scene": "祭り当日。Ukaは子供たちに狐火の稽古、Ibukiはバレバレの九尾変装",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Gag close-up. {ibuki} in his terrible fox disguise, chest puffed with absolute confidence, sparkle effects around him. {yama} covering its face in embarrassment.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "私は甲賀の九尾の忍『Ubuki』。Ibukiではありません"
+                }
+              ],
+              "sfx": "ドヤァ"
+            },
+            {
+              "no": 2,
+              "prompt": "Medium two-shot, role reversal. {uka} doing the full-power tsukkomi with pointing finger and popping veins, {ibuki} smugly unbothered.",
+              "dialogue": [
+                {
+                  "speaker": "Uka",
+                  "text": "名前ほぼそのままだし誰が見てもIbukiでしょ!"
+                },
+                {
+                  "speaker": "Ibuki",
+                  "text": "バレていません"
+                }
+              ],
+              "sfx": null
+            },
+            {
+              "no": 3,
+              "prompt": "Close-up on {uka} mid-rant, grabbing the fake tails, one tail popping off in her hand. Her face freezing as she realizes she said a forbidden word.",
+              "dialogue": [
+                {
+                  "speaker": "Uka",
+                  "text": "一本取れて八尾なの! 『きゅうび』って言ったからには…あっ"
+                }
+              ],
+              "sfx": "ポロッ"
+            }
+          ]
+        },
+        {
+          "page": 15,
+          "scene": "最終見開き。ダジャレ忍法大暴発、『シーン…』が床に落ちてYamaが食べる大オチ",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Gag disaster wide shot. {uka}'s real nine tails all drooping flat down (kyuubi on kyuujitsu). On the griddle, all takoyaki turned into bowls of clear soup. Both stunned with white eyes.",
+              "dialogue": [
+                {
+                  "speaker": "二人",
+                  "text": "きゅうびが休日に!? たこ焼きがお吸い…!?"
+                }
+              ],
+              "sfx": "ヒュンッ!!!"
+            },
+            {
+              "no": 2,
+              "prompt": "Surreal gag panel. In dead silence, the literal characters「シーン…」falling off and clattering onto the floor as physical objects. Everyone staring at them.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "もう何が何だか!!"
+                }
+              ],
+              "sfx": "カラン"
+            },
+            {
+              "no": 3,
+              "prompt": "Biggest gag close-up. {yama} picking up the fallen「シーン…」letters and eating them with a happy face. {uka}, {ibuki} and children all screaming in shock behind.",
+              "dialogue": [
+                {
+                  "speaker": "全員",
+                  "text": "食べたーーーっ!?"
+                }
+              ],
+              "sfx": "ぺろっ"
+            }
+          ]
+        },
+        {
+          "page": 16,
+          "scene": "最終見開き。ダジャレ忍法大暴発、『シーン…』が床に落ちてYamaが食べる大オチ",
+          "panels": [
+            {
+              "no": 1,
+              "prompt": "Grand zukkoke wide shot. Everyone flipped over on the ground, stall sign tilting, fox cubs cheerfully shouting irrelevantly, festival music notes floating in the air.",
+              "dialogue": [
+                {
+                  "speaker": "子狐",
+                  "text": "へい、おあいそ!"
+                }
+              ],
+              "sfx": "ズコーッ!!"
+            },
+            {
+              "no": 2,
+              "prompt": "Warm medium two-shot. {uka} and {ibuki} lying flipped over, looking at each other and bursting into laughter. Soft festival lantern light.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "…ねえUka。祭り、まだ始まったばっかりだよ"
+                },
+                {
+                  "speaker": "Uka",
+                  "text": "うん。次はもっと客を、キツネ(来つね)…"
+                }
+              ],
+              "sfx": null
+            },
+            {
+              "no": 3,
+              "prompt": "Final gag wide shot, pull-back view of the whole village. A hundred fox cubs pouring out in puffs of smoke everywhere, {ibuki} screaming, {uka} laughing, {yama} bouncing. Festival lanterns glowing. The end.",
+              "dialogue": [
+                {
+                  "speaker": "Ibuki",
+                  "text": "もう言うなあああああ!!!"
+                }
+              ],
+              "sfx": "ポンポンポンッ!!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

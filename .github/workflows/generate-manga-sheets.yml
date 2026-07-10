@@ -1,0 +1,67 @@
+name: Generate Manga Sheets (fal.ai)
+
+on:
+  workflow_dispatch:
+    inputs:
+      data:
+        description: 'data/内のネームJSON'
+        required: true
+        default: 'ninja_name_sheets.json'
+        type: string
+      chars:
+        description: 'data/内のキャラ設定JSON'
+        required: true
+        default: 'ninja_characters.json'
+        type: string
+      prefix:
+        description: '出力ファイル名の接頭辞（sheets/<prefix>_NN.png）'
+        required: true
+        default: 'sheet_ninja'
+        type: string
+      sheet:
+        description: 'このシート番号のみ生成（空欄で全シート）'
+        required: false
+        default: ''
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generate-manga-sheets
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install deps
+        run: pip install Pillow
+
+      - name: Generate sheets
+        env:
+          FAL_KEY: ${{ secrets.FAL_KEY }}
+        run: |
+          ARGS="--data '${{ inputs.data }}' --chars '${{ inputs.chars }}' --prefix '${{ inputs.prefix }}'"
+          if [ -n "${{ inputs.sheet }}" ]; then ARGS="$ARGS --sheet ${{ inputs.sheet }}"; fi
+          eval python3 scripts/generate_sheets.py $ARGS
+
+      - name: Commit generated sheets
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sheets/
+          if git diff --cached --quiet; then
+            echo "変更なし"
+          else
+            git commit -m "Generate manga sheets (${{ inputs.prefix }}) via fal.ai"
+            git push
+          fi
