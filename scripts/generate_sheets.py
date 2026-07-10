@@ -93,6 +93,38 @@ def build_sheet_prompt(pages, chars, style_suffix):
     return "\n".join(lines)
 
 
+def build_page_prompt(pg, chars, style_suffix, ref_names):
+    """1ページ（縦3コマ）単独の生成プロンプト。ページ単位生成はコマ数・キャラ再現が安定する。"""
+    lines = []
+    if ref_names:
+        lines.append(
+            f"CHARACTER REFERENCE IMAGES: {len(ref_names)} attached image(s) show the EXACT"
+            " official character designs. Match each character's face, hairstyle, hair color"
+            " value, eyes, ears/tail and outfit EXACTLY as shown, and draw the whole page in"
+            " the SAME art style as these references (chibi proportions, large head, thick"
+            " clean bold outlines, simple rounded shapes), converted to monochrome manga ink.")
+        for i, nm in enumerate(ref_names, 1):
+            lines.append(f"- attached image {i}: official design of {nm}")
+    lines += [
+        "ONE single vertical Japanese manga PAGE (one page only — NOT a contact sheet,"
+        " NOT a grid of pages).",
+        f"The page contains EXACTLY {len(pg['panels'])} panels stacked vertically top to"
+        " bottom, each framed with a black border and separated by thin white gutters.",
+    ]
+    pos = {1: "top", 2: "middle", 3: "bottom"}
+    for p in pg["panels"]:
+        lines.append(f"Panel {p['no']} ({pos.get(p['no'], p['no'])}):"
+                     f" {expand_chars(p['prompt'], chars)}")
+    lines += [
+        "ABSOLUTELY NO TEXT: no speech bubbles, no dialogue balloons, no written words,"
+        " no sound-effect lettering, no readable signs, no page numbers. Dialogue is added"
+        " later by software; characters act through expression and body language only.",
+        "Entirely monochrome black-and-white manga ink artwork.",
+        f"Art style: {style_suffix}",
+    ]
+    return "\n".join(lines)
+
+
 def image_data_uri(path, max_px=768):
     """参照画像を縮小してdata URIにする（editエンドポイント用）。"""
     import base64
@@ -103,13 +135,14 @@ def image_data_uri(path, max_px=768):
     return "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode()
 
 
-def fal_generate(model, prompt, key, image_urls=None):
+def fal_generate(model, prompt, key, image_urls=None,
+                 aspect_ratio=ASPECT_RATIO, resolution=RESOLUTION):
     """fal.ai queue API で生成し、画像バイト列を返す。image_urls指定時はeditを使う。"""
     base = f"https://queue.fal.run/{model}/edit" if image_urls else f"https://queue.fal.run/{model}"
     payload = {
         "prompt": prompt[:30000],
-        "aspect_ratio": ASPECT_RATIO,
-        "resolution": RESOLUTION,
+        "aspect_ratio": aspect_ratio,
+        "resolution": resolution,
         "num_images": 1,
         "output_format": "png",
     }
@@ -164,50 +197,51 @@ def main():
     chunks = [all_pages[i:i + pps] for i in range(0, len(all_pages), pps)]
 
     os.makedirs(os.path.join(ROOT, "sheets"), exist_ok=True)
+    # セル寸法（672:1180の漫画ページ比）。ページ毎に生成して4x4に合成する。
+    CELL_W, CELL_H = 768, 1350
     for n, pages in enumerate(chunks, 1):
         if args.sheet and n != args.sheet:
             continue
-        prompt = build_sheet_prompt(pages, chars, style)
+        print(f"[sheet {n}] per-page generation (P{pages[0]['page']}-P{pages[-1]['page']}) ...",
+              flush=True)
+        sheet_img = Image.new("L", (CELL_W * COLS, CELL_H * ROWS), 255)
+        for k, pg in enumerate(pages):
+            # このページに登場するキャラの参照画像（最大4枚）
+            used = sorted({m for p in pg["panels"]
+                           for m in re.findall(r"\{(\w+)\}", p["prompt"])})
+            ref_paths, ref_names = [], []
+            for cid in used:
+                c = chars.get(cid)
+                if not (c and c.get("ref")):
+                    continue
+                rp = os.path.join(ROOT, c["ref"])
+                if os.path.exists(rp) and rp not in ref_paths and len(ref_paths) < 4:
+                    ref_paths.append(rp)
+                    ref_names.append(c.get("name", cid))
+            image_urls = [image_data_uri(rp) for rp in ref_paths] or None
+            prompt = build_page_prompt(pg, chars, style, ref_names)
 
-        # 登場キャラの参照画像（characters.jsonの"ref"）を最大4枚まで添付
-        used = sorted({m for pg in pages for p in pg["panels"]
-                       for m in re.findall(r"\{(\w+)\}", p["prompt"])})
-        ref_paths, ref_names = [], []
-        for cid in used:
-            c = chars.get(cid)
-            if not (c and c.get("ref")):
-                continue
-            rp = os.path.join(ROOT, c["ref"])
-            if os.path.exists(rp) and rp not in ref_paths and len(ref_paths) < 4:
-                ref_paths.append(rp)
-                ref_names.append(c.get("name", cid))
-        image_urls = None
-        if ref_paths:
-            image_urls = [image_data_uri(rp) for rp in ref_paths]
-            ref_lines = [
-                f"CHARACTER REFERENCE IMAGES: {len(ref_paths)} attached image(s) show the EXACT official designs.",
-                "ART STYLE: the entire sheet must be drawn in the SAME art style as the attached"
-                " reference images — chibi proportions (large head, small body), thick clean bold"
-                " outlines, simple rounded shapes. Convert that style to monochrome manga ink."]
-            for i, nm in enumerate(ref_names, 1):
-                ref_lines.append(f"- attached image {i}: official design of {nm} (match face, hair, ears/tail, outfit and colors exactly, but render in monochrome manga ink)")
-            prompt = "\n".join(ref_lines) + "\n\n" + prompt
-            print(f"[sheet {n}] ref images: {', '.join(ref_names)}", flush=True)
-
-        print(f"[sheet {n}] generating (P{pages[0]['page']}-P{pages[-1]['page']}) ...", flush=True)
-        for attempt in range(3):
-            try:
-                raw = fal_generate(args.model, prompt, key, image_urls)
-                break
-            except Exception as e:
-                print(f"[sheet {n}] attempt {attempt + 1} failed: {e}", flush=True)
-                if attempt == 2:
-                    raise
-                time.sleep(10)
-        img = Image.open(io.BytesIO(raw)).convert("L")
+            for attempt in range(3):
+                try:
+                    raw = fal_generate(args.model, prompt, key, image_urls,
+                                       aspect_ratio="9:16", resolution="1K")
+                    break
+                except Exception as e:
+                    print(f"[sheet {n}] page {pg['page']} attempt {attempt + 1} failed: {e}",
+                          flush=True)
+                    if attempt == 2:
+                        raise
+                    time.sleep(10)
+            page_img = Image.open(io.BytesIO(raw)).convert("L").resize(
+                (CELL_W, CELL_H), Image.LANCZOS)
+            # 右綴じ: 各行を右端から左へ埋める（reader.htmlのlocate()と同じ写像）
+            row, col = k // COLS, COLS - 1 - (k % COLS)
+            sheet_img.paste(page_img, (col * CELL_W, row * CELL_H))
+            print(f"[sheet {n}] page {pg['page']} done"
+                  + (f" (refs: {', '.join(ref_names)})" if ref_names else ""), flush=True)
         out_path = os.path.join(ROOT, "sheets", f"{args.prefix}_{n:02d}.png")
-        img.save(out_path, optimize=True)
-        print(f"[sheet {n}] saved -> {out_path} ({img.size[0]}x{img.size[1]})")
+        sheet_img.save(out_path, optimize=True)
+        print(f"[sheet {n}] saved -> {out_path} ({sheet_img.size[0]}x{sheet_img.size[1]})")
 
 
 if __name__ == "__main__":

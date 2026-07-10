@@ -1,6 +1,6 @@
 /* 購入者ゲート(自動生成: scripts/build-members.mjs) */
 (function(){
-  var CFG = { salt: "xo6Bf8FZTlprDudfOOjcrg==", iter: 310000, verify: "Yx1easTI8H76kFd3gSRIXMLV+s9uu2kAj9CRr9DiXCY=" };
+  var CFG = { salt: "u8FdDlcE+vCwKwcXdO7REA==", iter: 310000, verify: "2vJFiQfxeyMEEN0/KMu1W6gqoLT7iq8u7S8WEoB35Aw=" };
   var page = location.pathname.split('/').pop() || 'index.html';
   function toGate(){ location.replace('members.html?next=' + encodeURIComponent(page)); }
   try {
