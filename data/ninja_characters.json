@@ -1,0 +1,157 @@
+{
+  "style_suffix": "clean bold manga ink lineart, screentone shading, dynamic ninja action framing, CryptoNinja fan-art (guideline-compliant), monochrome",
+  "characters": {
+    "jin": {
+      "name": "Jin",
+      "anchor_prompt": "male master ninja, full black/navy shinobi outfit, hood covering most of face, headband with three diamond motifs, sharp angular eyes, cloth mask, chainmail-mesh chest and wrists, grey vambraces, large shuriken, gold-hilted katana on back, fire (Katon) energy"
+    },
+    "sakuya": {
+      "name": "Sakuya",
+      "anchor_prompt": "female ninja, long black high-ponytail tied with a small red ribbon, straight blunt bangs, pink/magenta headband tied at the back with trailing ends, large grey eyes, blushing cheeks, gentle smile, no face mask (face visible), pink kimono-style shinobi wrap top with olive-gold sash tied in a bow, dark grey vambraces, black thigh-high socks, holding a large shuriken, gold-hilted katana with diamond-pattern scabbard on back, summoning (Kuchiyose) aura"
+    },
+    "kohaku": {
+      "name": "Kohaku",
+      "anchor_prompt": "female ninja, black high-ponytail tied with a green ribbon, wearing a white fox (kitsune) mask with red ears and red eye markings, turquoise-blue teardrop/streak patterns and red mouth on the mask, laughing curved eyes, purple headband tied at the back with trailing ends, purple kimono-style shinobi wrap top, blue-purple sash, dark grey vambraces, grey thigh-high socks, wielding a bare katana with gold guard and diamond-pattern hilt, transformation (Kawarimi) jutsu, dark Fuma-clan aesthetic"
+    },
+    "shiba": {
+      "name": "Shiba",
+      "anchor_prompt": "anthropomorphic shiba-inu dog ninja, brown fur with white muzzle, cheeks, eyebrows and paws, black nose, upright ears, lightning/heart-shaped white brow markings, green headband with grey metal plate bearing three diamond motifs, green kimono-style shinobi outfit, black belt, gold-hilted katana with diamond-pattern scabbard on back, white paw hands, water (Suiton) jutsu, karate martial-arts nature"
+    },
+    "kinki_kana_oni": {
+      "name": "Kinki Kana-Oni",
+      "anchor_prompt": "legendary blacksmith ninja wearing a red oni demon mask with two golden horns, red eyes, fangs and an angry grimace, dark-brown hood with pointed ear-like flaps and a grey-plate headband, dark teal/green shinobi outfit with a fur-lined collar (mantle) and brown cord ties, dark grey vambraces, grey belt, holding a large chef's knife (deba/gyuto cleaver), gold (Kinton) blacksmith energy, rugged aged aura"
+    },
+    "oto": {
+      "name": "Oto",
+      "anchor_prompt": "cheerful female ninja with pink rabbit ears (white inner ears with black markings), short pink bob with blunt bangs, golden sparkle stars in her eyes, wide happy open-mouth smile, blushing cheeks, green headband tied at the back, pink kimono-style shinobi wrap top with a small rabbit emblem on the chest, magenta sash tied in a bow, fluffy rabbit tail, diamond-pattern-scabbard katana on back, holding a green sake bottle/flask with a label, black thigh-high socks, talkative lively personality, summoning (Kuchiyose) of rabbits"
+    },
+    "rotten": {
+      "name": "Rotten",
+      "anchor_prompt": "loyal male ninja, poison mist, poison arrow, dark Fuma attire, solemn face"
+    },
+    "nagisa": {
+      "name": "Nagisa",
+      "anchor_prompt": "shy gentle female ninja, shadow-clone (Kagebunshin) illusions, scroll, caring demeanor"
+    },
+    "anne": {
+      "name": "Anne",
+      "anchor_prompt": "cheerful female ninja with huge appetite, eating skewered dango, shadow-stitching (Kagenui) jutsu"
+    },
+    "dan": {
+      "name": "Dan",
+      "anchor_prompt": "powerful ninja, glowing laser sword, flash-laser energy, sci-fi Fuma armor"
+    },
+    "hinanojoh": {
+      "name": "Hinanojoh",
+      "anchor_prompt": "brave bombing-expert ninja, horoku bomb, fire (Katon) burst, turns into a small chick when distracted"
+    },
+    "torika": {
+      "name": "Torika",
+      "anchor_prompt": "nature-loving female ninja, vines and wild plants, poison shuriken, earthy green tones"
+    },
+    "atoza": {
+      "name": "Atoza",
+      "anchor_prompt": "noble head of Fuma clan, imposing yet kind, heavy club, Omagatoki disaster aura, regal dark look"
+    },
+    "hayate": {
+      "name": "Hayate",
+      "anchor_prompt": "sharp-eyed male ninja with hawk-vision, falcon partner Narukami, keen focused look"
+    },
+    "uka": {
+      "name": "Uka",
+      "anchor_prompt": "fox-summoning female ninja, nine-tailed fox flame aura, protective amulet, warm tones"
+    },
+    "ganzi": {
+      "name": "Ganzi",
+      "anchor_prompt": "elderly advisory ninja, illusion-of-darkness jutsu, japamala prayer beads, wise look"
+    },
+    "yui": {
+      "name": "Yui",
+      "anchor_prompt": "reliable female ninja, cherry-blossom flurry jutsu, scroll, elegant pink petals"
+    },
+    "fuuta": {
+      "name": "Fuuta",
+      "anchor_prompt": "cheeky peace-loving male ninja, sake bottle, wind (Fuuton) jutsu, Masamune sword, relaxed"
+    },
+    "rei": {
+      "name": "Rei",
+      "anchor_prompt": "protective maternal female ninja, self-sacrifice aura, aikuchi dagger, dignified guardian"
+    },
+    "sattva": {
+      "name": "Sattva",
+      "anchor_prompt": "divine being from Heavenly Realm, nirvana aura, glowing halo of light, ethereal celestial"
+    },
+    "nekomata": {
+      "name": "Nekomata",
+      "anchor_prompt": "cat-spirit (nekomata) ninja who loves fish, shadow clone, bewitched Muramasa sword, mischievous"
+    },
+    "janome": {
+      "name": "Janome (& Orochi)",
+      "anchor_prompt": "female ninja with serpent partner Orochi, summoning jutsu, poison shuriken, sleek dangerous"
+    },
+    "benten": {
+      "name": "Benten",
+      "anchor_prompt": "shamisen-playing female ninja, mantra illusion that activates when singing, kimono-shinobi mix"
+    },
+    "karma": {
+      "name": "Karma",
+      "anchor_prompt": "captivating male ninja with red eyes releasing hidden desires, chain sickle, realm-of-sin aura"
+    },
+    "ichiya": {
+      "name": "Ichiya",
+      "anchor_prompt": "rainbow-calligraphy ninja, writing brush, cryptogram-of-ninja jutsu, colorful ink swirls"
+    },
+    "nemu": {
+      "name": "NEMU",
+      "anchor_prompt": "free-spirited traveling female painter-ninja, painting brush, colorful realm jutsu, companions Piyochi and Usabi"
+    },
+    "karura": {
+      "name": "Karura",
+      "anchor_prompt": "quiet guardian female ninja with angelic wings, lightning (Raiton) jutsu, deep-mountain setting"
+    },
+    "xiaolan": {
+      "name": "Xiaolan (& Lee Lee)",
+      "anchor_prompt": "female ninja doing tai chi, summoning pandas, partner LeeLee turning into giant panda"
+    },
+    "aum": {
+      "name": "Aum",
+      "anchor_prompt": "cheeky young male ninja, transforms into raging titan when angry, heavy club"
+    },
+    "konga": {
+      "name": "Konga",
+      "anchor_prompt": "strong female trainer ninja for kunoichi, bare-knuckle stance, shadow clone, athletic"
+    },
+    "shion": {
+      "name": "Shion",
+      "anchor_prompt": "lonely female ninja who lost her parents, iron claws, wild-thistle jutsu, guarded sorrowful look"
+    },
+    "seori": {
+      "name": "Seori (& Mitama)",
+      "anchor_prompt": "female ninja named after Seoritsuhime, wooden mallet, partner Mitama, mythic sacred air"
+    },
+    "quon": {
+      "name": "Quon",
+      "anchor_prompt": "ageless enigmatic male ninja calling himself 'washi', cat's-eye future-choosing power, floating onibi flames"
+    },
+    "magoichi": {
+      "name": "Magoichi",
+      "anchor_prompt": "pirate-like leader of Saika clan, dual pistols, one-shot sure-hit, sea and ship background, bold"
+    },
+    "ibuki": {
+      "name": "Ibuki (& Yama)",
+      "anchor_prompt": "immature young ninja with cute shikigami Yama, Taizan-Fukun ritual, talisman paper"
+    },
+    "oen": {
+      "name": "Oen",
+      "anchor_prompt": "female ninja from Saika training in Koka, thread-vein (Ito Myaku) jutsu, Japanese portable storage, earnest"
+    },
+    "izuna": {
+      "name": "Izuna",
+      "anchor_prompt": "witch-like female ninja, Izuna witchcraft, no weapon relying on sorcery, older sister of Uka"
+    },
+    "sekishusai": {
+      "name": "Sekishusai",
+      "anchor_prompt": "legendary swordmaster ninja, no-sword technique (Muto Dori), the blade Oodenta, dignified master"
+    }
+  }
+}

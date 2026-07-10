@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="js/gate.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>シートリーダー</title>
+<script>
+// 作品プロファイル: ?work= で切替(既定: omukae のサンプル)。
+// クリプト忍者のシートは studio.html でネームJSONを作り、
+// scripts/generate_sheets.py --data ninja_name_sheets.json で生成すると ?work=ninja で読める
+const WORKS={
+  omukae:{title:'おむかえのお願い(サンプル)', data:'data/omukae_name_sheets.json', prefix:'sheets/sheet_omukae_',
+          theme:{accent:'#FF6B81',accentDeep:'#F04A62',gold:'#FFC53D'}},
+  ninja: {title:'クリプト忍者',     data:'data/ninja_name_sheets.json',  prefix:'sheets/sheet_ninja_',
+          theme:{accent:'#4D96FF',accentDeep:'#3B7DE8',gold:'#FFD93D'}}
+};
+const WORK=WORKS[new URLSearchParams(location.search).get('work')]||WORKS.omukae;
+for(const i of ['01','02']){
+  const l=document.createElement('link');
+  l.rel='preload'; l.as='image'; l.href=`${WORK.prefix}${i}.webp`;
+  document.head.appendChild(l);
+}
+</script>
+<style>
+  :root{--ink:#33303E;--paper:#FFF7E8;--accent:#FF6B81;--accent-deep:#F04A62;--gold:#FFC53D;--line:#E8DECB}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);background-image:radial-gradient(rgba(255,107,129,.10) 2.5px,transparent 2.5px);background-size:26px 26px;color:var(--ink);font-family:"Hiragino Maru Gothic ProN","HGMaruGothicMPRO","Yu Gothic","Noto Sans JP",sans-serif;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+  header{background:linear-gradient(120deg,var(--accent),var(--accent-deep));padding:10px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:4px solid var(--gold);box-shadow:0 3px 12px rgba(240,74,98,.25)}
+  header h1{font-size:16px;font-weight:900;letter-spacing:.08em;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.15)}
+  .controls{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  select,button,input[type=file]{font-family:inherit;font-size:12px;font-weight:700;background:#fff;color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:5px 14px;cursor:pointer;box-shadow:0 2px 0 var(--ink);transition:transform .08s,box-shadow .08s}
+  button:hover,select:hover{transform:translateY(-2px);box-shadow:0 4px 0 var(--ink)}
+  button:active{transform:translateY(1px);box-shadow:0 1px 0 var(--ink)}
+  button.active{background:var(--gold);color:var(--ink);border-color:var(--ink)}
+  input[type=file]{max-width:220px;box-shadow:none}
+
+  main{flex:1;display:grid;place-items:center;padding:12px;min-height:0;user-select:none}
+  .book{display:none;height:100%;max-width:100%;gap:0;justify-content:center}
+  .book.show{display:flex}
+  .page{height:100%;aspect-ratio:672/1180;background-repeat:no-repeat;box-shadow:0 8px 28px rgba(51,48,62,.28);position:relative;background-color:#fff;overflow:hidden;border-radius:6px;outline:3px solid var(--ink)}
+  .page .pn{position:absolute;bottom:4px;width:100%;text-align:center;font-size:11px;font-weight:700;color:var(--accent-deep);letter-spacing:.15em;z-index:3}
+  .page.blank{background:transparent;box-shadow:none;outline:none}
+  /* セリフオーバーレイ */
+  .dlg{position:absolute;left:0;right:0;padding:3px 6px;display:flex;flex-direction:row-reverse;justify-content:flex-start;align-items:flex-start;gap:5px;z-index:2;pointer-events:none}
+  .dlg .bubble{height:auto;max-height:100%}
+  :root{--bubble-font:"Hiragino Maru Gothic ProN","HGMaruGothicMPRO","Yu Gothic","Noto Sans JP","IPAGothic",sans-serif;--fs:1}
+  .bubble{position:relative;writing-mode:vertical-rl;text-orientation:mixed;color:#111;padding:22px 15px;font-family:var(--bubble-font);font-size:calc(clamp(10px,1.9vh,17px)*var(--fs));line-height:1.4;letter-spacing:.06em;filter:drop-shadow(0 2px 3px rgba(51,48,62,.35))}
+  .bubble>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:-1}
+  .bubble .sp{display:block;color:var(--accent-deep);font-size:.65em;font-weight:700;margin-bottom:.5em}
+  .bubble.title{padding:4px;color:#fff;font-size:clamp(15px,3vh,28px);font-weight:900;letter-spacing:.25em;text-shadow:0 0 8px rgba(51,48,62,.9),0 0 3px rgba(51,48,62,.9);filter:none}
+  .bubble.caption_small,.bubble.caption{writing-mode:horizontal-tb;max-width:88%;border-radius:8px;background:rgba(51,48,62,.85);color:#FFF3D6;border:2px solid #fff;font-size:clamp(9px,1.4vh,13px);padding:3px 8px;filter:none}
+  .bubble.document{writing-mode:horizontal-tb;max-width:88%;border-radius:8px;background:rgba(255,247,232,.96);border:2px solid var(--ink);font-size:clamp(9px,1.45vh,13px);padding:3px 8px;filter:none}
+  .bubble.mono,.bubble.whisper{color:#333;font-style:normal}
+  .bubble.shout{font-weight:900}
+  .sfx{position:absolute;right:4px;color:#fff;font-weight:900;font-size:clamp(9px,1.6vh,15px);writing-mode:vertical-rl;text-shadow:0 0 6px rgba(51,48,62,.9),0 0 2px rgba(51,48,62,.9);z-index:2;pointer-events:none;letter-spacing:.1em}
+  /* 16p一覧 */
+  .sheetview{display:none;height:100%;max-width:100%;aspect-ratio:2688/4736}
+  .sheetview.show{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);gap:6px;direction:rtl}
+  .sheetview .cell{direction:ltr;position:relative;background-repeat:no-repeat;border:2px solid var(--ink);border-radius:6px;cursor:pointer;background-color:#fff;transition:transform .08s}
+  .sheetview .cell:hover{transform:scale(1.03);border-color:var(--accent)}
+  .sheetview .cell span{position:absolute;bottom:3px;left:3px;font-size:10px;font-weight:700;color:#fff;background:var(--accent);padding:1px 8px;border-radius:10px;pointer-events:none}
+  .sheetview .cell.current{outline:3px solid var(--gold)}
+
+  .tapzone{position:fixed;top:110px;bottom:50px;width:28%;z-index:5;cursor:pointer}
+  #tapL{left:0}#tapR{right:0}
+  footer{padding:8px;text-align:center;font-size:12px;font-weight:700;letter-spacing:.15em;color:var(--accent-deep);border-top:2px dashed var(--accent);background:#fff}
+  .empty-msg{color:#A89880;letter-spacing:.15em;font-size:13px;font-weight:700;text-align:center;line-height:2}
+</style>
+</head>
+<body>
+<header>
+  <h1 id="ttl">📖 シートリーダー</h1>
+  <div class="controls">
+    <select id="workSel" title="作品切替">
+      <option value="omukae">おむかえのお願い(サンプル)</option>
+      <option value="ninja">クリプト忍者</option>
+    </select>
+    <button id="mSpread" class="active">見開き</button>
+    <button id="mSingle">単ページ</button>
+    <button id="mSheet">16p一覧</button>
+    <button id="mDlg" class="active">セリフ</button>
+    <select id="fontSel" title="セリフの書体">
+      <option value="mincho">明朝</option>
+      <option value="gothic">ゴシック</option>
+      <option value="maru">丸ゴシック</option>
+      <option value="kaku">太ゴシック</option>
+    </select>
+    <select id="sizeSel" title="セリフの文字サイズ">
+      <option value="0.85">文字 小</option>
+      <option value="1" selected>文字 中</option>
+      <option value="1.2">文字 大</option>
+      <option value="1.4">文字 特大</option>
+    </select>
+    <input type="file" id="files" accept="image/*" multiple title="16pシート画像を章順に選択">
+    <input type="file" id="dlgFile" accept=".json,application/json" title="セリフJSON(ネームJSON)を選択">
+  </div>
+</header>
+<main id="main">
+  <div class="empty-msg">sheets/ フォルダの生成済みシートを読込中…<br>または、16ページ分を1枚にまとめたシート画像を選択してください<br>(1枚=4列×4行=16p/複数枚可・ファイル名順)</div>
+  <div class="book" id="book"></div>
+  <div class="sheetview" id="sheet"></div>
+</main>
+<div class="tapzone" id="tapL" title="次へ"></div>
+<div class="tapzone" id="tapR" title="前へ"></div>
+<footer id="foot">右から左へ読みます | 左タップ・←キー で次のページ</footer>
+
+<script>
+const COLS=4, ROWS=4, PPS=COLS*ROWS;
+// 作品プロファイルを反映(タイトル・配色)
+document.getElementById('ttl').textContent=`📖 『${WORK.title}』`;
+document.title=`シートリーダー — ${WORK.title}`;
+for(const [k,v] of Object.entries({'--accent':WORK.theme.accent,'--accent-deep':WORK.theme.accentDeep,'--gold':WORK.theme.gold})){
+  document.documentElement.style.setProperty(k,v);
+}
+// 作品切替
+const workSel=document.getElementById('workSel');
+workSel.value=new URLSearchParams(location.search).get('work')||'omukae';
+workSel.onchange=()=>{location.search='?work='+workSel.value;};
+let sheets=[];        // 画像URLの配列(1枚=16p)
+let total=0;          // 総ページ数
+let cur=1;            // 現在ページ(1-based)
+let mode='spread';    // spread | single | sheet
+let showDlg=true;
+let pageData={};      // page番号 → {panels:[{dialogue,sfx},...]}
+
+// page n(1-based) → {sheetIdx, col(左起点0-4), row}
+function locate(n){
+  const i=n-1, s=Math.floor(i/PPS), k=i%PPS;
+  const row=Math.floor(k/COLS), colFromRight=k%COLS;
+  return {s, col:COLS-1-colFromRight, row};
+}
+function paint(el,n){
+  const {s,col,row}=locate(n);
+  el.style.backgroundImage=`url(${sheets[s]})`;
+  el.style.backgroundSize=`${COLS*100}% ${ROWS*100}%`;
+  el.style.backgroundPosition=`${col/(COLS-1)*100}% ${row/(ROWS-1)*100}%`;
+}
+// 手描き風の吹き出しSVGを生成(type: normal=波打つ楕円+しっぽ, shout=トゲトゲ, mono/whisper=雲形)
+function bubbleSvg(type, seed){
+  const NS='http://www.w3.org/2000/svg';
+  const svg=document.createElementNS(NS,'svg');
+  svg.setAttribute('viewBox','0 0 100 100');
+  svg.setAttribute('preserveAspectRatio','none');
+  const rnd=(i)=>{const x=Math.sin(seed*127.1+i*311.7)*43758.5453;return x-Math.floor(x);};
+  const cx=50,cy=50;
+  let d='';
+  if(type==='mono'||type==='whisper'){
+    const n=14,pts=[];
+    for(let i=0;i<n;i++){
+      const a=i/n*Math.PI*2;
+      pts.push([cx+Math.cos(a)*46,cy+Math.sin(a)*47]);
+    }
+    d='M'+pts[0][0].toFixed(1)+' '+pts[0][1].toFixed(1);
+    for(let i=0;i<n;i++){ // 外向きの円弧を連ねて雲形に
+      const p=pts[i],q=pts[(i+1)%n];
+      const mx=(p[0]+q[0])/2,my=(p[1]+q[1])/2;
+      const ox=(mx-cx)*.34,oy=(my-cy)*.34;
+      d+=`Q${(mx+ox).toFixed(1)} ${(my+oy).toFixed(1)} ${q[0].toFixed(1)} ${q[1].toFixed(1)}`;
+    }
+    d+='Z';
+  }else{ // normal: 半径を揺らした楕円をなめらかに
+    const n=16,pts=[];
+    for(let i=0;i<n;i++){
+      const a=i/n*Math.PI*2-Math.PI/2;
+      const r=47+(rnd(i)-.5)*6;
+      pts.push([cx+Math.cos(a)*r,cy+Math.sin(a)*r*1.04]);
+    }
+    const mid=(p,q)=>[(p[0]+q[0])/2,(p[1]+q[1])/2];
+    let m=mid(pts[n-1],pts[0]);
+    d='M'+m[0].toFixed(1)+' '+m[1].toFixed(1);
+    for(let i=0;i<n;i++){
+      const p=pts[i],q=pts[(i+1)%n],m2=mid(p,q);
+      d+=`Q${p[0].toFixed(1)} ${p[1].toFixed(1)} ${m2[0].toFixed(1)} ${m2[1].toFixed(1)}`;
+    }
+    d+='Z';
+  }
+  const path=document.createElementNS(NS,'path');
+  path.setAttribute('d',d);
+  const dark=(type==='mono'||type==='whisper');
+  path.setAttribute('fill','#fff');
+  path.setAttribute('stroke','#33303E');
+  path.setAttribute('stroke-width',type==='shout'?'2.6':'1.8');
+  if(dark) path.setAttribute('stroke-dasharray','5 3');
+  path.setAttribute('vector-effect','non-scaling-stroke');
+  svg.appendChild(path);
+  if(type==='normal'){ // しっぽ(左下向き)
+    const tail=document.createElementNS(NS,'path');
+    tail.setAttribute('d','M30 88 Q20 99 8 104 Q19 96 22 84 Z');
+    tail.setAttribute('fill','#fff');
+    tail.setAttribute('stroke','#33303E');
+    tail.setAttribute('stroke-width','1.8');
+    tail.setAttribute('stroke-linejoin','round');
+    tail.setAttribute('vector-effect','non-scaling-stroke');
+    svg.appendChild(tail);
+  }
+  return svg;
+}
+// セリフ・SFXをページ要素に重ねる(パネルは縦積み等分と仮定)
+function overlay(el,n){
+  const pd=pageData[n]; if(!pd||!showDlg) return;
+  const cnt=pd.panels.length;
+  pd.panels.forEach((pn,idx)=>{
+    const top=idx/cnt*100;
+    if(pn.dialogue&&pn.dialogue.length){
+      const box=document.createElement('div'); box.className='dlg';
+      box.style.top=top+'%'; box.style.height=(100/cnt)+'%';
+      for(const d of pn.dialogue){
+        const type=d.type||'normal';
+        const b=document.createElement('div'); b.className='bubble '+type;
+        if(['normal','shout','mono','whisper'].includes(type)){
+          b.appendChild(bubbleSvg(type==='whisper'?'mono':type, (d.text||'').length+n*7));
+        }
+        if(d.type!=='title'&&d.speaker&&!['紙面','タイトル'].includes(d.speaker)){
+          const sp=document.createElement('span'); sp.className='sp'; sp.textContent=d.speaker; b.appendChild(sp);
+        }
+        b.appendChild(document.createTextNode(d.text));
+        box.appendChild(b);
+      }
+      el.appendChild(box);
+    }
+    if(pn.sfx){
+      const s=document.createElement('div'); s.className='sfx';
+      s.style.top=(top+2)+'%'; s.textContent=pn.sfx;
+      el.appendChild(s);
+    }
+  });
+}
+
+const book=document.getElementById('book'), sheetV=document.getElementById('sheet'),
+      foot=document.getElementById('foot'), emptyMsg=document.querySelector('.empty-msg');
+
+function render(){
+  if(!total){return}
+  emptyMsg.style.display='none';
+  book.classList.toggle('show', mode!=='sheet');
+  sheetV.classList.toggle('show', mode==='sheet');
+
+  if(mode==='sheet'){
+    const s=locate(cur).s;
+    sheetV.innerHTML='';
+    for(let k=0;k<PPS;k++){
+      const n=s*PPS+k+1; if(n>total) break;
+      const c=document.createElement('div'); c.className='cell'+(n===cur?' current':'');
+      paint(c,n);
+      const t=document.createElement('span'); t.textContent=n+'p'; c.appendChild(t);
+      c.onclick=e=>{e.stopPropagation(); cur=n; mode='spread'; setBtns(); render();};
+      sheetV.appendChild(c);
+    }
+    foot.textContent=`シート ${s+1} / ${sheets.length} (${s*PPS+1}〜${Math.min((s+1)*PPS,total)}p) | セルをタップで見開きへ`;
+    return;
+  }
+
+  book.innerHTML='';
+  if(mode==='single'){
+    book.appendChild(mk(cur,false));
+    foot.textContent=`${cur} / ${total} ページ | 左タップ・←キーで次へ`;
+  }else{
+    // 見開き: 右=奇数p, 左=偶数p
+    const right=(cur%2===1)?cur:cur-1, left=right+1;
+    book.appendChild(mk(left,  left>total));   // DOM順: 左が先
+    book.appendChild(mk(right, false));
+    foot.textContent=`${right}${left<=total?'-'+left:''} / ${total} ページ | 左タップ・←キーで次の見開き`;
+  }
+  function mk(n,blank){
+    const d=document.createElement('div'); d.className='page'+(blank?' blank':'');
+    if(!blank){
+      paint(d,n); overlay(d,n);
+      const s=document.createElement('div'); s.className='pn'; s.textContent=n; d.appendChild(s);
+    }
+    return d;
+  }
+}
+
+function step(dir){ // dir +1=次(左方向) -1=前
+  if(!total) return;
+  if(mode==='sheet'){ cur=Math.min(Math.max(cur+dir*PPS,1),total); }
+  else if(mode==='single'){ cur=Math.min(Math.max(cur+dir,1),total); }
+  else{ cur=Math.min(Math.max(cur+dir*2,1),total); }
+  render();
+}
+document.getElementById('tapL').onclick=()=>step(1);
+document.getElementById('tapR').onclick=()=>step(-1);
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowLeft')step(1);
+  if(e.key==='ArrowRight')step(-1);
+});
+let sx=null;
+document.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+document.addEventListener('touchend',e=>{
+  if(sx===null)return; const dx=e.changedTouches[0].clientX-sx; sx=null;
+  if(Math.abs(dx)>60) step(dx>0?1:-1); // 右スワイプ=次
+},{passive:true});
+
+function setBtns(){
+  for(const [id,m] of [['mSpread','spread'],['mSingle','single'],['mSheet','sheet']]){
+    document.getElementById(id).classList.toggle('active',mode===m);
+  }
+  document.getElementById('mDlg').classList.toggle('active',showDlg);
+}
+for(const [id,m] of [['mSpread','spread'],['mSingle','single'],['mSheet','sheet']]){
+  document.getElementById(id).onclick=()=>{mode=m;setBtns();render();};
+}
+document.getElementById('mDlg').onclick=()=>{showDlg=!showDlg;setBtns();render();};
+
+// セリフの書体・文字サイズ切替(localStorageに保存)
+const FONTS={
+  mincho:'"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP","Noto Serif CJK JP","IPAexMincho","IPAGothic",serif',
+  gothic:'"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP","Noto Sans CJK JP","IPAGothic",sans-serif',
+  maru:'"Hiragino Maru Gothic ProN","HGMaruGothicMPRO","Yu Gothic","Noto Sans JP","IPAGothic",sans-serif',
+  kaku:'"Hiragino Sans W7","Yu Gothic",bold,"Noto Sans JP","IPAGothic",sans-serif'
+};
+const fontSel=document.getElementById('fontSel'), sizeSel=document.getElementById('sizeSel');
+function applyTextStyle(){
+  document.documentElement.style.setProperty('--bubble-font',FONTS[fontSel.value]||FONTS.maru);
+  document.documentElement.style.setProperty('--fs',sizeSel.value);
+  localStorage.setItem('bubbleFont',fontSel.value);
+  localStorage.setItem('bubbleSize',sizeSel.value);
+}
+fontSel.value=localStorage.getItem('bubbleFont')||'maru';
+sizeSel.value=localStorage.getItem('bubbleSize')||'1';
+fontSel.onchange=sizeSel.onchange=applyTextStyle;
+applyTextStyle();
+
+document.getElementById('files').onchange=e=>{
+  const fs=[...e.target.files].sort((a,b)=>a.name.localeCompare(b.name,'ja',{numeric:true}));
+  sheets=fs.map(f=>URL.createObjectURL(f));
+  setTotal();
+  render();
+};
+
+function setTotal(){
+  // 最終シートの実ページ数(ネームJSONの総ページ数)を反映
+  total=sheets.length*PPS;
+  if(lastSheetPages!==null && sheets.length===expectedSheets){
+    total=(sheets.length-1)*PPS+lastSheetPages;
+  }
+  cur=Math.min(cur,total)||1;
+}
+
+// ネームJSON(セリフ)の取り込み。生成に使うネームJSONをそのまま渡せる
+let lastSheetPages=null, expectedSheets=null;
+function applyNameJson(nm){
+  pageData={};
+  let maxPage=0;
+  for(const sh of (nm.sheets||[])){
+    for(const pg of (sh.pages||[])){
+      if(typeof pg.page!=='number') continue; // "49-60"等の空白セル指定
+      pageData[pg.page]={panels:(pg.panels||[]).map(p=>({dialogue:p.dialogue||[],sfx:p.sfx||null}))};
+      maxPage=Math.max(maxPage,pg.page);
+    }
+  }
+  // 総ページ数はネームの最大ページ番号から決める(最終シートの端数対応)
+  lastSheetPages=maxPage?((maxPage-1)%PPS)+1:null;
+  expectedSheets=maxPage?Math.ceil(maxPage/PPS):null;
+  if(nm.title) document.title='シートリーダー — '+nm.title;
+  if(total){ setTotal(); render(); }
+}
+document.getElementById('dlgFile').onchange=async e=>{
+  const f=e.target.files[0]; if(!f) return;
+  try{ applyNameJson(JSON.parse(await f.text())); }
+  catch(err){ alert('JSONを読み込めませんでした: '+err.message); }
+};
+// ドラッグ&ドロップ: 画像=シート差し替え / .json=セリフ差し替え(同時も可)
+document.addEventListener('dragover',e=>e.preventDefault());
+document.addEventListener('drop',async e=>{
+  e.preventDefault();
+  const fs=[...e.dataTransfer.files];
+  const imgs=fs.filter(f=>f.type.startsWith('image/'))
+               .sort((a,b)=>a.name.localeCompare(b.name,'ja',{numeric:true}));
+  const json=fs.find(f=>f.name.endsWith('.json'));
+  if(json){ try{ applyNameJson(JSON.parse(await json.text())); }catch(err){ alert('JSONを読み込めませんでした: '+err.message); } }
+  if(imgs.length){ sheets=imgs.map(f=>URL.createObjectURL(f)); cur=1; setTotal(); }
+  if(json||imgs.length) render();
+});
+(async function init(){
+  try{
+    const res=await fetch(WORK.data);
+    if(res.ok) applyNameJson(await res.json());
+  }catch(_){/* file://直開き等。セリフ無しで続行 */}
+  // sheets/sheet_*_01.webp(なければ.png)を並列で自動読込。
+  // 読めたシートの先頭連続分から順次表示する(全枚数を待たない)
+  const MAX=12, slots=new Array(MAX).fill(undefined);
+  const probe=url=>new Promise(r=>{const im=new Image();im.onload=()=>r(true);im.onerror=()=>r(false);im.src=url;});
+  const sync=()=>{
+    const found=[];
+    for(const s of slots){ if(typeof s==='string') found.push(s); else break; }
+    if(found.length&&found.length!==sheets.length){ sheets=found; setTotal(); render(); }
+  };
+  slots.forEach(async(_,i)=>{
+    const base=`${WORK.prefix}${String(i+1).padStart(2,'0')}`;
+    let url=null;
+    for(const ext of ['webp','png']){
+      if(await probe(`${base}.${ext}`)){ url=`${base}.${ext}`; break; }
+    }
+    slots[i]=url; sync();
+  });
+})();
+</script>
+</body>
+</html>
