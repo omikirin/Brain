@@ -61,7 +61,11 @@ def build_sheet_prompt(pages, chars, style_suffix):
         " down one row and repeat from the right: row 2 = pages 5,6,7,8 (right to left), row 3 ="
         " pages 9,10,11,12, bottom row = pages 13,14,15,16. Page 1 must NEVER be at the top-left;"
         " the top-left cell is always page 4 of that row.",
-        "Each cell is one vertical manga page whose panels are stacked top to bottom.",
+        "Each cell is ONE COMPLETE vertical manga PAGE (not a single drawing): every cell"
+        " contains exactly 3 manga panels stacked top to bottom with black panel borders,"
+        " like a real comic page. Never draw one big illustration per cell.",
+        "Do NOT write any captions, shot names, or descriptions under or inside the cells —"
+        " the page content lines below are DIRECTIONS for what to draw, not text to render.",
         "Page contents (in reading order):",
     ]
     seen = set()
