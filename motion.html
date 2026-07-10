@@ -4259,6 +4259,20 @@ const KOHARU_SVG = `
   </g>`;
 
 const CHARACTER_INFO = {
+  "cn_yui": {
+    "no": "017",
+    "name": "Yui",
+    "clan": "Iga",
+    "ninjutsu": "Flurry of Cherry Blossoms",
+    "weapon": "Scroll",
+    "birthday": "October 15",
+    "setting": "A reliable Shinobi. Her Ninjutsu reaches far and wide.",
+    "genre": "12. 歴史・時代劇",
+    "relationships": [
+      { "name": "Rei", "type": "母", "note": "伊賀の守護者レイの娘" },
+      { "name": "Hayate", "type": "連携相手", "note": "伊賀の任務で組む相手" }
+    ]
+  },
   "cn_jin": {
     "no": "001",
     "name": "Jin",
@@ -5086,6 +5100,106 @@ const CHARACTER_INFO = {
   }
 };
 
+/* ================================================================
+   クリプト忍者「ユイ(Yui)」非公式二次創作ファンアート
+   ガイドライン準拠: https://www.ninja-dao.com/guidelines
+   公式ref(images/refs/017_yui.png)準拠:
+   こけし風 / 深紅のおかっぱ+黒リボン+桜飾り / 切れ長の黒目 /
+   黒着物+白襟+桜モチーフ / 紫の薬瓶を両手で抱える
+================================================================ */
+const CN_YUI_SVG = `
+  <g id="body">
+    <circle id="pivot_body" cx="340" cy="612" r="0" fill="none"/>
+    <rect x="324" y="322" width="32" height="30" fill="#F5E3D3"/>
+    <path d="M340 344 C300 344 282 356 274 380 C258 430 250 520 252 592 C252 604 262 610 276 610 L404 610 C418 610 428 604 428 592 C430 520 422 430 406 380 C398 356 380 344 340 344 Z" fill="#26242A" stroke="#1E1618" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M276 606 Q340 616 404 606" fill="none" stroke="#161216" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+    <path d="M306 344 L282 372 L322 378 Z" fill="#F4F2EE" stroke="#1E1618" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M374 344 L398 372 L358 378 Z" fill="#F4F2EE" stroke="#1E1618" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M316 350 L340 394 L364 350 L352 342 L340 366 L328 342 Z" fill="#FBF8F3" stroke="#1E1618" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M268 452 L412 452 L414 482 L266 482 Z" fill="#322E38" stroke="#1E1618" stroke-width="6" stroke-linejoin="round"/>
+    <rect x="326" y="456" width="28" height="22" rx="4" fill="#B02024" stroke="#1E1618" stroke-width="4"/>
+    <g fill="#F2D6DC">
+      <circle cx="282" cy="523" r="8"/><circle cx="291" cy="532" r="8"/><circle cx="282" cy="541" r="8"/><circle cx="273" cy="532" r="8"/><circle cx="282" cy="532" r="5"/>
+    </g>
+    <g fill="#F2D6DC">
+      <circle cx="398" cy="523" r="8"/><circle cx="407" cy="532" r="8"/><circle cx="398" cy="541" r="8"/><circle cx="389" cy="532" r="8"/><circle cx="398" cy="532" r="5"/>
+    </g>
+    <g id="armR" data-front="1">
+      <circle id="pivot_armR" cx="378" cy="368" r="0" fill="none"/>
+      <path d="M380 366 C408 372 426 404 432 452 C436 486 426 502 408 500 C390 496 380 468 376 428 C373 400 372 376 380 366 Z" fill="#26242A" stroke="#1E1618" stroke-width="7" stroke-linejoin="round"/>
+      <g fill="#F2D6DC">
+        <circle cx="412" cy="446" r="6"/><circle cx="418" cy="452" r="6"/><circle cx="412" cy="458" r="6"/><circle cx="406" cy="452" r="6"/>
+      </g>
+    </g>
+    <g id="armL" data-front="1">
+      <circle id="pivot_armL" cx="302" cy="368" r="0" fill="none"/>
+      <path d="M300 366 C272 372 254 404 248 452 C244 486 254 502 272 500 C290 496 300 468 304 428 C307 400 308 376 300 366 Z" fill="#26242A" stroke="#1E1618" stroke-width="7" stroke-linejoin="round"/>
+      <g fill="#F2D6DC">
+        <circle cx="268" cy="446" r="6"/><circle cx="274" cy="452" r="6"/><circle cx="268" cy="458" r="6"/><circle cx="262" cy="452" r="6"/>
+      </g>
+      <g transform="rotate(-16 340 506)">
+        <rect x="286" y="490" width="20" height="34" rx="7" fill="#6A4A38" stroke="#1E1618" stroke-width="5"/>
+        <rect x="303" y="492" width="9" height="30" fill="#9A9AA2" stroke="#1E1618" stroke-width="4"/>
+        <rect x="308" y="486" width="94" height="42" rx="12" fill="#6E35A8" stroke="#1E1618" stroke-width="5"/>
+        <rect x="332" y="490" width="44" height="34" rx="5" fill="#F6F2E8" stroke="#2A2430" stroke-width="3.5"/>
+        <path d="M344 500 q8 -5 16 1 M346 512 h14" fill="none" stroke="#2A2430" stroke-width="3.5" stroke-linecap="round"/>
+        <ellipse cx="306" cy="512" rx="15" ry="12" fill="#F5E3D3" stroke="#1E1618" stroke-width="5"/>
+        <ellipse cx="398" cy="514" rx="15" ry="12" fill="#F5E3D3" stroke="#1E1618" stroke-width="5"/>
+      </g>
+    </g>
+  </g>
+  <g id="head">
+    <circle id="pivot_head" cx="340" cy="248" r="0" fill="none"/>
+    <circle id="pivot_neck" cx="340" cy="330" r="0" fill="none"/>
+    <g id="hairBack">
+      <path d="M340 74 C248 74 194 148 200 262 C202 300 218 326 248 334 L432 334 C462 326 478 300 480 262 C486 148 432 74 340 74 Z" fill="#A6231E" stroke="#1E1618" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M238 236 C234 296 240 340 262 350 L268 350 L268 244 Z" fill="#A6231E" stroke="#1E1618" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M442 236 C446 296 440 340 418 350 L412 350 L412 244 Z" fill="#A6231E" stroke="#1E1618" stroke-width="7" stroke-linejoin="round"/>
+    </g>
+    <g id="face">
+      <rect x="258" y="160" width="164" height="172" rx="56" fill="#F5E3D3" stroke="#1E1618" stroke-width="7"/>
+    </g>
+    <g id="features">
+      <path id="browL" d="M282 249 Q295 244 308 248" fill="none" stroke="#1E1618" stroke-width="4" stroke-linecap="round"/>
+      <path id="browR" d="M372 248 Q385 244 398 249" fill="none" stroke="#1E1618" stroke-width="4" stroke-linecap="round"/>
+      <g id="eyeL">
+        <path d="M281 272 Q292 256 311 264 Q313 276 298 281 Q286 279 281 272 Z" fill="#1E1A18"/>
+        <g id="irisL"><circle cx="292" cy="267" r="2.6" fill="#fff"/></g>
+        <path d="M291 287 l1 5 M298 287 l1 5" stroke="#1E1A18" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <path id="eyeLClosed" d="M283 272 Q296 280 309 271" fill="none" stroke="#1E1618" stroke-width="5" stroke-linecap="round" opacity="0"/>
+      <g id="eyeR">
+        <path d="M399 272 Q388 256 369 264 Q367 276 382 281 Q394 279 399 272 Z" fill="#1E1A18"/>
+        <g id="irisR"><circle cx="388" cy="267" r="2.6" fill="#fff"/></g>
+        <path d="M388 287 l-1 5 M381 287 l-1 5" stroke="#1E1A18" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <path id="eyeRClosed" d="M371 271 Q384 280 397 272" fill="none" stroke="#1E1618" stroke-width="5" stroke-linecap="round" opacity="0"/>
+      <ellipse id="blushL" cx="272" cy="296" rx="12" ry="8" fill="#EFA0A4" opacity="0.6"/>
+      <ellipse id="blushR" cx="408" cy="296" rx="12" ry="8" fill="#EFA0A4" opacity="0.6"/>
+      <path id="mouthClosed" d="M331 304 Q340 310 349 303" fill="none" stroke="#B4262C" stroke-width="5" stroke-linecap="round"/>
+      <path id="mouthOpen" d="M328 301 Q340 306 352 300 Q348 319 340 320 Q332 319 328 301 Z" fill="#B4262C" stroke="#8E1C22" stroke-width="4" stroke-linejoin="round" opacity="0"/>
+    </g>
+    <g id="hairFront">
+      <path d="M258 244 L258 214 C252 140 288 100 340 96 C392 100 428 140 422 214 L422 244 L360 244 L354 252 L348 244 Z" fill="#A6231E" stroke="#1E1618" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M272 150 C292 116 324 102 352 104" fill="none" stroke="#CC4038" stroke-width="9" stroke-linecap="round"/>
+      <g id="swing_ribbon" data-wag="1" data-k="30" data-damp="0.9" data-fz="0.7" data-fx="0.4">
+        <circle id="pivot_swing_ribbon" cx="428" cy="118" r="0" fill="none"/>
+        <path d="M430 116 C438 82 468 72 486 88 C496 102 484 120 458 126 Z" fill="#26242A" stroke="#1E1618" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M456 126 C482 118 500 132 496 154 C480 164 458 148 452 132 Z" fill="#26242A" stroke="#1E1618" stroke-width="6" stroke-linejoin="round"/>
+        <circle cx="446" cy="118" r="10" fill="#3A3640" stroke="#1E1618" stroke-width="5"/>
+      </g>
+      <g>
+        <ellipse cx="424" cy="184" rx="11" ry="15" fill="#F6C6D6" stroke="#1E1618" stroke-width="4" transform="rotate(-10 424 184)"/>
+        <ellipse cx="443" cy="196" rx="11" ry="15" fill="#F6C6D6" stroke="#1E1618" stroke-width="4" transform="rotate(60 443 196)"/>
+        <ellipse cx="436" cy="218" rx="11" ry="15" fill="#F6C6D6" stroke="#1E1618" stroke-width="4" transform="rotate(130 436 218)"/>
+        <ellipse cx="412" cy="218" rx="11" ry="15" fill="#F6C6D6" stroke="#1E1618" stroke-width="4" transform="rotate(-130 412 218)"/>
+        <ellipse cx="406" cy="196" rx="11" ry="15" fill="#F6C6D6" stroke="#1E1618" stroke-width="4" transform="rotate(-60 406 196)"/>
+        <circle cx="425" cy="202" r="7" fill="#E8B830" stroke="#1E1618" stroke-width="3.5"/>
+        <path d="M425 191 v-5 M434 196 l4 -3 M434 208 l4 3 M416 196 l-4 -3 M416 208 l-4 3" stroke="#E8B830" stroke-width="3" stroke-linecap="round"/>
+      </g>
+    </g>
+  </g>`;
+
 const CHARACTERS = {
   koharu: {
     name:"ほんチい(着物)", style:"custom", viewBox:"0 0 680 660",
@@ -5254,6 +5368,10 @@ const CHARACTERS = {
   cn_aum: {
     name:"アウン(CryptoNinja)", style:"custom", viewBox:"0 0 680 660",
     hairMain:"#3A3A5A", svg: CN_AUM_SVG,
+  },
+  cn_yui: {
+    name:"ユイ(CryptoNinja)", style:"custom", viewBox:"0 0 680 660",
+    hairMain:"#A6231E", svg: CN_YUI_SVG,
   },
 };
 
