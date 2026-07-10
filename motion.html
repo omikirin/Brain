@@ -5103,99 +5103,100 @@ const CHARACTER_INFO = {
 /* ================================================================
    クリプト忍者「ユイ(Yui)」非公式二次創作ファンアート
    ガイドライン準拠: https://www.ninja-dao.com/guidelines
-   公式ref(images/refs/017_yui.png)準拠:
-   こけし風 / 深紅のおかっぱ+黒リボン+桜飾り / 切れ長の黒目 /
-   黒着物+白襟+桜モチーフ / 紫の薬瓶を両手で抱える
+   公式ref(images/refs/017_yui.png)準拠 v2:
+   こけし体型(頭>体・腕は袖のみ) / 深紅の丸ボブ+非対称バング+分け目 /
+   大きな黒リボン+桜飾り / 切れ長黒目+目下まつ毛 / 赤い唇 /
+   黒着物+白重ね襟+袖の桜モチーフ / 袖口から出た両手で紫の薬瓶
 ================================================================ */
 const CN_YUI_SVG = `
   <g id="body">
-    <circle id="pivot_body" cx="340" cy="612" r="0" fill="none"/>
-    <rect x="324" y="322" width="32" height="30" fill="#F5E3D3"/>
-    <path d="M340 344 C300 344 282 356 274 380 C258 430 250 520 252 592 C252 604 262 610 276 610 L404 610 C418 610 428 604 428 592 C430 520 422 430 406 380 C398 356 380 344 340 344 Z" fill="#26242A" stroke="#1E1618" stroke-width="8" stroke-linejoin="round"/>
-    <path d="M276 606 Q340 616 404 606" fill="none" stroke="#161216" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
-    <path d="M306 344 L282 372 L322 378 Z" fill="#F4F2EE" stroke="#1E1618" stroke-width="5" stroke-linejoin="round"/>
-    <path d="M374 344 L398 372 L358 378 Z" fill="#F4F2EE" stroke="#1E1618" stroke-width="5" stroke-linejoin="round"/>
-    <path d="M316 350 L340 394 L364 350 L352 342 L340 366 L328 342 Z" fill="#FBF8F3" stroke="#1E1618" stroke-width="5" stroke-linejoin="round"/>
-    <path d="M268 452 L412 452 L414 482 L266 482 Z" fill="#322E38" stroke="#1E1618" stroke-width="6" stroke-linejoin="round"/>
-    <rect x="326" y="456" width="28" height="22" rx="4" fill="#B02024" stroke="#1E1618" stroke-width="4"/>
-    <g fill="#F2D6DC">
-      <circle cx="282" cy="523" r="8"/><circle cx="291" cy="532" r="8"/><circle cx="282" cy="541" r="8"/><circle cx="273" cy="532" r="8"/><circle cx="282" cy="532" r="5"/>
-    </g>
-    <g fill="#F2D6DC">
-      <circle cx="398" cy="523" r="8"/><circle cx="407" cy="532" r="8"/><circle cx="398" cy="541" r="8"/><circle cx="389" cy="532" r="8"/><circle cx="398" cy="532" r="5"/>
+    <circle id="pivot_body" cx="340" cy="630" r="0" fill="none"/>
+    <rect x="322" y="356" width="36" height="26" fill="#F5E3D3"/>
+    <path d="M340 376 C296 376 272 392 262 424 C248 468 242 540 242 600 C242 622 258 634 286 636 L394 636 C422 634 438 622 438 600 C438 540 432 468 418 424 C408 392 384 376 340 376 Z" fill="#26242A" stroke="#17131A" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M262 424 C252 470 246 540 246 598 C246 616 258 628 282 630 L294 630 C280 560 282 470 296 420 Z" fill="#1B181E" opacity="0.55"/>
+    <g id="armL" data-front="1">
+      <circle id="pivot_armL" cx="300" cy="388" r="0" fill="none"/>
+      <path d="M300 380 C272 392 256 428 250 480 C246 522 252 556 268 562 C284 556 292 520 294 476 C296 436 300 400 300 380 Z" fill="#26242A" stroke="#17131A" stroke-width="7" stroke-linejoin="round"/>
+      <g fill="#F5D7DE">
+        <circle cx="270" cy="492" r="9"/><circle cx="279" cy="501" r="9"/><circle cx="270" cy="510" r="9"/><circle cx="261" cy="501" r="9"/><circle cx="270" cy="501" r="5"/>
+      </g>
     </g>
     <g id="armR" data-front="1">
-      <circle id="pivot_armR" cx="378" cy="368" r="0" fill="none"/>
-      <path d="M380 366 C408 372 426 404 432 452 C436 486 426 502 408 500 C390 496 380 468 376 428 C373 400 372 376 380 366 Z" fill="#26242A" stroke="#1E1618" stroke-width="7" stroke-linejoin="round"/>
-      <g fill="#F2D6DC">
-        <circle cx="412" cy="446" r="6"/><circle cx="418" cy="452" r="6"/><circle cx="412" cy="458" r="6"/><circle cx="406" cy="452" r="6"/>
+      <circle id="pivot_armR" cx="380" cy="388" r="0" fill="none"/>
+      <path d="M380 380 C408 392 424 428 430 480 C434 522 428 556 412 562 C396 556 388 520 386 476 C384 436 380 400 380 380 Z" fill="#26242A" stroke="#17131A" stroke-width="7" stroke-linejoin="round"/>
+      <g fill="#F5D7DE">
+        <circle cx="410" cy="492" r="9"/><circle cx="419" cy="501" r="9"/><circle cx="410" cy="510" r="9"/><circle cx="401" cy="501" r="9"/><circle cx="410" cy="501" r="5"/>
       </g>
     </g>
-    <g id="armL" data-front="1">
-      <circle id="pivot_armL" cx="302" cy="368" r="0" fill="none"/>
-      <path d="M300 366 C272 372 254 404 248 452 C244 486 254 502 272 500 C290 496 300 468 304 428 C307 400 308 376 300 366 Z" fill="#26242A" stroke="#1E1618" stroke-width="7" stroke-linejoin="round"/>
-      <g fill="#F2D6DC">
-        <circle cx="268" cy="446" r="6"/><circle cx="274" cy="452" r="6"/><circle cx="268" cy="458" r="6"/><circle cx="262" cy="452" r="6"/>
-      </g>
-      <g transform="rotate(-16 340 506)">
-        <rect x="286" y="490" width="20" height="34" rx="7" fill="#6A4A38" stroke="#1E1618" stroke-width="5"/>
-        <rect x="303" y="492" width="9" height="30" fill="#9A9AA2" stroke="#1E1618" stroke-width="4"/>
-        <rect x="308" y="486" width="94" height="42" rx="12" fill="#6E35A8" stroke="#1E1618" stroke-width="5"/>
-        <rect x="332" y="490" width="44" height="34" rx="5" fill="#F6F2E8" stroke="#2A2430" stroke-width="3.5"/>
-        <path d="M344 500 q8 -5 16 1 M346 512 h14" fill="none" stroke="#2A2430" stroke-width="3.5" stroke-linecap="round"/>
-        <ellipse cx="306" cy="512" rx="15" ry="12" fill="#F5E3D3" stroke="#1E1618" stroke-width="5"/>
-        <ellipse cx="398" cy="514" rx="15" ry="12" fill="#F5E3D3" stroke="#1E1618" stroke-width="5"/>
-      </g>
+    <path d="M306 378 L340 450 L374 378 L356 368 L340 410 L324 368 Z" fill="#F4F2EE" stroke="#17131A" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M316 376 L340 428 L364 376" fill="none" stroke="#17131A" stroke-width="5" stroke-linecap="round"/>
+    <rect x="326" y="466" width="28" height="20" rx="3" fill="#B02024" stroke="#17131A" stroke-width="4"/>
+    <g transform="rotate(-14 340 506)">
+      <ellipse cx="290" cy="490" rx="21" ry="17" fill="#17131A"/>
+      <ellipse cx="408" cy="522" rx="21" ry="17" fill="#17131A"/>
+      <rect x="282" y="486" width="24" height="40" rx="8" fill="#5E4030" stroke="#17131A" stroke-width="5"/>
+      <rect x="304" y="489" width="10" height="34" fill="#9A9AA2" stroke="#17131A" stroke-width="4"/>
+      <rect x="312" y="482" width="94" height="48" rx="14" fill="#6B34A6" stroke="#17131A" stroke-width="5"/>
+      <rect x="336" y="487" width="46" height="38" rx="5" fill="#F6F2E8" stroke="#2A2430" stroke-width="3.5"/>
+      <path d="M348 499 q9 -6 17 1 M350 512 h14" fill="none" stroke="#2A2430" stroke-width="3.5" stroke-linecap="round"/>
+      <ellipse cx="298" cy="488" rx="16" ry="13" fill="#F5E3D3" stroke="#17131A" stroke-width="5"/>
+      <path d="M286 494 q8 6 18 3" fill="none" stroke="#17131A" stroke-width="3.5" stroke-linecap="round"/>
+      <ellipse cx="400" cy="518" rx="16" ry="13" fill="#F5E3D3" stroke="#17131A" stroke-width="5"/>
+      <path d="M388 522 q8 6 18 2" fill="none" stroke="#17131A" stroke-width="3.5" stroke-linecap="round"/>
     </g>
   </g>
   <g id="head">
-    <circle id="pivot_head" cx="340" cy="248" r="0" fill="none"/>
-    <circle id="pivot_neck" cx="340" cy="330" r="0" fill="none"/>
+    <circle id="pivot_head" cx="340" cy="250" r="0" fill="none"/>
+    <circle id="pivot_neck" cx="340" cy="368" r="0" fill="none"/>
     <g id="hairBack">
-      <path d="M340 74 C248 74 194 148 200 262 C202 300 218 326 248 334 L432 334 C462 326 478 300 480 262 C486 148 432 74 340 74 Z" fill="#A6231E" stroke="#1E1618" stroke-width="8" stroke-linejoin="round"/>
-      <path d="M238 236 C234 296 240 340 262 350 L268 350 L268 244 Z" fill="#A6231E" stroke="#1E1618" stroke-width="7" stroke-linejoin="round"/>
-      <path d="M442 236 C446 296 440 340 418 350 L412 350 L412 244 Z" fill="#A6231E" stroke="#1E1618" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M340 88 C232 88 176 176 180 280 C182 332 202 364 240 374 L440 374 C478 364 498 332 500 280 C504 176 448 88 340 88 Z" fill="#A6231E" stroke="#17131A" stroke-width="8" stroke-linejoin="round"/>
     </g>
     <g id="face">
-      <rect x="258" y="160" width="164" height="172" rx="56" fill="#F5E3D3" stroke="#1E1618" stroke-width="7"/>
+      <rect x="260" y="204" width="160" height="168" rx="52" fill="#F5E3D3" stroke="#17131A" stroke-width="7"/>
     </g>
     <g id="features">
-      <path id="browL" d="M282 249 Q295 244 308 248" fill="none" stroke="#1E1618" stroke-width="4" stroke-linecap="round"/>
-      <path id="browR" d="M372 248 Q385 244 398 249" fill="none" stroke="#1E1618" stroke-width="4" stroke-linecap="round"/>
       <g id="eyeL">
-        <path d="M281 272 Q292 256 311 264 Q313 276 298 281 Q286 279 281 272 Z" fill="#1E1A18"/>
-        <g id="irisL"><circle cx="292" cy="267" r="2.6" fill="#fff"/></g>
-        <path d="M291 287 l1 5 M298 287 l1 5" stroke="#1E1A18" stroke-width="3" stroke-linecap="round"/>
+        <path d="M278 312 C284 296 305 292 319 302 C323 310 318 320 305 323 C292 325 281 320 278 312 Z" fill="#17131A"/>
+        <path d="M319 302 L331 294" stroke="#17131A" stroke-width="4.5" stroke-linecap="round"/>
+        <g id="irisL"><circle cx="295" cy="306" r="3" fill="#fff" opacity="0.9"/></g>
+        <path d="M294 332 l2 7 M303 331 l2 7" stroke="#17131A" stroke-width="3" stroke-linecap="round"/>
       </g>
-      <path id="eyeLClosed" d="M283 272 Q296 280 309 271" fill="none" stroke="#1E1618" stroke-width="5" stroke-linecap="round" opacity="0"/>
+      <path id="eyeLClosed" d="M281 312 Q299 322 319 310" fill="none" stroke="#17131A" stroke-width="5" stroke-linecap="round" opacity="0"/>
       <g id="eyeR">
-        <path d="M399 272 Q388 256 369 264 Q367 276 382 281 Q394 279 399 272 Z" fill="#1E1A18"/>
-        <g id="irisR"><circle cx="388" cy="267" r="2.6" fill="#fff"/></g>
-        <path d="M388 287 l-1 5 M381 287 l-1 5" stroke="#1E1A18" stroke-width="3" stroke-linecap="round"/>
+        <path d="M402 312 C396 296 375 292 361 302 C357 310 362 320 375 323 C388 325 399 320 402 312 Z" fill="#17131A"/>
+        <path d="M361 302 L349 294" stroke="#17131A" stroke-width="4.5" stroke-linecap="round"/>
+        <g id="irisR"><circle cx="381" cy="306" r="3" fill="#fff" opacity="0.9"/></g>
+        <path d="M382 332 l-2 7 M373 331 l-2 7" stroke="#17131A" stroke-width="3" stroke-linecap="round"/>
       </g>
-      <path id="eyeRClosed" d="M371 271 Q384 280 397 272" fill="none" stroke="#1E1618" stroke-width="5" stroke-linecap="round" opacity="0"/>
-      <ellipse id="blushL" cx="272" cy="296" rx="12" ry="8" fill="#EFA0A4" opacity="0.6"/>
-      <ellipse id="blushR" cx="408" cy="296" rx="12" ry="8" fill="#EFA0A4" opacity="0.6"/>
-      <path id="mouthClosed" d="M331 304 Q340 310 349 303" fill="none" stroke="#B4262C" stroke-width="5" stroke-linecap="round"/>
-      <path id="mouthOpen" d="M328 301 Q340 306 352 300 Q348 319 340 320 Q332 319 328 301 Z" fill="#B4262C" stroke="#8E1C22" stroke-width="4" stroke-linejoin="round" opacity="0"/>
+      <path id="eyeRClosed" d="M361 310 Q381 322 399 312" fill="none" stroke="#17131A" stroke-width="5" stroke-linecap="round" opacity="0"/>
+      <ellipse id="blushL" cx="276" cy="340" rx="13" ry="9" fill="#EFA0A4" opacity="0.65"/>
+      <ellipse id="blushR" cx="404" cy="340" rx="13" ry="9" fill="#EFA0A4" opacity="0.65"/>
+      <path id="mouthClosed" d="M329 353 Q334 349 340 352 Q346 349 351 353 Q346 360 340 360 Q334 360 329 353 Z" fill="#C22832" stroke="#8E1A22" stroke-width="2.5" stroke-linejoin="round"/>
+      <path id="mouthOpen" d="M326 350 Q340 356 354 350 Q350 370 340 371 Q330 370 326 350 Z" fill="#B4262C" stroke="#8E1A22" stroke-width="3.5" stroke-linejoin="round" opacity="0"/>
     </g>
     <g id="hairFront">
-      <path d="M258 244 L258 214 C252 140 288 100 340 96 C392 100 428 140 422 214 L422 244 L360 244 L354 252 L348 244 Z" fill="#A6231E" stroke="#1E1618" stroke-width="7" stroke-linejoin="round"/>
-      <path d="M272 150 C292 116 324 102 352 104" fill="none" stroke="#CC4038" stroke-width="9" stroke-linecap="round"/>
+      <path d="M262 284 L262 236 C258 148 294 108 340 104 C386 108 422 148 418 236 L418 284 L360 284 L353 293 L346 284 Z" fill="#A6231E" stroke="#17131A" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M330 120 C318 176 309 236 305 282" fill="none" stroke="#17131A" stroke-width="3.5" stroke-linecap="round" opacity="0.5"/>
+      <path d="M246 186 C260 128 300 102 344 102" fill="none" stroke="#CC4038" stroke-width="11" stroke-linecap="round"/>
+      <path d="M262 252 C248 320 252 368 278 392 C286 384 284 344 280 282 L262 282 Z" fill="#A6231E" stroke="#17131A" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M418 252 C432 320 428 368 402 392 C394 384 396 344 400 282 L418 282 Z" fill="#A6231E" stroke="#17131A" stroke-width="7" stroke-linejoin="round"/>
       <g id="swing_ribbon" data-wag="1" data-k="30" data-damp="0.9" data-fz="0.7" data-fx="0.4">
-        <circle id="pivot_swing_ribbon" cx="428" cy="118" r="0" fill="none"/>
-        <path d="M430 116 C438 82 468 72 486 88 C496 102 484 120 458 126 Z" fill="#26242A" stroke="#1E1618" stroke-width="6" stroke-linejoin="round"/>
-        <path d="M456 126 C482 118 500 132 496 154 C480 164 458 148 452 132 Z" fill="#26242A" stroke="#1E1618" stroke-width="6" stroke-linejoin="round"/>
-        <circle cx="446" cy="118" r="10" fill="#3A3640" stroke="#1E1618" stroke-width="5"/>
+        <circle id="pivot_swing_ribbon" cx="446" cy="124" r="0" fill="none"/>
+        <path d="M442 118 C436 78 468 56 496 66 C516 76 512 106 458 128 Z" fill="#26242A" stroke="#17131A" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M456 130 C500 104 536 116 534 146 C530 172 486 172 452 144 Z" fill="#26242A" stroke="#17131A" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M452 142 C462 168 458 190 440 198 C430 184 434 158 442 140 Z" fill="#26242A" stroke="#17131A" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M462 84 C476 74 492 74 502 82" fill="none" stroke="#3C3842" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M486 152 C502 156 516 152 524 142" fill="none" stroke="#3C3842" stroke-width="4.5" stroke-linecap="round"/>
+        <ellipse cx="448" cy="128" rx="13" ry="11" fill="#3A3640" stroke="#17131A" stroke-width="5"/>
       </g>
       <g>
-        <ellipse cx="424" cy="184" rx="11" ry="15" fill="#F6C6D6" stroke="#1E1618" stroke-width="4" transform="rotate(-10 424 184)"/>
-        <ellipse cx="443" cy="196" rx="11" ry="15" fill="#F6C6D6" stroke="#1E1618" stroke-width="4" transform="rotate(60 443 196)"/>
-        <ellipse cx="436" cy="218" rx="11" ry="15" fill="#F6C6D6" stroke="#1E1618" stroke-width="4" transform="rotate(130 436 218)"/>
-        <ellipse cx="412" cy="218" rx="11" ry="15" fill="#F6C6D6" stroke="#1E1618" stroke-width="4" transform="rotate(-130 412 218)"/>
-        <ellipse cx="406" cy="196" rx="11" ry="15" fill="#F6C6D6" stroke="#1E1618" stroke-width="4" transform="rotate(-60 406 196)"/>
-        <circle cx="425" cy="202" r="7" fill="#E8B830" stroke="#1E1618" stroke-width="3.5"/>
-        <path d="M425 191 v-5 M434 196 l4 -3 M434 208 l4 3 M416 196 l-4 -3 M416 208 l-4 3" stroke="#E8B830" stroke-width="3" stroke-linecap="round"/>
+        <ellipse cx="428" cy="238" rx="12" ry="17" fill="#F7CBD9" stroke="#17131A" stroke-width="4" transform="rotate(-8 428 238)"/>
+        <ellipse cx="449" cy="251" rx="12" ry="17" fill="#F7CBD9" stroke="#17131A" stroke-width="4" transform="rotate(62 449 251)"/>
+        <ellipse cx="441" cy="276" rx="12" ry="17" fill="#F7CBD9" stroke="#17131A" stroke-width="4" transform="rotate(132 441 276)"/>
+        <ellipse cx="415" cy="276" rx="12" ry="17" fill="#F7CBD9" stroke="#17131A" stroke-width="4" transform="rotate(-132 415 276)"/>
+        <ellipse cx="408" cy="251" rx="12" ry="17" fill="#F7CBD9" stroke="#17131A" stroke-width="4" transform="rotate(-62 408 251)"/>
+        <circle cx="428" cy="258" r="8" fill="#F0C030" stroke="#17131A" stroke-width="3.5"/>
+        <path d="M428 245 v-6 M438 251 l5 -4 M438 265 l5 4 M418 251 l-5 -4 M418 265 l-5 4" stroke="#F0C030" stroke-width="3" stroke-linecap="round"/>
       </g>
     </g>
   </g>`;
