@@ -13,9 +13,10 @@ const WORKS={
           theme:{accent:'#4D96FF',accentDeep:'#3B7DE8',gold:'#FFD93D'}}
 };
 const WORK=WORKS[new URLSearchParams(location.search).get('work')]||WORKS.ninja;
+const VER=Date.now();  // キャッシュバスター: 再生成後も必ず最新のシートを読む
 for(const i of ['01','02']){
   const l=document.createElement('link');
-  l.rel='preload'; l.as='image'; l.href=`${WORK.prefix}${i}.webp`;
+  l.rel='preload'; l.as='image'; l.href=`${WORK.prefix}${i}.png`;
   document.head.appendChild(l);
 }
 </script>
@@ -365,7 +366,7 @@ document.addEventListener('drop',async e=>{
 });
 (async function init(){
   try{
-    const res=await fetch(WORK.data);
+    const res=await fetch(WORK.data, {cache:'no-store'});
     if(res.ok) applyNameJson(await res.json());
   }catch(_){/* file://直開き等。セリフ無しで続行 */}
   // sheets/sheet_*_01.webp(なければ.png)を並列で自動読込。
@@ -380,8 +381,9 @@ document.addEventListener('drop',async e=>{
   slots.forEach(async(_,i)=>{
     const base=`${WORK.prefix}${String(i+1).padStart(2,'0')}`;
     let url=null;
-    for(const ext of ['webp','png']){
-      if(await probe(`${base}.${ext}`)){ url=`${base}.${ext}`; break; }
+    for(const ext of ['png','webp']){
+      const u=`${base}.${ext}?v=${VER}`;
+      if(await probe(u)){ url=u; break; }
     }
     slots[i]=url; sync();
   });
