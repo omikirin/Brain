@@ -61,6 +61,10 @@ def build_sheet_prompt(pages, chars, style_suffix):
         f" EXACTLY {pps} cells ({COLS} across x {ROWS} down). A sheet with only {COLS - 1}"
         f" columns ({(COLS - 1) * ROWS} cells) is WRONG and unusable. Each cell is therefore"
         " narrow and tall (aspect ratio about 0.57, like a real manga page).",
+        "ABSOLUTELY NO TEXT ANYWHERE (critical): no speech bubbles, no dialogue balloons, no"
+        " written words, no sound-effect lettering, no signs with readable characters, no page"
+        " numbers. Dialogue is added later by software. Characters express everything through"
+        " facial expressions and body language only. Leave empty space where a bubble would go.",
         "READING ORDER (Japanese manga, RIGHT-TO-LEFT — this is critical): each row holds two"
         " 2-page spreads read right to left. Top row: page 1 = TOP-RIGHT cell, page 2 = second"
         " cell from the right, page 3 = third from the right, page 4 = TOP-LEFT cell. Then move"
