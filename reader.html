@@ -113,11 +113,16 @@ let mode='spread';    // spread | single | sheet
 let showDlg=true;
 let pageData={};      // page番号 → {panels:[{dialogue,sfx},...]}
 
-// page n(1-based) → {sheetIdx, col(左起点0-4), row}
+// page n(1-based) → {sheetIdx, col(左起点0-3), row}
+// 配置: 見開きペアの縦積み2列。右列ペアを上から下へ(1-2,3-4,5-6,7-8)、
+// 次に左列ペアを上から下へ(9-10,...,15-16)。各ペア内は右=奇数p・左=偶数p
 function locate(n){
   const i=n-1, s=Math.floor(i/PPS), k=i%PPS;
-  const row=Math.floor(k/COLS), colFromRight=k%COLS;
-  return {s, col:COLS-1-colFromRight, row};
+  const pair=Math.floor(k/2), side=k%2;          // side 0=右(奇数p) 1=左(偶数p)
+  const half=pair<ROWS?0:1;                      // 0=右のペア列 1=左のペア列
+  const row=pair%ROWS;
+  const col=half===0 ? (3-side) : (1-side);
+  return {s, col, row};
 }
 function paint(el,n){
   const {s,col,row}=locate(n);

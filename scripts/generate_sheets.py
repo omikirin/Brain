@@ -55,9 +55,11 @@ def build_sheet_prompt(pages, chars, style_suffix):
     lines = [
         f"A single contact-sheet image containing exactly {pps} manga pages arranged in a strict"
         f" uniform grid of {COLS} columns x {ROWS} rows (equal-sized cells, no gutter, no outer margin).",
-        f"Reading order is right-to-left, row by row: the first page is the TOP-RIGHT cell, the"
-        f" first {COLS} pages fill the top row from right to left, the next page starts the second"
-        f" row at the right, and the last cell is at the BOTTOM-LEFT.",
+        "The grid is TWO side-by-side columns of two-page spreads (each spread = 2 adjacent cells,"
+        " right page + left page). Reading order: start at the TOP-RIGHT spread — page 1 is the"
+        " top-right cell, page 2 is immediately to its left. Then move DOWN one row: pages 3-4,"
+        " then 5-6, then 7-8 at the bottom of the right spread-column. Continue at the TOP of the"
+        " LEFT spread-column: pages 9-10, then 11-12, 13-14, and finally 15-16 at the bottom-left.",
         "Each cell is one vertical manga page whose panels are stacked top to bottom.",
         "Page contents (in reading order):",
     ]
@@ -186,9 +188,7 @@ def main():
                 time.sleep(10)
         img = Image.open(io.BytesIO(raw)).convert("L")
         out_path = os.path.join(ROOT, "sheets", f"{args.prefix}_{n:02d}.png")
-        img.save(out_path)
-        # リーダーが優先的に読む軽量版(約1/5サイズ)
-        img.save(out_path[:-4] + ".webp", "WEBP", quality=82, method=6)
+        img.save(out_path, optimize=True)
         print(f"[sheet {n}] saved -> {out_path} ({img.size[0]}x{img.size[1]})")
 
 
