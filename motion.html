@@ -2866,18 +2866,16 @@ const CN_KOHAKU_SVG = `
       <path d="M388 158 L402 124 L372 150 Z" fill="#C43030"/>
       <path d="M340 176 C336 200 336 220 340 240 C344 220 344 200 340 176 Z" fill="#3898C8" stroke="#2878A8" stroke-width="2"/>
       <path d="M322 196 q-3 12 0 22 M358 196 q3 12 0 22" fill="none" stroke="#3898C8" stroke-width="5" stroke-linecap="round"/>
-      <path d="M284 252 Q297 242 310 252" fill="none" stroke="#1C1C22" stroke-width="6" stroke-linecap="round"/>
-      <path d="M370 252 Q383 242 396 252" fill="none" stroke="#1C1C22" stroke-width="6" stroke-linecap="round"/>
-      <path d="M278 262 l-8 -6 M402 262 l8 -6" stroke="#C43030" stroke-width="5" stroke-linecap="round"/>
-      <path d="M330 288 q10 -6 20 0 l4 8 q-14 8 -28 0 Z" fill="#C86838" opacity="0.6"/>
-      <path id="mouthClosed" d="M318 300 C328 294 352 294 362 300 L358 320 C348 328 332 328 322 320 Z" fill="#1C1C22" stroke="#B83030" stroke-width="4" stroke-linejoin="round"/>
-      <path id="mouthOpen" d="M314 296 C326 288 354 288 366 296 L360 326 C348 336 332 336 320 326 Z" fill="#1C1C22" stroke="#B83030" stroke-width="4" stroke-linejoin="round" opacity="0"/>
+      <g id="eyeL">
+        <ellipse cx="296" cy="250" rx="17" ry="5.5" fill="#1C1C22" transform="rotate(-24 296 250)"/>
+      </g>
+      <g id="eyeR">
+        <ellipse cx="384" cy="250" rx="17" ry="5.5" fill="#1C1C22" transform="rotate(24 384 250)"/>
+      </g>
+      <path d="M276 240 l-9 -8 M404 240 l9 -8" stroke="#C43030" stroke-width="5" stroke-linecap="round"/>
+      <path d="M284 264 q12 -4 24 2 M396 264 q-12 -4 -24 2" fill="none" stroke="#C43030" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
     </g>
-    <g id="hairFront">
-      <path d="M262 220 C258 160 282 116 322 100 L330 120 C298 140 282 178 280 224 Z" fill="#26242A" stroke="#1C1C22" stroke-width="6" stroke-linejoin="round"/>
-      <path d="M418 220 C422 160 398 116 358 100 L350 120 C382 140 398 178 400 224 Z" fill="#26242A" stroke="#1C1C22" stroke-width="6" stroke-linejoin="round"/>
-      <path d="M404 230 C410 280 408 330 398 362 L384 352 C392 316 394 270 390 234 Z" fill="#26242A" stroke="#1C1C22" stroke-width="5.5" stroke-linejoin="round"/>
-    </g>
+    <g id="hairFront"></g>
   </g>`;
 /* ================================================================
    クリプト忍者「サットヴァ(Sattva)」非公式二次創作ファンアート
@@ -5152,19 +5150,25 @@ const CN_YUI_SVG = `
     </g>
     <g id="features">
       <g id="eyeL">
-        <path d="M278 312 C284 296 305 292 319 302 C323 310 318 320 305 323 C292 325 281 320 278 312 Z" fill="#17131A"/>
-        <path d="M319 302 L331 294" stroke="#17131A" stroke-width="4.5" stroke-linecap="round"/>
-        <g id="irisL"><circle cx="295" cy="306" r="3" fill="#fff" opacity="0.9"/></g>
-        <path d="M294 332 l2 7 M303 331 l2 7" stroke="#17131A" stroke-width="3" stroke-linecap="round"/>
+        <ellipse cx="298" cy="308" rx="13" ry="16" fill="#2E2C30" stroke="#17131A" stroke-width="4"/>
+        <g id="irisL">
+          <ellipse cx="298" cy="311" rx="7" ry="9" fill="#6E6C74"/>
+          <circle cx="294" cy="302" r="2.4" fill="#fff"/>
+        </g>
+        <path d="M307 294 l8 -5" stroke="#17131A" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M295 330 l2 7 M304 329 l2 7" stroke="#17131A" stroke-width="3" stroke-linecap="round"/>
       </g>
-      <path id="eyeLClosed" d="M281 312 Q299 322 319 310" fill="none" stroke="#17131A" stroke-width="5" stroke-linecap="round" opacity="0"/>
+      <path id="eyeLClosed" d="M285 308 Q298 318 311 306" fill="none" stroke="#17131A" stroke-width="5" stroke-linecap="round" opacity="0"/>
       <g id="eyeR">
-        <path d="M402 312 C396 296 375 292 361 302 C357 310 362 320 375 323 C388 325 399 320 402 312 Z" fill="#17131A"/>
-        <path d="M361 302 L349 294" stroke="#17131A" stroke-width="4.5" stroke-linecap="round"/>
-        <g id="irisR"><circle cx="381" cy="306" r="3" fill="#fff" opacity="0.9"/></g>
-        <path d="M382 332 l-2 7 M373 331 l-2 7" stroke="#17131A" stroke-width="3" stroke-linecap="round"/>
+        <ellipse cx="382" cy="308" rx="13" ry="16" fill="#2E2C30" stroke="#17131A" stroke-width="4"/>
+        <g id="irisR">
+          <ellipse cx="382" cy="311" rx="7" ry="9" fill="#6E6C74"/>
+          <circle cx="378" cy="302" r="2.4" fill="#fff"/>
+        </g>
+        <path d="M373 294 l-8 -5" stroke="#17131A" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M385 330 l-2 7 M376 329 l-2 7" stroke="#17131A" stroke-width="3" stroke-linecap="round"/>
       </g>
-      <path id="eyeRClosed" d="M361 310 Q381 322 399 312" fill="none" stroke="#17131A" stroke-width="5" stroke-linecap="round" opacity="0"/>
+      <path id="eyeRClosed" d="M369 306 Q382 318 395 308" fill="none" stroke="#17131A" stroke-width="5" stroke-linecap="round" opacity="0"/>
       <ellipse id="blushL" cx="276" cy="340" rx="13" ry="9" fill="#EFA0A4" opacity="0.65"/>
       <ellipse id="blushR" cx="404" cy="340" rx="13" ry="9" fill="#EFA0A4" opacity="0.65"/>
       <path id="mouthClosed" d="M329 353 Q334 349 340 352 Q346 349 351 353 Q346 360 340 360 Q334 360 329 353 Z" fill="#C22832" stroke="#8E1A22" stroke-width="2.5" stroke-linejoin="round"/>
