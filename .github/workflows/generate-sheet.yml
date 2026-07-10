@@ -20,6 +20,11 @@ on:
           - row3      # 行だけ再生成: 世界観バリエ
           - row4      # 行だけ再生成: 表情グリッド
           - row5      # 行だけ再生成: ドット絵
+          - anime-sheet  # アニメ版シート全体（アニメ3面図refを基準・非ちび）
+          - anime-row1   # アニメ版 行だけ: 三面図
+          - anime-row2   # アニメ版 行だけ: アクションポーズ
+          - anime-row3   # アニメ版 行だけ: 表情
+          - anime-row4   # アニメ版 行だけ: ゲームスプライト
           - chibi
           - normal
           - modern

@@ -114,6 +114,7 @@ if (!c) {
       <p class="imgnote">📁 <code>images/characters/${c.no}_…/</code> に <code>main.png</code> / <code>01.png</code>〜<code>12.png</code> を置くと表示されます。</p>
     </section>
     <div id="modelsheet"></div>
+    <div id="animesheet"></div>
     ${c.relationships?.length ? `<section><h2>相関</h2><div class="rel">${
       c.relationships.map(r => {
         const t = data.characters.find(x => x.name === r.name);
@@ -157,6 +158,9 @@ if (!c) {
 
   // モデルシート分割（output_prompt / panel_index を持つキャラのみ）
   renderModelSheet(c, dir);
+
+  // アニメ版シート（アニメrefまたは生成済みアニメシートがあるキャラのみ表示）
+  renderAnimeSheet(c, dir);
 
   // 1キャラ分のJSONを書き出し（ゲーム取り込み用）
   document.getElementById('dl').onclick = () => {
@@ -279,6 +283,39 @@ function renderModelSheet(c, dir) {
       const old = el.textContent; el.textContent = '✓ コピー済';
       setTimeout(() => el.textContent = old, 1200);
     });
+  });
+}
+
+// ===== アニメ版シート（アニメ3面図基準・非ちび）— アニメ版限定の表示 =====
+function renderAnimeSheet(c, dir) {
+  const box = document.getElementById('animesheet');
+  if (!box) return;
+  const id = `${c.no}_${slug(c.name)}`;
+  const animeRef = `images/refs/${id}_anime.png`;
+  const rows = [
+    ['1', 'TURNAROUND（三面図）'],
+    ['2', 'ACTION POSES（アクションポーズ）'],
+    ['3', 'EXPRESSION SHEET（表情）'],
+    ['4', 'GAME SPRITES（ゲームスプライト）'],
+  ];
+  box.innerHTML = `
+    <section id="animeSec" style="display:none"><h2>アニメ版シート（アニメ3面図基準）</h2>
+      <p class="opnote">🎞 アニメ頭身限定の設定資料。参照画像 <code>${animeRef}</code> を基に
+        Actions の <code>variant=anime-sheet</code> で生成できます（生成物: <code>${dir}anime/sheet.png</code>、行単位は <code>anime-row1〜4</code>）。</p>
+      <div class="psec">参照（アニメ3面図）</div>
+      <img class="rowimg" data-src="${animeRef}" alt="anime ref">
+      <div class="psec">生成シート</div>
+      <img class="rowimg" data-src="${dir}anime/sheet.png" alt="anime sheet">
+      ${rows.map(([n, label]) => `
+        <div class="psec">${n}. ${label}</div>
+        <img class="rowimg" data-src="${dir}anime/rows/row${n}.png" alt="anime row${n}">`).join('')}
+    </section>`;
+  // 1枚でも実在すればセクションを表示
+  const sec = document.getElementById('animeSec');
+  box.querySelectorAll('.rowimg[data-src]').forEach(img => {
+    const probe = new Image();
+    probe.onload = () => { img.src = probe.src; img.style.display = 'block'; sec.style.display = 'block'; };
+    probe.src = img.dataset.src;
   });
 }
 </script>

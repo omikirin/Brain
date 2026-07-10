@@ -59,12 +59,48 @@ async function main() {
     row4: 'ROW 4 — "EXPRESSION ICONS x WORLDS"',
     row5: 'ROW 5 — "PIXEL ART / DOT-E"',
   };
+  // アニメ版シート仕様 — アニメ3面図を同一性の基準に、アニメ頭身に限定した設定資料を作る
+  function buildAnimePrompt(ch) {
+    const name = ch.name.split('(')[0].trim();
+    const idMatch = ch.output_prompt?.en?.match(/IDENTITY \(absolute reference\): ([\s\S]*?)\n\n/);
+    const identity = idMatch ? idMatch[1].trim() : (ch.prompts?.normal?.en || ch.name);
+    return (
+`Create ONE cohesive high-resolution ANIME character model sheet for the CryptoNinja character "${name}", on a clean light-grey background, divided into 4 horizontal bands. This sheet is ANIME-PROPORTION ONLY: every figure is drawn at a normal 7-to-8-head-tall anime body ratio with clean lineart and detailed cel-shading — absolutely NO chibi anywhere on this sheet.\n\n` +
+`IDENTITY (absolute reference): ${identity} If a reference image is attached (an anime turnaround sheet), it OVERRIDES this text — match its face, hairstyle, colors, outfit and proportions exactly.\n\n` +
+`TEXT RULES: render ONLY the caption strings listed below, in clean bold sans-serif capitals. Do not invent, alter or add any other text, letters or logos anywhere.\n\n` +
+`HEADER (top of sheet): "ANIME MODEL SHEET: ${name.toUpperCase()}" and smaller "CRYPTONINJA".\n\n` +
+`ROW 1 — caption "TURNAROUND": full body, neutral A-pose, exactly 3 views left-to-right labeled "FRONT" / "SIDE" / "BACK".\n\n` +
+`ROW 2 — caption "ACTION POSES": exactly 4 dynamic full-body poses (running, attacking with signature weapon, jumping, signature ninjutsu stance), consistent design, no labels other than the row caption.\n\n` +
+`ROW 3 — caption "EXPRESSION SHEET": a strict table of bust-up expression portraits in RECTANGULAR bordered cells with dark-navy cell backgrounds. EXACTLY 2 rows and EXACTLY 4 columns = 8 cells. Cell labels in order: "NEUTRAL" / "SMILE" / "ANGRY" / "SAD" / "SURPRISED" / "SHY" / "DETERMINED" / "LAUGH". Fill every cell — no empty cells, no circular frames.\n\n` +
+`ROW 4 — caption "GAME SPRITES": retro pixel-art sprites of the SAME anime-proportioned (tall) character on a transparent-look checkerboard, in TWO labeled groups side by side, "48x48" and "64x64". Each group: idle sprites in 3 views (front/side/back) on one line, and a walking animation as ONE horizontal strip of EXACTLY 4 equal frames on the next line. Keep the tall proportions readable.\n\n` +
+`REQUIREMENTS: identity consistent everywhere; no watermark; no cropping at panel edges; no duplicate or missing views; even lighting; captions exactly as specified. Usable as a production reference for anime and 2D games.\n\n` +
+`SHEET LAYOUT: portrait 4:5. Top-to-bottom: HEADER → ROW 1 → ROW 2 → ROW 3 → ROW 4, each band with a small dark label tab at its top-left. Even margins and consistent gutters.`);
+  }
+  const ANIME_ROW_TITLES = {
+    'anime-row1': 'ROW 1 — "TURNAROUND"',
+    'anime-row2': 'ROW 2 — "ACTION POSES"',
+    'anime-row3': 'ROW 3 — "EXPRESSION SHEET"',
+    'anime-row4': 'ROW 4 — "GAME SPRITES"',
+  };
+
   let prompt, aspect, outName;
   if (VARIANT === 'sheet') {
     if (!c.output_prompt?.en) { console.error(`❌ ${c.name} には output_prompt がありません（モデルシート未対応）。`); process.exit(1); }
     prompt = c.output_prompt.en;
     aspect = '4:5';
     outName = 'sheet';
+  } else if (VARIANT === 'anime-sheet') {
+    prompt = buildAnimePrompt(c);
+    aspect = '4:5';
+    outName = 'anime/sheet';
+  } else if (ANIME_ROW_TITLES[VARIANT]) {
+    prompt =
+      `From the anime model-sheet specification below, RENDER ONLY the section ${ANIME_ROW_TITLES[VARIANT]} ` +
+      `as ONE standalone wide image. Fill the whole canvas with just that section's content at large size. ` +
+      `Ignore the other rows, the header and the 4:5 sheet layout. Keep the TEXT RULES and the IDENTITY section exactly.\n\n` +
+      buildAnimePrompt(c);
+    aspect = '16:9';
+    outName = `anime/rows/${VARIANT.replace('anime-', '')}`;
   } else if (ROW_TITLES[VARIANT]) {
     // 行単位の生成 — シート全体で崩れた行だけを高解像度で作り直す
     if (!c.output_prompt?.en) { console.error(`❌ ${c.name} には output_prompt がありません。`); process.exit(1); }
@@ -83,14 +119,26 @@ async function main() {
   }
 
   // 参照画像（image-to-image で同一性を保つ）
-  const refPath = path.join(ROOT, dir, 'ref.png');
-  let useRef = false;
-  if (REF_MODE !== 'off' && await exists(refPath)) useRef = true;
-  if (REF_MODE === 'on' && !useRef) { console.error(`❌ REF_MODE=on ですが参照画像がありません: ${dir}/ref.png`); process.exit(1); }
+  // 探索順: images/refs/（中央置き場）→ キャラフォルダ。アニメ系バリアントは _anime ref を使う
+  const isAnime = VARIANT.startsWith('anime');
+  const id = `${c.no}_${slug(c.name)}`;
+  const refCandidates = isAnime
+    ? [path.join(ROOT, 'images/refs', `${id}_anime.png`), path.join(ROOT, dir, 'anime-ref.png')]
+    : [path.join(ROOT, 'images/refs', `${id}.png`), path.join(ROOT, dir, 'ref.png')];
+  let refPath = null;
+  if (REF_MODE !== 'off') {
+    for (const p of refCandidates) { if (await exists(p)) { refPath = p; break; } }
+  }
+  const useRef = !!refPath;
+  if (REF_MODE === 'on' && !useRef) {
+    console.error(`❌ REF_MODE=on ですが参照画像がありません。次のいずれかに置いてください:\n  ${refCandidates.map(p => path.relative(ROOT, p)).join('\n  ')}`);
+    process.exit(1);
+  }
 
   const base = MODEL_TIER === 'pro' ? 'fal-ai/nano-banana-pro' : 'fal-ai/nano-banana';
   const model = useRef ? `${base}/edit` : base;
-  const resolution = env('RESOLUTION', VARIANT === 'sheet' ? '2K' : ROW_TITLES[VARIANT] ? '2K' : '1K');
+  const resolution = env('RESOLUTION',
+    (VARIANT === 'sheet' || VARIANT === 'anime-sheet' || ROW_TITLES[VARIANT] || ANIME_ROW_TITLES[VARIANT]) ? '2K' : '1K');
   const input = { prompt, num_images: NUM, output_format: 'png', aspect_ratio: aspect };
   if (MODEL_TIER === 'pro') input.resolution = resolution;
 
@@ -101,7 +149,7 @@ async function main() {
   }
 
   if (useRef) {
-    console.log(`🖼  参照画像を fal storage にアップロード: ${dir}/ref.png`);
+    console.log(`🖼  参照画像を fal storage にアップロード: ${path.relative(ROOT, refPath)}`);
     const buf = await readFile(refPath);
     const url = await fal.storage.upload(new Blob([buf], { type: 'image/png' }));
     input.image_urls = [url];

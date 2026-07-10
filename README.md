@@ -45,7 +45,7 @@ GitHub Actions 上で fal.ai を呼び、モデルシート（三面図＋世界
    | 入力 | 説明 |
    |---|---|
    | `character` | キャラ番号か名前（例 `032` / `Seori`） |
-   | `variant` | `sheet`（モデルシート全体）／ `row1`〜`row5`（崩れた行だけ横長で再生成: 1=ちび三面図 2=通常三面図 3=世界観バリエ 4=表情グリッド 5=ドット絵）／ 画風（`chibi`/`normal`/`modern`/`scifi`/`fantasy`/`isekai`） |
+   | `variant` | `sheet`（モデルシート全体）／ `row1`〜`row5`（崩れた行だけ横長で再生成: 1=ちび三面図 2=通常三面図 3=世界観バリエ 4=表情グリッド 5=ドット絵）／ `anime-sheet`（アニメ版シート全体・非ちび）／ `anime-row1`〜`anime-row4`（アニメ版の行単位: 1=三面図 2=アクションポーズ 3=表情 4=ゲームスプライト）／ 画風（`chibi`/`normal`/`modern`/`scifi`/`fantasy`/`isekai`） |
    | `ref_mode` | 参照画像 `ref.png` の利用。`auto`（あれば使う）/`on`/`off` |
    | `num` | 生成枚数（1〜4） |
    | `model_tier` | `pro`（既定・Nano Banana Pro／Gemini 3 Pro Image）/ `standard`（Nano Banana／Gemini 2.5 Flash Image、安価・高速） |
@@ -56,7 +56,14 @@ GitHub Actions 上で fal.ai を呼び、モデルシート（三面図＋世界
    - `variant=sheet` → `sheet.png`（シートページのモデルシート欄に自動表示）
    - それ以外 → `gen-<variant>.png`
 
-**同一性を高めたい場合**: `images/characters/<番号>_<名前>/ref.png` に元NFT画像を置くと、`ref_mode=auto`/`on` で image-to-image（`nano-banana/edit`）が使われ、顔・配色・装備を寄せて生成します。
+**参照画像（Character Ref）**: `images/refs/` にまとめて置きます（詳細は `images/refs/README.md`）。
+
+- `images/refs/<番号>_<スラッグ>.png` — ベース（NFT/ちび）ref。`sheet`/`row*` 等の生成で使用
+- `images/refs/<番号>_<スラッグ>_anime.png` — アニメ版ref（アニメ3面図シート）。`anime-sheet`/`anime-row*` で使用
+
+refがあると `ref_mode=auto`/`on` で image-to-image（`nano-banana-pro/edit`）が使われ、顔・配色・装備を参照画像に寄せて生成します。旧来のキャラフォルダ内 `ref.png`/`anime-ref.png` も引き続き認識されます。
+
+**アニメ版シート**: アニメ3面図refを基準に、アニメ頭身限定（非ちび）の設定資料——三面図・アクションポーズ・表情・ゲームスプライト（48×48/64×64）——を `variant=anime-sheet` で生成できます。生成物はキャラフォルダの `anime/` に保存され、シートページの「アニメ版シート」欄（アニメ版限定の表示）に自動で出ます。
 
 **ローカルで試す**（任意）:
 
