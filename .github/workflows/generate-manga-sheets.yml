@@ -63,5 +63,6 @@ jobs:
             echo "変更なし"
           else
             git commit -m "Generate manga sheets (${{ inputs.prefix }}) via fal.ai"
+            git pull --rebase origin ${GITHUB_REF_NAME}
             git push
           fi

@@ -109,5 +109,6 @@ jobs:
             echo "変更なし（生成物が既存と同一）"
           else
             git commit -m "Generate ${{ inputs.variant }} for ${{ inputs.character }} via fal.ai"
+            git pull --rebase origin ${GITHUB_REF_NAME}
             git push
           fi
