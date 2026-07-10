@@ -1,0 +1,36 @@
+<!-- 購入者専用ページの本文テンプレート。
+     実際の本文は members-src.html にコピーして編集してください（.gitignore済み＝リポジトリに載りません）。
+     編集後: PASSWORD='新しいパスワード' node scripts/build-members.mjs で members.html を再生成。 -->
+<style>
+  #content h1{font-size:1.5rem; margin:8px 0 4px}
+  #content h1 span{color:var(--accent)}
+  #content h2{font-size:1.05rem; color:var(--accent); margin:28px 0 10px; border-bottom:1px solid var(--line); padding-bottom:6px}
+  #content p{font-size:.92rem; margin:8px 0}
+  #content ul{margin:8px 0 8px 22px; font-size:.92rem}
+  #content a{color:var(--accent)}
+  #content .box{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin:10px 0}
+  #content code{background:var(--panel2); padding:1px 6px; border-radius:4px; font-size:.85em}
+</style>
+
+<h1>ようこそ、<span>Brain購入者専用</span>ページへ</h1>
+<p>ご購入ありがとうございます。ここは正しいパスワードを入力した方だけが読める領域です。</p>
+
+<h2>🎁 特典コンテンツ</h2>
+<div class="box">
+  <ul>
+    <li><a href="index.html">キャラクター図鑑</a> — 全38キャラの設定・相関・作画プロンプト</li>
+    <li><a href="studio.html">同人スタジオ</a> — 小説→ネーム→漫画原稿の制作支援</li>
+    <li><a href="motion.html">SVGモーションシステム</a> — キャラを動かすゲーム支援ツール</li>
+    <li><a href="embed.html">ゲーム組み込みガイド</a> — シートを自作ゲームに取り込む方法</li>
+  </ul>
+</div>
+
+<h2>🔑 fal.ai 生成のセットアップ手順（購入者向け詳細版）</h2>
+<div class="box">
+  <p>ここに購入者だけに公開したい手順・プロンプトのコツ・APIキーの節約術などを書きます。</p>
+</div>
+
+<h2>📬 サポート・連絡先</h2>
+<div class="box">
+  <p>ここに問い合わせ先やDiscordの招待リンクなどを書きます。</p>
+</div>
