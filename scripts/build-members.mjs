@@ -29,10 +29,13 @@ const b64 = u8 => Buffer.from(u8).toString('base64');
 const ITER = 310000;
 const salt = crypto.getRandomValues(new Uint8Array(16));
 
-const baseKey = await crypto.subtle.importKey('raw', enc.encode(PASSWORD), 'PBKDF2', false, ['deriveKey']);
+const baseKey = await crypto.subtle.importKey('raw', enc.encode(PASSWORD), 'PBKDF2', false, ['deriveKey', 'deriveBits']);
 const key = await crypto.subtle.deriveKey(
   { name: 'PBKDF2', salt, iterations: ITER, hash: 'SHA-256' },
   baseKey, { name: 'AES-GCM', length: 256 }, false, ['encrypt']);
+/* ページゲート用の検証値: PBKDF2で導出したビット列のSHA-256（鍵自体は保存しない） */
+const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', salt, iterations: ITER, hash: 'SHA-256' }, baseKey, 256);
+const VERIFY = b64(new Uint8Array(await crypto.subtle.digest('SHA-256', bits)));
 
 async function encrypt(bytes) {
   const iv = crypto.getRandomValues(new Uint8Array(12));
@@ -116,7 +119,8 @@ const DATA = {
   salt: "${b64(salt)}",
   iter: ${ITER},
   body: { iv: "${b64(body.iv)}", cipher: "${b64(body.cipher)}" },
-  files: ${JSON.stringify(manifest)}
+  files: ${JSON.stringify(manifest)},
+  verify: "${VERIFY}"
 };
 const b2u = b => Uint8Array.from(atob(b), c => c.charCodeAt(0));
 let KEY = null;
@@ -137,6 +141,9 @@ async function unlock(pw, silent) {
     const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b2u(DATA.body.iv) }, key, b2u(DATA.body.cipher));
     KEY = key;
     sessionStorage.setItem('members_pw', pw);
+    sessionStorage.setItem('members_ok', DATA.verify);
+    const next = new URLSearchParams(location.search).get('next');
+    if (next && /^[\\w.-]+\\.html$/.test(next)) { location.replace(next); return; }
     document.getElementById('gate').style.display = 'none';
     const c = document.getElementById('content');
     c.innerHTML = new TextDecoder().decode(plain);
@@ -193,3 +200,36 @@ if (saved) unlock(saved, true);
 
 await writeFile(path.join(ROOT, 'members.html'), html);
 console.log(`✅ members.html を生成（本文 + 配布物${manifest.length}件 / AES-256-GCM, PBKDF2 ${ITER}回）`);
+
+/* --- ページゲート(js/gate.js): 閲覧ページを購入者限定にする ---
+   <script src="js/gate.js"></script> を <head> 先頭に入れたページは、
+   未認証アクセス時に members.html?next=<ページ> へリダイレクトされる。 */
+const gate = `/* 購入者ゲート(自動生成: scripts/build-members.mjs) */
+(function(){
+  var CFG = { salt: "${b64(salt)}", iter: ${ITER}, verify: "${VERIFY}" };
+  var page = location.pathname.split('/').pop() || 'index.html';
+  function toGate(){ location.replace('members.html?next=' + encodeURIComponent(page)); }
+  try {
+    if (sessionStorage.getItem('members_ok') === CFG.verify) return;
+  } catch (e) { toGate(); return; }
+  document.documentElement.style.visibility = 'hidden';
+  var pw = null;
+  try { pw = sessionStorage.getItem('members_pw'); } catch (e) {}
+  if (!pw) { toGate(); return; }
+  var b2u = function(b){ return Uint8Array.from(atob(b), function(c){ return c.charCodeAt(0); }); };
+  crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveBits'])
+    .then(function(bk){ return crypto.subtle.deriveBits({ name:'PBKDF2', salt:b2u(CFG.salt), iterations:CFG.iter, hash:'SHA-256' }, bk, 256); })
+    .then(function(bits){ return crypto.subtle.digest('SHA-256', bits); })
+    .then(function(h){
+      var hb = btoa(String.fromCharCode.apply(null, new Uint8Array(h)));
+      if (hb === CFG.verify) {
+        sessionStorage.setItem('members_ok', CFG.verify);
+        document.documentElement.style.visibility = '';
+      } else { toGate(); }
+    })
+    .catch(toGate);
+})();
+`;
+await mkdir(path.join(ROOT, 'js'), { recursive: true });
+await writeFile(path.join(ROOT, 'js/gate.js'), gate);
+console.log('✅ js/gate.js を生成（閲覧ページの購入者ゲート）');
