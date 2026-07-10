@@ -55,6 +55,9 @@ def build_sheet_prompt(pages, chars, style_suffix):
     lines = [
         f"A single contact-sheet image containing exactly {pps} manga pages arranged in a strict"
         f" uniform grid of {COLS} columns x {ROWS} rows (equal-sized cells, no gutter, no outer margin).",
+        f"GRID COUNT (critical): the grid has EXACTLY {COLS} columns across and {ROWS} rows down"
+        f" = {pps} cells total. Count the columns: {COLS}, never {COLS - 1} and never {COLS + 1}."
+        f" Every row contains exactly {COLS} pages side by side.",
         "READING ORDER (Japanese manga, RIGHT-TO-LEFT — this is critical): each row holds two"
         " 2-page spreads read right to left. Top row: page 1 = TOP-RIGHT cell, page 2 = second"
         " cell from the right, page 3 = third from the right, page 4 = TOP-LEFT cell. Then move"
