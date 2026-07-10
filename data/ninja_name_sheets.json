@@ -20,7 +20,7 @@
           "panels": [
             {
               "no": 1,
-              "prompt": "Wide establishing shot, slightly high angle. Fuma ninja village decorated for festival: rows of red lanterns, wooden yagura tower under construction, villagers bustling. Warm afternoon light.",
+              "prompt": "Wide establishing shot, slightly high angle. Fuma ninja village decorated for festival: rows of red lanterns, wooden yagura tower under construction, villagers bustling — among them {kohaku} carrying a crate of festival fox masks and {dan} hanging paper lanterns. Warm afternoon light.",
               "dialogue": [
                 {
                   "speaker": "ナレーション",
@@ -200,7 +200,7 @@
           "panels": [
             {
               "no": 1,
-              "prompt": "Wide comic montage-style shot. {ibuki} searching frantically: under the yagura tower, behind a taiko drum, inside a mochi mortar while an old man scolds him. Speed lines, sweat drops.",
+              "prompt": "Wide comic montage-style shot. {ibuki} searching frantically: under the yagura tower, behind a taiko drum, inside a mochi mortar while the old Koka elder {ganzi} scolds him. Speed lines, sweat drops.",
               "dialogue": [
                 {
                   "speaker": "Ibuki",
@@ -268,10 +268,10 @@
             },
             {
               "no": 3,
-              "prompt": "Medium shot. A Fuma ninja shouting and pointing, villagers panicking. {ibuki} and {uka}'s faces turning serious, wind blowing.",
+              "prompt": "Medium shot. {rotten} shouting and pointing, villagers panicking. {ibuki} and {uka}'s faces turning serious, wind blowing.",
               "dialogue": [
                 {
-                  "speaker": "風魔忍",
+                  "speaker": "Rotten",
                   "text": "敵襲! 抜け忍だ! 供物を狙ってるぞ!!"
                 }
               ],
@@ -285,7 +285,7 @@
           "panels": [
             {
               "no": 1,
-              "prompt": "Wide dramatic shot in front of the offering hall. Fallen Fuma ninjas on the ground. Small {ibuki} standing with arms spread wide, protecting them. Shadowy rogue ninjas approaching. Dusk lighting.",
+              "prompt": "Wide dramatic shot in front of the offering hall. The fallen Fuma ninjas {dan} and {karma} on the ground. Small {ibuki} standing with arms spread wide, protecting them. Shadowy rogue ninjas approaching. Dusk lighting.",
               "dialogue": [
                 {
                   "speaker": "Ibuki",
@@ -534,7 +534,7 @@
           "panels": [
             {
               "no": 1,
-              "prompt": "Bright festive wide shot, daytime. Festival in full swing. {uka} surrounded by village children, teaching fox flame practice, children's eyes sparkling.",
+              "prompt": "Bright festive wide shot, daytime. Festival in full swing. {uka} surrounded by village children, teaching fox flame practice, children's eyes sparkling; {sakuya} serving food at a stall and {konga} carrying a huge taiko drum in the background.",
               "dialogue": [
                 {
                   "speaker": "子供たち",
@@ -685,7 +685,7 @@
             },
             {
               "no": 3,
-              "prompt": "Final gag wide shot, pull-back view of the whole village. A hundred fox cubs pouring out in puffs of smoke everywhere, {ibuki} screaming, {uka} laughing, {yama} bouncing. Festival lanterns glowing. The end.",
+              "prompt": "Final gag wide shot, pull-back view of the whole village. A hundred fox cubs pouring out in puffs of smoke everywhere, {ibuki} screaming, {uka} laughing, {yama} bouncing, {kohaku}, {ganzi} and {rotten} laughing among the crowd. Festival lanterns glowing. The end.",
               "dialogue": [
                 {
                   "speaker": "Ibuki",

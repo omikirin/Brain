@@ -87,7 +87,7 @@ async function main() {
   if (VARIANT === 'sheet') {
     if (!c.output_prompt?.en) { console.error(`❌ ${c.name} には output_prompt がありません（モデルシート未対応）。`); process.exit(1); }
     prompt = c.output_prompt.en;
-    aspect = '4:5';
+    aspect = /^\d+:\d+$/.test(c.output_prompt.aspect_ratio || '') ? c.output_prompt.aspect_ratio : '4:5';
     outName = 'sheet';
   } else if (VARIANT === 'anime-sheet') {
     prompt = buildAnimePrompt(c);
