@@ -149,12 +149,21 @@ async function main() {
   }
 
   if (useRef) {
-    console.log(`🖼  参照画像を fal storage にアップロード: ${path.relative(ROOT, refPath)}`);
-    const buf = await readFile(refPath);
-    const url = await fal.storage.upload(new Blob([buf], { type: 'image/png' }));
-    input.image_urls = [url];
-    // edit モードでは同一性維持を促す指示を先頭に追加
-    input.prompt = `Using the attached reference image as the exact character design (keep the face, hairstyle, colors and equipment identical), ${prompt}`;
+    const refPaths = [refPath];
+    // 比率参照（FULL-BODY/世界観行の頭身見本）。キャラフォルダの proportion-ref.png
+    const propRef = path.join(ROOT, dir, 'proportion-ref.png');
+    if (!isAnime && await exists(propRef)) refPaths.push(propRef);
+    input.image_urls = [];
+    for (const rp of refPaths) {
+      console.log(`🖼  参照画像を fal storage にアップロード: ${path.relative(ROOT, rp)}`);
+      const buf = await readFile(rp);
+      input.image_urls.push(await fal.storage.upload(new Blob([buf], { type: 'image/png' })));
+    }
+    const lines = ['Attached image 1 shows the exact character design — keep the face, hairstyle, colors and equipment identical.'];
+    if (refPaths.length > 1) {
+      lines.push('Attached image 2 shows the required BODY PROPORTIONS for the FULL-BODY TURNAROUND row and the tall figures in the ALT-WORLD VARIANTS row: 7-to-8-head-tall anime proportions, clearly taller and slimmer than the chibi row. Match those proportions exactly in those rows.');
+    }
+    input.prompt = lines.join(' ') + `\n\n${prompt}`;
   }
 
   console.log(`🎨 生成開始  キャラ=${c.name}(#${c.no})  種別=${VARIANT}  モデル=${model}  枚数=${NUM}  比率=${aspect}${input.resolution ? `  解像度=${input.resolution}` : ''}`);
