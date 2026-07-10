@@ -123,7 +123,7 @@ async function main() {
   const isAnime = VARIANT.startsWith('anime');
   const id = `${c.no}_${slug(c.name)}`;
   const refCandidates = isAnime
-    ? [path.join(ROOT, 'images/refs', `${id}_anime.png`), path.join(ROOT, dir, 'anime-ref.png')]
+    ? [path.join(ROOT, 'images/refs/anime', `${id}.png`), path.join(ROOT, 'images/refs', `${id}_anime.png`), path.join(ROOT, dir, 'anime-ref.png')]
     : [path.join(ROOT, 'images/refs', `${id}.png`), path.join(ROOT, dir, 'ref.png')];
   let refPath = null;
   if (REF_MODE !== 'off') {

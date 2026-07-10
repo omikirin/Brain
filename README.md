@@ -59,7 +59,7 @@ GitHub Actions 上で fal.ai を呼び、モデルシート（三面図＋世界
 **参照画像（Character Ref）**: `images/refs/` にまとめて置きます（詳細は `images/refs/README.md`）。
 
 - `images/refs/<番号>_<スラッグ>.png` — ベース（NFT/ちび）ref。`sheet`/`row*` 等の生成で使用
-- `images/refs/<番号>_<スラッグ>_anime.png` — アニメ版ref（アニメ3面図シート）。`anime-sheet`/`anime-row*` で使用
+- `images/refs/anime/<番号>_<スラッグ>.png` — アニメ版ref（アニメ3面図シート）。`anime-sheet`/`anime-row*` で使用
 
 refがあると `ref_mode=auto`/`on` で image-to-image（`nano-banana-pro/edit`）が使われ、顔・配色・装備を参照画像に寄せて生成します。旧来のキャラフォルダ内 `ref.png`/`anime-ref.png` も引き続き認識されます。
 
