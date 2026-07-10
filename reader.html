@@ -6,16 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>シートリーダー</title>
 <script>
-// 作品プロファイル: ?work= で切替(既定: omukae のサンプル)。
-// クリプト忍者のシートは studio.html でネームJSONを作り、
-// scripts/generate_sheets.py --data ninja_name_sheets.json で生成すると ?work=ninja で読める
+// 作品プロファイル: クリプト忍者専用。
+// シートは studio.html でネームJSONを作り、Actions「Generate Manga Sheets」で生成すると自動表示
 const WORKS={
-  omukae:{title:'おむかえのお願い(サンプル)', data:'data/omukae_name_sheets.json', prefix:'sheets/sheet_omukae_',
-          theme:{accent:'#FF6B81',accentDeep:'#F04A62',gold:'#FFC53D'}},
   ninja: {title:'クリプト忍者',     data:'data/ninja_name_sheets.json',  prefix:'sheets/sheet_ninja_',
           theme:{accent:'#4D96FF',accentDeep:'#3B7DE8',gold:'#FFD93D'}}
 };
-const WORK=WORKS[new URLSearchParams(location.search).get('work')]||WORKS.omukae;
+const WORK=WORKS[new URLSearchParams(location.search).get('work')]||WORKS.ninja;
 for(const i of ['01','02']){
   const l=document.createElement('link');
   l.rel='preload'; l.as='image'; l.href=`${WORK.prefix}${i}.webp`;
@@ -72,10 +69,6 @@ for(const i of ['01','02']){
 <header>
   <h1 id="ttl">📖 シートリーダー</h1>
   <div class="controls">
-    <select id="workSel" title="作品切替">
-      <option value="omukae">おむかえのお願い(サンプル)</option>
-      <option value="ninja">クリプト忍者</option>
-    </select>
     <button id="mSpread" class="active">見開き</button>
     <button id="mSingle">単ページ</button>
     <button id="mSheet">16p一覧</button>
@@ -113,10 +106,6 @@ document.title=`シートリーダー — ${WORK.title}`;
 for(const [k,v] of Object.entries({'--accent':WORK.theme.accent,'--accent-deep':WORK.theme.accentDeep,'--gold':WORK.theme.gold})){
   document.documentElement.style.setProperty(k,v);
 }
-// 作品切替
-const workSel=document.getElementById('workSel');
-workSel.value=new URLSearchParams(location.search).get('work')||'omukae';
-workSel.onchange=()=>{location.search='?work='+workSel.value;};
 let sheets=[];        // 画像URLの配列(1枚=16p)
 let total=0;          // 総ページ数
 let cur=1;            // 現在ページ(1-based)

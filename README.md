@@ -10,7 +10,7 @@ CryptoNinja NFT キャラクターの二次創作（同人）制作を助ける�
 - **キャラシート分割** (`sheet.html?no=001`) — キャラ1体ずつの独立シートページ。前後キャラ移動、1体分のJSONダウンロード付き。
 - **ゲーム組み込みガイド** (`embed.html`) — シートをゲーム等に取り込む4つの方法（iframe / `<cn-sheet>` Web Component / `js/cn-data.js` API / 生JSON）をライブデモ付きで解説。
 - **同人スタジオ** (`studio.html`) — キャラ2人とジャンルを選んで、小説→ネーム→漫画原稿（見開き2P・各ページ3コマ）まで作れる制作支援ページ。
-- **シートリーダー** (`reader.html`) — 16pシート画像を見開き漫画として読めるビューア（ポップUI・セリフオーバーレイ・単ページ/16p一覧切替・スワイプ対応）。サンプル作品『おむかえのお願い』収録。クリプト忍者のシートは 同人スタジオ(工程②)のネームJSON → `scripts/generate_sheets.py`（fal.ai）で生成し `?work=ninja` で読めます。
+- **シートリーダー** (`reader.html`) — 16pシート画像を見開き漫画として読めるビューア（ポップUI・セリフオーバーレイ・単ページ/16p一覧切替・スワイプ対応）。クリプト忍者のシートは 同人スタジオのネームJSON → `scripts/generate_sheets.py`（fal.ai / Actions: Generate Manga Sheets）で生成すると自動で表示されます。
 - **購入者専用ページ** (`members.html`) — Brain購入者向けのパスワード保護ページ。本文・配布ファイルはAES-256-GCMで暗号化され、正しいパスワードでのみブラウザ内で復号されます（公開リポジトリでも中身は読めません）。
 - **サイト全体の購入者ゲート** (`js/gate.js`) — 図鑑・シート・SVGモーション・組み込みガイド・同人スタジオの閲覧ページはすべて購入者ゲート配下。未認証でアクセスすると `members.html` に転送され、パスワード入力後に元のページへ戻ります（同ブラウザのタブを閉じるまで再入力不要）。
 - **キャラシート自動生成** (`.github/workflows/generate-sheet.yml`) — GitHub Actions から fal.ai（Nano Banana / Nano Banana Pro）を呼び、`output_prompt` を基にキャラのモデルシートを生成してリポジトリに保存します。
