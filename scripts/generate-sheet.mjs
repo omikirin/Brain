@@ -41,13 +41,50 @@ const slug = name => name.toLowerCase().split('(')[0].trim().replace(/[^a-z0-9]+
 
 const exists = async p => { try { await access(p, constants.F_OK); return true; } catch { return false; } };
 
+/* CHAR 指定の展開: 単体("032"/"Seori") のほか "001-010" や "001-031,033-038" の範囲リストに対応 */
+function resolveChars(spec, all) {
+  const find = k => {
+    const kl = String(k).toLowerCase();
+    return all.find(x => x.no === k || String(Number(k)).padStart(3, '0') === x.no ||
+      x.name.toLowerCase() === kl || slug(x.name) === kl);
+  };
+  if (!/[,\-]/.test(spec)) { const c = find(spec); return c ? [c] : []; }
+  const out = [];
+  for (const part of spec.split(',')) {
+    const m = part.trim().match(/^(\d+)-(\d+)$/);
+    if (m) {
+      for (let i = +m[1]; i <= +m[2]; i++) {
+        const c = find(String(i).padStart(3, '0'));
+        if (c) out.push(c);
+      }
+    } else {
+      const c = find(part.trim());
+      if (c) out.push(c);
+    }
+  }
+  return out;
+}
+
 async function main() {
   const data = JSON.parse(await readFile(path.join(ROOT, 'data/characters.json'), 'utf8'));
-  const key = String(CHAR).toLowerCase();
-  const c = data.characters.find(x =>
-    x.no === CHAR || String(Number(CHAR)).padStart(3, '0') === x.no ||
-    x.name.toLowerCase() === key || slug(x.name) === key);
-  if (!c) { console.error(`❌ キャラが見つかりません: ${CHAR}`); process.exit(1); }
+  const targets = resolveChars(CHAR, data.characters);
+  if (!targets.length) { console.error(`❌ キャラが見つかりません: ${CHAR}`); process.exit(1); }
+  console.log(`▶ 対象: ${targets.length}体 (${targets[0].no}〜${targets[targets.length - 1].no})`);
+  const failed = [];
+  for (const c of targets) {
+    try {
+      await processChar(c);
+    } catch (e) {
+      console.error(`❌ ${c.no} ${c.name} 失敗:`, e?.message || e);
+      failed.push(c.no);
+    }
+  }
+  if (failed.length) console.error(`⚠️ 失敗: ${failed.join(', ')} (${failed.length}/${targets.length})`);
+  if (failed.length === targets.length) process.exit(1);
+  console.log(`🏁 バッチ完了: 成功 ${targets.length - failed.length}/${targets.length}`);
+}
+
+async function processChar(c) {
 
   const dir = `images/characters/${c.no}_${slug(c.name)}`;
 
@@ -85,7 +122,7 @@ async function main() {
 
   let prompt, aspect, outName;
   if (VARIANT === 'sheet') {
-    if (!c.output_prompt?.en) { console.error(`❌ ${c.name} には output_prompt がありません（モデルシート未対応）。`); process.exit(1); }
+    if (!c.output_prompt?.en) throw new Error('output_prompt がありません');
     prompt = c.output_prompt.en;
     aspect = /^\d+:\d+$/.test(c.output_prompt.aspect_ratio || '') ? c.output_prompt.aspect_ratio : '4:5';
     outName = 'sheet';
@@ -103,7 +140,7 @@ async function main() {
     outName = `anime/rows/${VARIANT.replace('anime-', '')}`;
   } else if (ROW_TITLES[VARIANT]) {
     // 行単位の生成 — シート全体で崩れた行だけを高解像度で作り直す
-    if (!c.output_prompt?.en) { console.error(`❌ ${c.name} には output_prompt がありません。`); process.exit(1); }
+    if (!c.output_prompt?.en) throw new Error('output_prompt がありません');
     prompt =
       `From the model-sheet specification below, RENDER ONLY the section ${ROW_TITLES[VARIANT]} ` +
       `as ONE standalone wide image. Fill the whole canvas with just that section's content at large size. ` +
@@ -112,7 +149,7 @@ async function main() {
     aspect = '16:9';
     outName = `rows/${VARIANT}`;
   } else {
-    if (!c.prompts?.[VARIANT]?.en) { console.error(`❌ ${c.name} に prompts.${VARIANT} がありません。`); process.exit(1); }
+    if (!c.prompts?.[VARIANT]?.en) throw new Error(`prompts.${VARIANT} がありません`);
     prompt = c.prompts[VARIANT].en;
     aspect = '1:1';
     outName = `gen-${VARIANT}`;
@@ -131,8 +168,7 @@ async function main() {
   }
   const useRef = !!refPath;
   if (REF_MODE === 'on' && !useRef) {
-    console.error(`❌ REF_MODE=on ですが参照画像がありません。次のいずれかに置いてください:\n  ${refCandidates.map(p => path.relative(ROOT, p)).join('\n  ')}`);
-    process.exit(1);
+    throw new Error(`REF_MODE=on ですが参照画像がありません: ${refCandidates.map(p => path.relative(ROOT, p)).join(' / ')}`);
   }
 
   const base = MODEL_TIER === 'pro' ? 'fal-ai/nano-banana-pro' : 'fal-ai/nano-banana';
@@ -174,7 +210,7 @@ async function main() {
   });
 
   const images = result.data?.images || [];
-  if (!images.length) { console.error('❌ 画像が返りませんでした。', JSON.stringify(result.data)); process.exit(1); }
+  if (!images.length) throw new Error('画像が返りませんでした: ' + JSON.stringify(result.data));
 
   const saved = [];
   for (let i = 0; i < images.length; i++) {
@@ -182,7 +218,7 @@ async function main() {
     const out = path.join(ROOT, dir, `${outName}${suffix}.png`);
     await mkdir(path.dirname(out), { recursive: true });
     const res = await fetch(images[i].url);
-    if (!res.ok) { console.error(`❌ ダウンロード失敗: ${images[i].url}`); process.exit(1); }
+    if (!res.ok) throw new Error(`ダウンロード失敗: ${images[i].url}`);
     await writeFile(out, Buffer.from(await res.arrayBuffer()));
     saved.push(path.relative(ROOT, out));
     console.log(`✅ 保存: ${path.relative(ROOT, out)}`);
