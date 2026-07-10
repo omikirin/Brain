@@ -4,3 +4,4 @@ scripts/package-lock.json
 .DS_Store
 members-src.html
 members-files/
+__pycache__/
