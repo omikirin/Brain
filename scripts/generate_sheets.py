@@ -55,11 +55,12 @@ def build_sheet_prompt(pages, chars, style_suffix):
     lines = [
         f"A single contact-sheet image containing exactly {pps} manga pages arranged in a strict"
         f" uniform grid of {COLS} columns x {ROWS} rows (equal-sized cells, no gutter, no outer margin).",
-        "The grid is TWO side-by-side columns of two-page spreads (each spread = 2 adjacent cells,"
-        " right page + left page). Reading order: start at the TOP-RIGHT spread — page 1 is the"
-        " top-right cell, page 2 is immediately to its left. Then move DOWN one row: pages 3-4,"
-        " then 5-6, then 7-8 at the bottom of the right spread-column. Continue at the TOP of the"
-        " LEFT spread-column: pages 9-10, then 11-12, 13-14, and finally 15-16 at the bottom-left.",
+        "READING ORDER (Japanese manga, RIGHT-TO-LEFT — this is critical): each row holds two"
+        " 2-page spreads read right to left. Top row: page 1 = TOP-RIGHT cell, page 2 = second"
+        " cell from the right, page 3 = third from the right, page 4 = TOP-LEFT cell. Then move"
+        " down one row and repeat from the right: row 2 = pages 5,6,7,8 (right to left), row 3 ="
+        " pages 9,10,11,12, bottom row = pages 13,14,15,16. Page 1 must NEVER be at the top-left;"
+        " the top-left cell is always page 4 of that row.",
         "Each cell is one vertical manga page whose panels are stacked top to bottom.",
         "Page contents (in reading order):",
     ]
