@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>クリプト忍者 同人スタジオ — 小説から漫画原稿まで</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FCFCFA;
+  --ink:#141414;
+  --tone:#8A8A85;
+  --blue:#2FA8DC;        /* ネーム=水色鉛筆 */
+  --blue-soft:#E3F4FB;
+  --red:#D9333F;         /* 赤ペン=決定アクション */
+  --line:2.5px solid var(--ink);
+  --font-display:'Zen Antique','Hiragino Mincho ProN',serif;
+  --font-body:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.7;
+  background-image:repeating-linear-gradient(0deg,transparent,transparent 31px,rgba(47,168,220,.06) 31px,rgba(47,168,220,.06) 32px)}
+header{border-bottom:var(--line);padding:34px 22px 26px;position:relative}
+header .tombo{position:absolute;width:18px;height:18px;border-left:2px solid var(--ink);border-top:2px solid var(--ink)}
+header .tombo.tr{right:8px;top:8px;transform:rotate(90deg)}
+header .tombo.tl{left:8px;top:8px}
+h1{font-family:var(--font-display);font-size:clamp(26px,4.5vw,42px);letter-spacing:.06em}
+h1 .kana{display:block;font-size:12px;letter-spacing:.5em;color:var(--tone);font-family:var(--font-body);font-weight:700;margin-bottom:6px}
+.lead{max-width:760px;margin-top:10px;color:#333}
+.format-badge{display:inline-block;margin-top:12px;border:2px solid var(--ink);padding:3px 12px;font-size:12px;font-weight:700;background:#fff}
+.wrap{max-width:1060px;margin:0 auto;padding:30px 18px 90px}
+
+/* 工程バー */
+.flow{display:flex;gap:0;margin:0 0 34px;border:var(--line);background:#fff}
+.flow div{flex:1;padding:10px 6px;text-align:center;font-size:12px;font-weight:700;border-right:2px dashed #ccc;color:var(--tone);position:relative}
+.flow div:last-child{border-right:none}
+.flow div.on{color:var(--ink);background:var(--blue-soft)}
+.flow div.done{color:var(--ink)}
+.flow div.done::after{content:"✔";color:var(--red);margin-left:4px}
+
+.koma{border:var(--line);background:#fff;padding:22px 20px 24px;margin-bottom:30px;position:relative;box-shadow:6px 6px 0 rgba(20,20,20,.08)}
+.koma-tag{position:absolute;top:-13px;left:14px;background:var(--ink);color:#fff;font-size:12px;font-weight:900;padding:2px 12px;letter-spacing:.2em}
+.koma h2{font-family:var(--font-display);font-size:21px;margin-bottom:6px}
+.hint{font-size:13px;color:var(--tone);margin-bottom:12px}
+.hint a{color:var(--blue)}
+textarea,input[type=text],input[type=password],select{width:100%;border:2px solid var(--ink);background:#fff;font-family:var(--font-body);font-size:14px;padding:10px;border-radius:0}
+textarea{min-height:150px;resize:vertical}
+textarea:focus,input:focus,select:focus{outline:3px solid var(--blue)}
+label.small{display:block;font-size:12px;font-weight:700;margin:14px 0 4px;letter-spacing:.1em}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.row>div{flex:1;min-width:200px}
+
+button{font-family:var(--font-body);font-weight:900;font-size:15px;border:var(--line);background:#fff;color:var(--ink);padding:11px 22px;cursor:pointer;letter-spacing:.08em;transition:transform .05s}
+button:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
+button:active{transform:translate(1px,1px);box-shadow:none}
+button.primary{background:var(--red);color:#fff;border-color:var(--red)}
+button.blue{background:var(--blue);color:#fff;border-color:var(--blue)}
+button:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
+.drop{border:2.5px dashed var(--tone);padding:26px 12px;text-align:center;cursor:pointer;font-size:13px;color:var(--tone);background:#fafafa}
+.drop.over{border-color:var(--blue);background:var(--blue-soft);color:var(--ink)}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.thumbs .t{position:relative;width:86px;height:86px;border:2px solid var(--ink)}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.thumbs .x{position:absolute;top:-9px;right:-9px;width:20px;height:20px;background:var(--ink);color:#fff;border:none;font-size:11px;padding:0;line-height:20px;border-radius:50%}
+
+.status{font-size:13px;font-weight:700;margin-top:10px;min-height:20px}
+.status.ok{color:#1a7a3a}
+.status.err{color:var(--red)}
+.status.busy{color:var(--blue)}
+
+pre.promptbox{white-space:pre-wrap;background:#111;color:#e8e8e8;font-size:12px;padding:14px;max-height:280px;overflow:auto;border:2px solid var(--ink)}
+
+/* キャラ選択 */
+.chargrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px;margin-top:12px;max-height:340px;overflow:auto;border:2px solid var(--ink);padding:10px;background:#fafafa}
+.ccard{border:2px solid var(--ink);background:#fff;padding:8px 8px 6px;cursor:pointer;position:relative;font-size:11px;line-height:1.4}
+.ccard:hover{background:var(--blue-soft)}
+.ccard b{display:block;font-size:13px}
+.ccard .no{color:var(--tone);font-size:10px}
+.ccard .clan{display:inline-block;border:1px solid var(--ink);padding:0 5px;font-size:10px;margin-top:3px}
+.ccard.p1{outline:3px solid var(--red);background:#fdeaec}
+.ccard.p2{outline:3px solid var(--blue);background:var(--blue-soft)}
+.ccard .role{position:absolute;top:-10px;right:-6px;font-size:10px;font-weight:900;color:#fff;padding:1px 7px}
+.ccard.p1 .role{background:var(--red)}
+.ccard.p2 .role{background:var(--blue)}
+.picked{border:2px solid var(--ink);background:#fff;padding:9px 12px;font-size:13px;font-weight:700;min-height:44px}
+.relbox{border:2px solid var(--red);background:#fdeaec;padding:10px 14px;margin-top:14px;font-size:13px}
+.relbox b{color:var(--red)}
+.gachabox{border:2px dashed var(--ink);background:#fff;padding:12px 14px;margin-top:14px}
+.gachahead{display:flex;justify-content:space-between;align-items:center}
+.gachagroup{margin-top:8px}
+.gachagroup .gname{font-size:12px;font-weight:900;letter-spacing:.1em}
+.chip{display:inline-block;border:2px solid var(--blue);background:var(--blue-soft);padding:4px 10px;margin:4px 6px 0 0;font-size:12px;cursor:pointer;user-select:none}
+.chip:hover{background:#fff}
+.routebox{border:2px solid var(--ink);background:#fff;padding:12px 14px;margin-bottom:18px}
+details.setup{border:2px solid var(--ink);background:#fffbe8;padding:10px 14px;margin-bottom:18px;font-size:13px}
+details.setup summary{font-weight:900;cursor:pointer}
+details.setup ol{margin:8px 0 0 20px}
+details.setup li{margin-bottom:6px}
+details.setup code{background:#eee;padding:0 4px}
+.gachamode{margin-top:8px;font-size:13px;display:flex;gap:18px;flex-wrap:wrap}
+.gachamode label{cursor:pointer;font-weight:700}
+.chip .cat{font-size:10px;font-weight:900;color:var(--blue);margin-right:5px}
+
+/* ネームプレビュー */
+.nameprev{border:2px solid var(--blue);background:var(--blue-soft);padding:12px;margin-top:14px;font-size:13px}
+.nameprev .sp{border-bottom:1px dashed var(--blue);padding:6px 0}
+.nameprev .sp:last-child{border-bottom:none}
+.nameprev b{color:var(--blue)}
+
+/* 進捗・結果 */
+.progress{border:2px solid var(--ink);height:22px;background:#fff;margin-top:12px;position:relative}
+.progress .bar{height:100%;background:var(--blue);width:0%;transition:width .4s}
+.progress span{position:absolute;inset:0;text-align:center;font-size:12px;font-weight:900;line-height:22px;mix-blend-mode:difference;color:#fff}
+.results{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:18px}
+.result{border:var(--line);background:#fff}
+.result img{width:100%;display:block;cursor:zoom-in}
+.result .cap{display:flex;justify-content:space-between;align-items:center;padding:6px 10px;font-size:12px;font-weight:700;border-top:2px solid var(--ink)}
+.result .cap button{font-size:11px;padding:4px 10px}
+.result.fail{padding:16px;color:var(--red);font-size:13px}
+
+/* ライトボックス */
+
+footer{border-top:var(--line);padding:26px 22px;font-size:12px;color:var(--tone);text-align:center}
+@media(max-width:600px){.flow div{font-size:10px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tombo tl"></div><div class="tombo tr"></div>
+  <h1><span class="kana">SHOSETSU → NAME → GENKO</span>クリプト忍者 同人スタジオ</h1>
+  <p class="lead"><b>キャラを2人選ぶ → ジャンルを選ぶ → あとはコピペと自動作画。</b>物語づくりから原稿まで、同人漫画の全工程をこのページ1枚で。自作小説から作るルートも併設。</p>
+  <span class="format-badge">判型固定:見開き2P/各ページ3コマ/右→左/16:9</span>
+</header>
+
+<div class="wrap">
+
+<div class="flow" id="flowbar">
+  <div class="on" data-f="0">工程⓪ キャラ選択</div>
+  <div data-f="1">工程① おまかせ/小説</div>
+  <div data-f="2">工程② ネームJSON</div>
+  <div data-f="3">工程③ キャラ・画風</div>
+  <div data-f="4">工程④ 原稿生成</div>
+</div>
+
+<!-- ================= 工程0 ================= -->
+<section class="koma">
+  <span class="koma-tag">工程⓪</span>
+  <h2>キャラクターを2人、ジャンルを選ぶ</h2>
+  <p class="hint">主役と相手役をタップで選択(1人目=主役・2人目=相手役、再タップで解除)。2人の間に公式設定の関係性があれば自動で物語に反映されます。<b>キャラを選んだら、小説を書かなくても工程①の「おまかせ指示書」で話ごと作れます。</b></p>
+  <div class="charfilter">
+    <input type="text" id="charSearch" placeholder="名前・クランで絞り込み" style="max-width:260px">
+  </div>
+  <div class="chargrid" id="chargrid"></div>
+  <div class="row" style="margin-top:16px">
+    <div>
+      <label class="small">選択中</label>
+      <div class="picked" id="picked">未選択</div>
+    </div>
+    <div>
+      <label class="small" for="genreSel">ジャンル</label>
+      <select id="genreSel"></select>
+    </div>
+  </div>
+  <div class="relbox" id="relbox" style="display:none"></div>
+  <div class="gachabox" id="gachabox" style="display:none">
+    <div class="gachahead"><b>🎲 物語の要素ガチャ</b><button id="rerollAll" style="font-size:12px;padding:5px 14px">全部振り直す</button></div>
+    <div class="gachamode">
+      <label><input type="radio" name="elemMode" value="random" checked> ジャンルの鉄板ネタをランダムで引く</label>
+      <label><input type="radio" name="elemMode" value="custom"> 自分で要素を書く</label>
+    </div>
+    <textarea id="customElems" style="display:none;min-height:80px;margin-top:8px" placeholder="物語に入れたい要素を1行に1つずつ(例:雪の日の再会/主役が刀を折られる/最後は夜明けで締める)"></textarea>
+    <p class="hint" style="margin:6px 0 8px">各キャラの持ちネタ20個からランダムに3つずつ引きました。<b>気に入らない要素はタップで個別に振り直せます。</b>この要素は「おまかせ指示書」に必ず組み込む条件として入ります。</p>
+    <div id="gachaChips"></div>
+  </div>
+</section>
+
+<!-- ================= 工程1 ================= -->
+<section class="koma">
+  <span class="koma-tag">工程①</span>
+  <h2>Claudeに小説を書かせ、ネーム化させる</h2>
+  <p class="hint">Claudeとのやり取りは2往復です。<b>①-a</b> 小説執筆の指示書をコピーしてClaudeに貼る → 返ってきた小説本文を下の欄に貼る → <b>①-b</b> ネーム指示書をコピーして同じチャットに貼る → JSONが返る。<br>自作小説がある人は①-aを飛ばして本文欄に貼ればOK。急ぐ人は「特急」で小説を省略してネームまで直行できます(本文は残りません)。<br><b>💡 ネーム指示書を送る時は、キャラシート・背景資料・サンプルネームJSONをチャットに添付</b>すると、構図描写が資料の見た目に揃い、作画のブレが減ります。</p>
+  <div class="btnrow" style="margin-bottom:6px">
+    <button class="primary" id="novelPromptBtn">①-a 小説執筆の指示書をコピー</button>
+    <button id="novelShowBtn">指示書を表示</button>
+  </div>
+  <pre class="promptbox" id="novelBox" style="display:none"></pre>
+  <div class="btnrow" style="margin:10px 0 16px">
+    <button id="autoPromptBtn">🚄 特急:小説を省略してネーム直行</button>
+    <button id="autoShowBtn">指示書を表示</button>
+  </div>
+  <pre class="promptbox" id="autoBox" style="display:none"></pre>
+  <div class="row">
+    <div>
+      <label class="small" for="title">作品タイトル</label>
+      <input type="text" id="title" placeholder="例:空の狐と地上のウサギ 第一話">
+    </div>
+    <div>
+      <label class="small" for="spreads">見開き数(1見開き=2ページ・6コマ)</label>
+      <select id="spreads">
+        <option value="4">4見開き(8P)— お試し</option>
+        <option value="8" selected>8見開き(16P)— 短編</option>
+        <option value="12">12見開き(24P)— 読切</option>
+        <option value="16">16見開き(32P)— 同人誌1冊</option>
+      </select>
+    </div>
+  </div>
+  <label class="small" for="novel">小説本文(Claudeが書いた本文、または自作小説を貼る)</label>
+  <textarea id="novel" placeholder="①-aでClaudeが返した小説をここに貼り付け(自作小説でもOK)"></textarea>
+  <label class="small" for="charnote">登場キャラ(名前と見た目の要点。キャラシートの名前と一致させる)</label>
+  <textarea id="charnote" style="min-height:70px" placeholder="例:セオリ=白髪の少女忍者、青い着物/ジン=黒装束のリーダー"></textarea>
+  <div class="btnrow">
+    <button class="blue" id="copyPromptBtn">①-b ネーム指示書をコピー</button>
+    <button id="showPromptBtn">指示書を表示</button>
+  </div>
+  <div class="status" id="s1"></div>
+  <pre class="promptbox" id="promptbox" style="display:none"></pre>
+</section>
+
+<!-- ================= 工程2 ================= -->
+<section class="koma">
+  <span class="koma-tag">工程②</span>
+  <h2>Claudeが返したネームJSONを貼る</h2>
+  <p class="hint">Claudeの返答からJSON部分(<code>{ ... }</code>)をまるごとコピーして貼り付け、「検品」を押してください。ページ構成が水色でプレビューされます。</p>
+  <textarea id="jsonInput" placeholder='{"title":"...","spreads":[...]}'></textarea>
+  <div class="btnrow"><button class="blue" id="validateBtn">✎ 検品(ネームチェック)</button></div>
+  <div class="status" id="s2"></div>
+  <div class="nameprev" id="nameprev" style="display:none"></div>
+</section>
+
+<!-- ================= 工程3 ================= -->
+<section class="koma">
+  <span class="koma-tag">工程③</span>
+  <h2>キャラシートを用意する(生成もClaudeにおまかせ)</h2>
+
+  <div class="routebox">
+    <label class="small" style="margin-top:0">作画ルートを選ぶ</label>
+    <div class="gachamode">
+      <label><input type="radio" name="artRoute" value="gemini" checked> 🆓 無料ルート:Geminiに手動で貼る(1枚ずつ・0円)</label>
+      <label><input type="radio" name="artRoute" value="fal"> ⚙️ 自動ルート:Claude+fal+GitHub(全ページ自動・従量課金)</label>
+    </div>
+    <p class="hint" id="routeHint" style="margin:8px 0 0">無料ルート:Gemini(gemini.google.com)の画像生成に、スタジオが作るプロンプト+キャラシート画像を貼って1見開きずつ生成します。API・キー・課金は一切不要。</p>
+  </div>
+  <details class="setup" id="falSetup" style="display:none">
+    <summary>🔧 初回セットアップ:GitHub × fal × Claude の連携(最初の1回だけ)</summary>
+    <ol>
+      <li><b>GitHubでPrivateリポジトリを作る</b>(例: <code>doujin-studio-assets</code>)。<b>必ずPrivate</b>にすること。</li>
+      <li><a href="https://fal.ai/dashboard/keys" target="_blank" rel="noopener">fal.aiのダッシュボード</a>でAPIキーを発行し、リポジトリに <code>fal_key.txt</code> という名前で保存(中身はキー1行だけ)。</li>
+      <li>claude.ai の設定からGitHub連携を有効にして、このリポジトリへのアクセスを許可(Claude Codeを使う場合はリポをclone)。</li>
+      <li>疎通確認:Claudeに「<code>doujin-studio-assets</code> リポの <code>fal_key.txt</code> を読んで、falのAPIに疎通確認して」と送って、成功すれば準備完了。</li>
+    </ol>
+    <p class="hint">⚠️ fal keyは絶対に公開リポや図鑑サイト(GitHub Pages)側に置かないこと。キーはPrivateリポ、公開してよいのはキャラシート画像だけです。</p>
+  </details>
+
+  <label class="small">③-a キャラシートをClaudeに作らせる(すでにシート画像がある人は省略)</label>
+  <p class="hint">選択中の2人ぶんの外見データ(図鑑DB)入りの生成指示書を作ります。Claudeがfal経由でシートを生成し、リポにコミットしてURLをくれます。</p>
+  <div class="btnrow">
+    <button class="blue" id="sheetPromptBtn">③-a シート生成指示書をコピー</button>
+    <button id="sheetShowBtn">指示書を表示</button>
+  </div>
+  <pre class="promptbox" id="sheetBox" style="display:none"></pre>
+
+  <label class="small" style="margin-top:20px">③-b キャラシートの場所を指定</label>
+  <p class="hint">シート画像のURL(図鑑サイトやリポのURL)を貼るか、空欄のままにして<b>Claudeのチャットに画像を直接アップロード</b>してください。画風の参考画像も同じ方式です。</p>
+  <input type="text" id="sheetUrl1" placeholder="主役のシートURL(例: https://omikirin.github.io/Brain/sheets/jin.png)">
+  <input type="text" id="sheetUrl2" placeholder="相手役のシートURL(空欄=Claudeに直接アップ)" style="margin-top:8px">
+  <input type="text" id="styleUrl" placeholder="画風参考画像のURL(任意)" style="margin-top:8px">
+  <div class="row" style="margin-top:14px">
+    <div>
+      <label class="small" for="baseStyle">画風の基本設定</label>
+      <select id="baseStyle">
+        <option value="mono" selected>白黒漫画(ペン画+スクリーントーン)</option>
+        <option value="color">フルカラー漫画</option>
+        <option value="ref">参考画像に完全に合わせる</option>
+      </select>
+    </div>
+    <div>
+      <label class="small" for="model">使用モデル</label>
+      <select id="model">
+        <option value="fal-ai/nano-banana/edit" selected>Nano Banana Edit(推奨・キャラ再現に強い)</option>
+        <option value="fal-ai/bytedance/seedream/v4/edit">Seedream 4.0 Edit(高解像度)</option>
+      </select>
+    </div>
+  </div>
+  <label class="small" for="extra">追加指示(任意)</label>
+  <input type="text" id="extra" placeholder="例:夜のシーンは特に影を濃く/効果線多め">
+
+  <label class="small" style="margin-top:20px">③-c まず見本を1枚(見開き1だけテスト生成)</label>
+  <p class="hint">全ページ描く前に、見開き1だけClaudeに生成させて画風とキャラ再現を確認します。<b>OKを出した見本は「基準ページ」としてリポに保存され、工程④の全ページ生成で毎回参照されます</b>(画風ブレ防止の要)。ダメなら画風設定やシートを直して再テスト。</p>
+  <div class="btnrow">
+    <button class="blue" id="samplePromptBtn">③-c 見本生成指示書をコピー</button>
+    <button id="sampleShowBtn">指示書を表示</button>
+  </div>
+  <pre class="promptbox" id="sampleBox" style="display:none"></pre>
+  <input type="text" id="sampleUrl" placeholder="承認した見本ページのURL(Claudeがコミット後に教えてくれるURLを貼る。空欄=チャット内の見本を参照)" style="margin-top:10px">
+  <div class="status" id="s3"></div>
+</section>
+
+<!-- ================= 工程4 ================= -->
+<section class="koma">
+  <span class="koma-tag">工程④</span>
+  <h2>原稿を描き上げる(Claude上で実行)</h2>
+  <p class="hint">検品済みのネームJSON全見開きぶんの作画指示書を作ります。Claudeに貼ると、リポのfal keyで1見開きずつ生成→<code>spread_01.png</code>形式で提示・コミットまでやってくれます。失敗した見開きは「見開き◯だけ再生成して」でリトライ。</p>
+  <div class="row" id="spreadPickRow" style="display:none;align-items:flex-end;margin-bottom:10px">
+    <div>
+      <label class="small" for="spreadSel">🆓 無料ルート:1見開きずつコピーしてGeminiへ(基準ページ+シートを毎回添付)</label>
+      <select id="spreadSel"></select>
+    </div>
+    <div style="flex:0">
+      <button class="blue" id="spreadCopyBtn">この見開きをコピー</button>
+    </div>
+  </div>
+  <div class="btnrow">
+    <button class="primary" id="genPromptBtn">🖋 作画指示書をコピー(全見開き)</button>
+    <button id="genShowBtn">指示書を表示</button>
+  </div>
+  <pre class="promptbox" id="genBox" style="display:none"></pre>
+  <div class="status" id="s4"></div>
+</section>
+
+</div>
+
+
+<footer>クリプト忍者 同人スタジオ — CryptoNinja(ニンジャDAO)ガイドラインの範囲でご利用ください。生成物の権利・二次創作ルールは公式ガイドラインを必ず確認。</footer>
+
+<script>
+const CHAR_DB=[{"no":"001","name":"Jin","clan":"Iga","ninjutsu":"Katon","weapon":"Shuriken","setting":"The master ninja. Legendary and mysterious, thought to have lost his life in the battle against Fuma.","genre":"1. バトル・アクション","rel":[{"name":"Rei","type":"好敵手","note":"里を守る強者同士。伝説の忍として互いを認め合う"},{"name":"Atoza","type":"宿敵","note":"風魔との戦いで散ったとされる因縁の相手"},{"name":"Sekishusai","type":"好敵手","note":"伊賀最強格の剣豪同士、互いを認める"}],"visual":"male master ninja, full black/navy shinobi outfit, hood covering most of face, headband with three diamond motifs, sharp angular eyes, cloth mask, chainmail-mesh chest and wrists, grey vambraces, large shuriken, gold-hilted katana on back, fire (Katon) energy. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"002","name":"Sakuya","clan":"Koka","ninjutsu":"Kuchiyose","weapon":"Shuriken","setting":"Ganzi's granddaughter. A serene ninja who loves to cook in her spare time.","genre":"10. 日常・ほのぼの","rel":[{"name":"Kohaku","type":"双子の姉妹","note":"生き別れた双子（canon）"},{"name":"Ganzi","type":"祖父","note":"幻次の孫（canon）"}],"visual":"female ninja, long black high-ponytail tied with a small red ribbon, straight blunt bangs, pink/magenta headband tied at the back with trailing ends, large grey eyes, blushing cheeks, gentle smile, no face mask (face visible), pink kimono-style shinobi wrap top with olive-gold sash tied in a bow, dark grey vambraces, black thigh-high socks, holding a large shuriken, gold-hilted katana with diamond-pattern scabbard on back, summoning (Kuchiyose) aura. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"003","name":"Kohaku","clan":"Fuma","ninjutsu":"Transformation (Kawarimi)","weapon":"Katana","setting":"A mysterious ninja; Sakuya's long-lost twin sister.","genre":"13. サスペンス・スリラー","rel":[{"name":"Sakuya","type":"双子の姉妹","note":"生き別れた双子（canon）"},{"name":"Karma","type":"共犯者","note":"風魔の陰の任務で組む同志"}],"visual":"female ninja, black high-ponytail tied with a green ribbon, wearing a white fox (kitsune) mask with red ears and red eye markings, turquoise-blue teardrop/streak patterns and red mouth on the mask, laughing curved eyes, purple headband tied at the back with trailing ends, purple kimono-style shinobi wrap top, blue-purple sash, dark grey vambraces, grey thigh-high socks, wielding a bare katana with gold guard and diamond-pattern hilt, transformation (Kawarimi) jutsu, dark Fuma-clan aesthetic. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"004","name":"Shiba","clan":"Saika","ninjutsu":"Suiton","weapon":"Karate","setting":"Using the art of humanization, he turns into a Shinobi during battles.","genre":"17. 変身ヒーロー","rel":[{"name":"Fuuta","type":"飲み仲間","note":"雑賀の同郷。酒を酌み交わす気の合う仲"},{"name":"Nekomata","type":"ライバル","note":"humanization vs 猫又、変則能力者同士の張り合い"},{"name":"Nagisa","type":"世話焼きの同郷","note":"照れ屋の彼女が気にかける同郷者"}],"visual":"anthropomorphic shiba-inu dog ninja, brown fur with white muzzle, cheeks, eyebrows and paws, black nose, upright ears, lightning/heart-shaped white brow markings, green headband with grey metal plate bearing three diamond motifs, green kimono-style shinobi outfit, black belt, gold-hilted katana with diamond-pattern scabbard on back, white paw hands, water (Suiton) jutsu, karate martial-arts nature. Anime illustration, kemono full-body proportions, detailed shading, dynamic pose, clean lineart"},{"no":"005","name":"Kinki Kana-Oni","clan":"Iga","ninjutsu":"Kinton","weapon":"Chef's knife (Gyuto)","setting":"A legendary blacksmith hiding deep in the mountain.","genre":"16. 職人・お仕事","rel":[{"name":"Anne","type":"常連客","note":"包丁鍛冶と大食い娘、食を通じた縁"},{"name":"Sekishusai","type":"刀の依頼主","note":"名工と剣豪、業物を介した信頼関係"}],"visual":"legendary blacksmith ninja wearing a red oni demon mask with two golden horns, red eyes, fangs and an angry grimace, dark-brown hood with pointed ear-like flaps and a grey-plate headband, dark teal/green shinobi outfit with a fur-lined collar (mantle) and brown cord ties, dark grey vambraces, grey belt, holding a large chef's knife (deba/gyuto cleaver), gold (Kinton) blacksmith energy, rugged aged aura. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"006","name":"Oto","clan":"Koka","ninjutsu":"Kuchiyose","weapon":"Scroll","setting":"Uka's rival. Summons a rabbit. She is a chatterbox.","genre":"3. ラブコメ","rel":[{"name":"Uka","type":"ライバル","note":"口寄せ使い同士の宿命の好敵手（canon）"},{"name":"Izuna","type":"因縁","note":"ウカの姉を巡る三角の緊張関係"}],"visual":"cheerful female ninja with pink rabbit ears (white inner ears with black markings), short pink bob with blunt bangs, golden sparkle stars in her eyes, wide happy open-mouth smile, blushing cheeks, green headband tied at the back, pink kimono-style shinobi wrap top with a small rabbit emblem on the chest, magenta sash tied in a bow, fluffy rabbit tail, diamond-pattern-scabbard katana on back, holding a green sake bottle/flask with a label, black thigh-high socks, talkative lively personality, summoning (Kuchiyose) of rabbits. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"007","name":"Rotten","clan":"Fuma","ninjutsu":"Poison Mist","weapon":"Poison Arrow","setting":"A faithful servant to Atoza, willing to give up his life for the Fuma clan.","genre":"20. 復讐劇","rel":[{"name":"Atoza","type":"忠誠を誓う主","note":"風魔のために命を捧げる忠臣（canon）"},{"name":"Dan","type":"同志","note":"共に跡座に仕える風魔の同輩"},{"name":"Janome (& Orochi)","type":"同志","note":"風魔の同輩、毒使い同士の連携"},{"name":"Karma","type":"同志","note":"風魔の忠臣同士"},{"name":"Aum","type":"見守られる弟分","note":"生意気な弟分を見守る忠臣"}],"visual":"loyal male ninja, poison mist, poison arrow, dark Fuma attire, solemn face. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"008","name":"Nagisa","clan":"Saika","ninjutsu":"Shadow Alternate (Kagebunshin)","weapon":"Scroll","setting":"A shy shinobi who likes to look after her clan.","genre":"11. ヒューマンドラマ","rel":[{"name":"Fuuta","type":"同郷の仲間","note":"雑賀の里を共に見守る間柄"},{"name":"Shiba","type":"世話を焼く相手","note":"照れ屋の彼女が気にかける同郷者"},{"name":"Hinanojoh","type":"同郷の仲間","note":"雑賀の里の仲間、爆破と補佐で連携"},{"name":"Seori (& Mitama)","type":"同郷の仲間","note":"雑賀の里を共に守る"}],"visual":"shy gentle female ninja, shadow-clone (Kagebunshin) illusions, scroll, caring demeanor. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"009","name":"Anne","clan":"Iga","ninjutsu":"Shadow stitching (Kagenui)","weapon":"Dumpling (Dango)","setting":"Has a massive appetite and is always eating skewered dumplings.","genre":"5. グルメ","rel":[{"name":"Shion","type":"親友","note":"シオンが唯一心を許す相手（canon）"},{"name":"Kinki Kana-Oni","type":"食の師","note":"鍛冶の名工と大食い娘、串団子と包丁の縁"}],"visual":"cheerful female ninja with huge appetite, eating skewered dango, shadow-stitching (Kagenui) jutsu. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"010","name":"Dan","clan":"Fuma","ninjutsu":"Flash Laser","weapon":"Laser Sword","setting":"A powerful member of the Fuma clan and a faithful servant to Atoza.","genre":"9. SF","rel":[{"name":"Atoza","type":"忠誠を誓う主","note":"跡座に仕える忠臣（canon）"},{"name":"Rotten","type":"同志","note":"共に跡座を支える風魔の同輩"}],"visual":"powerful ninja, glowing laser sword, flash-laser energy, sci-fi Fuma armor. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"011","name":"Hinanojoh","clan":"Saika","ninjutsu":"Katon","weapon":"Horoku bomb","setting":"A brave bombing expert, but reverts to chick form when he loses concentration.","genre":"1. バトル・アクション","rel":[{"name":"Nagisa","type":"同郷の仲間","note":"雑賀の里の仲間、爆破と補佐で連携"},{"name":"Fuuta","type":"同郷の兄貴分","note":"雑賀の豪快な先輩として面倒を見る"}],"visual":"brave bombing-expert ninja, horoku bomb, fire (Katon) burst, turns into a small chick when distracted. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"012","name":"Torika","clan":"Iga","ninjutsu":"Poison Shuriken","weapon":"Shuriken","setting":"A nature-loving Shinobi who connects with wild plants.","genre":"8. ファンタジー","rel":[{"name":"Karura","type":"里の守り手","note":"伊賀の自然を共に守る同郷"},{"name":"Shion","type":"見守る相手","note":"自然を愛する者として孤独な彼女を気にかける"},{"name":"Hayate","type":"同郷の仲間","note":"自然と繋がる者同士、伊賀で協働"}],"visual":"nature-loving female ninja, vines and wild plants, poison shuriken, earthy green tones. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"013","name":"Atoza","clan":"Fuma","ninjutsu":"Omagatoki (Time for Disasters)","weapon":"Club","setting":"The head of the Fuma clan, with a heart of gold.","genre":"14. ダークファンタジー","rel":[{"name":"Aum","type":"弟","note":"跡座の実弟（canon）"},{"name":"Jin","type":"宿敵","note":"風魔と伊賀を巡る因縁の相手"},{"name":"Rotten","type":"忠臣","note":"風魔のために命を捧げる忠臣（canon）"},{"name":"Dan","type":"忠臣","note":"跡座に仕える忠臣（canon）"}],"visual":"noble head of Fuma clan, imposing yet kind, heavy club, Omagatoki disaster aura, regal dark look. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"014","name":"Hayate","clan":"Iga","ninjutsu":"Hawk Eye","weapon":"Hawk (Falcon)","setting":"Has the eyes of a hawk that detect other clans' movement. Narukami is his faithful partner.","genre":"19. バディ","rel":[{"name":"Yui","type":"連携相手","note":"鷹の目で索敵、遠距離忍術のユイと好相性"},{"name":"Torika","type":"同郷の仲間","note":"自然と繋がる者同士、伊賀で協働"}],"visual":"sharp-eyed male ninja with hawk-vision, falcon partner Narukami, keen focused look. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"015","name":"Uka","clan":"Koka","ninjutsu":"Flame of Nine-Tailed Fox","weapon":"Amulet (Charm)","setting":"Summons foxes. Her main rival is Oto.","genre":"18. 妖怪・あやかし","rel":[{"name":"Oto","type":"ライバル","note":"口寄せ使い同士の好敵手（canon）"},{"name":"Izuna","type":"姉","note":"ウカの姉（canon）"}],"visual":"fox-summoning female ninja, nine-tailed fox flame aura, protective amulet, warm tones. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"016","name":"Ganzi","clan":"Koka","ninjutsu":"Illusion of Darkness","weapon":"Japamala","setting":"An advisory Shinobi. His family belongs to a different clan due to a past incident.","genre":"7. ミステリー・推理","rel":[{"name":"Sakuya","type":"孫","note":"サクヤの祖父（canon）"},{"name":"Oen","type":"里の後進","note":"雑賀出身で甲賀に来た者を導く立場"},{"name":"Izuna","type":"里の同胞","note":"甲賀の術者同士、幻術で通じる"}],"visual":"elderly advisory ninja, illusion-of-darkness jutsu, japamala prayer beads, wise look. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"017","name":"Yui","clan":"Iga","ninjutsu":"Flurry of Cherry Blossoms","weapon":"Scroll","setting":"A reliable Shinobi. Her Ninjutsu reaches far and wide.","genre":"8. ファンタジー","rel":[{"name":"Rei","type":"母","note":"ユイの母（canon）"},{"name":"Hayate","type":"連携相手","note":"遠距離忍術と索敵で好相性"}],"visual":"reliable female ninja, cherry-blossom flurry jutsu, scroll, elegant pink petals. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"018","name":"Fuuta","clan":"Saika","ninjutsu":"Fuuton","weapon":"Masamune Sword","setting":"A cheeky and peace-loving Shinobi who likes to drink Sake.","genre":"12. 歴史・時代劇","rel":[{"name":"Shiba","type":"飲み仲間","note":"雑賀の同郷、酒好き同士"},{"name":"Nagisa","type":"同郷の仲間","note":"雑賀の里を共に見守る"},{"name":"Hinanojoh","type":"同郷の弟分","note":"雑賀の豪快な先輩として面倒を見る"},{"name":"Magoichi","type":"里の仲間","note":"雑賀の豪快な同郷、海と酒で通じる"}],"visual":"cheeky peace-loving male ninja, sake bottle, wind (Fuuton) jutsu, Masamune sword, relaxed. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"019","name":"Rei","clan":"Iga","ninjutsu":"Human sacrifice (Sacrifice)","weapon":"Aikuchi (Dagger)","setting":"The protector of Iga village and Yui's mother.","genre":"11. ヒューマンドラマ","rel":[{"name":"Yui","type":"娘","note":"ユイの母（canon）"},{"name":"Jin","type":"好敵手","note":"里を守る強者として互いを認める"}],"visual":"protective maternal female ninja, self-sacrifice aura, aikuchi dagger, dignified guardian. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"020","name":"Sattva","clan":"Heavenly Realm","ninjutsu":"Nirvana","weapon":"Halo of Light","setting":"A divine being from the Heavenly Realm who has attained nirvana. Watches over the ninja world from a higher plane with serene compassion.","genre":"8. ファンタジー","rel":[{"name":"Quon","type":"精神的縁者","note":"天界と超越者、悟りを巡る精神的な繋がり"},{"name":"Sekishusai","type":"求道の縁","note":"無刀取りの境地と涅槃、精神的高みで通じる"}],"visual":"divine being from Heavenly Realm, nirvana aura, glowing halo of light, ethereal celestial. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"021","name":"Nekomata","clan":"Saika","ninjutsu":"Kagebunshin","weapon":"Bewitched Muramasa Sword","setting":"He loves fish!","genre":"18. 妖怪・あやかし","rel":[{"name":"Quon","type":"同郷の先達","note":"同じ里出身で年長のクオン（canon）"},{"name":"Shiba","type":"ライバル","note":"変則能力者同士の張り合い"}],"visual":"cat-spirit (nekomata) ninja who loves fish, shadow clone, bewitched Muramasa sword, mischievous. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"022","name":"Janome (& Orochi)","clan":"Fuma","ninjutsu":"Kuchiyose","weapon":"Poison Shuriken","setting":"Has a faithful partner called Orochi, who is there for her whenever she is in trouble.","genre":"19. バディ","rel":[{"name":"Rotten","type":"同志","note":"風魔の同輩、毒使い同士の連携"},{"name":"Karma","type":"共犯者","note":"風魔の陰の任務で組む"},{"name":"Ibuki (& Yama)","type":"相棒繋がり","note":"パートナー（山/オロチ）を連れる者同士"}],"visual":"female ninja with serpent partner Orochi, summoning jutsu, poison shuriken, sleek dangerous. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"023","name":"Benten","clan":"Saika","ninjutsu":"Mantra","weapon":"Shamisen","setting":"A Shamisen-playing Shinobi. Her special art of illusion occurs only when she sings.","genre":"15. 音楽","rel":[{"name":"Magoichi","type":"里の主","note":"孫市に里の運営を託される（canon）"},{"name":"Ichiya","type":"表現者仲間","note":"三味線と書、芸を通じた共鳴"},{"name":"Seori (& Mitama)","type":"里の仲間","note":"雑賀の同郷、和の芸道で通じる"}],"visual":"shamisen-playing female ninja, mantra illusion that activates when singing, kimono-shinobi mix. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"024","name":"Karma","clan":"Fuma","ninjutsu":"Realm of Sin","weapon":"Chain Sickle","setting":"His fascinating red eyes release people's deeply hidden desires.","genre":"6. ホラー・オカルト","rel":[{"name":"Kohaku","type":"共犯者","note":"風魔の陰の任務で組む同志"},{"name":"Rotten","type":"同志","note":"風魔の忠臣同士"},{"name":"Janome (& Orochi)","type":"共犯者","note":"風魔の陰の任務で組む"},{"name":"Ibuki (& Yama)","type":"風魔の同輩","note":"式神と罪の眼、陰の任務で組む"}],"visual":"captivating male ninja with red eyes releasing hidden desires, chain sickle, realm-of-sin aura. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"025","name":"Ichiya","clan":"Saika","ninjutsu":"Cryptogram of Ninja","weapon":"Writing Brush","setting":"Conveys special messages to the world with rainbow-colored calligraphy.","genre":"11. ヒューマンドラマ","rel":[{"name":"NEMU","type":"姉","note":"NEMUの弟（canon）"},{"name":"Benten","type":"表現者仲間","note":"書と三味線、芸を通じた共鳴"}],"visual":"rainbow-calligraphy ninja, writing brush, cryptogram-of-ninja jutsu, colorful ink swirls. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"026","name":"NEMU","clan":"Koka","ninjutsu":"Colorful Realm of Living Beings","weapon":"Painting Brush","setting":"A free-spirited Shinobi and the big sister of Ichiya. Paints while traveling around Koga village. Her trusted partners are Piyochi & Usabi.","genre":"2. 少年冒険","rel":[{"name":"Ichiya","type":"弟","note":"イチヤの姉（canon）"},{"name":"Xiaolan (& Lee Lee)","type":"旅の相棒","note":"甲賀の自由人同士、相棒連れで旅路が交わる"}],"visual":"free-spirited traveling female painter-ninja, painting brush, colorful realm jutsu, companions Piyochi and Usabi. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"027","name":"Karura","clan":"Iga","ninjutsu":"Raiton","weapon":"Wings","setting":"Living deep in the Iga mountain, she quietly protects her clan.","genre":"8. ファンタジー","rel":[{"name":"Torika","type":"里の守り手","note":"伊賀の山で自然と里を守る同郷"},{"name":"Shion","type":"見守る相手","note":"孤独なシオンを静かに気にかける"}],"visual":"quiet guardian female ninja with angelic wings, lightning (Raiton) jutsu, deep-mountain setting. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"028","name":"Xiaolan (& Lee Lee)","clan":"Koka","ninjutsu":"Kuchiyose","weapon":"Tai Chi","setting":"Her specialty is to summon panda bears. Her faithful partner LeeLee can turn into a giant panda.","genre":"1. バトル・アクション","rel":[{"name":"NEMU","type":"旅の相棒","note":"甲賀の自由人同士、パートナー連れで気が合う"},{"name":"Konga","type":"武の同門","note":"甲賀の体術使い同士、修行仲間"}],"visual":"female ninja doing tai chi, summoning pandas, partner LeeLee turning into giant panda. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"029","name":"Aum","clan":"Fuma","ninjutsu":"A Titan's Blow","weapon":"Club","setting":"A cheeky Shinobi and the baby brother of Atoza. He turns into a titan when he is angry.","genre":"17. 変身ヒーロー","rel":[{"name":"Atoza","type":"兄","note":"跡座の弟（canon）"},{"name":"Rotten","type":"目付け役","note":"生意気な弟分を見守る忠臣"}],"visual":"cheeky young male ninja, transforms into raging titan when angry, heavy club. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"030","name":"Konga","clan":"Koka","ninjutsu":"Kagebunshin","weapon":"Bare Knuckle","setting":"The trainer for Iga's Kunoichi, the female Ninjas.","genre":"4. スポ根","rel":[{"name":"Xiaolan (& Lee Lee)","type":"武の同門","note":"甲賀の体術使い同士"},{"name":"Oen","type":"教え子","note":"甲賀で修行する後進を鍛える師"}],"visual":"strong female trainer ninja for kunoichi, bare-knuckle stance, shadow clone, athletic. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"031","name":"Shion","clan":"Iga","ninjutsu":"Wild Thistle","weapon":"Iron Claw","setting":"A lonely Shinobi who lost her parents to a devil's attack. Anne is the only Shinobi whom she trusts.","genre":"20. 復讐劇","rel":[{"name":"Anne","type":"親友","note":"唯一心を許す相手（canon）"},{"name":"Karura","type":"守り手","note":"伊賀で孤独な彼女を静かに見守る"},{"name":"Torika","type":"見守ってくれる同郷","note":"自然を愛する者として孤独な彼女を気にかける"}],"visual":"lonely female ninja who lost her parents, iron claws, wild-thistle jutsu, guarded sorrowful look. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"032","name":"Seori (& Mitama)","clan":"Saika","ninjutsu":"丑の刻参り (Ushi-no-koku-mairi)","weapon":"Wooden Mallet","setting":"Named after the goddess Seoritsuhime. Her partner is a snake-spirit named Mitama.","genre":"18. 妖怪・あやかし","rel":[{"name":"Benten","type":"里の仲間","note":"雑賀の同郷、和の芸道で通じる"},{"name":"Nagisa","type":"同郷の仲間","note":"雑賀の里を共に守る"}],"visual":"female ninja named after Seoritsuhime, wooden mallet, partner Mitama, mythic sacred air. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"033","name":"Quon","clan":"Saika","ninjutsu":"A Cat's Eye Choice","weapon":"Onibi","setting":"Able to choose the path to a blissful future. His age is unknown. From the same village as Nekomata and known to be older. Elusive and unpredictable; refers to himself as 'washi'.","genre":"7. ミステリー・推理","rel":[{"name":"Nekomata","type":"同郷の後進","note":"同じ里の年下（canon）"},{"name":"Sattva","type":"精神的縁者","note":"悟りと超越を巡る精神的な繋がり"}],"visual":"ageless enigmatic male ninja calling himself 'washi', cat's-eye future-choosing power, floating onibi flames. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"034","name":"Magoichi","clan":"Saika","ninjutsu":"One-shot Sure-hit","weapon":"Pistols","setting":"The leader of the Saika Clan. Rarely returns to the village, entrusting its affairs to Benten. Currently out at sea, operating like a pirate.","genre":"2. 少年冒険","rel":[{"name":"Benten","type":"里を託す相手","note":"里の運営を弁天に任せる頭領（canon）"},{"name":"Fuuta","type":"里の仲間","note":"雑賀の豪快な同郷、海と酒で通じる"}],"visual":"pirate-like leader of Saika clan, dual pistols, one-shot sure-hit, sea and ship background, bold. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"035","name":"Ibuki (& Yama)","clan":"Fuma","ninjutsu":"Ritual of Taizan Fukun","weapon":"Talisman Paper","setting":"Yama takes on a form that corresponds to Ibuki's abilities. Since Ibuki is immature, Yama manifests as a cute form.","genre":"6. ホラー・オカルト","rel":[{"name":"Karma","type":"風魔の同輩","note":"式神と罪の眼、陰の任務で組む"},{"name":"Janome (& Orochi)","type":"相棒繋がり","note":"パートナー（山/オロチ）を連れる者同士"}],"visual":"immature young ninja with cute shikigami Yama, Taizan-Fukun ritual, talisman paper. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"036","name":"Oen","clan":"Koka","ninjutsu":"Ito Myaku","weapon":"Japanese Portable Storage","setting":"Her family is from the Saika clan. She left to come to the Koka Clan to train in ninjutsu.","genre":"4. スポ根","rel":[{"name":"Ganzi","type":"導き手","note":"雑賀出身で甲賀に来た者を幻次が指南"},{"name":"Konga","type":"師","note":"甲賀で修行する彼女を鍛える"}],"visual":"female ninja from Saika training in Koka, thread-vein (Ito Myaku) jutsu, Japanese portable storage, earnest. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"037","name":"Izuna","clan":"Koka","ninjutsu":"Witchcraft of Izuna","weapon":"None","setting":"Uka's older sister.","genre":"8. ファンタジー","rel":[{"name":"Uka","type":"妹","note":"ウカの姉（canon）"},{"name":"Ganzi","type":"里の同胞","note":"甲賀の術者同士、幻術で通じる"},{"name":"Oto","type":"因縁","note":"ウカの姉を巡る三角の緊張関係"}],"visual":"witch-like female ninja, Izuna witchcraft, no weapon relying on sorcery, older sister of Uka. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"},{"no":"038","name":"Sekishusai","clan":"Iga","ninjutsu":"Muto Dori","weapon":"Oodenta","setting":"The legendary elder master swordsman of Iga. Said to have reached the state of muto-dori — defeating a blade without ever drawing his own.","genre":"12. 歴史・時代劇","rel":[{"name":"Kinki Kana-Oni","type":"刀の依頼主","note":"名工に業物を打たせる剣豪"},{"name":"Jin","type":"好敵手","note":"伊賀最強格の剣豪同士、互いを認める"},{"name":"Sattva","type":"求道の縁","note":"無刀取りの境地と涅槃、精神的高みで通じる"}],"visual":"legendary swordmaster ninja, no-sword technique (Muto Dori), the blade Oodenta, dignified master. Anime illustration, normal 7-head-tall proportions, detailed shading, dynamic pose, clean lineart"}];
+const ELEMENT_DB=[{"no":"001","elements":[{"cat":"mise","text":"火遁を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"火遁と手裏剣の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの手裏剣での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"火遁を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"gap","text":"実は手裏剣の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"火遁が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は手裏剣の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"nichijo","text":"伊賀の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに火遁の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な手裏剣)を探して里中を駆け回る"},{"cat":"nichijo","text":"伊賀の里の祭りの準備(または屋台)を任される"},{"cat":"innen","text":"Reiとの「好敵手」の関係(里を守る強者同士。伝説の忍として互いを認め合う)が物語に影を落とす"},{"cat":"innen","text":"Atozaとの「宿敵」の関係(風魔との戦いで散ったとされる因縁の相手)が物語に影を落とす"},{"cat":"innen","text":"幼い頃に交わした「約束」の相手が目の前に現れる"},{"cat":"innen","text":"火遁を会得した日の、忘れられない師との記憶が蘇る"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"}]},{"no":"002","elements":[{"cat":"mise","text":"手裏剣さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の口寄せに全てを懸ける"},{"cat":"mise","text":"甲賀の秘伝と口寄せを組み合わせた禁じ手を使う"},{"cat":"mise","text":"手裏剣さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"gap","text":"口寄せは強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"口寄せは強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"nichijo","text":"手裏剣を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"甲賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"手裏剣を修理・新調するため職人を訪ねる旅に出る"},{"cat":"innen","text":"Kohakuとの「双子の姉妹」の関係(生き別れた双子（canon）)が物語に影を落とす"},{"cat":"innen","text":"Ganziとの「祖父」の関係(幻次の孫（canon）)が物語に影を落とす"},{"cat":"innen","text":"口寄せの代償として失ったものと、再び向き合うことになる"},{"cat":"innen","text":"かつて甲賀の里を襲った事件の真相に触れてしまう"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"}]},{"no":"003","elements":[{"cat":"mise","text":"変わり身の術と刀の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの刀での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"変わり身の術を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"変わり身の術と刀の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"変わり身の術が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は刀の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"nichijo","text":"里の子供たちに変わり身の術の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な刀)を探して里中を駆け回る"},{"cat":"nichijo","text":"風魔の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに変わり身の術の稽古をつけることになる"},{"cat":"innen","text":"Sakuyaとの「双子の姉妹」の関係(生き別れた双子（canon）)が物語に影を落とす"},{"cat":"innen","text":"Karmaとの「共犯者」の関係(風魔の陰の任務で組む同志)が物語に影を落とす"},{"cat":"innen","text":"変わり身の術を会得した日の、忘れられない師との記憶が蘇る"},{"cat":"innen","text":"自分の刀に刻まれた、先代の持ち主の想いを知る"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"}]},{"no":"004","elements":[{"cat":"mise","text":"満身創痍で立ち上がり、最後の水遁に全てを懸ける"},{"cat":"mise","text":"雑賀の秘伝と水遁を組み合わせた禁じ手を使う"},{"cat":"mise","text":"空手さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の水遁に全てを懸ける"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"水遁は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"雑賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"空手を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"innen","text":"Fuutaとの「飲み仲間」の関係(雑賀の同郷。酒を酌み交わす気の合う仲)が物語に影を落とす"},{"cat":"innen","text":"Nekomataとの「ライバル」の関係(humanization vs 猫又、変則能力者同士の張り合)が物語に影を落とす"},{"cat":"innen","text":"かつて雑賀の里を襲った事件の真相に触れてしまう"},{"cat":"innen","text":"雑賀と敵対勢力の停戦の裏で交わされた密約に巻き込まれる"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"}]},{"no":"005","elements":[{"cat":"mise","text":"仲間を庇いながらの牛刀での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"金遁を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"金遁と牛刀の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの牛刀での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"gap","text":"金遁が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は牛刀の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"金遁が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"nichijo","text":"失くし物(大切な牛刀)を探して里中を駆け回る"},{"cat":"nichijo","text":"伊賀の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに金遁の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な牛刀)を探して里中を駆け回る"},{"cat":"innen","text":"Anneとの「常連客」の関係(包丁鍛冶と大食い娘、食を通じた縁)が物語に影を落とす"},{"cat":"innen","text":"Sekishusaiとの「刀の依頼主」の関係(名工と剣豪、業物を介した信頼関係)が物語に影を落とす"},{"cat":"innen","text":"自分の牛刀に刻まれた、先代の持ち主の想いを知る"},{"cat":"innen","text":"幼い頃に交わした「約束」の相手が目の前に現れる"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"}]},{"no":"006","elements":[{"cat":"mise","text":"甲賀の秘伝と口寄せを組み合わせた禁じ手を使う"},{"cat":"mise","text":"巻物さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の口寄せに全てを懸ける"},{"cat":"mise","text":"甲賀の秘伝と口寄せを組み合わせた禁じ手を使う"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"口寄せは強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"nichijo","text":"甲賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"巻物を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"甲賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"innen","text":"Ukaとの「ライバル」の関係(口寄せ使い同士の宿命の好敵手（canon）)が物語に影を落とす"},{"cat":"innen","text":"Izunaとの「因縁」の関係(ウカの姉を巡る三角の緊張関係)が物語に影を落とす"},{"cat":"innen","text":"甲賀と敵対勢力の停戦の裏で交わされた密約に巻き込まれる"},{"cat":"innen","text":"口寄せの代償として失ったものと、再び向き合うことになる"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"}]},{"no":"007","elements":[{"cat":"mise","text":"毒霧を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"毒霧と毒矢の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの毒矢での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"毒霧を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"gap","text":"実は毒矢の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"毒霧が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は毒矢の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"nichijo","text":"風魔の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに毒霧の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な毒矢)を探して里中を駆け回る"},{"cat":"nichijo","text":"風魔の里の祭りの準備(または屋台)を任される"},{"cat":"innen","text":"Atozaとの「忠誠を誓う主」の関係(風魔のために命を捧げる忠臣（canon）)が物語に影を落とす"},{"cat":"innen","text":"Danとの「同志」の関係(共に跡座に仕える風魔の同輩)が物語に影を落とす"},{"cat":"innen","text":"幼い頃に交わした「約束」の相手が目の前に現れる"},{"cat":"innen","text":"毒霧を会得した日の、忘れられない師との記憶が蘇る"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"}]},{"no":"008","elements":[{"cat":"mise","text":"巻物さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の影分身に全てを懸ける"},{"cat":"mise","text":"雑賀の秘伝と影分身を組み合わせた禁じ手を使う"},{"cat":"mise","text":"巻物さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"gap","text":"影分身は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"影分身は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"nichijo","text":"巻物を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"雑賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"巻物を修理・新調するため職人を訪ねる旅に出る"},{"cat":"innen","text":"Fuutaとの「同郷の仲間」の関係(雑賀の里を共に見守る間柄)が物語に影を落とす"},{"cat":"innen","text":"Shibaとの「世話を焼く相手」の関係(照れ屋の彼女が気にかける同郷者)が物語に影を落とす"},{"cat":"innen","text":"影分身の代償として失ったものと、再び向き合うことになる"},{"cat":"innen","text":"かつて雑賀の里を襲った事件の真相に触れてしまう"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"}]},{"no":"009","elements":[{"cat":"mise","text":"影縫いと団子の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの団子での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"影縫いを極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"影縫いと団子の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"影縫いが緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は団子の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"nichijo","text":"里の子供たちに影縫いの稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な団子)を探して里中を駆け回る"},{"cat":"nichijo","text":"伊賀の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに影縫いの稽古をつけることになる"},{"cat":"innen","text":"Shionとの「親友」の関係(シオンが唯一心を許す相手（canon）)が物語に影を落とす"},{"cat":"innen","text":"Kinki Kana-Oniとの「食の師」の関係(鍛冶の名工と大食い娘、串団子と包丁の縁)が物語に影を落とす"},{"cat":"innen","text":"影縫いを会得した日の、忘れられない師との記憶が蘇る"},{"cat":"innen","text":"自分の団子に刻まれた、先代の持ち主の想いを知る"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"}]},{"no":"010","elements":[{"cat":"mise","text":"満身創痍で立ち上がり、最後の閃光レーザーに全てを懸ける"},{"cat":"mise","text":"風魔の秘伝と閃光レーザーを組み合わせた禁じ手を使う"},{"cat":"mise","text":"レーザー刀さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の閃光レーザーに全てを懸ける"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"閃光レーザーは強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"風魔の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"レーザー刀を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"innen","text":"Atozaとの「忠誠を誓う主」の関係(跡座に仕える忠臣（canon）)が物語に影を落とす"},{"cat":"innen","text":"Rottenとの「同志」の関係(共に跡座を支える風魔の同輩)が物語に影を落とす"},{"cat":"innen","text":"かつて風魔の里を襲った事件の真相に触れてしまう"},{"cat":"innen","text":"風魔と敵対勢力の停戦の裏で交わされた密約に巻き込まれる"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"}]},{"no":"011","elements":[{"cat":"mise","text":"仲間を庇いながらの焙烙玉での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"火遁を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"火遁と焙烙玉の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの焙烙玉での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"gap","text":"火遁が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は焙烙玉の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"火遁が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"nichijo","text":"失くし物(大切な焙烙玉)を探して里中を駆け回る"},{"cat":"nichijo","text":"雑賀の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに火遁の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な焙烙玉)を探して里中を駆け回る"},{"cat":"innen","text":"Nagisaとの「同郷の仲間」の関係(雑賀の里の仲間、爆破と補佐で連携)が物語に影を落とす"},{"cat":"innen","text":"Fuutaとの「同郷の兄貴分」の関係(雑賀の豪快な先輩として面倒を見る)が物語に影を落とす"},{"cat":"innen","text":"自分の焙烙玉に刻まれた、先代の持ち主の想いを知る"},{"cat":"innen","text":"幼い頃に交わした「約束」の相手が目の前に現れる"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"}]},{"no":"012","elements":[{"cat":"mise","text":"伊賀の秘伝と毒手裏剣を組み合わせた禁じ手を使う"},{"cat":"mise","text":"手裏剣さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の毒手裏剣に全てを懸ける"},{"cat":"mise","text":"伊賀の秘伝と毒手裏剣を組み合わせた禁じ手を使う"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"毒手裏剣は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"nichijo","text":"伊賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"手裏剣を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"伊賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"innen","text":"Karuraとの「里の守り手」の関係(伊賀の自然を共に守る同郷)が物語に影を落とす"},{"cat":"innen","text":"Shionとの「見守る相手」の関係(自然を愛する者として孤独な彼女を気にかける)が物語に影を落とす"},{"cat":"innen","text":"伊賀と敵対勢力の停戦の裏で交わされた密約に巻き込まれる"},{"cat":"innen","text":"毒手裏剣の代償として失ったものと、再び向き合うことになる"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"}]},{"no":"013","elements":[{"cat":"mise","text":"逢魔時を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"逢魔時と金棒の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの金棒での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"逢魔時を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"gap","text":"実は金棒の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"逢魔時が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は金棒の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"nichijo","text":"風魔の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに逢魔時の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な金棒)を探して里中を駆け回る"},{"cat":"nichijo","text":"風魔の里の祭りの準備(または屋台)を任される"},{"cat":"innen","text":"Aumとの「弟」の関係(跡座の実弟（canon）)が物語に影を落とす"},{"cat":"innen","text":"Jinとの「宿敵」の関係(風魔と伊賀を巡る因縁の相手)が物語に影を落とす"},{"cat":"innen","text":"幼い頃に交わした「約束」の相手が目の前に現れる"},{"cat":"innen","text":"逢魔時を会得した日の、忘れられない師との記憶が蘇る"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"}]},{"no":"014","elements":[{"cat":"mise","text":"鷹さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の鷹の目に全てを懸ける"},{"cat":"mise","text":"伊賀の秘伝と鷹の目を組み合わせた禁じ手を使う"},{"cat":"mise","text":"鷹さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"gap","text":"鷹の目は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"鷹の目は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"nichijo","text":"鷹を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"伊賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"鷹を修理・新調するため職人を訪ねる旅に出る"},{"cat":"innen","text":"Yuiとの「連携相手」の関係(鷹の目で索敵、遠距離忍術のユイと好相性)が物語に影を落とす"},{"cat":"innen","text":"Torikaとの「同郷の仲間」の関係(自然と繋がる者同士、伊賀で協働)が物語に影を落とす"},{"cat":"innen","text":"鷹の目の代償として失ったものと、再び向き合うことになる"},{"cat":"innen","text":"かつて伊賀の里を襲った事件の真相に触れてしまう"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"}]},{"no":"015","elements":[{"cat":"mise","text":"九尾の狐火とお守りの合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらのお守りでの防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"九尾の狐火を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"九尾の狐火とお守りの合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"九尾の狐火が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実はお守りの手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"nichijo","text":"里の子供たちに九尾の狐火の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切なお守り)を探して里中を駆け回る"},{"cat":"nichijo","text":"甲賀の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに九尾の狐火の稽古をつけることになる"},{"cat":"innen","text":"Otoとの「ライバル」の関係(口寄せ使い同士の好敵手（canon）)が物語に影を落とす"},{"cat":"innen","text":"Izunaとの「姉」の関係(ウカの姉（canon）)が物語に影を落とす"},{"cat":"innen","text":"九尾の狐火を会得した日の、忘れられない師との記憶が蘇る"},{"cat":"innen","text":"自分のお守りに刻まれた、先代の持ち主の想いを知る"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"}]},{"no":"016","elements":[{"cat":"mise","text":"満身創痍で立ち上がり、最後の闇の幻術に全てを懸ける"},{"cat":"mise","text":"甲賀の秘伝と闇の幻術を組み合わせた禁じ手を使う"},{"cat":"mise","text":"数珠さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の闇の幻術に全てを懸ける"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"闇の幻術は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"甲賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"数珠を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"innen","text":"Sakuyaとの「孫」の関係(サクヤの祖父（canon）)が物語に影を落とす"},{"cat":"innen","text":"Oenとの「里の後進」の関係(雑賀出身で甲賀に来た者を導く立場)が物語に影を落とす"},{"cat":"innen","text":"かつて甲賀の里を襲った事件の真相に触れてしまう"},{"cat":"innen","text":"甲賀と敵対勢力の停戦の裏で交わされた密約に巻き込まれる"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"}]},{"no":"017","elements":[{"cat":"mise","text":"仲間を庇いながらの巻物での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"桜吹雪を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"桜吹雪と巻物の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの巻物での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"gap","text":"桜吹雪が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は巻物の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"桜吹雪が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"nichijo","text":"失くし物(大切な巻物)を探して里中を駆け回る"},{"cat":"nichijo","text":"伊賀の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに桜吹雪の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な巻物)を探して里中を駆け回る"},{"cat":"innen","text":"Reiとの「母」の関係(ユイの母（canon）)が物語に影を落とす"},{"cat":"innen","text":"Hayateとの「連携相手」の関係(遠距離忍術と索敵で好相性)が物語に影を落とす"},{"cat":"innen","text":"自分の巻物に刻まれた、先代の持ち主の想いを知る"},{"cat":"innen","text":"幼い頃に交わした「約束」の相手が目の前に現れる"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"}]},{"no":"018","elements":[{"cat":"mise","text":"雑賀の秘伝と風遁を組み合わせた禁じ手を使う"},{"cat":"mise","text":"正宗さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の風遁に全てを懸ける"},{"cat":"mise","text":"雑賀の秘伝と風遁を組み合わせた禁じ手を使う"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"風遁は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"nichijo","text":"雑賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"正宗を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"雑賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"innen","text":"Shibaとの「飲み仲間」の関係(雑賀の同郷、酒好き同士)が物語に影を落とす"},{"cat":"innen","text":"Nagisaとの「同郷の仲間」の関係(雑賀の里を共に見守る)が物語に影を落とす"},{"cat":"innen","text":"雑賀と敵対勢力の停戦の裏で交わされた密約に巻き込まれる"},{"cat":"innen","text":"風遁の代償として失ったものと、再び向き合うことになる"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"}]},{"no":"019","elements":[{"cat":"mise","text":"身代わりの秘術を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"身代わりの秘術と合口の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの合口での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"身代わりの秘術を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"gap","text":"実は合口の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"身代わりの秘術が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は合口の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"nichijo","text":"伊賀の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに身代わりの秘術の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な合口)を探して里中を駆け回る"},{"cat":"nichijo","text":"伊賀の里の祭りの準備(または屋台)を任される"},{"cat":"innen","text":"Yuiとの「娘」の関係(ユイの母（canon）)が物語に影を落とす"},{"cat":"innen","text":"Jinとの「好敵手」の関係(里を守る強者として互いを認める)が物語に影を落とす"},{"cat":"innen","text":"幼い頃に交わした「約束」の相手が目の前に現れる"},{"cat":"innen","text":"身代わりの秘術を会得した日の、忘れられない師との記憶が蘇る"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"}]},{"no":"020","elements":[{"cat":"mise","text":"光輪さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の涅槃に全てを懸ける"},{"cat":"mise","text":"天界の秘伝と涅槃を組み合わせた禁じ手を使う"},{"cat":"mise","text":"光輪さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"gap","text":"涅槃は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"涅槃は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"nichijo","text":"光輪を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"天界の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"光輪を修理・新調するため職人を訪ねる旅に出る"},{"cat":"innen","text":"Quonとの「精神的縁者」の関係(天界と超越者、悟りを巡る精神的な繋がり)が物語に影を落とす"},{"cat":"innen","text":"Sekishusaiとの「求道の縁」の関係(無刀取りの境地と涅槃、精神的高みで通じる)が物語に影を落とす"},{"cat":"innen","text":"涅槃の代償として失ったものと、再び向き合うことになる"},{"cat":"innen","text":"かつて天界の里を襲った事件の真相に触れてしまう"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"}]},{"no":"021","elements":[{"cat":"mise","text":"影分身と妖刀村正の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの妖刀村正での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"影分身を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"影分身と妖刀村正の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"影分身が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は妖刀村正の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"nichijo","text":"里の子供たちに影分身の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な妖刀村正)を探して里中を駆け回る"},{"cat":"nichijo","text":"雑賀の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに影分身の稽古をつけることになる"},{"cat":"innen","text":"Quonとの「同郷の先達」の関係(同じ里出身で年長のクオン（canon）)が物語に影を落とす"},{"cat":"innen","text":"Shibaとの「ライバル」の関係(変則能力者同士の張り合い)が物語に影を落とす"},{"cat":"innen","text":"影分身を会得した日の、忘れられない師との記憶が蘇る"},{"cat":"innen","text":"自分の妖刀村正に刻まれた、先代の持ち主の想いを知る"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"}]},{"no":"022","elements":[{"cat":"mise","text":"満身創痍で立ち上がり、最後の口寄せに全てを懸ける"},{"cat":"mise","text":"風魔の秘伝と口寄せを組み合わせた禁じ手を使う"},{"cat":"mise","text":"毒手裏剣さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の口寄せに全てを懸ける"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"口寄せは強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"風魔の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"毒手裏剣を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"innen","text":"Rottenとの「同志」の関係(風魔の同輩、毒使い同士の連携)が物語に影を落とす"},{"cat":"innen","text":"Karmaとの「共犯者」の関係(風魔の陰の任務で組む)が物語に影を落とす"},{"cat":"innen","text":"かつて風魔の里を襲った事件の真相に触れてしまう"},{"cat":"innen","text":"風魔と敵対勢力の停戦の裏で交わされた密約に巻き込まれる"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"}]},{"no":"023","elements":[{"cat":"mise","text":"仲間を庇いながらの三味線での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"真言を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"真言と三味線の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの三味線での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"gap","text":"真言が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は三味線の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"真言が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"nichijo","text":"失くし物(大切な三味線)を探して里中を駆け回る"},{"cat":"nichijo","text":"雑賀の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに真言の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な三味線)を探して里中を駆け回る"},{"cat":"innen","text":"Magoichiとの「里の主」の関係(孫市に里の運営を託される（canon）)が物語に影を落とす"},{"cat":"innen","text":"Ichiyaとの「表現者仲間」の関係(三味線と書、芸を通じた共鳴)が物語に影を落とす"},{"cat":"innen","text":"自分の三味線に刻まれた、先代の持ち主の想いを知る"},{"cat":"innen","text":"幼い頃に交わした「約束」の相手が目の前に現れる"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"}]},{"no":"024","elements":[{"cat":"mise","text":"風魔の秘伝と罪の領域を組み合わせた禁じ手を使う"},{"cat":"mise","text":"鎖鎌さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の罪の領域に全てを懸ける"},{"cat":"mise","text":"風魔の秘伝と罪の領域を組み合わせた禁じ手を使う"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"罪の領域は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"nichijo","text":"風魔の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"鎖鎌を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"風魔の里に届いた一通の依頼状から騒動が始まる"},{"cat":"innen","text":"Kohakuとの「共犯者」の関係(風魔の陰の任務で組む同志)が物語に影を落とす"},{"cat":"innen","text":"Rottenとの「同志」の関係(風魔の忠臣同士)が物語に影を落とす"},{"cat":"innen","text":"風魔と敵対勢力の停戦の裏で交わされた密約に巻き込まれる"},{"cat":"innen","text":"罪の領域の代償として失ったものと、再び向き合うことになる"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"}]},{"no":"025","elements":[{"cat":"mise","text":"忍の暗号術を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"忍の暗号術と筆の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの筆での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"忍の暗号術を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"gap","text":"実は筆の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"忍の暗号術が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は筆の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"nichijo","text":"雑賀の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに忍の暗号術の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な筆)を探して里中を駆け回る"},{"cat":"nichijo","text":"雑賀の里の祭りの準備(または屋台)を任される"},{"cat":"innen","text":"NEMUとの「姉」の関係(NEMUの弟（canon）)が物語に影を落とす"},{"cat":"innen","text":"Bentenとの「表現者仲間」の関係(書と三味線、芸を通じた共鳴)が物語に影を落とす"},{"cat":"innen","text":"幼い頃に交わした「約束」の相手が目の前に現れる"},{"cat":"innen","text":"忍の暗号術を会得した日の、忘れられない師との記憶が蘇る"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"}]},{"no":"026","elements":[{"cat":"mise","text":"絵筆さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の生類彩色に全てを懸ける"},{"cat":"mise","text":"甲賀の秘伝と生類彩色を組み合わせた禁じ手を使う"},{"cat":"mise","text":"絵筆さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"gap","text":"生類彩色は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"生類彩色は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"nichijo","text":"絵筆を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"甲賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"絵筆を修理・新調するため職人を訪ねる旅に出る"},{"cat":"innen","text":"Ichiyaとの「弟」の関係(イチヤの姉（canon）)が物語に影を落とす"},{"cat":"innen","text":"Xiaolan (& Lee Lee)との「旅の相棒」の関係(甲賀の自由人同士、相棒連れで旅路が交わる)が物語に影を落とす"},{"cat":"innen","text":"生類彩色の代償として失ったものと、再び向き合うことになる"},{"cat":"innen","text":"かつて甲賀の里を襲った事件の真相に触れてしまう"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"}]},{"no":"027","elements":[{"cat":"mise","text":"雷遁と翼の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの翼での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"雷遁を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"雷遁と翼の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"雷遁が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は翼の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"nichijo","text":"里の子供たちに雷遁の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な翼)を探して里中を駆け回る"},{"cat":"nichijo","text":"伊賀の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに雷遁の稽古をつけることになる"},{"cat":"innen","text":"Torikaとの「里の守り手」の関係(伊賀の山で自然と里を守る同郷)が物語に影を落とす"},{"cat":"innen","text":"Shionとの「見守る相手」の関係(孤独なシオンを静かに気にかける)が物語に影を落とす"},{"cat":"innen","text":"雷遁を会得した日の、忘れられない師との記憶が蘇る"},{"cat":"innen","text":"自分の翼に刻まれた、先代の持ち主の想いを知る"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"}]},{"no":"028","elements":[{"cat":"mise","text":"満身創痍で立ち上がり、最後の口寄せに全てを懸ける"},{"cat":"mise","text":"甲賀の秘伝と口寄せを組み合わせた禁じ手を使う"},{"cat":"mise","text":"太極拳さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の口寄せに全てを懸ける"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"口寄せは強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"甲賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"太極拳を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"innen","text":"NEMUとの「旅の相棒」の関係(甲賀の自由人同士、パートナー連れで気が合う)が物語に影を落とす"},{"cat":"innen","text":"Kongaとの「武の同門」の関係(甲賀の体術使い同士、修行仲間)が物語に影を落とす"},{"cat":"innen","text":"かつて甲賀の里を襲った事件の真相に触れてしまう"},{"cat":"innen","text":"甲賀と敵対勢力の停戦の裏で交わされた密約に巻き込まれる"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"}]},{"no":"029","elements":[{"cat":"mise","text":"仲間を庇いながらの金棒での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"巨人の一撃を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"巨人の一撃と金棒の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの金棒での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"gap","text":"巨人の一撃が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は金棒の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"巨人の一撃が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"nichijo","text":"失くし物(大切な金棒)を探して里中を駆け回る"},{"cat":"nichijo","text":"風魔の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに巨人の一撃の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な金棒)を探して里中を駆け回る"},{"cat":"innen","text":"Atozaとの「兄」の関係(跡座の弟（canon）)が物語に影を落とす"},{"cat":"innen","text":"Rottenとの「目付け役」の関係(生意気な弟分を見守る忠臣)が物語に影を落とす"},{"cat":"innen","text":"自分の金棒に刻まれた、先代の持ち主の想いを知る"},{"cat":"innen","text":"幼い頃に交わした「約束」の相手が目の前に現れる"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"}]},{"no":"030","elements":[{"cat":"mise","text":"甲賀の秘伝と影分身を組み合わせた禁じ手を使う"},{"cat":"mise","text":"拳さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の影分身に全てを懸ける"},{"cat":"mise","text":"甲賀の秘伝と影分身を組み合わせた禁じ手を使う"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"影分身は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"nichijo","text":"甲賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"拳を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"甲賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"innen","text":"Xiaolan (& Lee Lee)との「武の同門」の関係(甲賀の体術使い同士)が物語に影を落とす"},{"cat":"innen","text":"Oenとの「教え子」の関係(甲賀で修行する後進を鍛える師)が物語に影を落とす"},{"cat":"innen","text":"甲賀と敵対勢力の停戦の裏で交わされた密約に巻き込まれる"},{"cat":"innen","text":"影分身の代償として失ったものと、再び向き合うことになる"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"}]},{"no":"031","elements":[{"cat":"mise","text":"野薊を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"野薊と鉄の爪の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの鉄の爪での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"野薊を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"gap","text":"実は鉄の爪の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"野薊が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は鉄の爪の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"nichijo","text":"伊賀の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに野薊の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な鉄の爪)を探して里中を駆け回る"},{"cat":"nichijo","text":"伊賀の里の祭りの準備(または屋台)を任される"},{"cat":"innen","text":"Anneとの「親友」の関係(唯一心を許す相手（canon）)が物語に影を落とす"},{"cat":"innen","text":"Karuraとの「守り手」の関係(伊賀で孤独な彼女を静かに見守る)が物語に影を落とす"},{"cat":"innen","text":"幼い頃に交わした「約束」の相手が目の前に現れる"},{"cat":"innen","text":"野薊を会得した日の、忘れられない師との記憶が蘇る"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"}]},{"no":"032","elements":[{"cat":"mise","text":"木槌さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の丑の刻参りに全てを懸ける"},{"cat":"mise","text":"雑賀の秘伝と丑の刻参りを組み合わせた禁じ手を使う"},{"cat":"mise","text":"木槌さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"gap","text":"丑の刻参りは強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"丑の刻参りは強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"nichijo","text":"木槌を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"雑賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"木槌を修理・新調するため職人を訪ねる旅に出る"},{"cat":"innen","text":"Bentenとの「里の仲間」の関係(雑賀の同郷、和の芸道で通じる)が物語に影を落とす"},{"cat":"innen","text":"Nagisaとの「同郷の仲間」の関係(雑賀の里を共に守る)が物語に影を落とす"},{"cat":"innen","text":"丑の刻参りの代償として失ったものと、再び向き合うことになる"},{"cat":"innen","text":"かつて雑賀の里を襲った事件の真相に触れてしまう"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"}]},{"no":"033","elements":[{"cat":"mise","text":"猫眼の選択と鬼火の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの鬼火での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"猫眼の選択を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"猫眼の選択と鬼火の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"猫眼の選択が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は鬼火の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"nichijo","text":"里の子供たちに猫眼の選択の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な鬼火)を探して里中を駆け回る"},{"cat":"nichijo","text":"雑賀の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに猫眼の選択の稽古をつけることになる"},{"cat":"innen","text":"Nekomataとの「同郷の後進」の関係(同じ里の年下（canon）)が物語に影を落とす"},{"cat":"innen","text":"Sattvaとの「精神的縁者」の関係(悟りと超越を巡る精神的な繋がり)が物語に影を落とす"},{"cat":"innen","text":"猫眼の選択を会得した日の、忘れられない師との記憶が蘇る"},{"cat":"innen","text":"自分の鬼火に刻まれた、先代の持ち主の想いを知る"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"}]},{"no":"034","elements":[{"cat":"mise","text":"満身創痍で立ち上がり、最後の一撃必中に全てを懸ける"},{"cat":"mise","text":"雑賀の秘伝と一撃必中を組み合わせた禁じ手を使う"},{"cat":"mise","text":"二丁拳銃さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の一撃必中に全てを懸ける"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"一撃必中は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"雑賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"二丁拳銃を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"innen","text":"Bentenとの「里を託す相手」の関係(里の運営を弁天に任せる頭領（canon）)が物語に影を落とす"},{"cat":"innen","text":"Fuutaとの「里の仲間」の関係(雑賀の豪快な同郷、海と酒で通じる)が物語に影を落とす"},{"cat":"innen","text":"かつて雑賀の里を襲った事件の真相に触れてしまう"},{"cat":"innen","text":"雑賀と敵対勢力の停戦の裏で交わされた密約に巻き込まれる"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"}]},{"no":"035","elements":[{"cat":"mise","text":"仲間を庇いながらの呪符での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"泰山府君の儀を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"泰山府君の儀と呪符の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの呪符での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"gap","text":"泰山府君の儀が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は呪符の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"泰山府君の儀が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"nichijo","text":"失くし物(大切な呪符)を探して里中を駆け回る"},{"cat":"nichijo","text":"風魔の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに泰山府君の儀の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な呪符)を探して里中を駆け回る"},{"cat":"innen","text":"Karmaとの「風魔の同輩」の関係(式神と罪の眼、陰の任務で組む)が物語に影を落とす"},{"cat":"innen","text":"Janome (& Orochi)との「相棒繋がり」の関係(パートナー（山/オロチ）を連れる者同士)が物語に影を落とす"},{"cat":"innen","text":"自分の呪符に刻まれた、先代の持ち主の想いを知る"},{"cat":"innen","text":"幼い頃に交わした「約束」の相手が目の前に現れる"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"}]},{"no":"036","elements":[{"cat":"mise","text":"甲賀の秘伝と糸脈を組み合わせた禁じ手を使う"},{"cat":"mise","text":"葛籠さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の糸脈に全てを懸ける"},{"cat":"mise","text":"甲賀の秘伝と糸脈を組み合わせた禁じ手を使う"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"糸脈は強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"nichijo","text":"甲賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"葛籠を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"甲賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"innen","text":"Ganziとの「導き手」の関係(雑賀出身で甲賀に来た者を幻次が指南)が物語に影を落とす"},{"cat":"innen","text":"Kongaとの「師」の関係(甲賀で修行する彼女を鍛える)が物語に影を落とす"},{"cat":"innen","text":"甲賀と敵対勢力の停戦の裏で交わされた密約に巻き込まれる"},{"cat":"innen","text":"糸脈の代償として失ったものと、再び向き合うことになる"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"}]},{"no":"037","elements":[{"cat":"mise","text":"飯縄の呪法を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"mise","text":"飯縄の呪法と無手の合わせ技という誰も見たことのない奥義を初披露する"},{"cat":"mise","text":"仲間を庇いながらの無手での防戦一方から、一瞬の反撃で形勢逆転する"},{"cat":"mise","text":"飯縄の呪法を極限まで練り上げた大技を、最大の危機で解放する"},{"cat":"gap","text":"実は無手の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"gap","text":"戦闘では冷徹なのに、動物や子供にはめっぽう弱い"},{"cat":"gap","text":"飯縄の呪法が緊張すると暴発する癖があり、日常で小事故を起こす"},{"cat":"gap","text":"実は無手の手入れに異常なこだわりがあり、触られると取り乱す"},{"cat":"nichijo","text":"甲賀の里の祭りの準備(または屋台)を任される"},{"cat":"nichijo","text":"里の子供たちに飯縄の呪法の稽古をつけることになる"},{"cat":"nichijo","text":"失くし物(大切な無手)を探して里中を駆け回る"},{"cat":"nichijo","text":"甲賀の里の祭りの準備(または屋台)を任される"},{"cat":"innen","text":"Ukaとの「妹」の関係(ウカの姉（canon）)が物語に影を落とす"},{"cat":"innen","text":"Ganziとの「里の同胞」の関係(甲賀の術者同士、幻術で通じる)が物語に影を落とす"},{"cat":"innen","text":"幼い頃に交わした「約束」の相手が目の前に現れる"},{"cat":"innen","text":"飯縄の呪法を会得した日の、忘れられない師との記憶が蘇る"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"},{"cat":"kanjo","text":"絶体絶命の場面で、初めて相手に本音を打ち明ける"},{"cat":"kanjo","text":"相手の癖(口癖・仕草)がうつっていることに気づいて動揺する"},{"cat":"kanjo","text":"不器用な励まし方しかできず、かえって相手を怒らせてしまう"}]},{"no":"038","elements":[{"cat":"mise","text":"大典太さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"mise","text":"満身創痍で立ち上がり、最後の無刀取りに全てを懸ける"},{"cat":"mise","text":"伊賀の秘伝と無刀取りを組み合わせた禁じ手を使う"},{"cat":"mise","text":"大典太さばきだけで格上の敵を圧倒する無双シーン"},{"cat":"gap","text":"無刀取りは強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"gap","text":"方向音痴で、単独任務のたびに盛大に迷子になる"},{"cat":"gap","text":"料理が壊滅的に下手(または異様に上手い)ことが判明する"},{"cat":"gap","text":"無刀取りは強力だが使用後に猛烈な空腹(または眠気)に襲われる"},{"cat":"nichijo","text":"大典太を修理・新調するため職人を訪ねる旅に出る"},{"cat":"nichijo","text":"温泉(または茶屋)で偶然相手と鉢合わせ、任務を忘れて休息する"},{"cat":"nichijo","text":"伊賀の里に届いた一通の依頼状から騒動が始まる"},{"cat":"nichijo","text":"大典太を修理・新調するため職人を訪ねる旅に出る"},{"cat":"innen","text":"Kinki Kana-Oniとの「刀の依頼主」の関係(名工に業物を打たせる剣豪)が物語に影を落とす"},{"cat":"innen","text":"Jinとの「好敵手」の関係(伊賀最強格の剣豪同士、互いを認める)が物語に影を落とす"},{"cat":"innen","text":"無刀取りの代償として失ったものと、再び向き合うことになる"},{"cat":"innen","text":"かつて伊賀の里を襲った事件の真相に触れてしまう"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"},{"cat":"kanjo","text":"張り合っていたはずが、いつの間にか背中を預け合っている"},{"cat":"kanjo","text":"別れ際に、次に会う「約束」を自分から言い出す"},{"cat":"kanjo","text":"相手の意外な一面を目撃し、評価を改める"}]}];
+const GENRES=["1. バトル・アクション","2. 少年冒険","3. ラブコメ","4. スポ根","5. グルメ","6. ホラー・オカルト","7. ミステリー・推理","8. ファンタジー","9. SF","10. 日常・ほのぼの","11. ヒューマンドラマ","12. 歴史・時代劇","13. サスペンス・スリラー","14. ダークファンタジー","15. 音楽","16. 職人・お仕事","17. 変身ヒーロー","18. 妖怪・あやかし","19. バディ","20. 復讐劇","21. ギャグ(小学生向け王道)","22. 4コマ風ショート(3コマ縮約)"];
+/* ---------- 状態 ---------- */
+const state={name:null,chars:[],styles:[],results:[]};
+const $=id=>document.getElementById(id);
+function setFlow(n){document.querySelectorAll('#flowbar div').forEach(d=>{
+  const f=+d.dataset.f;d.classList.toggle('done',f<n);d.classList.toggle('on',f===n);});}
+
+/* ---------- 工程0:キャラ選択 ---------- */
+state.pick=[]; // [主役no, 相手役no]
+function renderCharGrid(){
+  const q=$('charSearch').value.trim().toLowerCase();
+  $('chargrid').innerHTML=CHAR_DB
+    .filter(c=>!q||c.name.toLowerCase().includes(q)||c.clan.toLowerCase().includes(q))
+    .map(c=>{
+      const idx=state.pick.indexOf(c.no);
+      const cls=idx===0?'ccard p1':idx===1?'ccard p2':'ccard';
+      const role=idx===0?'<span class="role">主役</span>':idx===1?'<span class="role">相手役</span>':'';
+      return `<div class="${cls}" data-no="${c.no}">${role}<span class="no">No.${c.no}</span><b>${c.name}</b><span class="clan">${c.clan}</span><br>${c.ninjutsu}・${c.weapon}</div>`;
+    }).join('');
+  $('chargrid').querySelectorAll('.ccard').forEach(el=>el.onclick=()=>{
+    const no=el.dataset.no,i=state.pick.indexOf(no);
+    if(i>=0)state.pick.splice(i,1);
+    else{if(state.pick.length>=2)state.pick.shift();state.pick.push(no);}
+    renderCharGrid();updatePicked();
+  });
+}
+function charByNo(no){return CHAR_DB.find(c=>c.no===no);}
+function findRelation(a,b){
+  if(!a||!b)return null;
+  const r1=(a.rel||[]).find(r=>r.name.toLowerCase()===b.name.toLowerCase());
+  if(r1)return{from:a.name,to:b.name,...r1};
+  const r2=(b.rel||[]).find(r=>r.name.toLowerCase()===a.name.toLowerCase());
+  if(r2)return{from:b.name,to:a.name,...r2};
+  return null;
+}
+function updatePicked(){
+  const[a,b]=state.pick.map(charByNo);
+  $('picked').innerHTML=state.pick.length
+    ?`主役:${a?a.name:'—'} ${b?` / 相手役:${b.name}`:''}`
+    :'未選択';
+  const rel=findRelation(a,b);
+  const rb=$('relbox');
+  if(rel){rb.style.display='block';
+    rb.innerHTML=`<b>公式設定の関係性を検出:</b>${a.name} × ${b.name} = <b>${rel.type}</b><br>${rel.note||''}<br><span style="color:#555;font-size:12px">この関係性はおまかせ指示書に自動反映されます。</span>`;
+  }else rb.style.display='none';
+  if(a&&b){
+    // 登場キャラ欄を自動補完
+    $('charnote').value=`${a.name}=${a.setting}\n${a.name}の外見: ${a.visual||''}\n${b.name}=${b.setting}\n${b.name}の外見: ${b.visual||''}`;
+    if(!$('title').value)$('title').placeholder=`例:${a.name}と${b.name}の物語`;
+    rollAll();
+    setFlow(1);
+  }else{$('gachabox').style.display='none';}
+}
+$('charSearch').oninput=renderCharGrid;
+GENRES.forEach(g=>{const o=document.createElement('option');o.value=g;o.textContent=g;$('genreSel').appendChild(o);});
+$('genreSel').onchange=()=>{if(state.pick.length===2){rollGag();renderGacha();}};
+document.querySelectorAll('input[name=elemMode]').forEach(r=>r.onchange=()=>{
+  $('customElems').style.display=elemMode()==='custom'?'block':'none';
+  if(state.pick.length===2){rollGag();renderGacha();}
+});
+renderCharGrid();
+
+/* ---------- ギャグ要素プール(小学生向けギャグの鉄板) ---------- */
+// ジャンル別鉄板ネタプール(各20)。キーはGENRESの番号プレフィックス
+const GENRE_POOL = {
+"1": [ // バトル・アクション
+"格上の敵に一度完敗してからの再戦","戦いの中で相手の技を見切って進化する","封印していた禁じ手をついに解放する",
+"守るべきものができて強くなる","敵の攻撃を最小の動きでかわす達人描写","満身創痍で立ち上がる「まだだ…!」",
+"互いの必殺技が正面からぶつかり合う","乱戦の中で背中合わせになる瞬間","強敵が実は先鋒にすぎなかったと判明",
+"力を使うほど身体が蝕まれる代償","一撃も当たらない絶望からの糸口発見","師から受け継いだ技で決着をつける",
+"敵の必殺技を喰らってでも懐に入る捨て身","戦闘中の静寂、一瞬の呼吸の読み合い","地形や道具を利用した頭脳戦",
+"敗者に手を差し伸べる勝者","かばった傷が急所を外れていた奇跡","戦いを見ていた第三者が乱入する",
+"武器を失ってからの素手の攻防","勝敗がついた後、互いの名を聞く"
+],
+"2": [ // 少年冒険
+"地図の端の「未踏の地」を目指す","旅の途中で仲間が一人ずつ増える","伝説のお宝の手がかりを手に入れる",
+"崖・激流・吊り橋の三大難所突破","ケンカ別れした仲間が危機に駆けつける","古代遺跡の仕掛けを知恵で解く",
+"夜のたき火で語られる各自の夢","小さな村を悪党から守って恩人になる","ライバル一行と競争しながらの道中",
+"嵐の中の船(または筏)での大冒険","宝の正体が金銀ではなく「絆」的な何か","地元の子供が案内役として活躍する",
+"手に入れた宝を巡って裏切り発生","伝説の生き物との遭遇と共闘","失敗しても「次があるさ!」の切り替え",
+"大人たちの「無理だ」を覆す","旅立ちの朝、故郷を振り返るシーン","持ち物ひとつが土壇場で命を救う",
+"ゴール目前の最大の試練","冒険の終わり、次の地図が見つかる"
+],
+"3": [ // ラブコメ
+"雨宿りで二人きり、傘は一本","不意打ちの「好きかも」に赤面して誤魔化す","料理を作ってあげたら味が壊滅的",
+"ライバル(恋敵)登場で急に意識し始める","ケンカした後の気まずい沈黙と仲直り","偶然手が触れて二人同時に謝る",
+"相手の意外な弱点(虫・雷・お化け)を知る","祭りの夜、はぐれた手を探す","誤解からのすれ違い、そして全力の弁明",
+"「別に心配してない」と言いつつ待っていた","風邪をひいた相手を看病する","二人の秘密ができてしまう",
+"周囲は全員気づいてるのに本人たちだけ鈍感","勝負事に負けたら言うことを聞く約束","うっかり寝顔を見てしまいドキッとする",
+"昔の思い出の場所に二人で行く","告白しようとした瞬間に必ず邪魔が入る","相手の頑張る姿に見惚れる",
+"髪型や服装の変化に気づいて褒める","最終盤、言葉にせず伝わる想い"
+],
+"4": [ // スポ根
+"万年補欠が努力で代表の座を掴む","ライバル校のエースとの因縁の対決","怪我を抱えての出場を巡る葛藤",
+"地味な基礎練習が試合で実を結ぶ","チーム内の不和が敗北で露呈し、雨解けする","一点差の最終局面、託されるエース",
+"根性論の熱血コーチと理論派の対立と融合","スランプからの脱出のきっかけは初心","「あと一本!」の限界を超える練習",
+"敗北の悔し涙が次の炎になる","天才に凡人が食らいつく執念","声援が力に変わる会場一体のシーン",
+"引退する先輩から受け継ぐ背番号","相手チームの妨害・挑発に実力で返す","監督の意外な過去(元選手)が明かされる",
+"控え選手の献身がチームを支える","試合後、敵同士が健闘を称え合う","家族の反対を押し切って続ける競技",
+"雨中(泥まみれ)の死闘","勝利の瞬間、真っ先に探す顔"
+],
+"5": [ // グルメ
+"一口食べた瞬間の大げさな味リアクション","幻の食材を求めて山奥(海)へ","貧しい食材を工夫で絶品に変える",
+"料理対決、審査員の箸が止まらない","亡き人の「あの味」を再現する","食材の目利きで市場の主に認められる",
+"隠し味の正体を巡る推理","不愛想な店主の一皿に込められた真心","大食い自慢との限界勝負",
+"郷土料理に込められた土地の物語","失敗作から生まれる新メニュー","ライバル料理人と互いの皿を認め合う",
+"食べた人の悩みが一皿で解ける","仕込みから当日までの丁寧な工程描写","「うまい」しか言えなくなる沈黙の実食",
+"客の思い出の味を聞き出す聞き込み","旬の食材が最高の状態で届く朝","味の表現がイメージ映像で大爆発する",
+"閉店の危機を新作メニューで救う","満腹の幸せそうな顔で締める"
+],
+"6": [ // ホラー・オカルト
+"「見てはいけない」と言われたものを見てしまう","写真の隅に写り込む何か","夜中に決まった時刻に聞こえる音",
+"鏡・水面に映る自分が笑っている","忠告してくれた人が最初にいなくなる","呪いのルールを一つずつ解き明かす",
+"安心した瞬間に来る最大の恐怖","「それ」は最初からずっとそこにいた","古い日記・手紙が語る過去の惨劇",
+"振り返ってはいけない帰り道","名前を呼ばれても返事をしてはいけない","封印を解いてしまったのは自分たち",
+"逃げ込んだ場所が一番危険な場所","味方だと思っていた存在の正体","朝が来ても終わっていない絶望",
+"子供にだけ見えている何か","儀式の手順を一つ間違える","最後のコマで読者側に振り向く",
+"助かったと思った一人に残る痕跡","恐怖の原因に同情の余地がある悲しい真相"
+],
+"7": [ // ミステリー・推理
+"密室で起きた不可能犯罪","全員にアリバイがある状況","現場に残された不可解な遺留品",
+"「犯人はこの中にいる」の宣言","無関係に見えた事件同士が繋がる","探偵役の何気ない一言が突破口",
+"被害者のダイイングメッセージ","二重三重のどんでん返し","完璧と見えた推理の小さな綻び",
+"犯人の動機に隠された悲しい過去","助手役の素朴な疑問が核心を突く","時刻表・天候を使ったアリバイ崩し",
+"読者にも公平に提示される手がかり","疑われた人物をかばう嘘","再現実験で明かされるトリック",
+"犯人からの挑戦状","最も疑わしくない人物が犯人","事件解決後に残る一抹の苦さ",
+"探偵とライバル(警察・怪盗)の知恵比べ","「なぜ今日だったのか」の謎"
+],
+"8": [ // ファンタジー
+"選ばれし者の証(紋章・聖剣)が目覚める","人間と魔族の間で揺れる主人公","古の予言が現代に成就し始める",
+"魔法の代償として失われるもの","ドラゴン(精霊)との契約","滅びた王国の最後の生き残り",
+"旅の仲間それぞれの種族の因縁","禁書に記された世界の真実","魔王が実は世界を守っていた逆転",
+"エルフの森・ドワーフの炉などの種族巡り","魔法学院での落ちこぼれの覚醒","勇者パーティーの追放と再起",
+"神々の遊戯としての戦争","呪いを解く条件が「真実の愛」系","地下迷宮の最深部に眠るもの",
+"精霊にしか見えない世界の危機","王位継承を巡る陰謀","魔法が使えない者の知恵と勇気",
+"異種族間の禁じられた友情","世界樹(源泉)の枯死と再生"
+],
+"9": [ // SF
+"AIが感情を持ち始める瞬間","記憶が改ざんされていた事実の発覚","タイムパラドックスとの格闘",
+"人類最後の宇宙船での選択","アンドロイドと人間の見分けがつかない社会","滅亡までのカウントダウン",
+"仮想世界と現実の境界の崩壊","クローンとしての自我の目覚め","異星文明とのファーストコンタクト",
+"テクノロジーに支配された管理社会への反逆","宇宙空間での孤独なサバイバル","科学者の「作ってしまった」後悔",
+"未来から来た警告","肉体を捨てた人類の是非","ロボット三原則的な制約との矛盾",
+"地球そっくりの惑星の違和感","冷凍睡眠から目覚めたら世界が変わっていた","観測者によって変わる現実",
+"機械の身体に宿る人間の心","文明のリセットと再出発"
+],
+"10": [ // 日常・ほのぼの
+"縁側でお茶を飲むだけの贅沢な時間","商店街の人々との何気ない交流","季節の変わり目を告げる小さな発見",
+"雨の日の窓辺の過ごし方","手作りのおやつを持ち寄る集まり","猫(動物)が引き起こす小さな事件",
+"古い写真を見つけて思い出話に花が咲く","初めてのおつかい的な小冒険","夕焼けを見て何となく歩く帰り道",
+"風邪の日に届く隣人の差し入れ","畑(植木)の成長を見守る日々","失敗した料理も笑い話になる食卓",
+"星を見に行くだけの夜","昔ながらの銭湯・喫茶店の常連たち","雪の日の静けさと足跡",
+"手紙(交換日記)のやり取り","お祭りの準備で町が一つになる","眠れない夜の他愛ない長話",
+"何もない一日の終わりの「いい日だった」","いつもの場所にいつもの顔がある安心"
+],
+"11": [ // ヒューマンドラマ
+"すれ違い続けた親子の和解","夢を諦めた人がもう一度歩き出す","喪失を抱えた者同士の静かな連帯",
+"言えなかった「ありがとう」を伝える","過去の過ちと向き合う勇気","他人だった二人が家族になっていく",
+"病室の窓から見える景色の意味","遺品が語る故人の本当の想い","世代を超えて受け継がれるもの",
+"社会の隅で生きる人の尊厳","別れの駅・空港での本音","挫折した者にしか見えない優しさ",
+"人生の岐路での眠れない夜","かつての恩師・恩人との再会","「普通」になれない自分の受容",
+"最後の一日をどう生きるか","誰にも言えない秘密を打ち明ける夜","小さな嘘が招いた大きな後悔と赦し",
+"手放すことで前に進む決断","日常の中の小さな奇跡に気づく"
+],
+"12": [ // 歴史・時代劇
+"宿場町の辻での果たし合い","身分を隠した貴人のお忍び","忠義と情の板挟み",
+"一宿一飯の恩義を返す旅人","悪代官の圧政と民衆の蜂起","茶室での腹の探り合い",
+"関所を越えるための知恵と変装","戦乱で引き裂かれた幼馴染","名刀に纏わる因縁",
+"敵将同士の一騎打ちと相互の敬意","城下町の祭りに紛れた陰謀","農民出身の男の立身出世",
+"最後の戦を前にした静かな酒","密書を届ける命がけの早駆け","没落した名家の再興",
+"仇討ちの旅の果てにある赦し","乱世に咲く一輪の恋","軍師の策が戦局を覆す",
+"時代の変わり目に消えゆく生き方","刀を捨てた侍の新しい生き方"
+],
+"13": [ // サスペンス・スリラー
+"日常に紛れ込んだ悪意","監視されている確信、でも証拠がない","信じていた人物の裏の顔",
+"巻き込まれ型:身に覚えのない容疑","タイムリミットと交渉","逃げ場のない密閉空間",
+"追う者と追われる者の逆転","偽の身分で潜り込んだ組織","味方の中に紛れた内通者",
+"一本の電話から始まる悪夢","証拠を握ったが誰にも信じてもらえない","脅迫状の指示に従うしかない状況",
+"些細な違和感の積み重ねが確信に変わる","公衆の面前での接触・すり替え","計画の綻びが連鎖して破滅へ",
+"守るべき人を人質に取られる","二重スパイの綱渡り","真犯人からの「よくここまで来たね」",
+"生き延びるための共闘、しかし信用はできない","終わったはずの事件の続報"
+],
+"14": [ // ダークファンタジー
+"人であることを少しずつ失っていく","怪物を狩る者が最も怪物に近い","救った村人に石を投げられる",
+"契約の対価は寿命(記憶・感情)","希望に見えたものの正体は罠","正義のための必要悪という毒",
+"呪われた血の宿命","味方の死が日常である世界","神は沈黙し、祈りは届かない",
+"少女(無垢な存在)だけが怪物に微笑む","勝利しても失うものの方が多い","裏切りが生存戦略である荒廃",
+"禁忌の魔導書に手を伸ばす動機","かつての英雄の成れの果て","光の勢力の欺瞞の暴露",
+"共に戦った相棒を手にかける選択","呪いを移し替えるという解決の罪","絶望の底で見つける小さな灯",
+"人間の悪意こそが最凶の魔物","終わらない夜の世界で朝を語る"
+],
+"15": [ // 音楽
+"路上ライブから始まる物語","音楽性の違いによる衝突と昇華","初ステージの足が震える瞬間",
+"ライバルバンドとの対バン勝負","失った音(声・聴力・指)との闘い","伝説の名曲の封印された理由",
+"セッションで初めて噛み合う音","スランプの中で見つける自分の音","観客ゼロのライブから満員まで",
+"亡き師匠(仲間)に捧げる一曲","楽器に宿った前の持ち主の記憶","音が「見える」演出での演奏描写",
+"デビューを巡る大人の事情との対立","文化祭(コンテスト)当日のトラブル","解散の危機を越えて生まれる名曲",
+"耳の肥えた辛口批評家を唸らせる","ジャンルの壁を越えるコラボ","歌詞に込めた伝えられない想い",
+"最後の音が消えた後の静寂と喝采","音楽で言葉の通じない相手と心を通わす"
+],
+"16": [ // 職人・お仕事
+"納期と品質の板挟み","新人の無知な質問がベテランを動かす","門外不出の技を盗み見る修行",
+"手を抜いた仕事が招いた事故と償い","伝統と革新の世代対立","一人前と認められる瞬間の一言",
+"顧客の無理難題に技術で応える","道具の手入れに宿る職人の魂","閉業寸前の工房の復活",
+"弟子の独立を巡る師の本心","失敗作の山の先にある会心の一品","異業種から転職してきた変わり者",
+"職人同士の腕比べ","目に見えない部分にこそ手を掛ける美学","跡継ぎ問題と家族の確執",
+"最新機械には出せない手仕事の味","仕事納めの夜の静かな達成感","若手の斬新な発想が老舗を救う",
+"名もなき仕事が誰かの人生を支えている","引退の日に弟子に渡す道具"
+],
+"17": [ // 変身ヒーロー
+"変身アイテムの入手と最初の変身","正体を隠す日常パートのドタバタ","変身時間(回数)の制限という弱点",
+"怪人の目的に隠された悲哀","正体がバレそうになる危機一髪","新フォーム(強化形態)の覚醒",
+"ヒーロー同士の共闘と初対面の衝突","民衆に誤解され追われるヒーロー","敵幹部の中の裏切り者",
+"力の代償に蝕まれる身体","「なぜ戦うのか」を問い直す回","身近な人が怪人にされてしまう",
+"変身できない状況での生身の勇気","先代ヒーローからの継承","組織の真の目的の判明",
+"街の人々の声援が力になる","ライバルヒーローの闇落ちと救済","最終決戦前の日常の尊さ",
+"変身ポーズと決め台詞の様式美","正体を明かして戦う最後の選択"
+],
+"18": [ // 妖怪・あやかし
+"人に見えないモノが見える体質","妖怪との契約・約束事","あやかしの世界への迷い込み",
+"百鬼夜行の夜に外を歩いてはいけない","妖怪の起こす怪異の裏にある未練","名前を知られると支配される掟",
+"人と妖の間に生まれた子の居場所","古道具に宿った付喪神","妖怪同士の縄張り争いの仲裁",
+"神隠しにあった人を連れ戻す","お社(祠)を壊した祟りの解決","妖怪が恐れる「もっと怖いもの」",
+"人間に恋をしたあやかしの寿命の壁","封印が解けかけている大妖","妖怪の世界の掟と人間の理の衝突",
+"化かし合い勝負","昔助けた妖怪の恩返し","妖怪が見えなくなる「大人になる」切なさ",
+"あやかしの祭りに招かれる一夜","人と妖の共存の形を見つける"
+],
+"19": [ // バディ
+"水と油の二人が組まされる初日","互いのやり方を否定し合う衝突","背中を預けるしかない状況",
+"相棒の過去を偶然知ってしまう","「お前のやり方に乗ってやる」の転換点","片方が囮になる作戦",
+"相棒の危機に規則を破って駆けつける","口は悪いが行動は相棒思い","二人にしか通じないアイコンタクト",
+"解散の危機と再結成","互いの弱点を補い合う完璧な連携","相棒の汚名を晴らすための独自捜査",
+"どちらかが撃たれる(倒れる)展開","「相棒だからな」を照れて言わない","過去の相棒との因縁",
+"休日に偶然会って気まずい二人","真逆の推理が両方正しかった","上層部の圧力から相棒を守る",
+"最初の事件の回想と成長の対比","事件解決後の定位置(バー・屋台)での一杯"
+],
+"20": [ // 復讐劇
+"全てを奪われた夜の記憶","復讐リストの名前を一人ずつ消していく","標的に近づくための偽りの顔",
+"復讐の過程で見つけてしまう新たな真実","仇の思わぬ命乞いと葛藤","復讐に協力する謎の人物の思惑",
+"標的の家族(無関係な者)を巻き込むか否か","仇にも守るべきものがあった事実","復讐を止めようとする理解者",
+"自分も誰かの復讐対象だった","黒幕は最も身近な人物","復讐の連鎖を断ち切るか続けるか",
+"完遂した後に残る虚無","仇と同じ手口を使ってしまう自己嫌悪","証拠を集める地道な数年間",
+"復讐相手が既に別の形で堕ちていた","「殺すより辛い生」を選ばせる決着","最後の標的の前での長い沈黙",
+"復讐者の正体が明かされる瞬間の演出","復讐の後の「これからどう生きるか」"
+]
+};
+
+const GAG_POOL=["必殺忍法が地味すぎて誰にも気づかれない","変わり身の術の身代わりが毎回ヘンなもの(大根、先輩の写真、たわし)","ダジャレ忍法:口にしたダジャレが本当に起きてしまう","分身の術の分身が本体より性格が良くてモテる","分身同士が仲間割れして本体を置いて帰る","火遁を使うと必ず自分の眉毛が焦げる","水遁で隠れたら息が続かず3秒で浮上する","手裏剣がブーメランのように戻ってきて自分に刺さりかける","煙玉の煙が少なすぎて、ただ気まずく立っている","隠れ身の術で隠れた場所が全員同じで渋滞する","口寄せで呼んだのが目当ての獣ではなく近所の猫","忍法の詠唱が長すぎて、終わる前に敵が帰ってしまう","巨大化の術で大きくなったのは声だけだった","透明化したのに影はくっきり残っている","縮地のつもりが普通に全力ダッシュしているだけ","師匠の「奥義」が明らかにただの日常動作(掃除、ラジオ体操)","修行の成果を見せようとするたびに邪魔が入る","滝行の滝が水量少なすぎてシャワー以下","千本ノックならぬ千本手裏剣で球拾いだけが上達する","師匠が寝てる間の自主練のほうが明らかに効率がいい","「心の目で見ろ」と言われて目をつぶったら壁に激突","秘伝の巻物を開いたら「秘伝」ではなく買い物メモだった","秘伝書の最終ページに「続きは次巻」と書いてある","師匠の若い頃の武勇伝が会うたびに盛られていく","修行メニューが実は師匠の家の手伝いと完全一致","テスト(任務報告書)が0点で里の掲示板に貼り出される","カンニングの隠密技術だけ里一番と評価される","遅刻して屋根から教室に入ったら普通に怒られる","授業参観に来た親が子より張り切って忍法を披露する","夏休みの宿題を分身にやらせたら全員違う答えを書く","避難訓練で本気を出しすぎて一人だけ裏山まで逃げる","通知表の評価項目が「隠密」「変装」「反省」全部1","卒業試験の内容が「朝までに起きること」で全員苦戦","敵と戦う前にお腹が鳴って緊張感が全滅する","兵糧丸がまずすぎて敵味方が休戦して文句を言い合う","団子のためだけに任務を史上最速で終わらせる集中力を見せる","強敵の弱点が「くすぐり」や「甘いもの」などしょうもない","毒見役のはずが美味しすぎて全部食べる","忍者食の携帯握り飯が固すぎて武器として採用される","食い逃げ犯を追う任務で、匂いにつられて自分も注文する","激辛忍者ラーメンを食べて口から本物の火遁が出る","忍犬(または動物)のほうが明らかに忍者として優秀","伝書鳩が道草を食って手紙が3日遅れで届く","口寄せの大ガマが花粉症で戦闘どころではない","敵のアジトに潜入したら番犬に懐かれて帰れなくなる","猫を追って屋根を走っていたら忍者の追跡訓練より速くなる","鷹が獲物ではなく主人の弁当を持って飛んでいく","必死の変装が誰の目にもバレバレなのに本人だけ自信満々","変装用の付け髭が任務中ずっとズレている","女装潜入したら敵の頭領に見初められて逃げるのに苦労する","潜入先で正体がバレていないのは自分だけだと思っている(全員気づいてる)","変装を解いたら「そっちの顔のほうが怪しい」と言われる","敵に変装したら敵の朝礼で日直に任命される","天井裏に潜入したら埃でくしゃみが止まらない","合言葉を忘れて雰囲気で乗り切ろうとして即バレする","真剣な決めポーズの直後に盛大にコケる","顔芸バトル:忍術ではなく変顔で勝負がつく","決め台詞を噛む→言い直す→また噛むの無限ループ","最強の敵が実は迷子で、送り届けたら任務完了になる","筋肉自慢の忍法がすべて力技で「それ忍術じゃない」と言われる","果たし状の日付を間違えて誰もいない決闘場で一人待つ","戦いの口上が長すぎて日が暮れて解散になる","ライバルとの勝負内容がいつの間にか大食い対決にすり替わる","必殺技名を叫んだら舌を噛んで不発になる","敵味方で同じ流派だと判明して技が全部相殺される","決闘の途中で雨が降ってきて、なんとなく二人で雨宿りする","強敵を倒したら中から小さいおじいちゃんが操縦していた","肝心な場面で忍具を家に忘れてくる","とんでもない勘違いから任務が始まり、最後まで誰も気づかない","ツッコミ役が疲れ果てて途中からボケに回る","超シリアスな回想シーンが、思い出補正で盛られすぎている","手裏剣の整理整頓ができず、必要な一枚が見つからない","忍び足が完璧すぎて仲間にも気づかれず、一日中無視されたと勘違いする","買い出し任務なのにフル装備で市場に行き、店主に警戒される","寝相で無意識に印を結び、寝ながら忍法が暴発する","風呂で覆面を外すタイミングを失い、ふやけるまで入っている","休日の私服が忍装束より目立つ","待ち合わせに気配を消して来るので毎回相手を驚かせて怒られる","手裏剣型の肩こりグッズを本物と間違えて携帯する","口癖の「ニンニン」が抜けず、面接で連発する","屋根の上が定位置すぎて、たまに床にいると心配される","伝達ミス:「敵ヲ討テ」が「的ヲ立テ」と読まれて運動会が始まる","落とし穴を掘っていたら自分が最初に落ちる","まきびしを撒いた場所を忘れて自分で全部踏む","鎖鎌の鎖が長すぎて自分がぐるぐる巻きになる","跳躍の術で飛びすぎて隣の里に着地する","壁走りの途中でスタミナ切れしてゆっくりずり落ちる","ロープで華麗に降下するつもりが、ロープが短くて宙吊りになる","凧で空を飛ぶ作戦が、風向きで敵陣ではなく海に流される","受け身の練習をしすぎて、日常でも転ぶたび美しく回転する","ラスト1コマで全部夢オチ…と見せかけてもう1段オチる","ナレーションが主人公に説教を始める","「つづく」と出たのに登場人物が「つづかないでしょ」とツッコむ","回想シーンに入ろうとしたら「尺がない」と止められる","効果音の「シーン…」が実際に文字として床に落ちている","敵が倒れる時に「やられ役も大変なんだぞ」と愚痴る","扉絵のかっこいいポーズを本編で再現しようとして失敗する","作者(絵師)の画力が尽きて途中から棒人間になる、という設定ネタ","最終コマでキャラが読者に向かって「今日はここまで!」と挨拶する","オチがつかないまま時間切れになり、全員で正座して終わる"];
+function isGagGenre(){const g=$('genreSel').value;return g.startsWith('21.')||g.startsWith('22.');}
+function is4koma(){return $('genreSel').value.startsWith('22.');}
+
+/* ---------- 要素ガチャ ---------- */
+const CAT_JP={mise:'見せ場',gap:'ギャップ',nichijo:'日常',innen:'因縁',kanjo:'感情'};
+state.gacha={}; // {charNo:[3 indices]}
+function elemsOf(no){const e=ELEMENT_DB.find(x=>x.no===no);return e?e.elements:[];}
+function rollOne(no,exclude){
+  const els=elemsOf(no);
+  let i;do{i=Math.floor(Math.random()*els.length);}while(exclude.includes(i)&&exclude.length<els.length);
+  return i;
+}
+function rollAll(){
+  state.gacha={};
+  state.pick.forEach(no=>{
+    const picks=[];
+    while(picks.length<3)picks.push(rollOne(no,picks));
+    state.gacha[no]=picks;
+  });
+  rollGag();
+  renderGacha();
+}
+function elemMode(){const r=document.querySelector('input[name=elemMode]:checked');return r?r.value:'random';}
+function currentGenrePool(){
+  if(isGagGenre())return GAG_POOL;
+  const num=($('genreSel').value.match(/^(\d+)\./)||[])[1];
+  return GENRE_POOL[num]||null;
+}
+function rollGag(){
+  const pool=currentGenrePool();
+  if(!pool||elemMode()==='custom'){state.gagPicks=null;return;}
+  const picks=[];
+  while(picks.length<3){const i=Math.floor(Math.random()*pool.length);if(!picks.includes(i))picks.push(i);}
+  state.gagPicks=picks;
+}
+function renderGacha(){
+  const box=$('gachabox');
+  if(state.pick.length<2){box.style.display='none';return;}
+  box.style.display='block';
+  $('gachaChips').innerHTML=state.pick.map(no=>{
+    const c=charByNo(no),els=elemsOf(no);
+    const chips=(state.gacha[no]||[]).map((ei,slot)=>{
+      const e=els[ei];
+      return `<span class="chip" data-no="${no}" data-slot="${slot}"><span class="cat">${CAT_JP[e.cat]||e.cat}</span>${e.text}</span>`;
+    }).join('');
+    return `<div class="gachagroup"><span class="gname">${c.name}</span><br>${chips}</div>`;
+  }).join('')+(state.gagPicks?`<div class="gachagroup"><span class="gname" style="color:var(--red)">${isGagGenre()?'🤣 ギャグ要素(鉄板ネタ)':'📚 ジャンルの鉄板ネタ'}</span><br>${state.gagPicks.map((gi,slot)=>`<span class="chip gag" data-gag="${slot}"><span class="cat">鉄板</span>${currentGenrePool()[gi]}</span>`).join('')}</div>`:'');
+  $('gachaChips').querySelectorAll('.chip').forEach(ch=>ch.onclick=()=>{
+    if(ch.dataset.gag!==undefined){
+      const pool=currentGenrePool();
+      let i;do{i=Math.floor(Math.random()*pool.length);}while(state.gagPicks.includes(i));
+      state.gagPicks[+ch.dataset.gag]=i;renderGacha();return;
+    }
+    const no=ch.dataset.no,slot=+ch.dataset.slot;
+    state.gacha[no][slot]=rollOne(no,state.gacha[no]);
+    renderGacha();
+  });
+}
+$('rerollAll').onclick=rollAll;
+function gachaTextFor(no){
+  const els=elemsOf(no);
+  return (state.gacha[no]||[]).map(i=>`・${els[i].text}`).join('\n');
+}
+
+/* ---------- ジャンル別ルール ---------- */
+function gagText(){
+  if(elemMode()==='custom'){
+    const t=$('customElems').value.trim();
+    return t?t.split('\n').map(l=>l.trim()).filter(Boolean).map(l=>'・'+l).join('\n'):'';
+  }
+  const pool=currentGenrePool();
+  return state.gagPicks&&pool?state.gagPicks.map(i=>'・'+pool[i]).join('\n'):'';
+}
+function genreRules(spreads){
+  if(is4koma())return `【4コマ風ショート構成(通常の起承転結は使わない)】
+- 各ページ=独立した1本のショートギャグ。3コマで「フリ(状況設定)→展開(ボケ)→オチ」を完結させる
+- 1見開き=右ページと左ページで2本。合計${spreads*2}本のショートを作る
+- 全本に共通するテーマ(例:里の日常、修行あるある)を1つ決めて連作にする
+- sceneには「右:ネタ名/左:ネタ名」の形式で各ショートのタイトルを書く
+- オチのコマ(3コマ目)は必ず引き画(wide or medium)でリアクションまで見せる
+- 【使うギャグ要素(鉄板)】以下を最低1本ずつどこかのショートに使う:
+${gagText()}`;
+  if(isGagGenre())return `【ギャグ漫画構成(小学生向けギャグの王道)】
+- 1見開きに必ず1回以上の笑いどころ(ボケ+ツッコミ or 顔芸 or 擬音オチ)
+- 主役=ボケ、相手役=ツッコミの役割分担を基本に、終盤に役割逆転回を1回入れる
+- テンポ最優先:説明コマを削り、ボケへの助走を短く
+- 擬音(sfx)を大きく派手に使う。顔芸・ズッコケ・汗マークなど漫符表現をcutに書き込む
+- シリアスな空気を作ってから落とす「緊張と緩和」を最低2回
+- 最終見開きは一番大きいオチ+全員ズッコケ(または新たな騒動の予感)で締める
+- 【使うギャグ要素(鉄板ネタガチャで決定済み・全て使うこと)】
+${gagText()}`;
+  const gt=gagText();
+  return gt?`【物語に組み込むジャンル要素(${elemMode()==='custom'?'指定済み':'鉄板ネタガチャで決定済み'}・全て使うこと)】
+${gt}`:'';
+}
+
+/* ---------- ①-a 小説執筆指示書 ---------- */
+function buildNovelPrompt(){
+  const[a,b]=state.pick.map(charByNo);
+  if(!a||!b)return null;
+  const spreads=+$('spreads').value;
+  const genre=$('genreSel').value;
+  const title=$('title').value.trim()||`${a.name}と${b.name}(仮題)`;
+  const rel=findRelation(a,b);
+  const chars=Math.round(spreads*700); // 見開き数に応じた文字数目安
+  return `あなたはプロの小説家です。以下の設定でCryptoNinjaの二次創作短編小説を書いてください。この小説は後で漫画${spreads}見開き(${spreads*2}ページ)にネーム化するので、映像が浮かぶ描写と歯切れのよい会話を重視してください。
+
+【タイトル】${title}
+【ジャンル】${genre}(このジャンルの様式美・お約束を1つ以上入れる)
+【分量】約${chars}字。起承転結を明確に。
+
+【主役】${a.name}(${CL_DISPLAY(a.clan)}/忍術:${a.ninjutsu}/武器:${a.weapon})
+設定: ${a.setting}
+【相手役】${b.name}(${CL_DISPLAY(b.clan)}/忍術:${b.ninjutsu}/武器:${b.weapon})
+設定: ${b.setting}
+${rel?`【2人の関係性(公式設定・物語の軸にする)】${rel.type} — ${rel.note||''}`:'【関係性】本作で新たに関係性を構築する(出会いから描いてよい)'}
+
+【必ず物語に組み込む要素(全て使うこと)】
+${a.name}:
+${gachaTextFor(a.no)}
+${b.name}:
+${gachaTextFor(b.no)}
+
+${genreRules(spreads)}
+【条件】
+- 2人それぞれに見せ場を1回以上
+- 会話文を多めに(漫画化した時のセリフになる)
+- 最後は感情のピークかオチで締める
+- 小説本文のみを出力(前置き・あらすじ・解説は不要)`;
+}
+function CL_DISPLAY(c){return({Iga:'伊賀',Koka:'甲賀',Fuma:'風魔',Saika:'雑賀','Heavenly Realm':'天界'})[c]||c;}
+wireProm('novelPromptBtn','novelShowBtn','novelBox','s1',buildNovelPrompt,'①-a をコピーしました。Claudeに貼って送信 → 返ってきた小説本文を下の欄に貼り、①-b へ。');
+
+/* ---------- おまかせ指示書 ---------- */
+function buildAutoPrompt(){
+  const[a,b]=state.pick.map(charByNo);
+  if(!a||!b)return null;
+  const spreads=+$('spreads').value;
+  const genre=$('genreSel').value;
+  const title=$('title').value.trim()||`${a.name}と${b.name}(仮題)`;
+  const rel=findRelation(a,b);
+  return `【送信前のお願い】このメッセージと一緒に、キャラクターシート画像・背景資料・サンプルネームJSON『月下の二忍』を添付してください(あるものだけでOK)。cutの人物・ロケーション描写は添付資料の見た目に即して書き、粒度はサンプルに合わせること。
+
+あなたはプロの漫画原作者兼ネーム作家です。以下のキャラクター2人を主役にした${genre}の短編を創作し、その場で漫画のネーム(絵コンテ)としてJSON化してください。小説本文の出力は不要で、最終出力はJSONのみです。
+
+【主役】${a.name}(${a.clan}のクラン/忍術:${a.ninjutsu}/武器:${a.weapon})
+設定: ${a.setting}
+外見(cutの人物描写にこのまま使う): ${a.visual||'添付のキャラシートを参照'}
+【相手役】${b.name}(${b.clan}のクラン/忍術:${b.ninjutsu}/武器:${b.weapon})
+設定: ${b.setting}
+外見(cutの人物描写にこのまま使う): ${b.visual||'添付のキャラシートを参照'}
+${rel?`【2人の関係性(公式設定・必ず物語の軸にする)】${rel.type} — ${rel.note||''}`:'【関係性】本作で新たに関係性を構築する(出会いから描いてよい)'}
+
+【物語に必ず組み込む要素(ガチャで決定済み・全て使うこと)】
+${a.name}:
+${gachaTextFor(a.no)}
+${b.name}:
+${gachaTextFor(b.no)}
+
+${genreRules(spreads)}
+【物語の条件】
+- ジャンル: ${genre}。このジャンルの様式美(お約束)を1つ以上入れる
+- 2人それぞれに見せ場を1回以上
+- 起承転結を${spreads}見開きに収め、最終見開きで感情のピークかオチを作る
+
+【判型ルール(厳守)】
+- 全体で${spreads}見開き。1見開き=右ページ+左ページの2ページ、各ページ3コマ、合計6コマ。
+- 日本式右綴じ:読む順は「右ページ上→中→下、次に左ページ上→中→下」。
+
+【出力形式(このJSONのみを出力。前置き・後書き・コードブロック記号は不要)】
+{
+  "title": "${title}",
+  "spreads": [
+    {
+      "spread": 1,
+      "scene": "このシーンの要約(日本語)",
+      "rightPage": [
+        {"panel":1,"chars":["そのコマに姿が描かれるキャラ名の配列(無人なら[])"],"cut":"英語の画像生成用構図描写(camera, pose, background, emotion)","dialogue":[{"speaker":"キャラ名","text":"セリフ","type":"serif|shout|monologue|narration|title|caption_small"}],"sfx":"効果音(任意)"},
+        {"panel":2,"cut":"...","dialogue":[]},{"panel":3,"cut":"...","dialogue":[]}
+      ],
+      "leftPage": [ 同様に3コマ ]
+    }
+  ]
+}
+
+【ネーム化の方針】
+- speaker名は必ず「${a.name}」「${b.name}」の表記で統一(作画時のキャラ照合に使う)
+- charsには「そのコマに姿が描かれるキャラ」だけを入れる(声だけなら含めない)
+- dialogueのtypeを使い分ける:serif/shout/monologue/narration/title/caption_small
+- セリフは1コマ最大2つ、1つ30字以内
+- cutは具体的に:ショットサイズ(close-up/medium/wide)、アングル、キャラの動きと表情、背景`;
+}
+wireProm('autoPromptBtn','autoShowBtn','autoBox','s1',buildAutoPrompt,'特急指示書をコピーしました(小説本文は生成されません)。Claudeに貼って送信 → JSONを工程②へ。');
+
+/* ---------- 工程1:ネーム指示書 ---------- */
+function buildNamePrompt(){
+  const title=$('title').value.trim()||'無題';
+  const spreads=+$('spreads').value;
+  const novel=$('novel').value.trim();
+  const chars=$('charnote').value.trim();
+  if(!novel){return null;}
+  return `【送信前のお願い】このメッセージと一緒に、以下を添付してください(あるものだけでOK):
+・登場キャラのキャラクターシート画像
+・舞台・背景のロケーション資料(あれば)
+・サンプルネームJSON『月下の二忍』(粒度の見本として)
+
+あなたはプロの漫画編集者兼ネーム作家です。以下の小説を、漫画のネーム(絵コンテ)としてJSON化してください。
+
+【添付資料の使い方】
+- キャラシートが添付されている場合:cutの人物描写(髪型・服装・持ち物)は必ずシートの見た目に即して書く
+- 背景資料が添付されている場合:cutのロケーション描写はその資料に合わせる
+- サンプルネームJSONが添付されている場合:cutの粒度・文体・セリフの密度をサンプルに合わせる
+
+【判型ルール(厳守)】
+- 全体で${spreads}見開き。1見開し=右ページ+左ページの2ページ、各ページ3コマ、合計6コマ。
+- 日本式右綴じ:読む順は「右ページ上→中→下、次に左ページ上→中→下」。
+- 1見開き目は導入の大ゴマ的に、最終見開きは引き(またはオチ)で締める。
+
+【作品情報】
+タイトル: ${title}
+登場キャラ: ${chars||'本文から判断'}
+
+【出力形式(このJSONのみを出力。前置き・後書き・コードブロック記号は不要)】
+{
+  "title": "${title}",
+  "spreads": [
+    {
+      "spread": 1,
+      "scene": "このシーンの要約(日本語)",
+      "rightPage": [
+        {"panel":1,"chars":["そのコマに姿が描かれるキャラ名の配列(無人なら[])"],"cut":"英語の画像生成用構図描写(camera, pose, background, emotion)","dialogue":[{"speaker":"キャラ名","text":"セリフ","type":"serif|shout|monologue|narration|title|caption_small"}],"sfx":"効果音(任意)"},
+        {"panel":2,...},{"panel":3,...}
+      ],
+      "leftPage": [ 同様に3コマ ]
+    }
+  ]
+}
+
+【ネーム化の方針】
+- セリフは1コマ最大2つ、1つ30字以内。地の文はモノローグかナレーションに変換。
+- cutは具体的に:ショットサイズ(close-up/medium/wide)、アングル、キャラの動きと表情、背景。
+- charsには「そのコマに姿が描かれるキャラ」だけを入れる(声だけなら含めない)。表記はspeakerと同一に統一
+- dialogueのtypeを使い分ける:serif(通常)/shout(叫び)/monologue(心の声)/narration(地の文)/title(扉)/caption_small(注記)
+- 省略と飛躍を恐れない。小説の全文再現ではなく「漫画として面白い」コマ割りを優先。
+
+【小説本文】
+${novel}`;
+}
+$('copyPromptBtn').onclick=async()=>{
+  const p=buildNamePrompt();
+  if(!p){$('s1').textContent='小説本文を貼り付けてください。';$('s1').className='status err';return;}
+  try{await navigator.clipboard.writeText(p);
+    $('s1').textContent='コピーしました。Claude(claude.ai)に貼り付けて送信 → 返ってきたJSONを工程②へ。';
+    $('s1').className='status ok';setFlow(2);
+  }catch(e){$('promptbox').textContent=p;$('promptbox').style.display='block';
+    $('s1').textContent='自動コピーできない環境です。下の指示書を手動でコピーしてください。';$('s1').className='status err';}
+};
+$('showPromptBtn').onclick=()=>{
+  const p=buildNamePrompt();
+  if(!p){$('s1').textContent='小説本文を貼り付けてください。';$('s1').className='status err';return;}
+  $('promptbox').textContent=p;
+  $('promptbox').style.display=$('promptbox').style.display==='none'?'block':'none';
+};
+
+/* ---------- 工程2:JSON検品 ---------- */
+$('validateBtn').onclick=()=>{
+  let raw=$('jsonInput').value.trim().replace(/^```json\s*/,'').replace(/^```\s*/,'').replace(/```$/,'').trim();
+  let data;
+  try{data=JSON.parse(raw);}catch(e){
+    $('s2').textContent='JSONとして読めません: '+e.message;$('s2').className='status err';return;}
+  const errs=[];
+  if(!Array.isArray(data.spreads)||!data.spreads.length)errs.push('spreads配列がありません');
+  (data.spreads||[]).forEach((sp,i)=>{
+    ['rightPage','leftPage'].forEach(side=>{
+      if(!Array.isArray(sp[side])||sp[side].length!==3)errs.push(`見開き${i+1}の${side==='rightPage'?'右':'左'}ページが3コマではありません`);
+      (sp[side]||[]).forEach((pn,j)=>{if(!pn.cut)errs.push(`見開き${i+1} ${side} コマ${j+1}にcutがありません`);});
+    });
+  });
+  if(errs.length){$('s2').textContent='検品NG: '+errs.slice(0,3).join(' / ')+(errs.length>3?` ほか${errs.length-3}件`:'');
+    $('s2').className='status err';return;}
+  state.name=data;
+  $('s2').textContent=`検品OK:${data.spreads.length}見開き(${data.spreads.length*2}ページ・${data.spreads.length*6}コマ)。`;
+  $('s2').className='status ok';
+  const pv=$('nameprev');pv.style.display='block';
+  pv.innerHTML=data.spreads.map(sp=>{
+    const lines=[...(sp.rightPage||[]),...(sp.leftPage||[])]
+      .flatMap(p=>(p.dialogue||[]).map(d=>`${d.speaker}「${d.text}」`)).slice(0,3).join(' ');
+    return `<div class="sp"><b>見開き${sp.spread}</b> ${sp.scene||''}<br><span style="color:#555">${lines||'(セリフなし)'}</span></div>`;
+  }).join('');
+  $('spreadSel').innerHTML=data.spreads.map(sp=>`<option value="${sp.spread}">見開き ${sp.spread}(${(sp.scene||'').slice(0,18)})</option>`).join('');
+  $('spreadPickRow').style.display=artRoute()==='gemini'?'flex':'none';
+  setFlow(3);
+};
+
+/* ---------- 共通:コピー/表示ヘルパー ---------- */
+function wireProm(copyId,showId,boxId,statusId,builder,okMsg){
+  $(copyId).onclick=async()=>{
+    const p=builder();
+    if(!p){$(statusId).textContent='先に必要な工程を済ませてください(キャラ選択/ネーム検品)。';$(statusId).className='status err';return;}
+    try{await navigator.clipboard.writeText(p);$(statusId).textContent=okMsg;$(statusId).className='status ok';}
+    catch(e){$(boxId).textContent=p;$(boxId).style.display='block';
+      $(statusId).textContent='自動コピーできない環境です。下の指示書を手動でコピーしてください。';$(statusId).className='status err';}
+  };
+  $(showId).onclick=()=>{
+    const p=builder();
+    if(!p){$(statusId).textContent='先に必要な工程を済ませてください。';$(statusId).className='status err';return;}
+    $(boxId).textContent=p;
+    $(boxId).style.display=$(boxId).style.display==='none'?'block':'none';
+  };
+}
+
+/* ---------- 作画ルート ---------- */
+function artRoute(){const r=document.querySelector('input[name=artRoute]:checked');return r?r.value:'gemini';}
+document.querySelectorAll('input[name=artRoute]').forEach(r=>r.onchange=()=>{
+  $('falSetup').style.display=artRoute()==='fal'?'block':'none';
+  $('routeHint').textContent=artRoute()==='fal'
+    ?'自動ルート:初回のみ下のセットアップが必要。以降は指示書をClaudeに貼るだけで全ページ自動生成されます。'
+    :'無料ルート:Gemini(gemini.google.com)の画像生成に、スタジオが作るプロンプト+キャラシート画像を貼って1見開きずつ生成します。API・キー・課金は一切不要。';
+  $('spreadPickRow').style.display=(artRoute()==='gemini'&&state.name)?'flex':'none';
+});
+
+/* ---------- 画像参照の組み立て ---------- */
+function refLines(){
+  const u1=$('sheetUrl1').value.trim(),u2=$('sheetUrl2').value.trim(),us=$('styleUrl').value.trim();
+  const lines=[];
+  if(u1)lines.push('主役シート: '+u1);
+  if(u2)lines.push('相手役シート: '+u2);
+  if(us)lines.push('画風参考: '+us);
+  const note=lines.length
+    ?'【参照画像】\n'+lines.join('\n')+'\n(URLが非公開リポの場合は、Claudeがファイルを読み取ってbase64でfalに渡すこと。このチャットに直接アップロードされた画像があればそれも使う)'
+    :'【参照画像】このチャットにアップロードされたキャラシート・参考画像を使うこと(base64でfalのimage_urlsに渡す)。';
+  return note;
+}
+function sampleRefLine(){
+  const su=$('sampleUrl').value.trim();
+  return `【基準ページの参照(必須)】${su?`承認済み見本ページ: ${su}`:'③-cで承認済みの見本ページ(リポの sheets/sample_approved.png またはこのチャット内の承認画像)'}
+毎回のfal呼び出しで、この見本ページを必ず image_urls に含め、線の質・トーン・コマ枠・フキダシの様式を見本に完全に揃えること。見本と画風が変わってしまった出力は失敗とみなして再生成する。`;
+}
+function styleText(){
+  const base=$('baseStyle').value;
+  return base==='mono'?'black-and-white manga style, clean pen linework, screentone shading, high contrast'
+    :base==='color'?'full-color manga style, clean linework, cel shading'
+    :'match the art style of the style reference images exactly';
+}
+const FAL_COMMON=`【fal実行の共通ルール】
+- GitHubのPrivateリポ(既定: doujin-studio-assets)の fal_key.txt を読んでAPIキーとして使う
+- エンドポイント: https://queue.fal.run/{モデル名} にPOST → status_url をポーリング → response_url から画像URLを取得
+- 生成した画像は毎回このチャットに表示して見せること`;
+
+/* ---------- ③-a キャラシート生成指示書 ---------- */
+function buildSheetPrompt(){
+  const picked=state.pick.map(charByNo).filter(Boolean);
+  if(!picked.length)return null;
+  if(artRoute()==='gemini'){
+    return picked.map(c=>`◆ ${c.name} のキャラシート —— 以下をGemini(画像生成)にそのまま貼る:
+
+character reference sheet, full body front view + close-up face portrait side by side, standing pose, plain white background, no text labels. ${c.visual}`).join('\n\n')+`
+
+【使い方】1キャラずつ貼って生成。気に入るまで再生成し、完成した画像を保存しておく(工程③-c以降でGeminiに添付して使います)。`;
+  }
+  const chars=picked.map(c=>`■ ${c.name}
+character reference sheet, full body front view + close-up face portrait side by side, standing pose, plain white background, no text labels.
+${c.visual}`).join('\n\n');
+  return `CryptoNinja二次創作のキャラクターシートを作ってください。
+
+${FAL_COMMON}
+- モデル: fal-ai/nano-banana(text-to-image)、aspect_ratio 16:9、1キャラ=1枚
+
+【生成するキャラ(各1枚)】
+${chars}
+
+【手順】
+1. 1キャラずつ生成して、私に見せて確認を取る
+2. NGなら私の修正指示を反映して再生成
+3. 全員OKが出たら、リポの sheets/ フォルダに ${picked.map(c=>c.name.toLowerCase().replace(/[^a-z0-9]/g,'_')+'.png').join(' と ')} としてコミットし、それぞれのURL(またはパス)を教えて`;
+}
+wireProm('sheetPromptBtn','sheetShowBtn','sheetBox','s3',buildSheetPrompt,
+  '③-a をコピーしました。Claudeに貼るとシート生成→確認→リポ保存まで進みます。');
+
+/* ---------- 作画プロンプト(見開き単位) ---------- */
+function buildSpreadPrompt(sp){
+  const extra=$('extra').value.trim();
+  const TYPE_EN={serif:'speech balloon',shout:'jagged shout balloon, bold',monologue:'dotted thought bubble',narration:'rectangular narration caption box',title:'large decorative title lettering',caption_small:'small printed caption text'};
+  const panelDesc=(side,label)=>side.map(p=>{
+    const dlg=(p.dialogue||[]).map(d=>{
+      const t=TYPE_EN[d.type]||'speech balloon';
+      return `${d.speaker} — "${d.text}" (${t})`;
+    }).join('; ');
+    const who=(p.chars&&p.chars.length)?` Characters visible: ${p.chars.join(', ')}.`:(p.chars&&p.chars.length===0?' No characters (scenery/object shot).':'');
+    return `${label} panel ${p.panel}: ${p.cut}.${who}${dlg?` Text: ${dlg}.`:''}${p.sfx?` SFX: ${p.sfx}.`:''}`;
+  }).join('\n');
+  return `Create a Japanese manga double-page spread as a single 16:9 image.
+LAYOUT (strict): the image is split into RIGHT half (right page) and LEFT half (left page). Each half contains exactly 3 horizontal panels stacked top to bottom with bold black panel borders and white gutters. Japanese right-to-left reading order.
+${styleText()}. Keep every character's face, hairstyle, and outfit consistent with the character reference sheets.
+${state.pick.map(no=>{const c=charByNo(no);return c&&c.visual?`Character "${c.name}": ${c.visual.split('.')[0]}.`:''}).join('\n')}
+Scene: ${sp.scene||''}
+${panelDesc(sp.rightPage,'RIGHT page')}
+${panelDesc(sp.leftPage,'LEFT page')}
+Render each text in the balloon/caption style specified, written vertically in Japanese, copied EXACTLY character-for-character. Draw ONLY the text listed above.${extra?` Additional direction: ${extra}`:''}`;
+}
+
+/* ---------- ③-c 見本生成指示書 ---------- */
+function buildSamplePrompt(){
+  if(!state.name)return null;
+  const sp=state.name.spreads[0];
+  if(artRoute()==='gemini'){
+    return `【Geminiでの見本生成】以下をGeminiに貼り、キャラシート画像(と画風参考があればそれも)を添付して送信:
+
+${buildSpreadPrompt(sp)}
+
+【使い方】生成結果の線・トーン・キャラの顔を確認。NGなら「もっと線を太く」等と修正して再生成。OKが出た1枚を「基準ページ」として保存しておき、工程④では毎回この画像も添付します(画風固定の要)。`;
+  }
+  return `同人漫画の見本テストです。まず見開き1だけ生成して見せてください。
+
+${FAL_COMMON}
+- モデル: ${$('model').value}、aspect_ratio 16:9、num_images 1
+
+${refLines()}
+
+【見開き1の作画プロンプト(このまま英語プロンプトとして使う)】
+${buildSpreadPrompt(sp)}
+
+生成できたら画像を見せてください。私がOKを出したら、その画像を「基準ページ」としてリポの sheets/sample_approved.png にコミットし、URLを教えてください(以降の全ページ生成で毎回参照します)。NGなら修正点を伝えるので反映して再生成してください。`;
+}
+wireProm('samplePromptBtn','sampleShowBtn','sampleBox','s3',buildSamplePrompt,
+  '③-c をコピーしました。Claudeに貼って見本を確認 → OKなら工程④へ。');
+
+/* ---------- ④ 作画指示書(全見開き) ---------- */
+function buildGenPrompt(){
+  if(!state.name)return null;
+  const sps=state.name.spreads;
+  const all=sps.map(sp=>`----- 見開き ${sp.spread} (ファイル名: spread_${String(sp.spread).padStart(2,'0')}.png) -----
+${buildSpreadPrompt(sp)}`).join('\n\n');
+  return `同人漫画『${state.name.title||'無題'}』の原稿を全${sps.length}見開き、順に生成してください。見本テストで確定した設定を引き継ぎます。
+
+${FAL_COMMON}
+- モデル: ${$('model').value}、aspect_ratio 16:9、num_images 1
+- 1見開き生成するごとにこのチャットに表示(全部まとめてではなく順次)
+- 失敗・崩れがあった見開きは自動で1回だけリトライ。それでもダメなら飛ばして最後に報告
+
+${refLines()}
+
+${sampleRefLine()}
+
+【全見開きの作画プロンプト】
+${all}
+
+【完了後】
+1. 生成した全画像をリポの output/${(state.name.title||'manga').replace(/\s/g,'_')}/ にコミット
+2. 見開き番号順の一覧と、失敗があればその番号を報告して`;
+}
+$('spreadCopyBtn').onclick=async()=>{
+  if(!state.name){$('s4').textContent='先に工程②で検品してください。';$('s4').className='status err';return;}
+  const sp=state.name.spreads.find(s=>String(s.spread)===$('spreadSel').value)||state.name.spreads[0];
+  const p=`【Gemini用・見開き${sp.spread}】このプロンプトと一緒に、キャラシート画像+承認済み基準ページ画像を添付して送信(画風を基準ページに揃えるため):
+
+${buildSpreadPrompt(sp)}
+
+Match the art style, line quality, and panel framing of the attached approved sample page exactly.`;
+  try{await navigator.clipboard.writeText(p);
+    $('s4').textContent=`見開き${sp.spread}をコピーしました。Geminiに貼り、シート+基準ページを添付して生成 → 保存したら次の見開きへ。`;
+    $('s4').className='status ok';
+  }catch(e){$('genBox').textContent=p;$('genBox').style.display='block';}
+};
+function buildGenPromptRouted(){
+  if(artRoute()==='gemini'){
+    if(!state.name)return null;
+    return `【無料ルート(Gemini)での全ページ生成の進め方】
+1. 上の見開きセレクタで1見開きずつプロンプトをコピー
+2. Geminiに貼り、毎回「キャラシート」+「承認済み基準ページ」を添付して生成
+3. 生成画像を spread_01.png, spread_02.png... の名前で保存
+4. 全${state.name.spreads.length}見開きを繰り返す(1見開き1〜2分)
+
+※まとめて自動生成したい場合は、作画ルートを「自動ルート」に切り替えてください。以下は参考:全見開きのプロンプト一覧です。
+
+${state.name.spreads.map(sp=>`----- 見開き ${sp.spread} -----\n${buildSpreadPrompt(sp)}`).join('\n\n')}`;
+  }
+  return buildGenPrompt();
+}
+wireProm('genPromptBtn','genShowBtn','genBox','s4',buildGenPromptRouted,
+  '作画指示書をコピーしました。Claudeに貼ると全見開きの生成が始まります。');
+
+</script>
+</body>
+</html>
