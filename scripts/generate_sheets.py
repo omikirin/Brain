@@ -35,11 +35,18 @@ def load(name):
         return json.load(f)
 
 
-def expand_chars(prompt, chars):
-    """{char_id} を characters.json の anchor_prompt に展開する。"""
+def expand_chars(prompt, chars, seen=None):
+    """{char_id} を characters.json の anchor_prompt に展開する。
+    seen を渡すと、初出のみフル展開し以降はキャラ名だけにする（プロンプト肥大対策）。"""
     def rep(m):
         c = chars.get(m.group(1))
-        return f"({c['anchor_prompt']})" if c else m.group(0)
+        if not c:
+            return m.group(0)
+        if seen is not None:
+            if m.group(1) in seen:
+                return c.get("name", m.group(1))
+            seen.add(m.group(1))
+        return f"({c['anchor_prompt']})"
     return re.sub(r"\{(\w+)\}", rep, prompt)
 
 
@@ -54,9 +61,10 @@ def build_sheet_prompt(pages, chars, style_suffix):
         "Each cell is one vertical manga page whose panels are stacked top to bottom.",
         "Page contents (in reading order):",
     ]
+    seen = set()
     for pg in pages:
         panels = " / ".join(
-            f"panel {p['no']}: {expand_chars(p['prompt'], chars)}" for p in pg["panels"])
+            f"panel {p['no']}: {expand_chars(p['prompt'], chars, seen)}" for p in pg["panels"])
         lines.append(f"- page {pg['page']}: {panels}")
     if len(pages) < pps:
         lines.append(
@@ -68,16 +76,29 @@ def build_sheet_prompt(pages, chars, style_suffix):
     return "\n".join(lines)
 
 
-def fal_generate(model, prompt, key):
-    """fal.ai queue API で生成し、画像バイト列を返す。"""
-    base = f"https://queue.fal.run/{model}"
-    body = json.dumps({
+def image_data_uri(path, max_px=768):
+    """参照画像を縮小してdata URIにする（editエンドポイント用）。"""
+    import base64
+    img = Image.open(path).convert("RGB")
+    img.thumbnail((max_px, max_px))
+    buf = io.BytesIO()
+    img.save(buf, "PNG")
+    return "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode()
+
+
+def fal_generate(model, prompt, key, image_urls=None):
+    """fal.ai queue API で生成し、画像バイト列を返す。image_urls指定時はeditを使う。"""
+    base = f"https://queue.fal.run/{model}/edit" if image_urls else f"https://queue.fal.run/{model}"
+    payload = {
         "prompt": prompt[:30000],
         "aspect_ratio": ASPECT_RATIO,
         "resolution": RESOLUTION,
         "num_images": 1,
         "output_format": "png",
-    }).encode()
+    }
+    if image_urls:
+        payload["image_urls"] = image_urls
+    body = json.dumps(payload).encode()
     req = urllib.request.Request(base, data=body, headers={
         "Authorization": f"Key {key}", "Content-Type": "application/json"})
     with urllib.request.urlopen(req) as r:
@@ -130,10 +151,33 @@ def main():
         if args.sheet and n != args.sheet:
             continue
         prompt = build_sheet_prompt(pages, chars, style)
+
+        # 登場キャラの参照画像（characters.jsonの"ref"）を最大4枚まで添付
+        used = sorted({m for pg in pages for p in pg["panels"]
+                       for m in re.findall(r"\{(\w+)\}", p["prompt"])})
+        ref_paths, ref_names = [], []
+        for cid in used:
+            c = chars.get(cid)
+            if not (c and c.get("ref")):
+                continue
+            rp = os.path.join(ROOT, c["ref"])
+            if os.path.exists(rp) and rp not in ref_paths and len(ref_paths) < 4:
+                ref_paths.append(rp)
+                ref_names.append(c.get("name", cid))
+        image_urls = None
+        if ref_paths:
+            image_urls = [image_data_uri(rp) for rp in ref_paths]
+            ref_lines = [
+                f"CHARACTER REFERENCE IMAGES: {len(ref_paths)} attached image(s) show the EXACT official designs."]
+            for i, nm in enumerate(ref_names, 1):
+                ref_lines.append(f"- attached image {i}: official design of {nm} (match face, hair, ears/tail, outfit and colors exactly, but render in monochrome manga ink)")
+            prompt = "\n".join(ref_lines) + "\n\n" + prompt
+            print(f"[sheet {n}] ref images: {', '.join(ref_names)}", flush=True)
+
         print(f"[sheet {n}] generating (P{pages[0]['page']}-P{pages[-1]['page']}) ...", flush=True)
         for attempt in range(3):
             try:
-                raw = fal_generate(args.model, prompt, key)
+                raw = fal_generate(args.model, prompt, key, image_urls)
                 break
             except Exception as e:
                 print(f"[sheet {n}] attempt {attempt + 1} failed: {e}", flush=True)

@@ -31,7 +31,7 @@
             },
             {
               "no": 2,
-              "prompt": "Medium shot, low angle. Immature young ninja {ibuki} dashing frantically through the crowd, arms flailing, panicked face. Round mochi-like cute shikigami {yama} bouncing on his head.",
+              "prompt": "Medium shot, low angle. Immature young ninja {ibuki} dashing frantically through the crowd, arms flailing, panicked face. {yama} clinging on his shoulder.",
               "dialogue": [
                 {
                   "speaker": "Ibuki",
@@ -42,7 +42,7 @@
             },
             {
               "no": 3,
-              "prompt": "Close-up on {yama}, round and cute, tilting with a deadpan expression. {ibuki}'s teary face in corner of frame, comic sweat marks.",
+              "prompt": "Close-up on {yama} tilting with a deadpan expression. {ibuki}'s teary face in corner of frame, comic sweat marks.",
               "dialogue": [
                 {
                   "speaker": "Yama",
@@ -85,7 +85,7 @@
             },
             {
               "no": 3,
-              "prompt": "Medium two-shot. {yama} inflated like a balloon spraying water on the fire. {ibuki} pointing at {uka} with full-power tsukkomi face, {uka} bowing apologetically, singed straw smoking behind.",
+              "prompt": "Medium two-shot. {yama} puffing up and spraying water on the fire. {ibuki} pointing at {uka} with full-power tsukkomi face, {uka} bowing apologetically, singed straw smoking behind.",
               "dialogue": [
                 {
                   "speaker": "Uka",
@@ -468,7 +468,7 @@
             },
             {
               "no": 2,
-              "prompt": "Gag anticlimax close-up. {yama} still round and cute, only with tiny dignified eyebrows added. {ibuki}'s face frozen mid-shock.",
+              "prompt": "Gag anticlimax close-up. {yama} unchanged, only with tiny dignified eyebrows added. {ibuki}'s face frozen mid-shock.",
               "dialogue": [
                 {
                   "speaker": "Ibuki",

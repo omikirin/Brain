@@ -59,7 +59,8 @@
     },
     "uka": {
       "name": "Uka",
-      "anchor_prompt": "fox-summoning female ninja, nine-tailed fox flame aura, protective amulet, warm tones"
+      "ref": "images/refs/015_uka.png",
+      "anchor_prompt": "Uka, a fox-eared girl ninja: tawny golden-brown bob hair with white tips, real pointed fox ears with white inner fur, one golden fox tail with white tip, violet eyes, tiny fang, whisker marks on cheeks, white miko-style short-sleeved top with red trim and a red sash worn diagonally across the chest, red pleated miko skirt, white thigh-highs with red marks, carries red-marked talisman cards"
     },
     "ganzi": {
       "name": "Ganzi",
@@ -138,8 +139,9 @@
       "anchor_prompt": "pirate-like leader of Saika clan, dual pistols, one-shot sure-hit, sea and ship background, bold"
     },
     "ibuki": {
-      "name": "Ibuki (& Yama)",
-      "anchor_prompt": "immature young ninja with cute shikigami Yama, Taizan-Fukun ritual, talisman paper"
+      "name": "Ibuki",
+      "ref": "images/refs/035_ibuki.png",
+      "anchor_prompt": "Ibuki, a young onmyoji ninja boy: indigo-navy bob hair gathered into a short upward topknot, sharp green eyes with purple eye-shadow, small black dash eyebrows high on his forehead, calm smug expression, black high-collared robe with red lacing along the wide sleeves, gold bead necklace, dark sash, purple hakama"
     },
     "oen": {
       "name": "Oen",
@@ -155,7 +157,8 @@
     },
     "yama": {
       "name": "Yama",
-      "anchor_prompt": "small round white mochi-like cute shikigami spirit, simple dot eyes, bouncy blob body"
+      "ref": "images/refs/035_ibuki.png",
+      "anchor_prompt": "Yama, Ibuki's shikigami: a small round GREEN imp-cat spirit with stubby orange-tipped horns, magenta forehead markings, mischievous sharp-toothed grin, pink-red eyes; NOT white, NOT a mochi"
     }
   }
 }
