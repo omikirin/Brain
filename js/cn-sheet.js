@@ -4,7 +4,7 @@
  *   <cn-sheet no="001"></cn-sheet>
  *   <cn-sheet no="019" compact></cn-sheet>   … 相関・プロンプトを省いた小型版
  */
-import { getCharacter, imageDir, CLAN_JP, CLAN_COLOR, VARIANTS } from './cn-data.js';
+import { getCharacter, imageDir, refImage, CLAN_JP, CLAN_COLOR, VARIANTS } from './cn-data.js';
 
 const CSS = `
   :host{display:block; font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
@@ -67,10 +67,15 @@ class CnSheet extends HTMLElement {
       <div class="setting">${esc(c.setting)}</div>
       ${!compact && c.relationships?.length ? `<h3>相関</h3><div class="rel">${
         c.relationships.map(r => `<span><b>${esc(r.type)}</b> ${esc(r.name)}</span>`).join('')}</div>` : ''}`;
-    const img = new Image();
-    img.src = imageDir(c) + 'main.png';
-    img.alt = c.name;
-    img.onload = () => { const f = box.querySelector('.face'); f.textContent = ''; f.appendChild(img); };
+    const candidates = [imageDir(c) + 'main.png', refImage(c)];
+    (function tryFace(i) {
+      if (i >= candidates.length) return;
+      const img = new Image();
+      img.src = candidates[i];
+      img.alt = c.name;
+      img.onload = () => { const f = box.querySelector('.face'); f.textContent = ''; f.appendChild(img); };
+      img.onerror = () => tryFace(i + 1);
+    })(0);
   }
 }
 customElements.define('cn-sheet', CnSheet);

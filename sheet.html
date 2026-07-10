@@ -127,11 +127,16 @@ if (!c) {
       <div id="pbox"></div>
     </section>`;
 
-  // サムネイル・ギャラリー
+  // サムネイル（main.png → 公式ref の順で表示）・ギャラリー
   const face = document.getElementById('face');
-  const main = new Image();
-  main.src = dir + 'main.png'; main.alt = c.name;
-  main.onload = () => { face.textContent = ''; face.appendChild(main); };
+  const faceCandidates = [dir + 'main.png', `images/refs/${c.no}_${slug(c.name)}.png`];
+  (function tryFace(i) {
+    if (i >= faceCandidates.length) return;
+    const img = new Image();
+    img.src = faceCandidates[i]; img.alt = c.name;
+    img.onload = () => { face.textContent = ''; face.appendChild(img); };
+    img.onerror = () => tryFace(i + 1);
+  })(0);
   const gal = document.getElementById('gal');
   ['main.png', ...Array.from({length: 12}, (_, n) => String(n + 1).padStart(2, '0') + '.png')].forEach(f => {
     const img = new Image();

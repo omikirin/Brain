@@ -127,7 +127,8 @@ function render(){
       <div class="thumb">
         <span class="ph">${c.name[0]}</span>
         <img src="${dir(c)}/main.png" alt="" loading="lazy"
-             onload="this.previousElementSibling.style.display='none'" onerror="this.remove()">
+             onload="this.previousElementSibling.style.display='none'"
+             onerror="if(!this.dataset.f){this.dataset.f=1;this.src='images/refs/${c.no}_${slug(c.name)}.png'}else{this.remove()}">
         <span class="no">#${c.no}</span>
       </div>
       <div class="info">

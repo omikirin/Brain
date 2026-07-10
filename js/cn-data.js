@@ -15,6 +15,7 @@ export const slug = name =>
   name.toLowerCase().split('(')[0].trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 export const imageDir = c => new URL(`images/characters/${c.no}_${slug(c.name)}/`, BASE).href;
+export const refImage = c => new URL(`images/refs/${c.no}_${slug(c.name)}.png`, BASE).href;
 
 let _cache = null;
 export async function loadCharacters() {
