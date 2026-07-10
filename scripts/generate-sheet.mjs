@@ -18,7 +18,7 @@
  *   複数枚時は末尾に -2, -3 … を付与
  */
 import { fal } from '@fal-ai/client';
-import { readFile, writeFile, access } from 'node:fs/promises';
+import { readFile, writeFile, access, mkdir } from 'node:fs/promises';
 import { constants } from 'node:fs';
 import path from 'node:path';
 
@@ -52,12 +52,29 @@ async function main() {
   const dir = `images/characters/${c.no}_${slug(c.name)}`;
 
   // プロンプトと比率を決定
+  const ROW_TITLES = {
+    row1: 'ROW 1 — "CHIBI TURNAROUND"',
+    row2: 'ROW 2 — "FULL-BODY TURNAROUND"',
+    row3: 'ROW 3 — "ALT-WORLD VARIANTS"',
+    row4: 'ROW 4 — "EXPRESSION ICONS x WORLDS"',
+    row5: 'ROW 5 — "PIXEL ART / DOT-E"',
+  };
   let prompt, aspect, outName;
   if (VARIANT === 'sheet') {
     if (!c.output_prompt?.en) { console.error(`❌ ${c.name} には output_prompt がありません（モデルシート未対応）。`); process.exit(1); }
     prompt = c.output_prompt.en;
     aspect = '4:5';
     outName = 'sheet';
+  } else if (ROW_TITLES[VARIANT]) {
+    // 行単位の生成 — シート全体で崩れた行だけを高解像度で作り直す
+    if (!c.output_prompt?.en) { console.error(`❌ ${c.name} には output_prompt がありません。`); process.exit(1); }
+    prompt =
+      `From the model-sheet specification below, RENDER ONLY the section ${ROW_TITLES[VARIANT]} ` +
+      `as ONE standalone wide image. Fill the whole canvas with just that section's content at large size. ` +
+      `Ignore the other rows, the header and the 4:5 sheet layout. Keep the TEXT RULES and the IDENTITY section exactly.\n\n` +
+      c.output_prompt.en;
+    aspect = '16:9';
+    outName = `rows/${VARIANT}`;
   } else {
     if (!c.prompts?.[VARIANT]?.en) { console.error(`❌ ${c.name} に prompts.${VARIANT} がありません。`); process.exit(1); }
     prompt = c.prompts[VARIANT].en;
@@ -73,7 +90,7 @@ async function main() {
 
   const base = MODEL_TIER === 'pro' ? 'fal-ai/nano-banana-pro' : 'fal-ai/nano-banana';
   const model = useRef ? `${base}/edit` : base;
-  const resolution = env('RESOLUTION', VARIANT === 'sheet' ? '2K' : '1K');
+  const resolution = env('RESOLUTION', VARIANT === 'sheet' ? '2K' : ROW_TITLES[VARIANT] ? '2K' : '1K');
   const input = { prompt, num_images: NUM, output_format: 'png', aspect_ratio: aspect };
   if (MODEL_TIER === 'pro') input.resolution = resolution;
 
@@ -106,6 +123,7 @@ async function main() {
   for (let i = 0; i < images.length; i++) {
     const suffix = i === 0 ? '' : `-${i + 1}`;
     const out = path.join(ROOT, dir, `${outName}${suffix}.png`);
+    await mkdir(path.dirname(out), { recursive: true });
     const res = await fetch(images[i].url);
     if (!res.ok) { console.error(`❌ ダウンロード失敗: ${images[i].url}`); process.exit(1); }
     await writeFile(out, Buffer.from(await res.arrayBuffer()));

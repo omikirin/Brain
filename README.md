@@ -45,7 +45,7 @@ GitHub Actions 上で fal.ai を呼び、モデルシート（三面図＋世界
    | 入力 | 説明 |
    |---|---|
    | `character` | キャラ番号か名前（例 `032` / `Seori`） |
-   | `variant` | `sheet`（モデルシート全体）または画風（`chibi`/`normal`/`modern`/`scifi`/`fantasy`/`isekai`） |
+   | `variant` | `sheet`（モデルシート全体）／ `row1`〜`row5`（崩れた行だけ横長で再生成: 1=ちび三面図 2=通常三面図 3=世界観バリエ 4=表情グリッド 5=ドット絵）／ 画風（`chibi`/`normal`/`modern`/`scifi`/`fantasy`/`isekai`） |
    | `ref_mode` | 参照画像 `ref.png` の利用。`auto`（あれば使う）/`on`/`off` |
    | `num` | 生成枚数（1〜4） |
    | `model_tier` | `pro`（既定・Nano Banana Pro／Gemini 3 Pro Image）/ `standard`（Nano Banana／Gemini 2.5 Flash Image、安価・高速） |

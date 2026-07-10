@@ -56,6 +56,7 @@
   .panel .pbtns button{flex:1; background:var(--panel2); border:1px solid var(--line); color:var(--sub); border-radius:6px; padding:3px 4px; font-size:.68rem; cursor:pointer}
   .panel .pbtns button:hover{color:var(--text); border-color:var(--accent)}
   .psec{margin:14px 0 6px; font-size:.88rem; font-weight:700}
+  .rowimg{width:100%; border:1px solid var(--line); border-radius:10px; margin:4px 0 10px; display:none}
   .exgrid{display:grid; gap:4px; overflow-x:auto; margin-bottom:12px}
   .exgrid .cell{background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:4px 2px; font-size:.66rem; text-align:center; cursor:pointer; color:var(--sub); min-width:56px}
   .exgrid .cell:hover{color:var(--text); border-color:var(--accent)}
@@ -205,6 +206,7 @@ function renderModelSheet(c, dir) {
     for (const key of Object.keys(c.panel_index)) {
       const sec = c.panel_index[key];
       html += `<div class="psec">${esc(key)}. ${esc(sec.section || '')}</div>`;
+      html += `<img class="rowimg" data-src="${dir}rows/row${esc(key)}.png" alt="row${esc(key)}">`;
       if (sec.panels) {
         html += '<div class="panels">';
         for (const pid of Object.keys(sec.panels)) {
@@ -262,8 +264,8 @@ function renderModelSheet(c, dir) {
   const gs = document.getElementById('genSheet');
   if (gs) { const probe = new Image(); probe.onload = () => gs.style.display = 'block'; probe.src = gs.src; }
 
-  // 分割画像の遅延読み込み（存在するものだけ表示）
-  box.querySelectorAll('.panel img[data-src]').forEach(img => {
+  // 分割画像・行画像の遅延読み込み（存在するものだけ表示）
+  box.querySelectorAll('.panel img[data-src], .rowimg[data-src]').forEach(img => {
     const probe = new Image();
     probe.onload = () => { img.src = probe.src; img.style.display = 'block'; };
     probe.src = img.dataset.src;

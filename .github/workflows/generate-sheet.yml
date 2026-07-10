@@ -15,6 +15,11 @@ on:
         type: choice
         options:
           - sheet     # モデルシート全体（三面図＋世界観＋表情＋ドット絵）
+          - row1      # 行だけ再生成: ちび三面図
+          - row2      # 行だけ再生成: 通常三面図
+          - row3      # 行だけ再生成: 世界観バリエ
+          - row4      # 行だけ再生成: 表情グリッド
+          - row5      # 行だけ再生成: ドット絵
           - chibi
           - normal
           - modern
