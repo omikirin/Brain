@@ -1,5 +1,5 @@
 {
-  "style_suffix": "clean bold manga ink lineart, screentone shading, dynamic ninja action framing, CryptoNinja fan-art (guideline-compliant), monochrome",
+  "style_suffix": "chibi-proportioned cute characters (large heads, roughly 2-3 heads tall, thick clean bold outlines, simple rounded shapes, minimal detail) exactly matching the stylization of the attached reference images; rendered as monochrome black-and-white manga ink with light screentone shading; dynamic but simple ninja action framing; CryptoNinja fan-art (guideline-compliant)",
   "characters": {
     "jin": {
       "name": "Jin",
@@ -27,7 +27,8 @@
     },
     "rotten": {
       "name": "Rotten",
-      "anchor_prompt": "loyal male ninja, poison mist, poison arrow, dark Fuma attire, solemn face"
+      "anchor_prompt": "loyal male ninja, poison mist, poison arrow, dark Fuma attire, solemn face",
+      "ref": "images/refs/style/rotten_yama_chibi.png"
     },
     "nagisa": {
       "name": "Nagisa",
@@ -59,7 +60,7 @@
     },
     "uka": {
       "name": "Uka",
-      "ref": "images/refs/015_uka.png",
+      "ref": "images/refs/style/uka_chibi.png",
       "anchor_prompt": "Uka, a fox-eared girl ninja: tawny golden-brown bob hair with white tips, real pointed fox ears with white inner fur, one golden fox tail with white tip, violet eyes, tiny fang, whisker marks on cheeks, white miko-style short-sleeved top with red trim and a red sash worn diagonally across the chest, red pleated miko skirt, white thigh-highs with red marks, carries red-marked talisman cards"
     },
     "ganzi": {
@@ -157,7 +158,7 @@
     },
     "yama": {
       "name": "Yama",
-      "ref": "images/refs/035_ibuki.png",
+      "ref": "images/refs/style/rotten_yama_chibi.png",
       "anchor_prompt": "Yama, Ibuki's shikigami: a small round GREEN imp-cat spirit with stubby orange-tipped horns, magenta forehead markings, mischievous sharp-toothed grin, pink-red eyes; NOT white, NOT a mochi"
     }
   }

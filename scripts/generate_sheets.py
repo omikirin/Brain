@@ -175,7 +175,10 @@ def main():
         if ref_paths:
             image_urls = [image_data_uri(rp) for rp in ref_paths]
             ref_lines = [
-                f"CHARACTER REFERENCE IMAGES: {len(ref_paths)} attached image(s) show the EXACT official designs."]
+                f"CHARACTER REFERENCE IMAGES: {len(ref_paths)} attached image(s) show the EXACT official designs.",
+                "ART STYLE: the entire sheet must be drawn in the SAME art style as the attached"
+                " reference images — chibi proportions (large head, small body), thick clean bold"
+                " outlines, simple rounded shapes. Convert that style to monochrome manga ink."]
             for i, nm in enumerate(ref_names, 1):
                 ref_lines.append(f"- attached image {i}: official design of {nm} (match face, hair, ears/tail, outfit and colors exactly, but render in monochrome manga ink)")
             prompt = "\n".join(ref_lines) + "\n\n" + prompt
