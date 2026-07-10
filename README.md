@@ -98,7 +98,19 @@ PASSWORD='新しいパスワード' node scripts/build-members.mjs
 3. 生成された `members.html` をコミット＆プッシュ（暗号文のみが公開されます）
 4. Brainの購入者向け本文にパスワードを記載
 
-現在の初期パスワードは `cryptoninja-brain` です。**公開前に必ず変更してください。**
+### 配布ファイル（DL成果物）の非公開化
+
+購入者にだけダウンロードさせたいファイル（JSON・ZIP・画像など）は `members-files/` に置いて再生成するだけです：
+
+1. `members-files/` に配布したいファイルを置く（このフォルダは `.gitignore` 済み＝生データはリポジトリに載りません）
+2. `PASSWORD='パスワード' node scripts/build-members.mjs` で再生成
+   - 各ファイルが暗号化されて `members-data/*.enc` に出力されます（これをコミット）
+   - 購入者ページに「📥 ダウンロード」欄が自動で出て、パスワード入力後にブラウザ内で復号→保存されます
+3. `members.html` と `members-data/` をコミット＆プッシュ
+
+公開されるのは暗号文（`.enc`）だけなので、公開サイト・公開リポジトリのままでもDL成果物は購入者以外に読めません。
+
+現在の初期パスワードは `cryptoninja-brain`、配布物のサンプルとして `cryptoninja_characters.json` を暗号化済みです。**公開前に必ずパスワードを変更してください。**
 
 ## 画像の置き方
 

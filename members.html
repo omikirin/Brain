@@ -18,54 +18,96 @@
   .gate button:disabled{opacity:.5}
   .gate .err{color:var(--accent); font-size:.85rem; margin-top:10px; min-height:1.2em}
   .gate .back{display:inline-block; margin-top:16px; color:var(--sub); font-size:.8rem}
-  #content{display:none; max-width:860px; margin:0 auto; padding:24px 16px 80px}
+  #content{display:none; max-width:860px; margin:0 auto; padding:24px 16px 20px}
+  #downloads{display:none; max-width:860px; margin:0 auto; padding:0 16px 80px}
+  #downloads h2{font-size:1.05rem; color:var(--accent); margin:18px 0 10px; border-bottom:1px solid var(--line); padding-bottom:6px}
+  .dl{display:flex; align-items:center; gap:12px; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin:8px 0}
+  .dl .nm{font-size:.92rem; font-weight:700; word-break:break-all}
+  .dl .sz{color:var(--sub); font-size:.78rem}
+  .dl button{margin-left:auto; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:8px 16px; font-size:.85rem; font-weight:700; cursor:pointer; white-space:nowrap}
+  .dl button:disabled{opacity:.5}
 </style>
 </head>
 <body>
 <div class="gate" id="gate">
   <h1>Brain<span>購入者</span>専用ページ</h1>
-  <p>Brainに記載のパスワードを入力してください。<br>本文は暗号化されており、パスワードなしでは復元できません。</p>
+  <p>Brainに記載のパスワードを入力してください。<br>本文・配布ファイルは暗号化されており、パスワードなしでは復元できません。</p>
   <input id="pw" type="password" placeholder="パスワード" autocomplete="off">
   <button id="unlock">開く</button>
   <div class="err" id="err"></div>
   <a class="back" href="index.html">← 図鑑へ戻る</a>
 </div>
 <div id="content"></div>
+<div id="downloads"></div>
 
 <script>
 const DATA = {
-  salt: "LS56nL2Iqeg1p7cwIwL/EA==",
-  iv: "ltKRsuO+8VAsA9Lj",
-  cipher: "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",
-  iter: 310000
+  salt: "fx/JZoic+H0P4viu35ajWQ==",
+  iter: 310000,
+  body: { iv: "BCJVPEfLbt487peN", cipher: "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" },
+  files: [{"name":"cryptoninja_characters.json","size":519613,"iv":"DO85WSm6oh25m8ZK","path":"members-data/cryptoninja_characters.json.enc"}]
 };
 const b2u = b => Uint8Array.from(atob(b), c => c.charCodeAt(0));
+let KEY = null;
 
-async function tryUnlock(pw) {
+async function deriveKey(pw) {
   const enc = new TextEncoder();
   const baseKey = await crypto.subtle.importKey('raw', enc.encode(pw), 'PBKDF2', false, ['deriveKey']);
-  const key = await crypto.subtle.deriveKey(
+  return crypto.subtle.deriveKey(
     { name: 'PBKDF2', salt: b2u(DATA.salt), iterations: DATA.iter, hash: 'SHA-256' },
     baseKey, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
-  const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b2u(DATA.iv) }, key, b2u(DATA.cipher));
-  return new TextDecoder().decode(plain);
 }
 
 async function unlock(pw, silent) {
   const btn = document.getElementById('unlock');
   btn.disabled = true; btn.textContent = '復号中…';
   try {
-    const html = await tryUnlock(pw);
+    const key = await deriveKey(pw);
+    const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b2u(DATA.body.iv) }, key, b2u(DATA.body.cipher));
+    KEY = key;
     sessionStorage.setItem('members_pw', pw);
     document.getElementById('gate').style.display = 'none';
     const c = document.getElementById('content');
-    c.innerHTML = html;
+    c.innerHTML = new TextDecoder().decode(plain);
     c.style.display = 'block';
+    renderDownloads();
   } catch (e) {
     if (!silent) document.getElementById('err').textContent = 'パスワードが違います';
     sessionStorage.removeItem('members_pw');
   } finally {
     btn.disabled = false; btn.textContent = '開く';
+  }
+}
+
+function fmtSize(n){ return n > 1048576 ? (n/1048576).toFixed(1)+' MB' : (n/1024).toFixed(1)+' KB'; }
+
+function renderDownloads() {
+  if (!DATA.files.length) return;
+  const box = document.getElementById('downloads');
+  box.innerHTML = '<h2>📥 ダウンロード（購入者限定）</h2>' + DATA.files.map((f, i) =>
+    `<div class="dl"><div><div class="nm">${f.name}</div><div class="sz">${fmtSize(f.size)}</div></div>
+      <button data-i="${i}">ダウンロード</button></div>`).join('');
+  box.style.display = 'block';
+  box.querySelectorAll('button').forEach(b => b.onclick = () => download(+b.dataset.i, b));
+}
+
+async function download(i, btn) {
+  const f = DATA.files[i];
+  btn.disabled = true; btn.textContent = '復号中…';
+  try {
+    const res = await fetch(f.path);
+    if (!res.ok) throw new Error('fetch failed');
+    const cipher = new Uint8Array(await res.arrayBuffer());
+    const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b2u(f.iv) }, KEY, cipher);
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([plain]));
+    a.download = f.name;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    btn.textContent = '✓ 保存しました';
+    setTimeout(() => { btn.textContent = 'ダウンロード'; btn.disabled = false; }, 1800);
+  } catch (e) {
+    btn.textContent = '失敗（再試行）'; btn.disabled = false;
   }
 }
 
