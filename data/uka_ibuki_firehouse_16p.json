@@ -1,0 +1,97 @@
+{
+  "title": "火薬庫の小さな守り神",
+  "format": {
+    "unit": "sheet",
+    "pages_per_sheet": 16,
+    "grid": {"cols": 4, "rows": 4},
+    "page_order_on_sheet": "rtl_row_major(1p=シート右上、右→左、行送り)",
+    "panels_per_page": 3
+  },
+  "sheets": [
+    {
+      "sheet": 1,
+      "pages": [
+        {"page":1,"scene":"祭り前夜の雑賀。火薬庫を狙う盗賊をウカが発見","panels":[
+          {"no":1,"prompt":"Wide establishing shot at night. Mountain valley in Saika territory, a large wooden gunpowder warehouse under moonlight and mist. Dramatic color manga, 3-to-4-head chibi anime proportions, clean bold lineart.","dialogue":[{"speaker":"ナレーション","text":"雑賀の里――祭り前夜"}],"sfx":null},
+          {"no":2,"prompt":"Dynamic silhouette of a masked thief running across the warehouse roof carrying a sack of horoku bombs. Moon behind the figure.","dialogue":[],"sfx":"タッ"},
+          {"no":3,"prompt":"Close medium shot of {uka} hiding behind a tree, fox ears twitching, purple eyes sharp, holding red talisman cards, white-and-red ninja outfit and large fox tail.","dialogue":[{"speaker":"Uka","text":"やっぱり来た"}],"sfx":null}
+        ]},
+        {"page":2,"scene":"いぶきが現れ、盗賊を挟み撃ちにするが煙玉で逃げられる","panels":[
+          {"no":1,"prompt":"{ibuki} leaps in from the opposite direction holding a horoku bomb, black ninja outfit with purple accents, blue-purple topknot, green eyes, small green oni companion on shoulder.","dialogue":[{"speaker":"Ibuki","text":"火薬泥棒！ そこまでだ！"}],"sfx":null},
+          {"no":2,"prompt":"The thief throws a smoke bomb. Thick smoke explodes between {uka} and {ibuki}; the thief disappears into the darkness.","dialogue":[],"sfx":"ボンッ！"},
+          {"no":3,"prompt":"Inside the smoke, tense two-shot: {uka} and {ibuki} point weapons at each other, both suspicious and soot-streaked.","dialogue":[{"speaker":"Ibuki","text":"お前が仲間か！"},{"speaker":"Uka","text":"それ、こっちの台詞"}],"sfx":null}
+        ]},
+        {"page":3,"scene":"誤解から小競り合い","panels":[
+          {"no":1,"prompt":"{ibuki} throws a small horoku bomb toward {uka}, dynamic foreshortening and speed lines.","dialogue":[{"speaker":"Ibuki","text":"動くな！"}],"sfx":"ヒュッ"},
+          {"no":2,"prompt":"{uka} flicks a red talisman that wraps the bomb in midair with glowing fox-fire energy.","dialogue":[{"speaker":"Uka","text":"そんな物を人に向けないで"}],"sfx":"シュルッ"},
+          {"no":3,"prompt":"Small harmless puff explosion covers both girls in soot. Comedic deadpan faces, smoke curls.","dialogue":[{"speaker":"Ibuki","text":"止めるなら、もう少し優しく止めろ！"}],"sfx":"ボフッ"}
+        ]},
+        {"page":4,"scene":"火薬庫そのものに火が付けられていると判明","panels":[
+          {"no":1,"prompt":"Long shot of the thief escaping across a rope bridge over a ravine.","dialogue":[{"speaker":"Uka","text":"逃げられる"}],"sfx":"タタタ"},
+          {"no":2,"prompt":"{ibuki} starts to chase, but {uka} grabs her wrist and stops her. Urgent expressions.","dialogue":[{"speaker":"Ibuki","text":"離せ！"}],"sfx":"ガシッ"},
+          {"no":3,"prompt":"Low angle on the warehouse floorboards glowing red from below; smoke and sparks leak through cracks. {uka} realizes the trap.","dialogue":[{"speaker":"Uka","text":"盗まれたんじゃない。火をつけられた"}],"sfx":"チリチリ"}
+        ]},
+        {"page":5,"scene":"大量の焙烙玉が誘爆寸前","panels":[
+          {"no":1,"prompt":"Interior wide shot: hundreds of horoku bombs stacked in rows, three burning fuse lines racing through the warehouse. Dramatic orange lighting.","dialogue":[],"sfx":"チリチリチリ"},
+          {"no":2,"prompt":"Close-up of {ibuki} turning pale, green eyes wide, calculating the danger.","dialogue":[{"speaker":"Ibuki","text":"この量が爆発したら、山ごと消える"}],"sfx":null},
+          {"no":3,"prompt":"{uka} turns calmly toward {ibuki}, holding talismans ready, fire reflected in purple eyes.","dialogue":[{"speaker":"Uka","text":"止め方は？"}],"sfx":null}
+        ]},
+        {"page":6,"scene":"三本の導火線を同時に切る必要がある","panels":[
+          {"no":1,"prompt":"{ibuki} spreads a rough warehouse map on the floor and points to three routes, intense planning scene.","dialogue":[{"speaker":"Ibuki","text":"導火線は三系統"}],"sfx":null},
+          {"no":2,"prompt":"Diagram-like action panel showing three fuse branches, each flame moving toward bomb stacks.","dialogue":[{"speaker":"Ibuki","text":"全部同時に切らないと逆に誘爆する"}],"sfx":"チチチ"},
+          {"no":3,"prompt":"Heroic medium shot of {uka} forming a summoning hand sign, fox-fire beginning to swirl.","dialogue":[{"speaker":"Uka","text":"なら、手を増やす"}],"sfx":"ゴウ…"}
+        ]},
+        {"page":7,"scene":"ウカが三匹の子狐を口寄せする","panels":[
+          {"no":1,"prompt":"Large dramatic summoning panel: {uka} kneels with hand sign, red talismans and blue-white fox fire spiraling around her.","dialogue":[{"speaker":"Uka","text":"来て"}],"sfx":"ボンッ"},
+          {"no":2,"prompt":"Three cute small fox spirits appear in puffs of smoke, lined up with determined faces.","dialogue":[],"sfx":"ポンッ ポンッ ポンッ"},
+          {"no":3,"prompt":"{ibuki} stares at the foxes with softened delighted expression; {uka} gives her a suspicious side-eye.","dialogue":[{"speaker":"Ibuki","text":"……かわいい"},{"speaker":"Uka","text":"今、油断した？"}],"sfx":null}
+        ]},
+        {"page":8,"scene":"いぶきが油断してヒヨコになる","panels":[
+          {"no":1,"prompt":"{ibuki} is suddenly enveloped in a tiny puff of magical smoke, surprised face vanishing.","dialogue":[],"sfx":"ポフン"},
+          {"no":2,"prompt":"Reveal: a tiny yellow chick stands where {ibuki} was, with a hint of blue-purple crest and fierce green eyes. Comedic large panel.","dialogue":[{"speaker":"Ibuki","text":"ピ"}],"sfx":null},
+          {"no":3,"prompt":"Deadpan {uka} looks down at the chick while the three fox spirits tilt their heads.","dialogue":[{"speaker":"Uka","text":"本当に、なるんだ"}],"sfx":null}
+        ]},
+        {"page":9,"scene":"ヒヨコ姿のいぶきが作戦を伝える","panels":[
+          {"no":1,"prompt":"Tiny chick {ibuki} flaps angrily on {uka}'s palm, trying to explain; {uka} looks puzzled.","dialogue":[{"speaker":"Ibuki","text":"ピピピ！"},{"speaker":"Uka","text":"言っていることが分からない"}],"sfx":null},
+          {"no":2,"prompt":"Chick {ibuki} pecks one central point on the warehouse map repeatedly with fierce determination.","dialogue":[],"sfx":"コツコツコツ！"},
+          {"no":3,"prompt":"{uka} suddenly understands, pointing at the central bomb store; chick {ibuki} nods sharply.","dialogue":[{"speaker":"Uka","text":"中央の火薬を先に抜け、ってこと？"},{"speaker":"Ibuki","text":"ピッ！"}],"sfx":null}
+        ]},
+        {"page":10,"scene":"狐たちを配置し、ウカが火薬庫へ突入","panels":[
+          {"no":1,"prompt":"Three fox spirits sprint in three different directions along burning fuse lines, low dynamic angle.","dialogue":[{"speaker":"Uka","text":"三本とも、火の手前で待って"}],"sfx":"タタタッ"},
+          {"no":2,"prompt":"{uka} gently tucks chick {ibuki} into the front of her white-and-red outfit, protective expression.","dialogue":[{"speaker":"Uka","text":"落ちないで"}],"sfx":null},
+          {"no":3,"prompt":"Heroic full-body shot of {uka} charging into the blazing warehouse, fox tail streaming behind, talismans in hand.","dialogue":[],"sfx":"ゴオオッ"}
+        ]},
+        {"page":11,"scene":"崩落の中、ヒヨコいぶきが中央火薬の留め具へ向かう","panels":[
+          {"no":1,"prompt":"A burning wooden beam crashes down in front of {uka}, sparks and debris everywhere.","dialogue":[],"sfx":"ドン！"},
+          {"no":2,"prompt":"Chick {ibuki} jumps out from {uka}'s chest and darts through a narrow gap beneath the fallen beam.","dialogue":[{"speaker":"Uka","text":"待って！"}],"sfx":"ピョン"},
+          {"no":3,"prompt":"Close-up: chick {ibuki} uses her tiny beak to pull open the metal latch securing the giant central horoku bomb.","dialogue":[],"sfx":"カチッ"}
+        ]},
+        {"page":12,"scene":"巨大焙烙玉が暴走し、二人で軌道を変える","panels":[
+          {"no":1,"prompt":"Huge central horoku bomb breaks loose and rolls toward the cliff-side exit, crushing crates.","dialogue":[{"speaker":"Uka","text":"そっちは崖よ！"}],"sfx":"ゴロゴロゴロ"},
+          {"no":2,"prompt":"Chick {ibuki} rides on top of the rolling bomb, leaning hard to steer it, tiny wings spread, heroic-comic expression.","dialogue":[{"speaker":"Ibuki","text":"ピイイイイ！"}],"sfx":null},
+          {"no":3,"prompt":"{uka} throws several talismans that become glowing paper ropes wrapping around the giant bomb.","dialogue":[{"speaker":"Uka","text":"一人で格好つけないで"}],"sfx":"シュバッ"}
+        ]},
+        {"page":13,"scene":"巨大焙烙玉を谷へ放り出す","panels":[
+          {"no":1,"prompt":"{uka} braces and pulls the talisman ropes with all her strength, fox-fire aura behind her, launching the giant bomb out of the warehouse.","dialogue":[],"sfx":"ブンッ！"},
+          {"no":2,"prompt":"Long vertical view down the dark ravine as the giant bomb falls, chick {ibuki} safely flying back toward {uka} in a fox-fire bubble.","dialogue":[],"sfx":"ヒュウウ"},
+          {"no":3,"prompt":"Massive distant explosion blooms in the valley like a fiery flower against the night sky. {uka} and chick {ibuki} silhouetted in foreground.","dialogue":[],"sfx":"ドオオオン！"}
+        ]},
+        {"page":14,"scene":"爆風の一瞬を使い三本の導火線を同時切断","panels":[
+          {"no":1,"prompt":"Explosion shockwave rushes through the warehouse and briefly blows out the flames on all three fuse lines.","dialogue":[{"speaker":"Uka","text":"今！"}],"sfx":"ブワッ"},
+          {"no":2,"prompt":"Split-style action panel: three fox spirits bite through the three fuse lines at exactly the same moment.","dialogue":[],"sfx":"プツン！"},
+          {"no":3,"prompt":"Wide silent interior. The last sparks die out among stacks of intact bombs; smoke drifts softly.","dialogue":[],"sfx":"……シュウ"}
+        ]},
+        {"page":15,"scene":"夜明け、守れたものを確かめる","panels":[
+          {"no":1,"prompt":"Dawn outside the damaged warehouse. {uka} sits exhausted against a wooden wall, warm sunrise light.","dialogue":[],"sfx":null},
+          {"no":2,"prompt":"Close shot: chick {ibuki} sleeps peacefully on {uka}'s lap; three fox spirits curl nearby.","dialogue":[{"speaker":"Uka","text":"逃げた犯人は取り逃がしたけど"}],"sfx":"スウ…"},
+          {"no":3,"prompt":"Gentle close-up of {uka} smiling slightly toward the sunrise, ears relaxed.","dialogue":[{"speaker":"Uka","text":"守るべきものは守れた"}],"sfx":null}
+        ]},
+        {"page":16,"scene":"いぶきが戻り、ヒヨコ姿をからかわれる","panels":[
+          {"no":1,"prompt":"Morning light. Chick {ibuki} transforms back into her normal blue-purple-haired ninja form in a puff of smoke.","dialogue":[],"sfx":"ポンッ"},
+          {"no":2,"prompt":"Embarrassed red-faced {ibuki} points at {uka}, demanding secrecy. {uka} wears an innocent expression.","dialogue":[{"speaker":"Ibuki","text":"今のことは全部忘れろ！"},{"speaker":"Uka","text":"どのこと？"}],"sfx":null},
+          {"no":3,"prompt":"Final comedy panel: a fox spirit on {uka}'s shoulder imitates a chick and says piyo; furious embarrassed {ibuki} chases it while {uka} laughs. Bright cheerful sunrise.","dialogue":[{"speaker":"狐","text":"ピヨ"},{"speaker":"Ibuki","text":"お前も忘れろー！"}],"sfx":"おわり"}
+        ]}
+      ]
+    }
+  ]
+}
